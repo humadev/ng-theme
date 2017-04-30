@@ -1,0 +1,166 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$candy-app-primary: mat-palette($mat-indigo);
+$candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
+
+$candy-app-warn:    mat-palette($mat-red);
+
+$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+
+@include angular-material-theme($candy-app-theme);
+
+$color-1:#27B1C1;
+$color-2:#FCFCFC;
+$color-3:#B1B1B2;
+$color-4:#DEE2E5;
+$color-5:#333840;
+
+//clean up
+html, body, material-app, md-sidenav-container, .my-content {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url(assets/material-icon.woff2) format('woff2');
+}
+
+.material-icons, md-icon {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+.fill-space{
+      flex:1 1 auto;
+}
+
+//end of clean up
+
+
+//all toolbar
+md-toolbar.hd-main-toolbar md-toolbar-row, md-toolbar.hd-side-toolbar md-toolbar-row{
+      height:50px !important;
+}
+
+md-toolbar.hd-main-toolbar{
+      padding:0;
+      min-height: 50px;
+      height:50px;
+      background-color: $color-2;
+      color:$color-3;
+      .hd-menu{
+            font-size: 12px;
+            border:thin solid whitesmoke;
+            padding:16px;
+            cursor:pointer;
+            line-height: 1;
+            vertical-align: middle;
+            md-icon{
+                  font-size: 20px;
+                  vertical-align: middle;
+                  padding:0;
+                  margin:0;
+            }
+      }
+      .hd-left-menu{
+            border-left: none;
+      }
+      .hd-right-menu{
+            border-right: none;
+      }
+}
+
+md-toolbar.hd-side-toolbar{
+      font-size: 18px;
+      min-height: 50px;
+      height:50px;
+      background-color:$color-1;
+      color:$color-2;
+      text-transform: uppercase;
+}
+
+md-toolbar.hd-page-toolbar{
+      font-size: 12px;
+      padding: 0 20px;
+      color:$color-3;
+      .hd-page-title{
+            font-size: 16px;
+      }
+}
+//end of toolbar
+
+
+//sidenav
+md-sidenav-container.hd-sidenav-container{
+      background-color: $color-4;
+}
+
+md-sidenav.hd-sidenav{
+      background-color: $color-5;
+      width: 200px;
+      color:$color-4;
+      md-nav-list{
+            padding-top: 0;
+      }
+      .mat-button{
+            color:$color-3;
+            line-height: 1;
+            /* width: 100%; */
+            padding:0;
+            text-align: left;
+            display: block;
+            .mat-button-wrapper{
+                  display: flex;
+                  line-height: 1;
+                  padding: 15px 15px;
+                  font-size: 12px;
+                  flex-wrap: nowrap;
+                  justify-content: space-between;
+                  md-icon{
+                        font-size: 18px;
+                        margin-right:10px;
+                        margin-top:-3px;
+                  }
+                  md-icon.hd-menu-parent{
+                        margin-right:0;
+                  }
+            }
+      }
+      .mat-button.active{
+            color:$color-1;
+      }
+
+      .hd-menu-child .mat-button{
+            padding-left:18px;
+      }
+}
+
+//end of sidenav
+
+
+//page
+div.hd-page{
+      background-color: $color-4;
+      padding:20px;
+
+      md-card{
+            background-color: $color-2;
+      }
+}
+//end of page
