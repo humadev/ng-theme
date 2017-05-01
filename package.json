@@ -2,6 +2,7 @@
   "name": "humadev-angular-theme",
   "version": "0.0.2",
   "license": "MIT",
+  "description":"simple theme to quick start angular 2+ project",
   "author": {
     "name": "Huma Prathama",
     "email": "huma.elektro@gmail.com"
@@ -51,5 +52,9 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/humaprathama/humadev-angular-theme.git"
   }
 }
