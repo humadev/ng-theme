@@ -153,7 +153,6 @@ md-sidenav.hd-sidenav{
 
 //end of sidenav
 
-
 //page
 div.hd-page{
       background-color: $color-4;
@@ -163,4 +162,34 @@ div.hd-page{
             background-color: $color-2;
       }
 }
+
+/* Style the list */
+ul.hd-breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+}
+
+/* Display list items side by side */
+ul.hd-breadcrumb li {
+    display: inline;
+}
+
+/* Add a slash symbol (/) before/behind each list item */
+ul.hd-breadcrumb li+li:before {
+    padding: 4px;
+    content: "/\00a0";
+}
+
+/* Add a color to all links inside the list */
+ul.hd-breadcrumb li a {
+    color: $color-1;
+    text-decoration: none;
+}
+
+/* Add a color on mouse-over */
+ul.hd-breadcrumb li a:hover {
+    color: $color-1;
+    text-decoration: underline;
+}
+
 //end of page

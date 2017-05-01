@@ -27,6 +27,7 @@ export class LayoutComponent implements OnInit{
       ngOnInit(){
             if(this.nav == false)
             this.navFromRouter = this.router.config;
+            console.log(this.navFromRouter);
             this.router.events
             .filter(event => {
                   console.log(event);
