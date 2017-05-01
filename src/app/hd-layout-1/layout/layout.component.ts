@@ -1,14 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router, ActivatedRoute } from "@angular/router";
-
-interface menu{
-      icon:string;
-      path:string;
-      name:string;
-      groupAccess?:Array<number>;
-      children?:Array<menu>;
-      isOpen?:boolean;
-}
+import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 
 @Component({
   selector: 'hd-layout',
@@ -19,7 +10,8 @@ export class LayoutComponent implements OnInit{
 
       @Input() titleText:string = "Humadev Theme";
       @Input() titleImg:string;
-      @Input() nav;
+      @Input() nav:any = false;
+      @Input() navFromRouter:any;
       @Input() notification:boolean = false;
       @Input() notificationList:Array<any>;
       @Input() profilePosition:string = "top";
@@ -33,34 +25,43 @@ export class LayoutComponent implements OnInit{
       }
 
       ngOnInit(){
-            this.activeRoute.url.subscribe(
-                  path => {
-                        console.log('rute', path);
+            if(this.nav == false)
+            this.navFromRouter = this.router.config;
+            this.router.events
+            .filter(event => {
+                  console.log(event);
+                  return event instanceof NavigationEnd;
                   }
-            );
-             let test = this.nav.reduce(
-                   (a,b) => {
-                         if(b.children){
-                              return [...a, ...b, ...b.children];
-                         }else{
-                              return [...a, ...b];
-                         }
-                   }, []
-            ).filter(red => red.path === 'dashboard1');
-            console.log(test[0].name);
+            )
+            .map(() => this.activeRoute)
+            .map(route => {
+                  while (route.firstChild) route = route.firstChild;
+                  return route;
+            })
+            .filter(route => route.outlet === 'primary')
+            .switchMap(route => route.data)
+            .subscribe(res => this.pageTitle = res.name);
       }
 
       parentOpen(i:any){
-            if(this.nav[i].isOpen == false || !this.nav[i].hasOwnProperty('isOpen')){
-                  this.nav[i].isOpen = true;
+            if(this.nav == false){
+                  if(this.navFromRouter[i].isOpen == false || !this.navFromRouter[i].hasOwnProperty('isOpen')){
+                        this.navFromRouter[i].isOpen = true;
+                  }else{
+                        this.navFromRouter[i].isOpen = false;
+                  }
             }else{
-                  this.nav[i].isOpen = false;
+                  if(this.nav[i].isOpen == false || !this.nav[i].hasOwnProperty('isOpen')){
+                        this.nav[i].isOpen = true;
+                  }else{
+                        this.nav[i].isOpen = false;
+                  }
             }
       }
 
-      isActive(instruction: any[]): boolean {
-            console.log(instruction);
-            return this.router.isActive(this.router.createUrlTree(instruction), false);
+      isActive(instruction: any[]): boolean{
+            let res = this.router.isActive(this.router.createUrlTree(instruction), false);
+            return res;
       }
 
 }

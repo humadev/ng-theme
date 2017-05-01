@@ -10,10 +10,65 @@ import { HdLayout1Module } from "app/hd-layout-1/hd-layout-1.module";
 import { DashboardExampleComponent } from './dashboard-example/dashboard-example.component';
 
 const appRoutes: Routes = [
-      { path: 'dashboard', children: [
-            { path: 'dashboard1', component: DashboardExampleComponent}
-      ]},
-];
+      { 
+            path: 'dashboard', 
+            data:{
+                  icon:'dashboard', 
+                  name:'Dashboard',
+                  groupAccess:0,
+            },
+            children: [{
+                  path: 'dashboard1',
+                  component: DashboardExampleComponent, 
+                  data:{
+                        name:'Dashboard 1', 
+                        groupAccess:0
+                  }
+            },{
+                  path: 'dashboard2',
+                  component: DashboardExampleComponent, 
+                  data:{
+                        name:'Dashboard 2', 
+                        groupAccess:0
+                  }
+            },{
+                  path: 'dashboard3',
+                  component: DashboardExampleComponent, 
+                  data:{
+                        name:'Dashboard 3', 
+                        groupAccess:0
+                  }
+            }]
+      },{ 
+            path: 'layout', 
+            data:{
+                  icon:'laptop', 
+                  name:'layout',
+                  groupAccess:0,
+            },
+            children: [{
+                  path: 'layout1',
+                  component: DashboardExampleComponent, 
+                  data:{
+                        name:'layout 1', 
+                        groupAccess:0
+                  }
+            },{
+                  path: 'layout2',
+                  component: DashboardExampleComponent, 
+                  data:{
+                        name:'layout 2', 
+                        groupAccess:0
+                  }
+            },{
+                  path: 'layout3',
+                  component: DashboardExampleComponent, 
+                  data:{
+                        name:'layout 3', 
+                        groupAccess:0
+                  }
+            }]
+      }];
 
 @NgModule({
   declarations: [
