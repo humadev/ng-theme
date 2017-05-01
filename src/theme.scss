@@ -1,5 +1,5 @@
 @import '~@angular/material/theming';
-
+@import '~https://fonts.googleapis.com/icon?family=Material+Icons';
 @include mat-core();
 
 $candy-app-primary: mat-palette($mat-indigo);
@@ -17,7 +17,32 @@ $color-3:#B1B1B2;
 $color-4:#DEE2E5;
 $color-5:#333840;
 
+
+
 //clean up
+
+body {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+
+md-card {
+  max-width: 80%;
+  margin: 2em auto;
+  text-align: center;
+}
+
+md-toolbar-row {
+  justify-content: space-between;
+}
+
+.done {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: white;
+}
+
 html, body, material-app, md-sidenav-container, .my-content {
   margin: 0;
   width: 100%;
@@ -25,10 +50,14 @@ html, body, material-app, md-sidenav-container, .my-content {
 }
 
 @font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Material Icons'), local('MaterialIcons-Regular'), url(assets/material-icon.woff2) format('woff2');
+      font-family: 'Material Icons';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Material Icons'), 
+      local('MaterialIcons-Regular'), 
+      url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+      url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+      url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
 }
 
 .material-icons, md-icon {

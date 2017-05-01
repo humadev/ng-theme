@@ -27,7 +27,6 @@ export class BreadcrumbComponent implements OnInit {
                   //set breadcrumbs
                   let root: ActivatedRoute = this.activatedRoute.root;
                   this.breadcrumbs = this.getBreadcrumbs(root);
-                  console.log("root",root);
             });
             
       }
