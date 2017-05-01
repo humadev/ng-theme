@@ -5,6 +5,7 @@
     "baseUrl": "src",
     "sourceMap": true,
     "declaration": false,
+    "module":"commonjs",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -16,5 +17,9 @@
       "es2016",
       "dom"
     ]
-  }
+  },
+  "files": [
+    "index.ts",
+    "typings/index.d.ts"
+  ]
 }

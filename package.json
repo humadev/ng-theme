@@ -2,6 +2,10 @@
   "name": "humadev-angular-theme",
   "version": "0.0.1",
   "license": "MIT",
+  "author": {
+    "name": "Huma Prathama",
+    "email": "huma.elektro@gmail.com"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,7 +14,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^4.1.0",
     "@angular/common": "^4.1.0",
@@ -45,5 +48,8 @@
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
     "typescript": "~2.3"
-  }
+  },
+  "publishConfig": {
+      "registry": "https://registry.npmjs.org/"
+      }
 }
