@@ -1,5 +1,5 @@
 @import '~@angular/material/theming';
-@import '~https://fonts.googleapis.com/icon?family=Material+Icons';
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @include mat-core();
 
 $candy-app-primary: mat-palette($mat-indigo);
@@ -17,10 +17,7 @@ $color-3:#B1B1B2;
 $color-4:#DEE2E5;
 $color-5:#333840;
 
-
-
 //clean up
-
 body {
   margin: 0;
   font-family: Roboto, sans-serif;
@@ -49,16 +46,16 @@ html, body, material-app, md-sidenav-container, .my-content {
   height: 100%;
 }
 
-@font-face {
-      font-family: 'Material Icons';
-      font-style: normal;
-      font-weight: 400;
-      src: local('Material Icons'), 
-      local('MaterialIcons-Regular'), 
-      url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
-      url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
-      url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
-}
+// @font-face {
+//       font-family: 'Material Icons';
+//       font-style: normal;
+//       font-weight: 400;
+//       src: local('Material Icons'), 
+//       local('MaterialIcons-Regular');
+//       // url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+//       // url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+//       // url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+// }
 
 .material-icons, md-icon {
   font-family: 'Material Icons';
