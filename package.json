@@ -1,8 +1,8 @@
 {
   "name": "humadev-angular-theme",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
-  "description":"simple theme to quick start angular 2+ project",
+  "description": "simple theme to quick start angular 2+ project",
   "author": {
     "name": "Huma Prathama",
     "email": "huma.elektro@gmail.com"
