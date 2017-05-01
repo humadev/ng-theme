@@ -1,6 +1,6 @@
 {
   "name": "humadev-angular-theme",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "author": {
     "name": "Huma Prathama",
@@ -50,6 +50,6 @@
     "typescript": "~2.3"
   },
   "publishConfig": {
-      "registry": "https://registry.npmjs.org/"
-      }
+    "registry": "https://registry.npmjs.org/"
+  }
 }
