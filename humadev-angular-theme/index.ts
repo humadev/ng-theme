@@ -1,0 +1,1 @@
+export {HdLayout1Module} from "./hd-layout-1/hd-layout-1.module";
