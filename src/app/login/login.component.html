@@ -1,0 +1,19 @@
+<form [formGroup]='loginForm' (ngSubmit)="onLogin($event)">
+<md-card class="hd-card">
+    <md-card-header>
+        <md-card-title>Wedding Planner</md-card-title>
+    </md-card-header>
+    <!--<img md-card-image src="Card wide image source">-->
+    <md-card-content>
+        <md-input-container align="start">
+            <input mdInput formControlName="email" type="text" placeholder="Email">
+        </md-input-container>
+        <md-input-container align="start">
+            <input mdInput formControlName="password" type="password" placeholder="Password">
+        </md-input-container>
+    </md-card-content>
+    <md-card-actions align="end">
+        <button md-button>Login</button>
+    </md-card-actions>
+</md-card>
+</form>

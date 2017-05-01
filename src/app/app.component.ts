@@ -18,4 +18,8 @@ export class AppComponent {
             {icon:'extension', path:'#',name:'Components', groupAccess:'0'},
             {icon:'build', path:'#',name:'Tools', groupAccess:'0'},
       ];
+
+      doLogin(event){
+            console.log(event);
+      }
 }
