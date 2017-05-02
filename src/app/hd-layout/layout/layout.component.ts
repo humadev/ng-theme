@@ -10,24 +10,11 @@ export class LayoutComponent implements OnInit{
 
       @Input() titleText:string = "Humadev Theme";
       @Input() titleImg:string;
-      @Input() notification:boolean = false;
-      @Input() notificationList:Array<any>;
-      @Input() profilePosition:string = "top";
-      pageTitle = '';
 
       constructor(
-      ){
-            
-      }
+      ){}
 
       ngOnInit(){
            
       }
-
-      changePageTitle(title:string){
-            this.pageTitle = title;
-      }
-
-      
-
 }

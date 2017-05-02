@@ -1,15 +1,6 @@
-<hd-sidenav (pageTitle)="changePageTitle($event)" #sidenav [titleText]="titleText">
-      <md-toolbar class="hd-main-toolbar">
-            <span class="hd-menu hd-left-menu" (click)="sidenav.toggle()"><md-icon>menu</md-icon></span>
-            <span class="fill-space"></span>
-            <span class="hd-menu hd-right-menu" *ngIf="notification"><md-icon>notifications_none</md-icon></span>
-            <span class="hd-menu hd-right-menu" *ngIf="profilePosition=='top'"><md-icon>person</md-icon> Admin</span>
-      </md-toolbar>
-      <md-toolbar class="hd-page-toolbar">
-            <span class="hd-page-title">{{pageTitle}}</span>
-            <span class="fill-space"></span>
-            <hd-breadcrumb></hd-breadcrumb>
-      </md-toolbar>  
+<hd-sidenav (pageTitle)="pagebar.changePageTitle($event)" #sidenav [titleText]="titleText">
+      <hd-main-toolbar (sidenavToggle)="sidenav.toggle()"></hd-main-toolbar>
+      <hd-page-toolbar #pagebar></hd-page-toolbar>
       <div class='hd-page'>
             <ng-content></ng-content>
       </div>

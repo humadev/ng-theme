@@ -1,0 +1,6 @@
+<md-toolbar class="hd-main-toolbar">
+      <span class="hd-menu hd-left-menu" (click)="onSidenavToggle()"><md-icon>menu</md-icon></span>
+      <span class="fill-space"></span>
+      <span class="hd-menu hd-right-menu" *ngIf="notification"><md-icon>notifications_none</md-icon></span>
+      <span class="hd-menu hd-right-menu" *ngIf="profile"><md-icon>person</md-icon> Admin</span>
+</md-toolbar>
