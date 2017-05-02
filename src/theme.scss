@@ -17,13 +17,10 @@ $color-3:#B1B1B2;
 $color-4:#DEE2E5;
 $color-5:#333840;
 
-md-card.hd-card{
-      max-width: 300px;
+md-card.hd-login{
+      max-width: 400px;
       padding-left: 0;
       padding-right: 0;
-}
-
-md-card.hd-card{
       md-card-header{
             background: $color-1;
             padding:20px;
@@ -42,19 +39,21 @@ md-card.hd-card{
       }
       md-card-actions{
             padding: 0 35px;
-      }
-
-      md-card-actions{
             button{
                   background: $color-1;
                   color:$color-2;
             }
       }
-
       md-card-content{
             padding: 40px 20px;
             display:flex;
             flex-direction: column;
+            md-input-container{
+                  margin-bottom:20px;
+                  md-hint.error{
+                        color:red;
+                  }
+            }
       }
 }
 

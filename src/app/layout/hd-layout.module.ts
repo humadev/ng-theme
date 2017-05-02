@@ -24,4 +24,4 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
   ],
   declarations: [LayoutComponent, BreadcrumbComponent]
 })
-export class HdLayout1Module { }
+export class HdLayoutModule { }

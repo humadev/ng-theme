@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(event){
+        console.log(this.loginForm);
         if(this.loginForm.valid){
             this.login.emit(this.loginForm.value);
         }
