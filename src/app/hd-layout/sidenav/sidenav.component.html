@@ -1,0 +1,57 @@
+<md-sidenav-container class='hd-sidenav-container'>
+      <md-sidenav #sidenav [opened]="opened" mode='side' class="hd-sidenav">
+            <md-toolbar class="hd-side-toolbar">
+                  <img [src]="titleImg" *ngIf="titleImg; else titleTextEl">
+                  <ng-template #titleTextEl><span>{{titleText}}</span></ng-template>
+            </md-toolbar>
+            <md-nav-list *ngIf="!nav == false; else fromRouter">
+                  <ng-template ngFor let-level1 [ngForOf]="nav" let-i="index">
+                        <a md-button (click)="parentOpen(i)" routerLinkActive="active" [class.active]="isActive([level1.path])"  *ngIf="level1.children && level1.children.length > 0; else noChild">
+                              <md-icon>{{level1.icon}}</md-icon> {{level1.name}}
+                              <span class="fill-space"></span>
+                              <md-icon class="hd-menu-parent" *ngIf="level1.isOpen || isActive([level1.path]); else arrowRight">keyboard_arrow_down</md-icon>
+                              <ng-template #arrowRight><md-icon class="hd-menu-parent">keyboard_arrow_right</md-icon></ng-template>
+                        </a>
+                        <ng-template #noChild>
+                              <a md-button [routerLink]="[level1.path]" routerLinkActive="active">
+                                    <md-icon>{{level1.icon}}</md-icon> {{level1.name}}
+                                    <span class="fill-space"></span>
+                              </a>
+                        </ng-template>
+                        <ng-template [ngIf]="level1.children && level1.children.length > 0 && (level1.isOpen || isActive([level1.path]))">
+                              <md-nav-list class="hd-menu-child">
+                                    <a md-button *ngFor="let level2 of level1.children" [routerLink]="[level1.path+'/'+level2.path]" routerLinkActive="active">
+                                          <md-icon>{{level2.icon}}</md-icon> {{level2.name}}
+                                          <span class="fill-space"></span>
+                                    </a>
+                              </md-nav-list>
+                        </ng-template>
+                  </ng-template>
+            </md-nav-list>
+            <ng-template #fromRouter>
+                  <ng-template ngFor let-level1 [ngForOf]="navFromRouter" let-i="index">
+                        <a md-button (click)="parentOpen(i)" routerLinkActive="active" [class.active]="isActive([level1.path])"  *ngIf="level1.children && level1.children.length > 0; else noChild">
+                              <md-icon>{{level1.data.icon}}</md-icon> {{level1.data.name}}
+                              <span class="fill-space"></span>
+                              <md-icon class="hd-menu-parent" *ngIf="level1.isOpen || isActive([level1.path]); else arrowRight">keyboard_arrow_down</md-icon>
+                              <ng-template #arrowRight><md-icon class="hd-menu-parent">keyboard_arrow_right</md-icon></ng-template>
+                        </a>
+                        <ng-template #noChild>
+                              <a md-button [routerLink]="[level1.path]" routerLinkActive="active">
+                                    <md-icon>{{level1.data.icon}}</md-icon> {{level1.data.name}}
+                                    <span class="fill-space"></span>
+                              </a>
+                        </ng-template>
+                        <ng-template [ngIf]="level1.children && level1.children.length > 0 && (level1.isOpen || isActive([level1.path]))">
+                              <md-nav-list class="hd-menu-child">
+                                    <a md-button *ngFor="let level2 of level1.children" [routerLink]="[level1.path+'/'+level2.path]" routerLinkActive="active">
+                                          <md-icon>{{level2.data.icon}}</md-icon> {{level2.data.name}}
+                                          <span class="fill-space"></span>
+                                    </a>
+                              </md-nav-list>
+                        </ng-template>
+                  </ng-template>
+            </ng-template>
+      </md-sidenav>
+      <ng-content></ng-content>
+</md-sidenav-container>

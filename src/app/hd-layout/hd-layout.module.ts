@@ -9,6 +9,7 @@ import {
 import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,6 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
   exports: [
       LayoutComponent
   ],
-  declarations: [LayoutComponent, BreadcrumbComponent]
+  declarations: [LayoutComponent, BreadcrumbComponent, SidenavComponent]
 })
 export class HdLayoutModule { }
