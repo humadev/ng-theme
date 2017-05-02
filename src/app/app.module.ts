@@ -3,11 +3,12 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import {
-      MdCardModule
+      MdCardModule,
+      MdButtonModule
 } from '@angular/material';
 import { AppComponent } from './app.component';
-import { HdLayoutModule } from "app/layout/hd-layout.module";
 import { HdLoginModule } from "app/login/hd-login.module";
+import { HdLayoutModule } from "app/hd-layout/hd-layout.module";
 import { DashboardExampleComponent } from './dashboard-example/dashboard-example.component';
 
 const appRoutes: Routes = [
@@ -81,6 +82,7 @@ const appRoutes: Routes = [
       HdLayoutModule,
       HdLoginModule,
       MdCardModule,
+      MdButtonModule,
       BrowserModule,
       BrowserAnimationsModule
   ],
