@@ -6,7 +6,7 @@ import {
       MdCardModule
 } from '@angular/material';
 import { AppComponent } from './app.component';
-import { HdLayout1Module } from "app/hd-layout-1/hd-layout-1.module";
+import { HdLayoutModule } from "app/hd-layout/hd-layout.module";
 import { DashboardExampleComponent } from './dashboard-example/dashboard-example.component';
 
 const appRoutes: Routes = [
@@ -77,7 +77,7 @@ const appRoutes: Routes = [
   ],
   imports: [
       RouterModule.forRoot(appRoutes),
-      HdLayout1Module,
+      HdLayoutModule,
       MdCardModule,
       BrowserModule,
       BrowserAnimationsModule
