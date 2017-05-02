@@ -269,6 +269,13 @@ md-card.hd-card{
       }
 }
 
+button.hd-button{
+      line-height: 32px !important;
+      border-radius:0 !important;
+      display: block;
+      flex:none;
+}
+
 button.primary{
       background: $color-1;
       color:$color-4;
