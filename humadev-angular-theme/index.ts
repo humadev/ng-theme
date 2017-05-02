@@ -1,1 +1,2 @@
-export {HdLayout1Module} from "./hd-layout-1/hd-layout-1.module";
+export {HdLayoutModule} from "./hd-layout/hd-layout.module";
+export {HdLoginModule} from "./login/hd-login.module";
