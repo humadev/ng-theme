@@ -4,11 +4,15 @@ import {
       MdSidenavModule,
       MdToolbarModule,
       MdButtonModule,
-      MdListModule
+      MdListModule,
+      MdMenuModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { MainToolbarComponent } from './main-toolbar/main-toolbar.component';
+import { PageToolbarComponent } from './page-toolbar/page-toolbar.component';
 
 @NgModule({
   imports: [
@@ -17,11 +21,12 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
       MdToolbarModule,
       MdButtonModule,
       MdListModule,
+      MdMenuModule,
       RouterModule
   ],
   exports: [
       LayoutComponent
   ],
-  declarations: [LayoutComponent, BreadcrumbComponent]
+  declarations: [LayoutComponent, BreadcrumbComponent, SidenavComponent, MainToolbarComponent, PageToolbarComponent]
 })
-export class HdLayout1Module { }
+export class HdLayoutModule { }

@@ -1,5 +1,5 @@
 <md-sidenav-container class='hd-sidenav-container'>
-      <md-sidenav #sidenav opened="true" mode='side' class="hd-sidenav">
+      <md-sidenav #sidenav [opened]="opened" mode='side' class="hd-sidenav">
             <md-toolbar class="hd-side-toolbar">
                   <img [src]="titleImg" *ngIf="titleImg; else titleTextEl">
                   <ng-template #titleTextEl><span>{{titleText}}</span></ng-template>
@@ -53,18 +53,5 @@
                   </ng-template>
             </ng-template>
       </md-sidenav>
-      <md-toolbar class="hd-main-toolbar">
-            <span class="hd-menu hd-left-menu" (click)="sidenav.toggle()"><md-icon>menu</md-icon></span>
-            <span class="fill-space"></span>
-            <span class="hd-menu hd-right-menu" *ngIf="notification"><md-icon>notifications_none</md-icon></span>
-            <span class="hd-menu hd-right-menu" *ngIf="profilePosition=='top'"><md-icon>person</md-icon> Admin</span>
-      </md-toolbar>
-      <md-toolbar class="hd-page-toolbar">
-            <span class="hd-page-title">{{pageTitle}}</span>
-            <span class="fill-space"></span>
-            <hd-breadcrumb></hd-breadcrumb>
-      </md-toolbar>  
-      <div class='hd-page'>
-            <ng-content></ng-content>
-    </div>  
+      <ng-content></ng-content>
 </md-sidenav-container>

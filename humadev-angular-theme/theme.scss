@@ -16,6 +16,47 @@ $color-2:#FCFCFC;
 $color-3:#B1B1B2;
 $color-4:#DEE2E5;
 $color-5:#333840;
+$color-6:#f5f5f5;
+
+md-card.hd-login{
+      max-width: 400px;
+      padding-left: 0;
+      padding-right: 0;
+      md-card-header{
+            background: $color-1;
+            padding:20px;
+            color:$color-2;
+            box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+            margin-left:-3px;
+            margin-right:-3px;
+            text-align: center !important;
+            md-card-title{
+                  width:100%;
+                  font-size: 20px !important;
+                  padding:0;
+                  margin:0;
+                  text-align: center !important;
+            }
+      }
+      md-card-actions{
+            padding: 0 35px;
+            button{
+                  background: $color-1;
+                  color:$color-2;
+            }
+      }
+      md-card-content{
+            padding: 40px 20px;
+            display:flex;
+            flex-direction: column;
+            md-input-container{
+                  margin-bottom:20px;
+                  md-hint.error{
+                        color:red;
+                  }
+            }
+      }
+}
 
 //clean up
 body {
@@ -92,7 +133,7 @@ md-toolbar.hd-main-toolbar{
       color:$color-3;
       .hd-menu{
             font-size: 12px;
-            border:thin solid whitesmoke;
+            border:thin solid $color-6;
             padding:16px;
             cursor:pointer;
             line-height: 1;
@@ -124,7 +165,7 @@ md-toolbar.hd-side-toolbar{
 md-toolbar.hd-page-toolbar{
       font-size: 12px;
       padding: 0 20px;
-      color:$color-3;
+      color:$color-1;
       .hd-page-title{
             font-size: 16px;
       }
@@ -183,10 +224,6 @@ md-sidenav.hd-sidenav{
 div.hd-page{
       background-color: $color-4;
       padding:20px;
-
-      md-card{
-            background-color: $color-2;
-      }
 }
 
 /* Style the list */
@@ -204,18 +241,108 @@ ul.hd-breadcrumb li {
 ul.hd-breadcrumb li+li:before {
     padding: 4px;
     content: "/\00a0";
+    color: $color-3;
 }
 
 /* Add a color to all links inside the list */
 ul.hd-breadcrumb li a {
-    color: $color-1;
+    color: $color-3;
     text-decoration: none;
+}
+
+ul.hd-breadcrumb li span {
+    color: $color-3;
 }
 
 /* Add a color on mouse-over */
 ul.hd-breadcrumb li a:hover {
     color: $color-1;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 //end of page
+
+md-card.hd-card{
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      max-width: 100%;
+      margin:0;
+      padding:0;
+      md-card-header{
+            padding:20px;
+            margin:0;
+            background: $color-6;
+            border-bottom:thin solid $color-4;
+            .mat-card-header-text{
+                  margin:0;
+            }
+            md-card-title{
+                  padding:0;
+                  margin:0;
+                  text-align: left;
+                  color:$color-1;
+                  font-size:20px !important;
+            }
+            md-card-subtitle{
+                  color:$color-3;
+                  padding:0;
+                  margin:0 !important;
+            }
+            md-card-actions{
+                  border-top:none;
+                  background-color: none;
+                  font-size: 12px;
+                  margin:0;
+                  display: flex;
+                  flex: 1 auto;
+                  text-align: right;
+                  padding:0;
+                  width: auto;
+            }
+      }
+      md-card-content{
+            padding:20px;
+            margin:0;
+            text-align: left;
+            color:$color-3;
+            min-height: 40vh;
+      }
+
+      md-card-actions{
+            border-top:thin solid $color-4;
+            background-color: $color-6;
+            color:$color-3;
+            font-size: 12px;
+            margin:0;
+            text-align: left;
+            position: relative;
+            display: block;
+            padding:20px;
+            width: auto;
+      }
+
+      md-card-footer{
+            border-top:1px solid $color-4;
+            background-color: $color-6;
+            color:$color-3;
+            font-size: 12px;
+            margin:0;
+            text-align: left;
+            position: relative;
+            display: block;
+            padding:20px;
+            width: auto;
+      }
+}
+
+button.hd-button{
+      line-height: 32px !important;
+      border-radius:0 !important;
+      display: block;
+      flex:none;
+}
+
+button.primary{
+      background: $color-1;
+      color:$color-4;
+}

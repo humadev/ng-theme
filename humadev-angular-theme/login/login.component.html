@@ -1,0 +1,38 @@
+<form [formGroup]='loginForm' (ngSubmit)="onLogin($event)">
+      <md-card class="hd-login">
+      <md-card-header>
+            <md-card-title>{{title}}</md-card-title>
+      </md-card-header>
+      <!--<img md-card-image src="Card wide image source">-->
+      <md-card-content>
+            <md-input-container align="start">
+                  <input mdInput formControlName="email" type="text" placeholder="Email">
+                  <md-hint align="start" class="error" *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched">
+                        <span *ngIf="loginForm.controls.email.errors.required">
+                              Email harus diisi
+                        </span>
+                        <span *ngIf="loginForm.controls.email.errors.email">
+                              Format email salah
+                        </span>
+                  </md-hint>
+            </md-input-container>
+            <md-input-container align="start">
+                  <input mdInput formControlName="password" type="password" placeholder="Password">
+                  <md-hint align="start" class="error" *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched">
+                        <span *ngIf="loginForm.controls.password.errors.required">
+                              Password harus diisi
+                        </span>
+                        <span *ngIf="loginForm.controls.password.errors.minlength">
+                              Password minimal {{loginForm.controls.password.errors.minlength.requiredLength}} karakter
+                        </span>
+                        <span *ngIf="loginForm.controls.password.errors.maxlength">
+                              Password maximal {{loginForm.controls.password.errors.maxlength.requiredLength}} karakter
+                        </span>
+                  </md-hint>
+            </md-input-container>
+      </md-card-content>
+      <md-card-actions align="end">
+            <button md-raised-button>Login</button>
+      </md-card-actions>
+      </md-card>
+</form>

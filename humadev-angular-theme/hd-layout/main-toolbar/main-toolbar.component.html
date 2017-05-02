@@ -1,0 +1,16 @@
+<md-toolbar class="hd-main-toolbar">
+      <span class="hd-menu hd-left-menu" (click)="onSidenavToggle()"><md-icon>menu</md-icon></span>
+      <span class="fill-space"></span>
+      <span class="hd-menu hd-right-menu" *ngIf="notification"><md-icon>notifications_none</md-icon></span>
+      <button md-button [mdMenuTriggerFor]="menu" #profileMenu class="hd-menu hd-right-menu" *ngIf="profile"><md-icon>face</md-icon> Admin</button>
+      <md-menu #menu="mdMenu" ngClass="hd-profile-menu">
+            <button md-menu-item>
+                  <md-icon>account_box</md-icon>
+                  <span>Account</span>
+            </button>
+            <button md-menu-item>
+                  <md-icon>power_settings_new</md-icon>
+                  <span>Logout</span>
+            </button>
+      </md-menu>
+</md-toolbar>
