@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import {
-      MdCardModule
+      MdCardModule,
+      MdButtonModule
 } from '@angular/material';
 import { AppComponent } from './app.component';
 import { HdLayoutModule } from "app/hd-layout/hd-layout.module";
@@ -79,6 +80,7 @@ const appRoutes: Routes = [
       RouterModule.forRoot(appRoutes),
       HdLayoutModule,
       MdCardModule,
+      MdButtonModule,
       BrowserModule,
       BrowserAnimationsModule
   ],
