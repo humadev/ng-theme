@@ -2,8 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 @Component({
   selector: 'hd-sidenav',
-  templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.css']
+  templateUrl: './sidenav.component.html'
 })
 export class SidenavComponent implements OnInit {
 
@@ -22,13 +21,8 @@ export class SidenavComponent implements OnInit {
       ngOnInit(){
             if(this.nav == false)
                   this.navFromRouter = this.router.config;
-                  console.log(this.navFromRouter);
                   this.router.events
-                  .filter(event => {
-                        console.log(event);
-                        return event instanceof NavigationEnd;
-                        }
-                  )
+                  .filter(event => event instanceof NavigationEnd)
                   .map(() => this.activeRoute)
                   .map(route => {
                         while (route.firstChild) route = route.firstChild;

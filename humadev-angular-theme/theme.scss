@@ -1,14 +1,13 @@
 @import '~@angular/material/theming';
+@import 'data-table/themes/material';
+@import 'data-table/themes/icons.css';
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @include mat-core();
 
 $candy-app-primary: mat-palette($mat-indigo);
 $candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
-
 $candy-app-warn:    mat-palette($mat-red);
-
 $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
-
 @include angular-material-theme($candy-app-theme);
 
 $color-1:#27B1C1;
@@ -87,18 +86,7 @@ html, body, material-app, md-sidenav-container, .my-content {
   height: 100%;
 }
 
-// @font-face {
-//       font-family: 'Material Icons';
-//       font-style: normal;
-//       font-weight: 400;
-//       src: local('Material Icons'), 
-//       local('MaterialIcons-Regular');
-//       // url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
-//       // url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
-//       // url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
-// }
-
-.material-icons, md-icon {
+.material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
@@ -345,4 +333,20 @@ button.hd-button{
 button.primary{
       background: $color-1;
       color:$color-4;
+}
+
+.hd-contextmenu-active{
+      background-color: $color-1 !important;
+      color:$color-4 !important;
+      cursor: context-menu;
+}
+
+hd-menu-panel{
+      background-color: $color-5;
+      div.hd-context-menu-panel a{
+            color:$color-3;
+      }
+      div.hd-context-menu-panel a:hover{
+            color:$color-1;
+      }
 }

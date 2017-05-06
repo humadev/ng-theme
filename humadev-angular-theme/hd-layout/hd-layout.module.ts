@@ -5,7 +5,8 @@ import {
       MdToolbarModule,
       MdButtonModule,
       MdListModule,
-      MdMenuModule
+      MdMenuModule,
+      MdIconModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
@@ -22,6 +23,7 @@ import { PageToolbarComponent } from './page-toolbar/page-toolbar.component';
       MdButtonModule,
       MdListModule,
       MdMenuModule,
+      MdIconModule,
       RouterModule
   ],
   exports: [

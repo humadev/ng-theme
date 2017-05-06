@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@angular/material';
+import { MdCardModule, MdInputModule, MdButtonModule, MdIconModule } from '@angular/material';
 import { LoginComponent } from "./login.component";
 import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
-    MaterialModule,
+    MdCardModule,
+    MdInputModule,
+    MdIconModule,
+    MdButtonModule,
     ReactiveFormsModule
   ],
   exports:[
@@ -15,4 +18,4 @@ import { ReactiveFormsModule } from "@angular/forms";
   ],
   declarations: [LoginComponent]
 })
-export class HdLoginModule { }
+export class HdLoginModule {}

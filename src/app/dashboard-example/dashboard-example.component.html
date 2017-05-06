@@ -8,14 +8,17 @@
     </md-card-header>
     <!--<img md-card-image src="Card wide image source">-->
     <md-card-content>
-                  <hd-datatable #table
+                  <ngx-datatable #table
                         [columnMode]="'force'"
                         [rows]="rows"
                         [columns]="columns"
                         [contextMenu]='menuklikkanan'
                         (menuItemClicked)=test($event)
+                        [limit]="10"
+                        [headerHeight]="50"
+                        [footerHeight]="50"
                         class="material fullscreen">
-                  </hd-datatable>
+                  </ngx-datatable>
     </md-card-content>
     <md-card-actions align="start">
         <button md-raised-button class="hd-button primary">Action2</button>
