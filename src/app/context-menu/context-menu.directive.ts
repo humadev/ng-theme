@@ -1,6 +1,7 @@
-import { Directive, Input, Output, EventEmitter, HostListener, Renderer2, ElementRef, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
+import { Directive, Input, Output, EventEmitter, HostListener, Renderer2, ElementRef, ApplicationRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { ContextMenuPanelComponent } from './context-menu-panel.component';
 import { contextmenu } from './context-menu';
+import { ComponentInjectionService } from './../services/component-injection.service';
 
 @Directive({
   selector: '[hdContextMenu]'
@@ -16,8 +17,9 @@ export class ContextMenuDirective {
       constructor(
             private ref:ElementRef,
             private render:Renderer2,
-            private vc:ViewContainerRef,
-            private componentFactoryResolver: ComponentFactoryResolver
+            private ar:ApplicationRef,
+            private cis:ComponentInjectionService,
+            private vc:ViewContainerRef
       ){
             render.setStyle(ref.nativeElement, 'cursor','context-menu'); // add context-menu cursor to element used this directive
       }
@@ -25,18 +27,20 @@ export class ContextMenuDirective {
       @HostListener('contextmenu',['$event'])
       onContextMenu(event:MouseEvent):void{
             event.preventDefault();
+            if(this.panel)
+            this.ar.detachView(this.panel.hostView);
             this.render.addClass(this.ref.nativeElement, "hd-contextmenu-active"); //coloring row with class
             this.createPanel();
             this.addPanelItem();
             this.calcPosition(event);
-            this.watchItemClick();
             this.outsideListener();
+            this.watchItemClick();
+
+            
       }
 
       private createPanel():void{
-            const factory = this.componentFactoryResolver.resolveComponentFactory(ContextMenuPanelComponent);
-            this.vc.clear(); //clear all panel before create
-            this.panel = this.vc.createComponent(factory);
+            this.panel = this.cis.appendComponent(ContextMenuPanelComponent, {menuID:this.menuID});
       }
 
       private addPanelItem():void{
@@ -44,14 +48,14 @@ export class ContextMenuDirective {
       }
 
       private calcPosition(event):void{
-            this.panel.instance.top = event.offsetY+event.srcElement.offsetTop;
-            this.panel.instance.left = event.offsetX+event.srcElement.offsetLeft;
+            this.panel.instance.top = event.pageY;
+            this.panel.instance.left = event.pageX;
       }
 
       private watchItemClick():void{
-            this.clickWatcher$ = this.panel.instance.clicked.subscribe(
-                  emitted => {
-                        this.hdContextMenu.emit({method:emitted, menuID:this.menuID});
+            this.clickWatcher$ = this.panel.instance.menuItemClicked.subscribe(
+                  (emitted,i) => {
+                        this.hdContextMenu.emit({method:emitted, index:this.menuID});
                   }
             );
       }
@@ -59,14 +63,14 @@ export class ContextMenuDirective {
       private outsideListener():void{
             this.render.listen("document","click",(event) => {
                         this.render.removeClass(this.ref.nativeElement, "hd-contextmenu-active");
-                        this.clickWatcher$.unsubscribe();
-                        this.panel.destroy();
+                        //this.clickWatcher$.unsubscribe();
+                        this.ar.detachView(this.panel.hostView);
             });
             this.render.listen("document","contextmenu",(event) => {
                   if(!this.ref.nativeElement.contains(event.target)){
                         this.render.removeClass(this.ref.nativeElement, "hd-contextmenu-active");
-                        this.clickWatcher$.unsubscribe();
-                        this.panel.destroy();
+                        //this.clickWatcher$.unsubscribe();
+                        this.ar.detachView(this.panel.hostView);
                   }
             });
       }

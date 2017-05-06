@@ -32,13 +32,13 @@ import {
   LongPressDirective,
   ResizeableDirective,
   OrderableDirective,
-  DraggableDirective,
-  ContextMenuDirective
+  DraggableDirective
 } from './directives';
 
 import { ScrollbarHelper } from './services';
-import { ContextMenuPanelComponent } from "./components/context-menu-panel.component";
-import { ComponentInjectionService } from "app/data-table/services/component-injection.service";
+import { ContextMenuPanelComponent } from "./../context-menu/context-menu-panel.component";
+import { ContextMenuDirective } from "./../context-menu/context-menu.directive";
+import { ComponentInjectionService } from "./../services/component-injection.service";
 
 @NgModule({
   imports: [
