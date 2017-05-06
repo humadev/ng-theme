@@ -9,6 +9,8 @@ import {
 import { AppComponent } from './app.component';
 import { HdLoginModule } from "app/login/hd-login.module";
 import { HdLayoutModule } from "app/hd-layout/hd-layout.module";
+import { ContextMenuModule } from "app/directives/hd-context-menu.module";
+import { HdDatatableModule } from "app/data-table/datatable.module";
 import { DashboardExampleComponent } from './dashboard-example/dashboard-example.component';
 
 const appRoutes: Routes = [
@@ -81,10 +83,12 @@ const appRoutes: Routes = [
       RouterModule.forRoot(appRoutes),
       HdLayoutModule,
       HdLoginModule,
+      ContextMenuModule,
       MdCardModule,
       MdButtonModule,
       BrowserModule,
-      BrowserAnimationsModule
+      BrowserAnimationsModule,
+      HdDatatableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

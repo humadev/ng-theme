@@ -8,7 +8,14 @@
     </md-card-header>
     <!--<img md-card-image src="Card wide image source">-->
     <md-card-content>
-        Text content
+                  <hd-datatable #table
+                        [columnMode]="'force'"
+                        [rows]="rows"
+                        [columns]="columns"
+                        [contextMenu]='menuklikkanan'
+                        (menuItemClicked)=test($event)
+                        class="material fullscreen">
+                  </hd-datatable>
     </md-card-content>
     <md-card-actions align="start">
         <button md-raised-button class="hd-button primary">Action2</button>

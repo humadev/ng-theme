@@ -3,10 +3,9 @@
       <md-card-header>
             <md-card-title>{{title}}</md-card-title>
       </md-card-header>
-      <!--<img md-card-image src="Card wide image source">-->
       <md-card-content>
             <md-input-container align="start">
-                  <input mdInput formControlName="email" type="text" placeholder="Email">
+                  <input mdInput formControlName="email" type="text" placeholder="Email" autofill="off">
                   <md-hint align="start" class="error" *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched">
                         <span *ngIf="loginForm.controls.email.errors.required">
                               Email harus diisi
@@ -17,7 +16,8 @@
                   </md-hint>
             </md-input-container>
             <md-input-container align="start">
-                  <input mdInput formControlName="password" type="password" placeholder="Password">
+                  <input mdInput formControlName="password" type="password" placeholder="Password" #pass>
+                  <button type="button" md-icon-button mdSuffix (click)="changePasswordType(pass)"><md-icon>visibility</md-icon></button>  
                   <md-hint align="start" class="error" *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched">
                         <span *ngIf="loginForm.controls.password.errors.required">
                               Password harus diisi
