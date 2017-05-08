@@ -4,7 +4,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import {
       MdCardModule,
-      MdButtonModule
+      MdButtonModule,
+      MdDialogModule,
+      MdInputModule
 } from '@angular/material';
 import { AppComponent } from './app.component';
 import { HdLoginModule } from "app/login/hd-login.module";
@@ -12,6 +14,7 @@ import { HdLayoutModule } from "app/hd-layout/hd-layout.module";
 //import { HdContextMenuModule } from "./context-menu/hd-context-menu.module";
 import { HdDatatableModule } from "app/data-table/datatable.module";
 import { DashboardExampleComponent } from './dashboard-example/dashboard-example.component';
+import { ModalExampleComponent } from './modal-example/modal-example.component';
 
 const appRoutes: Routes = [
       { 
@@ -77,7 +80,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardExampleComponent
+    DashboardExampleComponent,
+    ModalExampleComponent
   ],
   imports: [
       RouterModule.forRoot(appRoutes),
@@ -87,9 +91,12 @@ const appRoutes: Routes = [
       MdButtonModule,
       BrowserModule,
       BrowserAnimationsModule,
-      HdDatatableModule
+      HdDatatableModule,
+      MdDialogModule,
+      MdInputModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[ModalExampleComponent]
 })
 export class AppModule { }

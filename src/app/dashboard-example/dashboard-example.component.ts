@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DatatableComponent } from "app/data-table";
+import { MdDialog } from "@angular/material";
+import { ModalExampleComponent } from "app/modal-example/modal-example.component";
 
 @Component({
   selector: 'hd-dashboard-example',
@@ -8,12 +10,12 @@ import { DatatableComponent } from "app/data-table";
 })
 export class DashboardExampleComponent implements OnInit {
 
-      @ViewChild('hd-datatable') table: DatatableComponent;
+      @ViewChild(DatatableComponent) table: DatatableComponent;
       menuklikkanan = [
             {icon:'edit', title:'Edit',method:this.edit, groupPermission:[0]},
             {icon:'delete', title:'Delete',method:this.delete, groupPermission:[0]}
       ];
-
+      temp = [];
       rows = [
       { name: 'Austin', gender: 'Male', company: 'Swimlane' },
       { name: 'Dany', gender: 'Male', company: 'KFC' },
@@ -58,8 +60,11 @@ export class DashboardExampleComponent implements OnInit {
       { name: 'Company' }
       ];
 
-  ngOnInit() {
-  }
+      constructor(public dialog: MdDialog) {}
+      
+      ngOnInit() {
+            this.temp = this.rows;
+      }
 
   test(event){
         event.method();
@@ -72,5 +77,27 @@ export class DashboardExampleComponent implements OnInit {
   delete(){
         alert("delete");
   }
+
+  openDialog(){
+        let config = {
+            disableClose:true
+        };
+    this.dialog.open(ModalExampleComponent, config);
+  }
+
+  updateFilter(event) {
+    const val = event.target.value.toLowerCase();
+
+    // filter our data
+    const temp = this.temp.filter(function(d) {
+      return d.toLowerCase().indexOf(val) !== -1 || !val;
+    });
+
+    // update the rows
+    this.rows = temp;
+    // Whenever the filter changes, always go back to the first page
+    this.table.offset = 0;
+  }
+
 
 }
