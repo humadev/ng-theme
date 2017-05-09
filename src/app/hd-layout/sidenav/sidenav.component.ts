@@ -54,6 +54,14 @@ export class SidenavComponent implements OnInit {
             return res;
       }
 
+      checkPath(row){
+            if(row.path == ''){
+                  return {exact:true};
+            }else{
+                  return {exact:false};
+            }
+      }
+
       @Output()
       toggle(){
             this.opened = !this.opened;

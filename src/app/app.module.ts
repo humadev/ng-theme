@@ -18,12 +18,13 @@ import { ModalExampleComponent } from './modal-example/modal-example.component';
 
 const appRoutes: Routes = [
       { 
-            path: 'dashboard', 
+            path: '', 
             data:{
                   icon:'dashboard', 
                   name:'Dashboard',
                   groupAccess:0,
-            },
+            }
+            ,
             children: [{
                   path: 'dashboard1',
                   component: DashboardExampleComponent, 
