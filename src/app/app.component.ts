@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+      @ViewChild('printout') canvas:any;
       menu:Array<any> = [
             {icon:'dashboard', path:'dashboard', name:'Dashboard', groupAccess:'0', children:[
                   {path:'dashboard1',name:'Dashboard 1', groupAccess:'0'},
@@ -19,7 +21,21 @@ export class AppComponent {
             {icon:'build', path:'#',name:'Tools', groupAccess:'0'},
       ];
 
+      image;
+
+      constructor(private el:ElementRef){}
+
       doLogin(event){
             console.log(event);
+      }
+
+      print(){
+            html2canvas(document.getElementById("test"), {
+                  onrendered: function(canvas) {
+                        let img = canvas.toDataURL("image/png");
+                        let newtab = window.open(img);
+                        newtab.print();
+                  }
+            });
       }
 }
