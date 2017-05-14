@@ -380,3 +380,24 @@ hd-menu-panel{
       margin:0 !important;
       border-top:thin solid $color-4;
 }
+
+.hd-profile-menu{
+      background-color:$color-3 !important; 
+      a{
+            display: block !important;
+            text-align: left !important;
+            padding:4px 10px !important;
+            font-size:12px !important;
+            md-icon{
+                  font-size:14px !important;
+                  height: 16px !important;
+            }
+      }
+}
+
+
+
+// :host div a md-icon{
+//       font-size:14px !important;
+//       height: 16px;
+// }

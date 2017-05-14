@@ -1,7 +1,7 @@
 .ngx-datatable.dark {
   box-shadow: none;
   background:none;
-  color: #333840;
+  color: #757575;
   font-size: 13px;
 
   .datatable-header {
@@ -13,7 +13,7 @@
       text-align: left;
       padding:10px 20px;
       font-weight: bold;
-      border-right:1px solid #f5f5f5;
+      border-right:1px solid #EEEEEE;
 
       .datatable-header-cell-label {
         line-height: 24px;
@@ -25,13 +25,13 @@
     background: #FCFCFC;
 
     .datatable-body-row {
-      border-top: 1px solid #f5f5f5;
+      border-top: 1px solid #EEEEEE;
 
       .datatable-body-cell {
         text-align: left;
         padding: 5px 20px;
         vertical-align: top;
-        border-right:1px solid #f5f5f5;
+        border-right:1px solid #EEEEEE;
       }
 
       &> :last-child{
@@ -43,7 +43,7 @@
         transition-property: background;
         transition-duration: .3s;
         transition-timing-function: linear;
-        color: #DEE2E5;
+        color: #424242;
       }
 
       &:focus {
@@ -59,7 +59,7 @@
   }
 
   .datatable-footer {
-    border-top:1px solid #f5f5f5;
+    border-top:1px solid #DEE2E5;
 
     .page-count {
       line-height: 50px;

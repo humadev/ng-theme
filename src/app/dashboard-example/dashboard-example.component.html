@@ -3,17 +3,17 @@
         <md-card-title>Title</md-card-title>
         <md-card-subtitle>Subtitle</md-card-subtitle>
         <md-card-actions align="end">
+              <input
+                  type='text'
+                  style='width:30%;'
+                  placeholder=' Type to filter the name column...'
+                  (keyup)='updateFilter($event)'
+                  />
             <button md-raised-button class="hd-button primary" (click)="openDialog()">Action2</button>
       </md-card-actions>
     </md-card-header>
     <!--<img md-card-image src="Card wide image source">-->
     <md-card-content class="table-content">
-                  <input
-                  type='text'
-                  style='padding:8px;margin:15px auto;width:30%;'
-                  placeholder='Type to filter the name column...'
-                  (keyup)='updateFilter($event)'
-                  />
                   <ngx-datatable #table
                         [columnMode]="'flex'"
                         [rows]="rows"
@@ -23,21 +23,26 @@
                         [footerHeight]="50"
                         [rowHeight]="'auto'"
                         class="dark fullscreen">
-                        <ngx-datatable-column name="Name" [flexGrow]="2">
+                        <ngx-datatable-column name="No" [flexGrow]="1">
+                              <ng-template let-row="row" ngx-datatable-cell-template>
+                                    {{row.$$index+1}}
+                              </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Name" [flexGrow]="5">
                               <ng-template let-value="value" ngx-datatable-cell-template>
                                     {{value}}
                               </ng-template>
-                              </ngx-datatable-column>
-                              <ngx-datatable-column name="Gender" [flexGrow]="1">
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Gender" [flexGrow]="4">
                               <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
                                     {{value}}
                               </ng-template>
-                              </ngx-datatable-column>
-                              <ngx-datatable-column name="Company" [flexGrow]="1">
+                        </ngx-datatable-column>
+                        <ngx-datatable-column name="Company" [flexGrow]="4">
                               <ng-template let-value="value" ngx-datatable-cell-template>
                                     {{value}}
                               </ng-template>
-                              </ngx-datatable-column>
+                        </ngx-datatable-column>
                   </ngx-datatable>
     </md-card-content>
     <md-card-actions align="start">

@@ -64,6 +64,7 @@ export class DashboardExampleComponent implements OnInit {
       
       ngOnInit() {
             this.temp = this.rows;
+            console.log(this.rows);
       }
 
   test(event){
