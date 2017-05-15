@@ -1,4 +1,4 @@
-.ngx-datatable.dark {
+.ngx-datatable.fullscreen-white {
   box-shadow: none;
   background:none;
   color: #757575;
@@ -28,6 +28,7 @@
       border-top: 1px solid #EEEEEE;
 
       .datatable-body-cell {
+            display: flex;
         text-align: left;
         padding: 5px 20px;
         vertical-align: top;

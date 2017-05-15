@@ -2,11 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import {
       MdCardModule,
       MdButtonModule,
       MdDialogModule,
-      MdInputModule
+      MdInputModule,
+      MdMenuModule,
 } from '@angular/material';
 import { AppComponent } from './app.component';
 import { HdLoginModule } from "app/login/hd-login.module";
@@ -94,7 +96,9 @@ const appRoutes: Routes = [
       BrowserAnimationsModule,
       HdDatatableModule,
       MdDialogModule,
-      MdInputModule
+      MdInputModule,
+      MdMenuModule,
+      FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent],
