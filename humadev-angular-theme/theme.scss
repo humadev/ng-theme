@@ -1,4 +1,6 @@
 @import '~@angular/material/theming';
+@import 'app/data-table/themes/fullscreen-white';
+@import 'app/data-table/themes/icons.css';
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @include mat-core();
 
@@ -8,7 +10,8 @@ $candy-app-warn:    mat-palette($mat-red);
 $candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
 @include angular-material-theme($candy-app-theme);
 
-$color-1:#27B1C1;
+
+$color-1: #27B1C1;      
 $color-2:#FCFCFC;
 $color-3:#B1B1B2;
 $color-4:#DEE2E5;
@@ -377,3 +380,35 @@ hd-menu-panel{
       margin:0 !important;
       border-top:thin solid $color-4;
 }
+
+.hd-profile-menu .mat-menu-content{
+      background-color:$color-5 !important;
+      padding:0;
+      button{
+            display: block !important;
+            text-align: left !important;
+            padding:0px 10px !important;
+            font-size:13px !important;
+            color:$color-3;
+            md-icon{
+                  font-size:15px !important;
+                  height: 18px !important;
+                  padding:0;
+                  margin:0;
+                  color:$color-3;
+            }
+      }
+      button:hover{
+            color:$color-1;
+            md-icon{
+                  color:$color-1;
+            }
+      }
+}
+
+
+
+// :host div a md-icon{
+//       font-size:14px !important;
+//       height: 16px;
+// }

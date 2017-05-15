@@ -8,7 +8,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
             <span class="fill-space"></span>
             <span class="hd-menu hd-right-menu" *ngIf="notification"><md-icon>notifications_none</md-icon></span>
             <button md-button [mdMenuTriggerFor]="menu" #profileMenu class="hd-menu hd-right-menu" *ngIf="profile"><md-icon>face</md-icon> Admin</button>
-            <md-menu #menu="mdMenu" ngClass="hd-profile-menu">
+            <md-menu #menu="mdMenu" class="hd-profile-menu" yPosition="below" xPosition="before" [overlapTrigger]="false" >
                   <button md-menu-item (click)="logout()">
                         <md-icon>power_settings_new</md-icon>
                         <span>Logout</span>
