@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'hd-layout',
   template: `
-      <hd-sidenav (pageTitle)="pagebar.changePageTitle($event)" #sidenav [titleText]="titleText">
+      <hd-sidenav (pageTitle)="pagebar.changePageTitle($event)" #sidenav [titleText]="titleText" [lazyLoadModule]="lazyLoadModule">
             <hd-main-toolbar (sidenavToggle)="sidenav.toggle()" (onLogout)="logout()"></hd-main-toolbar>
             <hd-page-toolbar #pagebar></hd-page-toolbar>
             <div class='hd-page'>
@@ -15,6 +15,7 @@ import { Component, Input } from '@angular/core';
 })
 export class LayoutComponent{
       @Input() titleText:string = "Humadev Theme";
+      @Input() lazyLoadModule:boolean = false;
       @Input() titleImg:string;
       onLogout:any;
 
