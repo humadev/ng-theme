@@ -1,6 +1,6 @@
 {
   "name": "humadev-angular-theme",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "description": "simple theme to quick start angular 2+ project",
   "author": {
@@ -15,8 +15,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@angular/cli": "1.0.1",
     "@angular/compiler-cli": "^4.1.0",
