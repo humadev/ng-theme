@@ -45,8 +45,8 @@
                               </ng-template>
                               <ng-template [ngIf]="level1.children && level1.children.length > 0 && (level1.isOpen || isActive([level1.path]))">
                                     <md-nav-list class="hd-menu-child">
-                                          <ng-template *ngFor="let level2 of level1.children">
-                                          <a md-button *ngIf="level2.redirecTo === undefined" [routerLink]="[level1.path+'/'+level2.path]" routerLinkActive="active">
+                                          <ng-template ngFor let-level2 [ngForOf]="level1.children">
+                                          <a md-button *ngIf="level2.redirectTo === undefined" [routerLink]="[level1.path+'/'+level2.path]" routerLinkActive="active">
                                                 <md-icon>{{level2.data.icon}}</md-icon> {{level2.data.name}}
                                                 <span class="fill-space"></span>
                                           </a>
