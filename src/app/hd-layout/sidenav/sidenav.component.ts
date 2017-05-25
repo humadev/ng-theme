@@ -2,10 +2,11 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 import { Observable } from "rxjs/Rx";
 @Component({
-  selector: 'hd-sidenav',
-  templateUrl: './sidenav.component.html'
+      selector: 'hd-sidenav',
+      templateUrl: './sidenav.component.html'
 })
 export class SidenavComponent implements OnInit {
+
 
       @Input() titleText:string = "Humadev Theme";
       @Input() titleImg:string;
@@ -17,9 +18,9 @@ export class SidenavComponent implements OnInit {
       opened = true;
 
       constructor(
-            private router:Router,
-            private activeRoute:ActivatedRoute
-      ){}
+            private router: Router,
+            private activeRoute: ActivatedRoute
+      ) { }
 
       ngOnInit(){
             if(this.nav == false){
@@ -51,38 +52,51 @@ export class SidenavComponent implements OnInit {
             }
       }
 
-      parentOpen(i:any){
-            if(this.nav == false){
-                  if(this.navFromRouter[i].isOpen == false || !this.navFromRouter[i].hasOwnProperty('isOpen')){
+      parentOpen(i: any) {
+            if (this.nav == false) {
+                  if (this.navFromRouter[i].isOpen == false || !this.navFromRouter[i].hasOwnProperty('isOpen')) {
                         this.navFromRouter[i].isOpen = true;
-                  }else{
+                  } else {
                         this.navFromRouter[i].isOpen = false;
                   }
-            }else{
-                  if(this.nav[i].isOpen == false || !this.nav[i].hasOwnProperty('isOpen')){
+            } else {
+                  if (this.nav[i].isOpen == false || !this.nav[i].hasOwnProperty('isOpen')) {
                         this.nav[i].isOpen = true;
-                  }else{
+                  } else {
                         this.nav[i].isOpen = false;
                   }
             }
       }
 
-      isActive(instruction: any[]): boolean{
+      isActive(instruction: any[]): boolean {
             let res = this.router.isActive(this.router.createUrlTree(instruction), false);
             return res;
       }
 
-      checkPath(row){
-            if(row.path == ''){
-                  return {exact:true};
-            }else{
-                  return {exact:false};
+      checkPath(row) {
+            if (row.path == '') {
+                  return { exact: true };
+            } else {
+                  return { exact: false };
             }
       }
 
       @Output()
-      toggle(){
+      toggle() {
             this.opened = !this.opened;
+      }
+
+      checkHidden(navItem) {
+            let hidden = false;
+            if (navItem.hasOwnProperty('redirectTo')) {
+                  hidden = true;
+            } else {
+                  if (navItem.hasOwnProperty('data')) {
+                        if (navItem.data.hasOwnProperty('hidden'))
+                              hidden = navItem.data.hidden;
+                  }
+            }
+            return hidden;
       }
 
 }

@@ -30,7 +30,7 @@
             </md-nav-list>
             <ng-template #fromRouter>
                   <ng-template ngFor let-level1 [ngForOf]="navFromRouter" let-i="index">
-                        <ng-template [ngIf]="level1.redirectTo === undefined">
+                        <ng-template [ngIf]="checkHidden(level1) === false">
                               <a md-button (click)="parentOpen(i)" routerLinkActive="active" [routerLinkActiveOptions]='checkPath(level1)' [class.active]="isActive([level1.path]) && level1.path !== ''"  *ngIf="level1.children && level1.children.length > 0; else noChild">
                                     <md-icon>{{level1.data.icon}}</md-icon> {{level1.data.name}}
                                     <span class="fill-space"></span>
