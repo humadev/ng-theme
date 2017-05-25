@@ -4,7 +4,12 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'hd-layout',
   template: `
-      <hd-sidenav (pageTitle)="pagebar.changePageTitle($event)" #sidenav [titleText]="titleText" [lazyLoadModule]="lazyLoadModule">
+      <hd-sidenav #sidenav 
+            (pageTitle)="pagebar.changePageTitle($event)" 
+            [titleText]="titleText" 
+            [lazyLoadModule]="lazyLoadModule" 
+            [nav]="nav" 
+            [titleImg]="titleImg">
             <hd-main-toolbar (sidenavToggle)="sidenav.toggle()" (onLogout)="logout()"></hd-main-toolbar>
             <hd-page-toolbar #pagebar></hd-page-toolbar>
             <div class='hd-page'>
@@ -14,12 +19,13 @@ import { Component, Input } from '@angular/core';
   `
 })
 export class LayoutComponent{
-      @Input() titleText:string = "Humadev Theme";
-      @Input() lazyLoadModule:boolean = false;
-      @Input() titleImg:string;
-      onLogout:any;
+      @Input() titleText = 'Humadev Theme';
+      @Input() titleImg: string;
+      @Input() lazyLoadModule = false;
+      @Input() nav: any = false;
+      onLogout: any;
 
-      logout(){
+      logout() {
             this.onLogout.emit();
       }
 }

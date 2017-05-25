@@ -13,14 +13,14 @@
                               <ng-template #arrowRight><md-icon class="hd-menu-parent">keyboard_arrow_right</md-icon></ng-template>
                         </a>
                         <ng-template #noChild>
-                              <a md-button [routerLink]="[level1.path]" routerLinkActive="active">
+                              <a md-button [routerLink]="[level1.path]" routerLinkActive="active" (click)='setPageToolbar(level1)'>
                                     <md-icon>{{level1.icon}}</md-icon> {{level1.name}}
                                     <span class="fill-space"></span>
                               </a>
                         </ng-template>
                         <ng-template [ngIf]="level1.children && level1.children.length > 0 && (level1.isOpen || isActive([level1.path]))">
                               <md-nav-list class="hd-menu-child">
-                                    <a md-button *ngFor="let level2 of level1.children" [routerLink]="[level1.path+'/'+level2.path]" routerLinkActive="active">
+                                    <a md-button *ngFor="let level2 of level1.children" [routerLink]="[level1.path+'/'+level2.path]" routerLinkActive="active" (click)='setPageToolbar(level2)'>
                                           <md-icon>{{level2.icon}}</md-icon> {{level2.name}}
                                           <span class="fill-space"></span>
                                     </a>
@@ -30,7 +30,7 @@
             </md-nav-list>
             <ng-template #fromRouter>
                   <ng-template ngFor let-level1 [ngForOf]="navFromRouter" let-i="index">
-                        <ng-template [ngIf]="level1.redirectTo === undefined">
+                        <ng-template [ngIf]="checkHidden(level1) === false">
                               <a md-button (click)="parentOpen(i)" routerLinkActive="active" [routerLinkActiveOptions]='checkPath(level1)' [class.active]="isActive([level1.path]) && level1.path !== ''"  *ngIf="level1.children && level1.children.length > 0; else noChild">
                                     <md-icon>{{level1.data.icon}}</md-icon> {{level1.data.name}}
                                     <span class="fill-space"></span>

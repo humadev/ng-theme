@@ -62,12 +62,6 @@ body {
   font-family: Roboto, sans-serif;
 }
 
-md-card {
-  max-width: 80%;
-  margin: 2em auto;
-  text-align: center;
-}
-
 md-toolbar-row {
   justify-content: space-between;
 }
@@ -167,6 +161,7 @@ md-sidenav-container.hd-sidenav-container{
 
 md-sidenav.hd-sidenav{
       background-color: $color-5;
+      min-width: 10vh;
       color:$color-4;
       md-nav-list{
             padding-top: 0;
