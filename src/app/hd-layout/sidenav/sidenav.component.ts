@@ -30,7 +30,17 @@ export class SidenavComponent implements OnInit {
                   })
                   .filter(route => route.outlet === 'primary')
                   .switchMap(route => route.data)
-                  .subscribe(res => this.pageTitle.emit(res.name));
+                  .subscribe(res => {
+                              let title = res.name;
+
+                              //custom page title
+                              if(res.hasOwnProperty('pageTitle')){
+                                    title = res.pageTitle;
+                              }
+
+                              this.pageTitle.emit(title);
+                        }
+                  );
       }
 
       parentOpen(i: any) {
