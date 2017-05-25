@@ -14,7 +14,7 @@ export class PageToolbarComponent{
 
       pageTitle = '';
 
-      changePageTitle(title:string){
+      changePageTitle(title: string) {
             this.pageTitle = title;
       }
 
