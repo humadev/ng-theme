@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { Component, Input } from '@angular/core';
             [lazyLoadModule]="lazyLoadModule" 
             [nav]="nav" 
             [titleImg]="titleImg">
-            <hd-main-toolbar (sidenavToggle)="sidenav.toggle()" (onLogout)="logout()"></hd-main-toolbar>
+            <hd-main-toolbar (sidenavToggle)="sidenav.toggle()" (logout)="onLogout()"></hd-main-toolbar>
             <hd-page-toolbar #pagebar></hd-page-toolbar>
             <div class='hd-page'>
                   <ng-content></ng-content>
@@ -23,9 +23,9 @@ export class LayoutComponent{
       @Input() titleImg: string;
       @Input() lazyLoadModule = false;
       @Input() nav: any = false;
-      onLogout: any;
+      @Output() logout = new EventEmitter();
 
-      logout() {
-            this.onLogout.emit();
+      onLogout() {
+            this.logout.emit();
       }
 }

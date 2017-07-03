@@ -11,7 +11,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
                   <md-icon>face</md-icon> Admin
             </button>
             <md-menu #menu="mdMenu" class="hd-profile-menu" yPosition="below" xPosition="before" [overlapTrigger]="false">
-                  <button md-menu-item (click)="logout()">
+                  <button md-menu-item (click)="onLogout()">
                         <md-icon>power_settings_new</md-icon>
                         <span>Logout</span>
                   </button>
@@ -24,14 +24,13 @@ export class MainToolbarComponent {
       @Input() notificationList: Array<any>;
       @Input() profile = true;
       @Output() sidenavToggle = new EventEmitter();
-
-      onLogout: any;
+      @Output() logout = new EventEmitter();
 
       onSidenavToggle() {
             this.sidenavToggle.emit();
       }
 
-      logout() {
-            this.onLogout.emit();
+      onLogout(){
+            this.logout.emit();
       }
 }

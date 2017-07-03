@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 
 @Component({
@@ -23,7 +23,7 @@ export class LayoutComponent{
       @Input() titleImg: string;
       @Input() lazyLoadModule = false;
       @Input() nav: any = false;
-      logout: any;
+      @Output() logout = new EventEmitter();
 
       onLogout() {
             this.logout.emit();
