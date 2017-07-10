@@ -3,8 +3,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'hd-main-toolbar',
   template: `
-      <md-toolbar class="hd-main-toolbar">
-            <span class="hd-menu hd-left-menu" (click)="onSidenavToggle()"><md-icon>menu</md-icon></span>
+      <md-toolbar class="hd-main-toolbar" class="mat-elevation-z5" color="primary">
+            <span class="hd-menu hd-left-menu" *ngIf="showSidenavToggle" (click)="onSidenavToggle()"><md-icon>menu</md-icon></span>
             <span class="fill-space"></span>
             <span class="hd-menu hd-right-menu" *ngIf="notification"><md-icon>notifications_none</md-icon></span>
             <button md-button [mdMenuTriggerFor]="menu" #profileMenu class="hd-menu hd-right-menu" *ngIf="profile">
@@ -23,6 +23,7 @@ export class MainToolbarComponent {
       @Input() notification = false;
       @Input() notificationList: Array<any>;
       @Input() profile = true;
+      @Input() showSidenavToggle = true;
       @Output() sidenavToggle = new EventEmitter();
       @Output() logout = new EventEmitter();
 

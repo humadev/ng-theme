@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DatatableComponent } from "app/data-table";
+import { DatatableComponent } from "app/lib/data-table";
 import { MdDialog } from "@angular/material";
-import { ModalExampleComponent } from "app/modal-example/modal-example.component";
+import { ModalExampleComponent } from "./../modal-example/modal-example.component";
 
 @Component({
   selector: 'hd-dashboard-example',

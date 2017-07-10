@@ -6,7 +6,8 @@ import {
       MdButtonModule,
       MdListModule,
       MdMenuModule,
-      MdIconModule
+      MdIconModule,
+      MdGridListModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
@@ -14,6 +15,7 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { MainToolbarComponent } from './main-toolbar/main-toolbar.component';
 import { PageToolbarComponent } from './page-toolbar/page-toolbar.component';
+import { StartPageComponent } from './start-page/start-page.component';
 
 @NgModule({
   imports: [
@@ -24,11 +26,17 @@ import { PageToolbarComponent } from './page-toolbar/page-toolbar.component';
       MdListModule,
       MdMenuModule,
       MdIconModule,
+      MdGridListModule,
       RouterModule
   ],
   exports: [
-      LayoutComponent
+      LayoutComponent,
+      MainToolbarComponent,
+      PageToolbarComponent,
+      SidenavComponent,
+      BreadcrumbComponent,
+      StartPageComponent
   ],
-  declarations: [LayoutComponent, BreadcrumbComponent, SidenavComponent, MainToolbarComponent, PageToolbarComponent]
+  declarations: [LayoutComponent, BreadcrumbComponent, SidenavComponent, MainToolbarComponent, PageToolbarComponent, StartPageComponent]
 })
 export class HdLayoutModule { }

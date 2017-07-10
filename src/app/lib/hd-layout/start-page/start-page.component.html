@@ -1,0 +1,11 @@
+<div class="container">
+      <md-grid-list cols="5" rowHeight="2:1" gutterSize="15px">
+                  <md-grid-tile *ngFor="let menu of menus">
+                        <a [routerLink]="menu.path" class="menubox">
+                              <img [src]="menu.icons">
+                        </a>
+                        <md-grid-tile-footer>{{menu.title}}</md-grid-tile-footer>
+                  </md-grid-tile>
+      </md-grid-list>
+      <div class="clear"></div>
+</div>
