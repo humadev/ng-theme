@@ -103,13 +103,13 @@ html, body, material-app, md-sidenav-container, .my-content {
 
 //all toolbar
 md-toolbar.hd-main-toolbar md-toolbar-row, md-toolbar.hd-side-toolbar md-toolbar-row{
-      height:50px !important;
+      //height:50px !important;
 }
 
 md-toolbar.hd-main-toolbar{
       padding:0;
       min-height: 50px;
-      height:50px;
+      //height:50px;
       background-color: $color-2;
       color:$color-3;
       .hd-menu{
@@ -398,9 +398,52 @@ hd-menu-panel{
       }
 }
 
+//start page
+//start page
+hd-start-page .menubox {
+      vertical-align: bottom;
+      color: grey;
+      overflow: visible;
+      display: flex;
+      flex: 1 1 auto;
+      height: 100%;
+      flex-flow: column;
+      img{
+            height: 50px;
+            display: block;
+            margin: 0 auto;
+      }
+      .menu-title{
+            margin-top: 20px;
+      }
+      text-align: center;
+      text-decoration: none;
+      padding-top:40px;
+}
+hd-start-page md-grid-tile md-grid-tile-footer{
+      text-align: center;
+      background: white;
+      color:$color-5 !important;
+      display: inline;
+      border: none;
+      background: none !important;
+      background-color: none !important;
+      left:initial !important;
+      right:initial !important;
+      .mat-grid-list-text{
+            text-align: center !important;
+            color:$color-1;
+      }
+      padding-bottom:40px;
+}
 
+hd-start-page md-grid-tile{
+      //border:thin solid $color-1;
+}
 
-// :host div a md-icon{
-//       font-size:14px !important;
-//       height: 16px;
-// }
+hd-start-page .container{
+      padding:20px;
+      padding-top: 30px;
+      //background-color:$color-5;
+}
+
