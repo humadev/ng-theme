@@ -1,61 +1,50 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import {
-      MdCardModule,
-      MdButtonModule,
-      MdDialogModule,
-      MdInputModule,
-      MdMenuModule,
-      MdGridListModule,
-      MdCheckboxModule
-} from '@angular/material';
-import { ReactiveFormsModule } from "@angular/forms";
 import { AppComponent } from './app.component';
-import { HdLoginModule } from "app/lib/login/hd-login.module";
 import { HdLayoutModule } from "app/lib/hd-layout/hd-layout.module";
-//import { HdContextMenuModule } from "./context-menu/hd-context-menu.module";
-import { HdDatatableModule } from "app/lib/data-table/datatable.module";
-// import { DashboardExampleComponent } from './docs/dashboard-example/dashboard-example.component';
-// import { ModalExampleComponent } from './docs/modal-example/modal-example.component';
+import { StartComponent } from "app/start.component";
 
 const appRoutes: Routes = [
-      { 
-            path: 'dashboard1',
-            component: AppComponent, 
-            data:{
-                  name:'Dashboard 1', 
-                  groupAccess:0
+      {
+            path: '',
+            component: AppComponent,
+            data: {
+                  title: 'Home',
+                  groupAccess: 0,
+                  icon: 'https://sia.undiknas.ac.id/assets/icons/kalender.png',
+                  isMenu: false
+            },
+            children:[
+                  {
+                        path: '',
+                        component: StartComponent
+                  }]
+      },
+      {
+            path: 'example',
+            loadChildren: './example/example.module#ExampleModule',
+            data: {
+                  title: 'Example',
+                  icon: 'https://sia.undiknas.ac.id/assets/icons/kalender.png',
+                  groupAccess: 0,
+                  isMenu: true
             }
-      }];
+      }
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-//     DashboardExampleComponent,
-//     ModalExampleComponent
+    StartComponent
   ],
   imports: [
+        BrowserModule,
       RouterModule.forRoot(appRoutes),
-      HdLayoutModule,
-      HdLoginModule,
-      MdCardModule,
-      MdButtonModule,
-      MdGridListModule,
-      BrowserModule,
       BrowserAnimationsModule,
-      HdDatatableModule,
-      MdDialogModule,
-      MdInputModule,
-      MdMenuModule,
-      MdCheckboxModule,
-      ReactiveFormsModule,
-      FlexLayoutModule
+      HdLayoutModule
   ],
-  providers: [],
-  bootstrap: [AppComponent],
-//   entryComponents:[ModalExampleComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

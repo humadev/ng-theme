@@ -7,7 +7,8 @@ import {
       MdListModule,
       MdMenuModule,
       MdIconModule,
-      MdGridListModule
+      MdGridListModule,
+      MdSelectModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
@@ -16,6 +17,8 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { MainToolbarComponent } from './main-toolbar/main-toolbar.component';
 import { PageToolbarComponent } from './page-toolbar/page-toolbar.component';
 import { StartPageComponent } from './start-page/start-page.component';
+import { MenuService } from "../services/menu.service";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [
@@ -27,7 +30,9 @@ import { StartPageComponent } from './start-page/start-page.component';
       MdMenuModule,
       MdIconModule,
       MdGridListModule,
-      RouterModule
+      MdSelectModule,
+      RouterModule,
+      FormsModule
   ],
   exports: [
       LayoutComponent,
@@ -37,6 +42,7 @@ import { StartPageComponent } from './start-page/start-page.component';
       BreadcrumbComponent,
       StartPageComponent
   ],
-  declarations: [LayoutComponent, BreadcrumbComponent, SidenavComponent, MainToolbarComponent, PageToolbarComponent, StartPageComponent]
+  declarations: [LayoutComponent, BreadcrumbComponent, SidenavComponent, MainToolbarComponent, PageToolbarComponent, StartPageComponent],
+  providers:[MenuService]
 })
 export class HdLayoutModule { }

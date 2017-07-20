@@ -38,7 +38,7 @@
                                     <ng-template #arrowRight><md-icon class="hd-menu-parent">keyboard_arrow_right</md-icon></ng-template>
                               </a>
                               <ng-template #noChild>
-                                    <a md-button [routerLink]="[lazyLoadPath+level1.path]" routerLinkActive="active" [routerLinkActiveOptions]='checkPath(level1)'>
+                                    <a md-button [routerLink]="[level1.path]" routerLinkActive="active" [routerLinkActiveOptions]='checkPath(level1)'>
                                           <md-icon>{{level1.data.icon}}</md-icon> {{level1.data.name}}
                                           <span class="fill-space"></span>
                                     </a>

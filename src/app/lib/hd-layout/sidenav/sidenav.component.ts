@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
+import { MenuService } from "../../services/menu.service";
 @Component({
       selector: 'hd-sidenav',
       templateUrl: './sidenav.component.html'
@@ -15,40 +16,18 @@ export class SidenavComponent implements OnInit {
       @Input() navFromRouter: any;
       @Input() lazyLoadPath: string;
       @Output() pageTitle = new EventEmitter();
+      moduleConfig:any;
       opened = true;
 
       constructor(
             private router: Router,
-            private activeRoute: ActivatedRoute
+            private activeRoute: ActivatedRoute,
+            private menuService:MenuService
       ) { }
 
       ngOnInit() {
             if (this.nav === false) {
-                  this.router.events
-                  .filter(event => event instanceof NavigationEnd)
-                  .map(() => this.activeRoute)
-                  .map(route => {
-                        while (route.firstChild) {route = route.firstChild; };
-                        return route;
-                  })
-                  .filter(route => route.outlet === 'primary')
-                  .switchMap(route => route.data)
-                  .subscribe(res => this.pageTitle.emit(res.name));
-
-                  if (this.lazyLoadModule) {
-                        this.router.events
-                        .filter(event => event instanceof NavigationEnd)
-                        .map(() => this.activeRoute)
-                        .switchMap(activeRoute => Observable.from(this.router.config))
-                        .filter((res,i) => res.path === this.activeRoute.firstChild.routeConfig.path)
-                        .subscribe(res => {
-                                    this.navFromRouter = res['_loadedConfig'].routes;
-                                    this.lazyLoadPath = res.path + '/';
-                              }
-                        );
-                  }else {
-                        this.navFromRouter = this.router.config;
-                  }
+                  this.menuService.sidenav.subscribe(res => this.navFromRouter = res);
             }
       }
 

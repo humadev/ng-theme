@@ -103,21 +103,21 @@ html, body, material-app, md-sidenav-container, .my-content {
 
 //all toolbar
 md-toolbar.hd-main-toolbar md-toolbar-row, md-toolbar.hd-side-toolbar md-toolbar-row{
-      //height:50px !important;
+      height:50px !important;
 }
 
 md-toolbar.hd-main-toolbar{
       padding:0;
       min-height: 50px;
-      //height:50px;
+      height:50px;
       background-color: $color-2;
       color:$color-3;
       .hd-menu{
-            font-size: 12px;
-            border:thin solid $color-6;
-            padding:16px;
+            font-size: 12px;;
+            padding:13px;
             cursor:pointer;
             line-height: 1;
+            min-width: 0;
             vertical-align: middle;
             md-icon{
                   font-size: 20px;
@@ -127,10 +127,19 @@ md-toolbar.hd-main-toolbar{
             }
       }
       .hd-left-menu{
-            border-left: none;
+            border-right:thin solid $color-4;
       }
       .hd-right-menu{
-            border-right: none;
+            border-left:thin solid $color-4;
+      }
+      md-select{
+            padding: 0 20px;
+            .mat-select-underline{
+                  height: 0;
+            }
+            .mat-select-value-text{
+                  color:$color-1;
+            }
       }
 }
 
@@ -161,7 +170,7 @@ md-sidenav-container.hd-sidenav-container{
 
 md-sidenav.hd-sidenav{
       background-color: $color-5;
-      min-width: 10vh;
+      min-width: 17vw;
       color:$color-4;
       md-nav-list{
             padding-top: 0;
@@ -177,11 +186,11 @@ md-sidenav.hd-sidenav{
                   display: flex;
                   line-height: 1;
                   padding: 15px 15px;
-                  font-size: 12px;
+                  font-size: 14px;
                   flex-wrap: nowrap;
                   justify-content: space-between;
                   md-icon{
-                        font-size: 18px;
+                        font-size: 20px;
                         margin-right:10px;
                         margin-top:-3px;
                   }
@@ -199,12 +208,18 @@ md-sidenav.hd-sidenav{
       }
 }
 
+.mat-sidenav-content{
+      overflow: hidden !important;
+}
+
 //end of sidenav
 
 //page
 div.hd-page{
       background-color: $color-4;
       padding:20px;
+      height: 79%;
+      overflow: auto;
 }
 
 /* Style the list */
@@ -447,3 +462,17 @@ hd-start-page .container{
       //background-color:$color-5;
 }
 
+
+//data table style
+
+.mat-cell{
+      font-size: 13px !important;
+      font-weight: lighter !important;
+      color:$color-5;
+}
+
+.mat-header-cell{
+      font-size: 14px !important;
+      text-transform: uppercase !important;
+      font-weight: bold !important;
+}
