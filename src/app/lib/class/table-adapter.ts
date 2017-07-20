@@ -82,11 +82,8 @@ export class TableAdapter extends DataSource<any> {
       }
 
       sorting() {
-            console.log("sorting");
-            console.log(this._sort.active);
             const data = this.tableData.value.slice();
             if (!this._sort.active || this._sort.direction === '') {
-                  console.log('no sort');
                   return data;
             }
 
@@ -101,14 +98,12 @@ export class TableAdapter extends DataSource<any> {
 
                   return (valueA < valueB ? -1 : 1) * (this._sort.direction === 'asc' ? 1 : -1);
             });
-            console.log('sorted');
             this.tableData.next(data);
             return data;
       }
 
       filtering() {
             if (this.filter.value === '') {
-                  console.log('no filter');
                   this.tableData.next(this.sourceData.value);
                   return this.sourceData.value;
             }
@@ -141,5 +136,3 @@ export class TableAdapter extends DataSource<any> {
       disconnect() {}
 
 }
-
-
