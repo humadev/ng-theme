@@ -1,5 +1,5 @@
 <md-sidenav-container class='hd-sidenav-container'>
-      <md-sidenav #sidenav [opened]="opened" mode='side' class="hd-sidenav">
+      <md-sidenav #sidenav [opened]="opened" mode='side' class="hd-sidenav mat-elevation-z5">
             <md-toolbar class="hd-side-toolbar">
                   <img [src]="titleImg" *ngIf="titleImg; else titleTextEl">
                   <ng-template #titleTextEl><span>{{titleText}}</span></ng-template>

@@ -4,7 +4,7 @@ import { MenuService } from "../../services/menu.service";
 @Component({
   selector: 'hd-main-toolbar',
   template: `
-      <md-toolbar class="hd-main-toolbar mat-elevation-z3">
+      <md-toolbar class="hd-main-toolbar mat-elevation-z4">
             <span class="hd-menu hd-left-menu" *ngIf="showSidenavToggle" (click)="onSidenavToggle()"><md-icon>menu</md-icon></span>
             <md-select class="fill-space" (change)="onChange($event)" [(ngModel)]="active">
                   <md-option *ngFor="let menu of startMenus" [value]="menu.path">

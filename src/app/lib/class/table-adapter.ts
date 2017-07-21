@@ -32,59 +32,80 @@ export class TableAdapter extends DataSource<any> {
 
       constructor(
             private _data: any,
-            private _paginator: MdPaginator,
-            private _sort: MdSort,
-            private _displayedColumns: string[],
+            private _displayedColumns?: string[],
+            private _paginator?: MdPaginator,
+            private _sort?: MdSort,
             private _searchColumns?: string[],
             private _filterInput?: ElementRef
       ) {
             super();
-            if(_searchColumns.length === 0){
+            if(_searchColumns && _searchColumns.length === 0){
                   _searchColumns = _displayedColumns;
             }
 
-            Observable.fromEvent(_filterInput.nativeElement, 'keyup')
-            .debounceTime(100)
-            .distinctUntilChanged()
-            .subscribe(() => this.filter.next(_filterInput.nativeElement.value));
+            if(_filterInput){
+                  Observable.fromEvent(_filterInput.nativeElement, 'keyup')
+                  .debounceTime(100)
+                  .distinctUntilChanged()
+                  .subscribe(() => this.filter.next(_filterInput.nativeElement.value));
+            }
 
       }
 
       /** Connect function called by the table to retrieve one stream containing the data to render. */
       connect(): Observable<any> {
-            const connectData = [
-                  this.filter,
-                  this._sort.mdSortChange,
-                  this._paginator.page
-            ];
+            let connectData = [];
+            if(this._filterInput){
+                  connectData.push(this.filter);
+            }
+            if(this._sort){
+                  connectData.push(this._sort.mdSortChange);
+            }
+            if(this._paginator){
+                  connectData.push(this._paginator.page);
+            }
+
             return this._data
             .map((res) => this.setData(res))
                   .switchMap(res => {
-                        return Observable.merge(...connectData);
+                        if(connectData.length > 0){
+                              return Observable.merge(...connectData);
+                        }else{
+                              return Observable.of(res);
+                        }
                   })
                   .map(() => this.filtering())
                   .map(() => this.sorting())
-                  .map(() => this.paging());
+                  .map(() => {
+                        console.log("2");
+                        return this.paging();
+                  });
       }
 
       setData(data: any[]) {
             this.sourceData.next(data);
             this.tableData.next(data);
-            this._paginator.length = this.tableData.value.length;
+            if(this._paginator){
+                  this._paginator.length = this.tableData.value.length;
+            }
       }
 
-      paging(){
-            this._paginator.length = this.tableData.value.length;
-            const data = this.tableData.value.slice();
+      paging() {
+            if (this._paginator){
+                  this._paginator.length = this.tableData.value.length;
+                  const data = this.tableData.value.slice();
 
-            const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
-            return data.splice(startIndex, this._paginator.pageSize);
+                  const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
+                  return data.splice(startIndex, this._paginator.pageSize);
+            }else{
+                  return this.tableData.value;
+            }
       }
 
       sorting() {
             const data = this.tableData.value.slice();
-            if (!this._sort.active || this._sort.direction === '') {
-                  return data;
+            if (!this._sort || !this._sort.active || this._sort.direction === '') {
+                  return this.tableData.value;
             }
 
             data.sort((a, b) => {
@@ -103,6 +124,9 @@ export class TableAdapter extends DataSource<any> {
       }
 
       filtering() {
+            if(!this._filterInput){
+                  return this.tableData.value;
+            }
             if (this.filter.value === '') {
                   this.tableData.next(this.sourceData.value);
                   return this.sourceData.value;
