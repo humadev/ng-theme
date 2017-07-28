@@ -1,16 +1,21 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
+hd-login{
+      width: 500px;
+      display: block;
+      margin: 15vh 30vw;
+      position: fixed;
+}
+
 md-card.hd-login{
-      max-width: 400px;
       padding-left: 0;
       padding-right: 0;
       md-card-header{
             background-color: $color-1;
             padding:20px;
             color:$color-2;
-            box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
-            margin-left:-3px;
-            margin-right:-3px;
+            margin-left:-4px;
+            margin-right:-4px;
             text-align: center !important;
             md-card-title{
                   width:100%;
@@ -22,10 +27,6 @@ md-card.hd-login{
       }
       md-card-actions{
             padding: 0 35px;
-            button{
-                  background: $color-1;
-                  color:$color-2;
-            }
       }
       md-card-content{
             padding: 40px 20px;
