@@ -4,8 +4,10 @@ import { MenuService } from "../../services/menu.service";
 @Component({
   selector: 'hd-main-toolbar',
   template: `
-      <md-toolbar class="hd-main-toolbar mat-elevation-z4">
-            <span class="hd-menu hd-left-menu" *ngIf="showSidenavToggle" (click)="onSidenavToggle()"><md-icon>menu</md-icon></span>
+      <md-toolbar class="hd-main-toolbar mat-elevation-z8" color="primary">
+            <span class="hd-sidenav-toggle" *ngIf="showSidenavToggle" (click)="onSidenavToggle()"><md-icon>menu</md-icon></span>
+            <img class="hd-title-bar" [src]="titleImg" *ngIf="titleImg; else titleTextEl">
+            <ng-template #titleTextEl><span class="hd-title-bar">{{titleText}}</span></ng-template>
             <md-select class="fill-space" (change)="onChange($event)" [(ngModel)]="active">
                   <md-option *ngFor="let menu of startMenus" [value]="menu.path">
                   {{ menu.data.title }}
@@ -28,7 +30,14 @@ import { MenuService } from "../../services/menu.service";
                   </button>
             </md-menu>
       </md-toolbar>
-  `
+  `,
+  styles: [`
+      .hd-main-toolbar{
+            position: fixed;
+            width: 100%;
+            z-index: 9;
+      }
+  `]
 })
 export class MainToolbarComponent implements OnInit {
       @Input() notification = false;
@@ -37,11 +46,13 @@ export class MainToolbarComponent implements OnInit {
       @Input() showSidenavToggle = true;
       @Output() sidenavToggle = new EventEmitter();
       @Output() logout = new EventEmitter();
+      @Input() titleText = 'Humadev Theme';
+      @Input() titleImg: string;
       startMenus = this.menuService.startMenu;
       active;
 
       constructor(
-            private menuService:MenuService
+            private menuService: MenuService
       ) {}
 
       ngOnInit(){
@@ -59,7 +70,6 @@ export class MainToolbarComponent implements OnInit {
       }
 
       onChange(e){
-            console.log(e);
             this.menuService.navigate(e.value);
       }
 }

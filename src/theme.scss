@@ -1,32 +1,21 @@
-@import '~@angular/material/theming';
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-@include mat-core();
 
-$candy-app-primary: mat-palette($mat-indigo);
-$candy-app-accent:  mat-palette($mat-pink, A200, A100, A400);
-$candy-app-warn:    mat-palette($mat-red);
-$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
-@include angular-material-theme($candy-app-theme);
-
-
-$color-1: #27B1C1;      
-$color-2:#FCFCFC;
-$color-3:#B1B1B2;
-$color-4:#DEE2E5;
-$color-5:#333840;
-$color-6:#f5f5f5;
+hd-login{
+      width: 500px;
+      display: block;
+      margin: 15vh 30vw;
+      position: fixed;
+}
 
 md-card.hd-login{
-      max-width: 400px;
       padding-left: 0;
       padding-right: 0;
       md-card-header{
-            background: $color-1;
+            background-color: $color-1;
             padding:20px;
             color:$color-2;
-            box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
-            margin-left:-3px;
-            margin-right:-3px;
+            margin-left:-4px;
+            margin-right:-4px;
             text-align: center !important;
             md-card-title{
                   width:100%;
@@ -38,21 +27,11 @@ md-card.hd-login{
       }
       md-card-actions{
             padding: 0 35px;
-            button{
-                  background: $color-1;
-                  color:$color-2;
-            }
       }
       md-card-content{
             padding: 40px 20px;
             display:flex;
             flex-direction: column;
-            md-input-container{
-                  margin-bottom:20px;
-                  md-hint.error{
-                        color:red;
-                  }
-            }
       }
 }
 
@@ -102,19 +81,46 @@ html, body, material-app, md-sidenav-container, .my-content {
 
 
 //all toolbar
-md-toolbar.hd-main-toolbar md-toolbar-row, md-toolbar.hd-side-toolbar md-toolbar-row{
-      height:50px !important;
-}
 
 md-toolbar.hd-main-toolbar{
       padding:0;
-      min-height: 50px;
-      height:50px;
-      background-color: $color-2;
+      // min-height: 50px;
+      // height:50px;
+      // background-color: $color-2;
       color:$color-3;
       .hd-menu{
-            font-size: 12px;;
-            padding:13px;
+            font-size: 14px;
+            padding:20px;
+            cursor:pointer;
+            line-height: 1;
+            min-width: 0;
+            vertical-align: middle;
+            md-icon{
+                  font-size: 20px;
+                  vertical-align: middle;
+                  padding:0;
+                  margin:0;
+            }
+      }
+      .hd-sidenav-toggle{
+            font-size: 14px;
+            padding:20px;
+            padding-right: 0; 
+            cursor:pointer;
+            line-height: 1;
+            min-width: 0;
+            vertical-align: middle;
+            md-icon{
+                  font-size: 20px;
+                  vertical-align: middle;
+                  padding:0;
+                  margin:0;
+            }
+      }
+      .hd-title-bar{
+            font-size: 16px;
+            padding:20px 20px;
+            margin-right: 25px;
             cursor:pointer;
             line-height: 1;
             min-width: 0;
@@ -127,19 +133,10 @@ md-toolbar.hd-main-toolbar{
             }
       }
       .hd-left-menu{
-            border-right:thin solid $color-4;
+            // border-right:thin solid;
       }
       .hd-right-menu{
-            border-left:thin solid $color-4;
-      }
-      md-select{
-            padding: 0 20px;
-            .mat-select-underline{
-                  height: 0;
-            }
-            .mat-select-value-text{
-                  color:$color-1;
-            }
+            //border-left:thin solid;
       }
 }
 
@@ -159,6 +156,10 @@ md-toolbar.hd-page-toolbar{
       .hd-page-title{
             font-size: 16px;
       }
+}
+
+md-select{
+      padding: 20px 0;
 }
 //end of toolbar
 
@@ -208,18 +209,11 @@ md-sidenav.hd-sidenav{
       }
 }
 
-.mat-sidenav-content{
-      overflow: hidden !important;
-}
-
 //end of sidenav
 
 //page
 div.hd-page{
-      background-color: $color-4;
       padding:20px;
-      height: 79%;
-      overflow: auto;
 }
 
 /* Style the list */
@@ -263,7 +257,7 @@ md-card.hd-card{
       margin:0;
       padding:0;
       md-card-header{
-            padding:20px;
+            padding:10px;
             margin:0;
             background: $color-6;
             border-bottom:thin solid $color-4;
@@ -412,7 +406,15 @@ hd-menu-panel{
 }
 
 //start page
-//start page
+
+hd-start-page{
+      position: fixed;
+      top: 64px;
+      display: block;
+      width: 100%;
+      height: 100%;
+}
+
 hd-start-page .menubox {
       vertical-align: bottom;
       color: grey;

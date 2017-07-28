@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { DatatableComponent } from "app/lib/data-table";
-import { MdDialog, MdPaginator, MdSort } from "@angular/material";
-import { ModalComponent } from "./../modal/modal.component";
-import { DataSource } from "@angular/cdk";
-import { Observable } from "rxjs/Rx";
-import { DataService } from "./../data.service";
+import { MdDialog, MdPaginator, MdSort } from '@angular/material';
+import { ModalComponent } from './../modal/modal.component';
+import { TableAdapter } from "app/lib/class/table-adapter";
+import { DataService } from "app/example/data.service";
+import { LayoutService } from "app/lib/services/layout.service";
 
 @Component({
   selector: 'hd-dashboard-example',
@@ -16,25 +15,25 @@ export class DashboardComponent implements OnInit {
             {icon: 'edit', title: 'Edit', method: this.edit, groupPermission: [0]},
             {icon: 'delete', title: 'Delete', method: this.delete, groupPermission: [0]}
       ];
-      temp = [];
       rows: any | null;
       displayedColumns = ['name', 'phone', 'address'];
-      @ViewChild('search') search:ElementRef;
+      @ViewChild('search') search: ElementRef;
+      @ViewChild('MdSort') sort: MdSort;
+      @ViewChild('MdPaginator') paginator: MdPaginator;
 
       constructor(
             public dialog: MdDialog,
-            private dataSource: DataService
-      ) {}
+            private ds: DataService,
+            private _ls: LayoutService
+      ) {
+            _ls.pageProgressBar = true;
+      }
 
       ngOnInit() {
-            this.rows = this.dataSource;
-            Observable.fromEvent(this.search.nativeElement, 'keyup')
-                  .debounceTime(150)
-                  .distinctUntilChanged()
-                  .subscribe(() => {
-                        if (!this.dataSource) { return; }
-                        this.dataSource.search.next(this.search.nativeElement.value);
-                  });
+            let data = new TableAdapter(
+                  this.ds.setData()
+            );
+            data.sourceData.subscribe(res => this._ls.pageProgressBar = false);
       }
 
       test(event) {
@@ -53,15 +52,7 @@ export class DashboardComponent implements OnInit {
             const config = {
                   disableClose: true
             };
-      this.dialog.open(ModalComponent, config);
-      }
-
-      pagination(e) {
-            this.dataSource.pagination.next(e);
-      }
-
-      sorting(e){
-            this.dataSource.sort.next(e);
+            this.dialog.open(ModalComponent, config);
       }
 
 }

@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HdLayoutModule } from "app/lib/hd-layout/hd-layout.module";
 import { StartComponent } from "app/start.component";
+import { MenuService } from "app/lib/services/menu.service";
+import { HdLoginModule } from "app/lib";
 
 const appRoutes: Routes = [
       {
@@ -40,11 +42,13 @@ const appRoutes: Routes = [
     StartComponent
   ],
   imports: [
-        BrowserModule,
+      BrowserModule,
       RouterModule.forRoot(appRoutes),
       BrowserAnimationsModule,
-      HdLayoutModule
+      HdLayoutModule,
+      HdLoginModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers:[MenuService]
 })
 export class AppModule { }

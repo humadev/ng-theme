@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LayoutService } from "app/lib/services/layout.service";
 
 @Component({
   selector: 'hd-example',
@@ -11,9 +12,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExampleComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _ls: LayoutService) {
+        _ls.pageProgressBar = true;
+  }
 
   ngOnInit() {
+        this._ls.pageProgressBar = false;
   }
 
 }

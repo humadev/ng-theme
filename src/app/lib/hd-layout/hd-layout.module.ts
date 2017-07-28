@@ -8,7 +8,8 @@ import {
       MdMenuModule,
       MdIconModule,
       MdGridListModule,
-      MdSelectModule
+      MdSelectModule,
+      MdProgressBarModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
@@ -19,6 +20,7 @@ import { PageToolbarComponent } from './page-toolbar/page-toolbar.component';
 import { StartPageComponent } from './start-page/start-page.component';
 import { MenuService } from "../services/menu.service";
 import { FormsModule } from "@angular/forms";
+import { LayoutService } from "../services/layout.service";
 
 @NgModule({
   imports: [
@@ -30,6 +32,7 @@ import { FormsModule } from "@angular/forms";
       MdMenuModule,
       MdIconModule,
       MdGridListModule,
+      MdProgressBarModule,
       MdSelectModule,
       RouterModule,
       FormsModule
@@ -43,6 +46,6 @@ import { FormsModule } from "@angular/forms";
       StartPageComponent
   ],
   declarations: [LayoutComponent, BreadcrumbComponent, SidenavComponent, MainToolbarComponent, PageToolbarComponent, StartPageComponent],
-  providers:[MenuService]
+  providers: [MenuService, LayoutService]
 })
 export class HdLayoutModule { }

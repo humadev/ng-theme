@@ -8,7 +8,8 @@ import {
       MdMenuModule,
       MdGridListModule,
       MdCheckboxModule,
-      MdSelectModule
+      MdSelectModule,
+      MdProgressBarModule
 } from '@angular/material';
 import { HdLayoutModule } from "./lib/hd-layout/hd-layout.module";
 
@@ -23,7 +24,8 @@ import { HdLayoutModule } from "./lib/hd-layout/hd-layout.module";
             MdMenuModule,
             MdCheckboxModule,
             FlexLayoutModule,
-            HdLayoutModule
+            HdLayoutModule,
+            MdProgressBarModule
       ],
       exports: [
             MdCardModule,
@@ -35,7 +37,8 @@ import { HdLayoutModule } from "./lib/hd-layout/hd-layout.module";
             MdMenuModule,
             MdCheckboxModule,
             FlexLayoutModule,
-            HdLayoutModule
+            HdLayoutModule,
+            MdProgressBarModule
       ]
 })
 export class SharedModule { }
