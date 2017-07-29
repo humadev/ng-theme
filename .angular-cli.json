@@ -19,8 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "hd",
       "styles": [
-            "theme.scss",
-            "styles.css"
+            "styles.scss"
         
       ],
       "scripts": ["../node_modules/hammerjs/hammer.min.js"],
@@ -53,7 +52,7 @@
     }
   },
   "defaults": {
-    "styleExt": ["css", "scss"],
+    "styleExt": ["scss"],
     "component": {}
   }
 }

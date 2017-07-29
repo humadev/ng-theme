@@ -8,7 +8,8 @@ import {
       MdMenuModule,
       MdGridListModule,
       MdCheckboxModule,
-      MdSelectModule
+      MdSelectModule,
+      MdProgressBarModule
 } from '@angular/material';
 import { HdLayoutModule } from "./lib/hd-layout/hd-layout.module";
 import {FabSpeedDialModule} from './lib/fab-speed-dial/fab-speed-dial.module';
@@ -27,6 +28,7 @@ import {FabSpeedDialModule} from './lib/fab-speed-dial/fab-speed-dial.module';
             FlexLayoutModule,
             HdLayoutModule,
             FabSpeedDialModule
+            MdProgressBarModule
       ],
       exports: [
             MdCardModule,
@@ -40,6 +42,7 @@ import {FabSpeedDialModule} from './lib/fab-speed-dial/fab-speed-dial.module';
             FlexLayoutModule,
             HdLayoutModule,
             FabSpeedDialModule
+            MdProgressBarModule
       ]
 })
 export class SharedModule { }

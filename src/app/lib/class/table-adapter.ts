@@ -77,7 +77,6 @@ export class TableAdapter extends DataSource<any> {
                   .map(() => this.filtering())
                   .map(() => this.sorting())
                   .map(() => {
-                        console.log("2");
                         return this.paging();
                   });
       }

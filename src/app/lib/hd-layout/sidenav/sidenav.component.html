@@ -1,9 +1,5 @@
 <md-sidenav-container class='hd-sidenav-container'>
-      <md-sidenav #sidenav [opened]="opened" mode='side' class="hd-sidenav mat-elevation-z5">
-            <md-toolbar class="hd-side-toolbar">
-                  <img [src]="titleImg" *ngIf="titleImg; else titleTextEl">
-                  <ng-template #titleTextEl><span>{{titleText}}</span></ng-template>
-            </md-toolbar>
+      <md-sidenav #sidenav [opened]="opened" mode='side' class="hd-sidenav mat-elevation-z6">
             <md-nav-list *ngIf="!nav == false; else fromRouter">
                   <ng-template ngFor let-level1 [ngForOf]="nav" let-i="index">
                         <a md-button (click)="parentOpen(i)" routerLinkActive="active" [class.active]="isActive([level1.path])"  *ngIf="level1.children && level1.children.length > 0; else noChild">

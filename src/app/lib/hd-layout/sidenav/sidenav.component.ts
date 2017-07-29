@@ -4,13 +4,16 @@ import { Observable } from 'rxjs/Rx';
 import { MenuService } from "../../services/menu.service";
 @Component({
       selector: 'hd-sidenav',
-      templateUrl: './sidenav.component.html'
+      templateUrl: './sidenav.component.html',
+      styles:[`
+            md-sidenav-container{
+                  top: 64px !important;
+                  position: fixed;
+            }
+      `]
 })
 export class SidenavComponent implements OnInit {
 
-
-      @Input() titleText = 'Humadev Theme';
-      @Input() titleImg: string;
       @Input() nav: any = false;
       @Input() lazyLoadModule: any = false;
       @Input() navFromRouter: any;
@@ -22,7 +25,7 @@ export class SidenavComponent implements OnInit {
       constructor(
             private router: Router,
             private activeRoute: ActivatedRoute,
-            private menuService:MenuService
+            private menuService: MenuService
       ) { }
 
       ngOnInit() {

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 import { Location } from "@angular/common";
 import { BehaviorSubject, Subject } from "rxjs/Rx";
+import { LayoutService } from "./layout.service";
 
 @Injectable()
 export class MenuService {
@@ -15,10 +16,23 @@ export class MenuService {
 
       constructor(
             private router: Router,
-            private activeRoute:ActivatedRoute,
-            private loc: Location
+            private activeRoute: ActivatedRoute,
+            private loc: Location,
+            private _ls: LayoutService
       ) {
             this.router.events
+            .map(event => {
+                  if (loc.path() !== '') {
+                        const modulePath = loc.path().split('/')[1];
+                        this.moduleActive.next(modulePath);
+                        this.router.config.forEach((el, i) => {
+                              if (el.path === modulePath) {
+                                    this.moduleIndex.next(i);
+                              }
+                        });
+                  }
+                  return event;
+            })
             .filter(event => event instanceof NavigationEnd)
             .map(() => this.activeRoute)
             .map(route => {
@@ -28,16 +42,7 @@ export class MenuService {
             .filter(route => route.outlet === 'primary')
             .switchMap(route => route.data)
             .subscribe(res => {
-                  if(loc.path() !== ''){
-                        const modulePath = loc.path().split('/')[1];
-                        this.moduleActive.next(modulePath);
-                        this.router.config.forEach((el, i) => {
-                              if(el.path === modulePath){
-                                    this.moduleIndex.next(i);
-                              }
-                        });
-                  }
-
+                  this._ls.pageTitle.next(res.name);
                   this.pageTitle.next(res.name);
             });
             if (this.lazyLoad){
@@ -55,7 +60,7 @@ export class MenuService {
 
       navigate(url: string){
             console.log(url);
-            this.router.navigate(['/'+url]);
+            this.router.navigate(['/' + url]);
       }
 
 }
