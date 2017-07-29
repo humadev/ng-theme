@@ -27,7 +27,7 @@ import {FabSpeedDialModule} from './lib/fab-speed-dial/fab-speed-dial.module';
             MdCheckboxModule,
             FlexLayoutModule,
             HdLayoutModule,
-            FabSpeedDialModule
+            FabSpeedDialModule,
             MdProgressBarModule
       ],
       exports: [
@@ -41,7 +41,7 @@ import {FabSpeedDialModule} from './lib/fab-speed-dial/fab-speed-dial.module';
             MdCheckboxModule,
             FlexLayoutModule,
             HdLayoutModule,
-            FabSpeedDialModule
+            FabSpeedDialModule,
             MdProgressBarModule
       ]
 })

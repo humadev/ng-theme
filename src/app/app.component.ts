@@ -3,9 +3,10 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-      <div class="test">
+      <!--<div class="test">
             <hd-login class="mat-elevation-z8" title="test"></hd-login>
-      </div>
+      </div>-->
+      <router-outlet></router-outlet>
   `,
   styles:[`
       .test{
