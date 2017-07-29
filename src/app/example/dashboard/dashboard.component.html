@@ -7,7 +7,7 @@
             <div>
                   <button md-raised-button (click)="openDialog()" class="primary">Create</button>
                   <button md-raised-button [mdMenuTriggerFor]="menu">Print</button>
-            </div>      
+            </div>
             <md-menu #menu="mdMenu">
                   <button md-menu-item>
                         <md-icon>dialpad</md-icon>
@@ -49,7 +49,8 @@
                   <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
             </md-table>
       <md-paginator #paginator
-            [pageIndex]="0" 
+            [length]="dataSource.count"
+            [pageIndex]="0"
             [pageSize]="10"
             [pageSizeOptions]="[5, 10, 25, 100]">
       </md-paginator>
@@ -179,11 +180,48 @@
             [pageSize]="10"
             [pageSizeOptions]="[5, 10, 25, 100]">
       </md-paginator>
+
+
+      <div class="container-fab-demo">
+        <md-card>
+            <md-card-title>Click me!!</md-card-title>
+            <smd-fab-speed-dial [(open)]="open" [direction]="direction" [animationMode]="animationMode" [fixed]="fixed">
+                <smd-fab-trigger [spin]="spin">
+                    <button md-fab (click)="_click('trigger')"><md-icon>{{open ? 'create' : 'add'}}</md-icon></button>
+                </smd-fab-trigger>
+
+                <smd-fab-actions>
+                    <button md-mini-fab (click)="_click('action1')"><md-icon>search</md-icon></button>
+                    <button md-mini-fab (click)="_click('action2')"><md-icon>edit</md-icon></button>
+                    <button md-mini-fab (click)="_click('action3')"><md-icon>home</md-icon></button>
+                </smd-fab-actions>
+            </smd-fab-speed-dial>
+        </md-card>
+        <md-card>
+            <md-card-title>Hover me!!</md-card-title>
+            <smd-fab-speed-dial #myFab [direction]="direction" [animationMode]="animationMode" [fixed]="fixed"
+                                (mouseenter)="myFab.open = true" (mouseleave)="myFab.open = false">
+                <smd-fab-trigger [spin]="spin">
+                    <button md-fab (click)="_click('trigger')"><md-icon>check</md-icon></button>
+                </smd-fab-trigger>
+
+                <smd-fab-actions>
+                    <button md-mini-fab (click)="_click('action1')"><md-icon>add</md-icon></button>
+                    <button md-mini-fab (click)="_click('action2')"><md-icon>edit</md-icon></button>
+                    <button md-mini-fab (click)="_click('action3')"><md-icon>menu</md-icon></button>
+                </smd-fab-actions>
+            </smd-fab-speed-dial>
+        </md-card>
+    </div>
+
     </md-card-content>
+
+
     <md-card-actions align="start">
         <button md-raised-button class="hd-button primary">Action2</button>
     </md-card-actions>
     <md-card-footer>
         Footer
     </md-card-footer>
+
 </md-card>
