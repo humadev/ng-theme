@@ -9,9 +9,11 @@ import { ExampleComponent } from './example.component';
 import { MdTableModule, MdPaginatorModule, MdSortModule } from "@angular/material";
 import { CdkTableModule } from "@angular/cdk";
 
+
 import { ApolloClient, createNetworkInterface } from 'apollo-client';
 import { ApolloModule } from "apollo-angular";
 import { DataService } from "app/example/data.service";
+
 const networkInterface = createNetworkInterface({ uri: 'https://sandbox.undiknas.ac.id/graphql' });
 
 const client = new ApolloClient({
@@ -24,7 +26,7 @@ export function provideClient(): ApolloClient {
 
 
 const appRoutes: Routes = [
-      { 
+      {
             path: '',
             component: ExampleComponent,
             data:{
@@ -33,7 +35,7 @@ const appRoutes: Routes = [
                   icon: 'dashboard'
             },
             children:[
-            { 
+            {
                   path: 'datatable',
                   component: DashboardComponent,
                   data:{

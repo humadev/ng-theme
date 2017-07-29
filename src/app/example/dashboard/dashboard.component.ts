@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { DatatableComponent } from "app/lib/data-table";
 import { MdDialog, MdPaginator, MdSort } from "@angular/material";
 import { ModalComponent } from "./../modal/modal.component";
 import { DataSource } from "@angular/cdk";
@@ -11,6 +10,26 @@ import { DataService } from "./../data.service";
   templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent implements OnInit {
+
+
+      //speed dial
+      private _fixed: boolean = false;
+      open: boolean = false;
+      spin: boolean = true;
+      direction: string = 'down';
+      animationMode: string = 'scale';
+
+      get fixed() { return this._fixed; }
+      set fixed(fixed: boolean) {
+          this._fixed = fixed;
+          if (this._fixed) {
+              this.open = true;
+          }
+      }
+
+      _click(event: any) {
+          console.log(event);
+      }
 
       menuklikkanan = [
             {icon: 'edit', title: 'Edit', method: this.edit, groupPermission: [0]},

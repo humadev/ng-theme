@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HdLayoutModule } from "app/lib/hd-layout/hd-layout.module";
+import {FabSpeedDialModule} from 'app/lib/fab-speed-dial/fab-speed-dial.module';
 import { StartComponent } from "app/start.component";
 
 const appRoutes: Routes = [
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
         BrowserModule,
       RouterModule.forRoot(appRoutes),
       BrowserAnimationsModule,
-      HdLayoutModule
+      HdLayoutModule,
+      FabSpeedDialModule
   ],
   bootstrap: [AppComponent]
 })

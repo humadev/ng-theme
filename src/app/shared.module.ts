@@ -11,6 +11,8 @@ import {
       MdSelectModule
 } from '@angular/material';
 import { HdLayoutModule } from "./lib/hd-layout/hd-layout.module";
+import {FabSpeedDialModule} from './lib/fab-speed-dial/fab-speed-dial.module';
+
 
 @NgModule({
       imports: [
@@ -23,7 +25,8 @@ import { HdLayoutModule } from "./lib/hd-layout/hd-layout.module";
             MdMenuModule,
             MdCheckboxModule,
             FlexLayoutModule,
-            HdLayoutModule
+            HdLayoutModule,
+            FabSpeedDialModule
       ],
       exports: [
             MdCardModule,
@@ -35,7 +38,8 @@ import { HdLayoutModule } from "./lib/hd-layout/hd-layout.module";
             MdMenuModule,
             MdCheckboxModule,
             FlexLayoutModule,
-            HdLayoutModule
+            HdLayoutModule,
+            FabSpeedDialModule
       ]
 })
 export class SharedModule { }
