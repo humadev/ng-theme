@@ -13,7 +13,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "prepublish": "cp -a src/app/lib lib && tools/copy-package.js && tools/cleanup.js"
   },
   "dependencies": {
     "@angular/animations": "^4.3.2",
