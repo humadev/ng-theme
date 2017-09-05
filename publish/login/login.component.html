@@ -1,0 +1,38 @@
+<form [formGroup]='loginForm' (ngSubmit)="onLogin($event)">
+      <md-card class="hd-login">
+      <md-card-header class="mat-elevation-z3">
+            <md-card-title>{{title}}</md-card-title>
+      </md-card-header>
+      <md-card-content>
+            <md-input-container align="start">
+                  <input mdInput formControlName="email" type="text" placeholder="Email" autofill="off">
+                  <md-hint align="start" class="error" *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched">
+                        <span *ngIf="loginForm.controls.email.errors.required">
+                              Email harus diisi
+                        </span>
+                        <span *ngIf="loginForm.controls.email.errors.email">
+                              Format email salah
+                        </span>
+                  </md-hint>
+            </md-input-container>
+            <md-input-container align="start">
+                  <input mdInput formControlName="password" type="password" placeholder="Password" #pass>
+                  <button type="button" md-icon-button mdSuffix (click)="changePasswordType(pass)"><md-icon>visibility</md-icon></button>  
+                  <md-hint align="start" class="error" *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched">
+                        <span *ngIf="loginForm.controls.password.errors.required">
+                              Password harus diisi
+                        </span>
+                        <span *ngIf="loginForm.controls.password.errors.minlength">
+                              Password minimal {{loginForm.controls.password.errors.minlength.requiredLength}} karakter
+                        </span>
+                        <span *ngIf="loginForm.controls.password.errors.maxlength">
+                              Password maximal {{loginForm.controls.password.errors.maxlength.requiredLength}} karakter
+                        </span>
+                  </md-hint>
+            </md-input-container>
+      </md-card-content>
+      <md-card-actions align="end">
+            <button md-raised-button color="primary" class='mat-elevation-z5'>Login</button>
+      </md-card-actions>
+      </md-card>
+</form>

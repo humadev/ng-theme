@@ -18,9 +18,9 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { MainToolbarComponent } from './main-toolbar/main-toolbar.component';
 import { PageToolbarComponent } from './page-toolbar/page-toolbar.component';
 import { StartPageComponent } from './start-page/start-page.component';
-import { MenuService } from '../services/menu.service';
-import { FormsModule } from '@angular/forms';
-import { LayoutService } from '../services/layout.service';
+import { MenuService } from "../services/menu.service";
+import { FormsModule } from "@angular/forms";
+import { LayoutService } from "../services/layout.service";
 
 @NgModule({
   imports: [

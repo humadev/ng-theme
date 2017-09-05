@@ -14,7 +14,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prepublish": "cp -a src/app/lib lib && tools/copy-package.js && tools/cleanup.js"
+      "copy": "node tools/copy-package.js && node tools/cleanup.js",
+    "bundle": "rm -rf publish && cp -a src/app/lib publish",
+    "copy-style": "cp src/theme.scss publish/theme.scss && cp src/palette.scss publish/palette.scss",
+    "prepublish": "npm run bundle && npm run copy && npm run copy-style"
   },
   "dependencies": {
     "@angular/animations": "^4.3.2",
