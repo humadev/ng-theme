@@ -1,6 +1,6 @@
 {
   "name": "humadev-angular-theme",
-  "version": "0.8.0",
+  "version": "0.12.2",
   "license": "MIT",
   "description": "simple theme to quick start angular 2+ project",
   "author": {
@@ -14,7 +14,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-      "copy": "node tools/copy-package.js && node tools/cleanup.js",
+    "copy": "node tools/copy-package.js && node tools/cleanup.js",
     "bundle": "rm -rf publish && cp -a src/app/lib publish",
     "copy-style": "cp src/theme.scss publish/theme.scss && cp src/palette.scss publish/palette.scss",
     "prepublish": "npm run bundle && npm run copy && npm run copy-style"
