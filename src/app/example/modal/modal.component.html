@@ -1,16 +1,30 @@
 <div md-dialog-title>Title</div>
 
-<md-dialog-content>
-    <md-input-container>
+<md-dialog-content fxLayout fxLayoutAlign="space-between" fxLayoutWrap="wrap">
+    <md-input-container fxFlex='49'>
         <input mdInput name="componentProperty" type="text" placeholder="nama">
     </md-input-container>
-    <md-input-container>
+    <md-input-container fxFlex='49'>
         <input mdInput name="componentProperty" type="text" placeholder="alamat">
     </md-input-container>
-    <md-input-container>
+    <md-input-container fxFlex='49'>
         <input mdInput name="componentProperty" type="text" placeholder="telpon">
     </md-input-container>
-    <md-input-container>
+    <md-select placeholder="Favorite food" name="food" fxFlex="49">
+        <md-option value="1">
+          1
+        </md-option>
+        <md-option value="1">
+            1
+          </md-option>
+          <md-option value="1">
+            1
+          </md-option>
+          <md-option value="1">
+            1
+          </md-option>
+      </md-select>
+    <md-input-container fxFlex='49'>
         <input mdInput name="componentProperty" type="text" placeholder="test">
     </md-input-container>
 </md-dialog-content>

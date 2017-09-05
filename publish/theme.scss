@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
+.full-width{
+    width: 100%;
+}
+
 hd-login{
       width: 500px;
       display: block;
@@ -156,10 +160,6 @@ md-toolbar.hd-page-toolbar{
       .hd-page-title{
             font-size: 16px;
       }
-}
-
-md-select{
-      padding: 20px 0;
 }
 //end of toolbar
 

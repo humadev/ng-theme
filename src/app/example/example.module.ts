@@ -1,3 +1,4 @@
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
 import { CommonModule } from "@angular/common";
 import { SharedModule } from "app/shared.module";
@@ -61,6 +62,7 @@ const appRoutes: Routes = [
             MdPaginatorModule,
             MdSortModule,
             CdkTableModule,
+            FlexLayoutModule,
             ApolloModule.forRoot(provideClient),
       ],
       providers:[DataService],
