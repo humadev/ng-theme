@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject, BehaviorSubject } from "rxjs/Rx";
-import { DataSource } from "@angular/cdk";
+import { DataSource } from "@angular/cdk/table";
 import { Apollo, ApolloQueryObservable} from 'apollo-angular';
 import gql from 'graphql-tag';
 

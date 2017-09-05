@@ -7,7 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ModalComponent } from './modal/modal.component';
 import { ExampleComponent } from './example.component';
 import { MdTableModule, MdPaginatorModule, MdSortModule } from "@angular/material";
-import { CdkTableModule } from "@angular/cdk";
+import { CdkTableModule } from "@angular/cdk/table";
 
 
 import { ApolloClient, createNetworkInterface } from 'apollo-client';

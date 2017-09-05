@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MdDialog, MdPaginator, MdSort } from "@angular/material";
 import { ModalComponent } from "./../modal/modal.component";
-import { DataSource } from "@angular/cdk";
+import { DataSource } from "@angular/cdk/table";
 import { Observable } from "rxjs/Rx";
 import { DataService } from "./../data.service";
 import { TableAdapter } from "app/lib/class/table-adapter";

@@ -9,9 +9,11 @@ import { MenuService } from "../../services/menu.service";
             <img class="hd-title-bar" [src]="titleImg" *ngIf="titleImg; else titleTextEl">
             <ng-template #titleTextEl><span class="hd-title-bar">{{titleText}}</span></ng-template>
             <md-select class="fill-space" (change)="onChange($event)" [(ngModel)]="active">
-                  <md-option *ngFor="let menu of startMenus" [value]="menu.path">
-                  {{ menu.data.title }}
-                  </md-option>
+                <ng-template ngFor let-menu [ngForOf]="startMenus">
+                    <md-option *ngIf="menu.data.isMenu" [value]="menu.path">
+                        {{ menu.data.title }}
+                    </md-option>
+                </ng-template>
             </md-select>
             <md-menu #menu="mdMenu" class="hd-profile-menu" yPosition="below" xPosition="before" [overlapTrigger]="false">
                   <button md-menu-item (click)="onLogout()">
