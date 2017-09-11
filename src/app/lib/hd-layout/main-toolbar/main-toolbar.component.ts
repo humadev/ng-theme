@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, ViewEncapsulation } from '@angular/core';
 import { MenuService } from "../../services/menu.service";
 
 @Component({
@@ -10,7 +10,8 @@ import { MenuService } from "../../services/menu.service";
             width: 100%;
             z-index: 9;
       }
-  `]
+  `],
+  encapsulation: ViewEncapsulation.None
 })
 export class MainToolbarComponent implements OnInit {
       @Input() notification = false;
@@ -23,6 +24,10 @@ export class MainToolbarComponent implements OnInit {
       @Input() titleImg: string;
       startMenus = this.menuService.startMenu;
       active;
+      accountOpen = false;
+      notificationOpen = false;
+      messageOpen = false;
+      topMenuOpen = false;
 
       constructor(
             private menuService: MenuService
