@@ -44,7 +44,35 @@ const appRoutes: Routes = [
                         groupAccess: 0,
                         icon: 'dashboard'
                   }
-            }]
+            },
+            {
+                path: 'datatable',
+                component: DashboardComponent,
+                data:{
+                      name: 'Data Table',
+                      groupAccess: 0,
+                      icon: 'dashboard'
+                },
+                children:[
+                {
+                        path: 'datatable',
+                        component: DashboardComponent,
+                        data:{
+                            name: 'Data Table',
+                            groupAccess: 0,
+                            icon: 'dashboard'
+                        }
+                },
+                {
+                    path: 'datatable',
+                    component: DashboardComponent,
+                    data:{
+                            name: 'Data Table',
+                            groupAccess: 0,
+                            icon: 'dashboard'
+                    }
+                }]
+          }]
       }];
 
 @NgModule({

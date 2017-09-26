@@ -10,6 +10,14 @@ import { MenuService } from "../../services/menu.service";
             width: 100%;
             z-index: 9;
       }
+      .m-header-head {
+            -webkit-box-shadow: 0 1px 15px 1px rgba(113,106,202,.1);
+            -moz-box-shadow: 0 1px 15px 1px rgba(113,106,202,.1);
+            box-shadow: 0 1px 15px 1px rgba(113,106,202,.1);
+    }
+    .m-brand{
+        width:255px;
+    }
   `],
   encapsulation: ViewEncapsulation.None
 })

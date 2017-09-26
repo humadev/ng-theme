@@ -1,0 +1,56 @@
+md-sidenav-container{
+   top: 64px !important;
+    position: fixed;
+    background:#f2f3f8;
+}
+.m-aside-left.m-aside-left--skin-dark {
+    background-color: #2c2e3e;
+}
+
+.m-aside-left {
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+    width: 255px;
+}
+
+.m-aside-menu .m-menu__nav {
+    list-style: none;
+    padding: 30px 0 30px 0;
+}
+
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+*, ::after, ::before {
+    box-sizing: inherit;
+}
+
+.m-aside-menu .m-menu__nav>.m-menu__item {
+    position: relative;
+    margin: 0;
+}
+
+.m-aside-menu .m-menu__nav .m-menu__item {
+    display: block;
+    float: none;
+    height: auto;
+    padding: 0;
+}
+
+.m-aside-menu .m-menu__nav>.m-menu__item .m-menu__submenu .m-menu__item>.m-menu__heading .m-menu__link-bullet, .m-aside-menu .m-menu__nav>.m-menu__item .m-menu__submenu .m-menu__item>.m-menu__link .m-menu__link-bullet {
+    vertical-align: middle;
+    text-align: left;
+    width: 20px;
+}
+
+.m-aside-menu .m-menu__nav .m-menu__item>.m-menu__heading .m-menu__link-bullet, .m-aside-menu .m-menu__nav .m-menu__item>.m-menu__link .m-menu__link-bullet {
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle;
+    line-height: 0;
+}
