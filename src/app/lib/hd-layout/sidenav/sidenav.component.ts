@@ -17,15 +17,16 @@ import {
       animations: [
         trigger('childActive', [
           state('inactive', style({
-              display: 'none',
-            transform: 'translateY(-100%)'
+                display: 'block',
+                height: 0,
+                overflow: 'hidden'
           })),
           state('active',   style({
-              display: 'block',
-            transform: 'translateY(0)'
+                display: 'block',
+                height: '*'
           })),
-          transition('inactive => active', animate('200ms ease-in')),
-          transition('active => inactive', animate('300ms ease-out'))
+          transition('inactive => active', animate('500ms ease')),
+          transition('active => inactive', animate('500ms ease'))
         ])
       ]
 })

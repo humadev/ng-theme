@@ -46,10 +46,10 @@ const appRoutes: Routes = [
                   }
             },
             {
-                path: 'datatable',
+                path: 'datatable1',
                 component: DashboardComponent,
                 data:{
-                      name: 'Data Table',
+                      name: 'Data Table 1',
                       groupAccess: 0,
                       icon: 'dashboard'
                 },
@@ -72,7 +72,35 @@ const appRoutes: Routes = [
                             icon: 'dashboard'
                     }
                 }]
-          }]
+          },
+          {
+              path: 'datatable2',
+              component: DashboardComponent,
+              data:{
+                    name: 'Data Table 2',
+                    groupAccess: 0,
+                    icon: 'dashboard'
+              },
+              children:[
+              {
+                      path: 'datatable',
+                      component: DashboardComponent,
+                      data:{
+                          name: 'Data Table',
+                          groupAccess: 0,
+                          icon: 'dashboard'
+                      }
+              },
+              {
+                  path: 'datatable',
+                  component: DashboardComponent,
+                  data:{
+                          name: 'Data Table',
+                          groupAccess: 0,
+                          icon: 'dashboard'
+                  }
+              }]
+        }]
       }];
 
 @NgModule({

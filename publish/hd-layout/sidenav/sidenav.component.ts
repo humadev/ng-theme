@@ -1,16 +1,34 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
-import { MenuService } from "../../services/menu.service";
+import { MenuService } from '../../services/menu.service';
+import {
+    trigger,
+    state,
+    style,
+    animate,
+    transition
+  } from '@angular/animations';
+
 @Component({
       selector: 'hd-sidenav',
       templateUrl: './sidenav.component.html',
-      styles:[`
-            md-sidenav-container{
-                  top: 64px !important;
-                  position: fixed;
-            }
-      `]
+      styleUrls: ['./sidenav.component.scss'],
+      animations: [
+        trigger('childActive', [
+          state('inactive', style({
+                display: 'block',
+                height: 0,
+                overflow: 'hidden'
+          })),
+          state('active',   style({
+                display: 'block',
+                height: '*'
+          })),
+          transition('inactive => active', animate('500ms ease')),
+          transition('active => inactive', animate('500ms ease'))
+        ])
+      ]
 })
 export class SidenavComponent implements OnInit {
 
@@ -52,6 +70,22 @@ export class SidenavComponent implements OnInit {
 
       isActive(instruction: any[]): boolean {
             return this.router.isActive(this.router.createUrlTree(instruction), false);
+      }
+
+      childrenAndActive(level) {
+        if (level.children && level.children.length > 0 && (level.isOpen || this.isActive([level.path]))) {
+            return true;
+        }else {
+            return false;
+        }
+      }
+
+      toggleChildren(level) {
+        if (level.children && level.children.length > 0 && (level.isOpen || this.isActive([level.path]))) {
+            return 'active';
+        }else {
+            return 'inactive';
+        }
       }
 
       checkPath(row) {

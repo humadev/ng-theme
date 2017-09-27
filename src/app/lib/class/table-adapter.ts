@@ -59,7 +59,7 @@ export class TableAdapter extends DataSource<any> {
                   connectData.push(this.filter);
             }
             if(this._sort){
-                  connectData.push(this._sort.mdSortChange);
+                  connectData.push(this._sort.sortChange);
             }
             if(this._paginator){
                   connectData.push(this._paginator.page);

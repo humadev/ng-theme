@@ -42,7 +42,7 @@ md-card.hd-login{
 //clean up
 body {
   margin: 0;
-  font-family: Roboto, sans-serif;
+//   font-family: Roboto, sans-serif;
 }
 
 md-toolbar-row {
@@ -171,7 +171,6 @@ md-sidenav-container.hd-sidenav-container{
 
 md-sidenav.hd-sidenav{
       background-color: $color-5;
-      min-width: 17vw;
       color:$color-4;
       md-nav-list{
             padding-top: 0;

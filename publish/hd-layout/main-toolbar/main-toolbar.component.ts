@@ -1,45 +1,25 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, ViewEncapsulation } from '@angular/core';
 import { MenuService } from "../../services/menu.service";
 
 @Component({
   selector: 'hd-main-toolbar',
-  template: `
-      <md-toolbar class="hd-main-toolbar mat-elevation-z8" color="primary">
-            <span class="hd-sidenav-toggle" *ngIf="showSidenavToggle" (click)="onSidenavToggle()"><md-icon>menu</md-icon></span>
-            <img class="hd-title-bar" [src]="titleImg" *ngIf="titleImg; else titleTextEl">
-            <ng-template #titleTextEl><span class="hd-title-bar">{{titleText}}</span></ng-template>
-            <md-select class="fill-space" (change)="onChange($event)" [(ngModel)]="active">
-                <ng-template ngFor let-menu [ngForOf]="startMenus">
-                    <md-option *ngIf="menu.data.isMenu" [value]="menu.path">
-                        {{ menu.data.title }}
-                    </md-option>
-                </ng-template>
-            </md-select>
-            <md-menu #menu="mdMenu" class="hd-profile-menu" yPosition="below" xPosition="before" [overlapTrigger]="false">
-                  <button md-menu-item (click)="onLogout()">
-                        <md-icon>dashboard</md-icon>
-                        <span>Menu 2</span>
-                  </button>
-            </md-menu>
-            <span class="hd-menu hd-right-menu" *ngIf="notification"><md-icon>notifications_none</md-icon></span>
-            <button md-button [mdMenuTriggerFor]="menu" #profileMenu class="hd-menu hd-right-menu" *ngIf="profile">
-                  <md-icon>face</md-icon> Admin
-            </button>
-            <md-menu #menu="mdMenu" class="hd-profile-menu" yPosition="below" xPosition="before" [overlapTrigger]="false">
-                  <button md-menu-item (click)="onLogout()">
-                        <md-icon>power_settings_new</md-icon>
-                        <span>Logout</span>
-                  </button>
-            </md-menu>
-      </md-toolbar>
-  `,
+  templateUrl: 'main-toolbar.component.html',
   styles: [`
       .hd-main-toolbar{
             position: fixed;
             width: 100%;
             z-index: 9;
       }
-  `]
+      .m-header-head {
+            -webkit-box-shadow: 0 1px 15px 1px rgba(113,106,202,.1);
+            -moz-box-shadow: 0 1px 15px 1px rgba(113,106,202,.1);
+            box-shadow: 0 1px 15px 1px rgba(113,106,202,.1);
+    }
+    .m-brand{
+        width:255px;
+    }
+  `],
+  encapsulation: ViewEncapsulation.None
 })
 export class MainToolbarComponent implements OnInit {
       @Input() notification = false;
@@ -52,6 +32,10 @@ export class MainToolbarComponent implements OnInit {
       @Input() titleImg: string;
       startMenus = this.menuService.startMenu;
       active;
+      accountOpen = false;
+      notificationOpen = false;
+      messageOpen = false;
+      topMenuOpen = false;
 
       constructor(
             private menuService: MenuService
