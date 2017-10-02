@@ -1,3 +1,4 @@
+import { slideToUp } from 'app/lib/animations/router.animation';
 import { Component, OnInit } from '@angular/core';
 import { LayoutService } from "app/lib/services/layout.service";
 
@@ -7,8 +8,7 @@ import { LayoutService } from "app/lib/services/layout.service";
       <hd-layout lazyLoadModule='true' title="Undiknas SIM" notification="true">
             <router-outlet></router-outlet>
       </hd-layout>
-  `,
-  styles: []
+  `
 })
 export class ExampleComponent implements OnInit {
 
