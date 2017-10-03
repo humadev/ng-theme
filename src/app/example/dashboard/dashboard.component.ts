@@ -1,12 +1,12 @@
 import { slideToUp, slideToDown, slideToLeft } from 'app/lib/animations/router.animation';
 import { Component, OnInit, ViewChild, ElementRef, HostBinding } from '@angular/core';
-import { MdDialog, MdPaginator, MdSort } from "@angular/material";
-import { ModalComponent } from "./../modal/modal.component";
-import { DataSource } from "@angular/cdk/table";
-import { Observable } from "rxjs/Rx";
-import { DataService } from "./../data.service";
-import { TableAdapter } from "app/lib/class/table-adapter";
-import { LayoutService } from "app/lib/services/layout.service";
+import { MdDialog, MdPaginator, MdSort } from '@angular/material';
+import { ModalComponent } from './../modal/modal.component';
+import { DataSource } from '@angular/cdk/table';
+import { Observable } from 'rxjs/Rx';
+import { DataService } from './../data.service';
+import { TableAdapter } from 'app/lib/class/table-adapter';
+import { LayoutService } from 'app/lib/services/layout.service';
 
 @Component({
   selector: 'hd-dashboard-example',
@@ -16,8 +16,7 @@ import { LayoutService } from "app/lib/services/layout.service";
 export class DashboardComponent implements OnInit {
 
 
-      //speed dial
-      @HostBinding('@slideToUp') anSlide;
+      // speed dial
       private _fixed: boolean = false;
       open: boolean = false;
       spin: boolean = true;
