@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit, ViewEncapsulation } from '@angular/core';
-import { MenuService } from "../../services/menu.service";
+import { MenuService } from '../../services/menu.service';
 
 @Component({
   selector: 'hd-main-toolbar',
@@ -36,6 +36,9 @@ export class MainToolbarComponent implements OnInit {
       notificationOpen = false;
       messageOpen = false;
       topMenuOpen = false;
+      class = 'm-brand__icon m-brand__toggler m-brand__toggler--left m--visible-desktop-inline-block';
+      sidenav = true;
+      @Output() minimize = new EventEmitter();
 
       constructor(
             private menuService: MenuService
@@ -45,6 +48,16 @@ export class MainToolbarComponent implements OnInit {
             this.menuService.moduleActive.subscribe(res => {
                   this.active = res;
             });
+      }
+
+      toggleSidenav() {
+        if (this.sidenav) {
+            this.class = 'm-brand__icon m-brand__toggler m-brand__toggler--right m--visible-desktop-inline-block';
+        }else {
+            this.class = 'm-brand__icon m-brand__toggler m-brand__toggler--left m--visible-desktop-inline-block';
+        }
+        this.sidenav = !this.sidenav;
+        this.minimize.emit(!this.sidenav);
       }
 
       onSidenavToggle() {

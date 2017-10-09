@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LayoutService } from "../../services/layout.service";
+import { LayoutService } from '../../services/layout.service';
 
 @Component({
   selector: 'hd-page-toolbar',

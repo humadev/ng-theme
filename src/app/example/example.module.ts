@@ -7,7 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ModalComponent } from './modal/modal.component';
 import { ExampleComponent } from './example.component';
-import { MdTableModule, MdPaginatorModule, MdSortModule } from '@angular/material';
+import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 
 
@@ -114,15 +114,15 @@ const appRoutes: Routes = [
             SharedModule,
             RouterModule.forChild(appRoutes),
             ReactiveFormsModule,
-            MdTableModule,
-            MdPaginatorModule,
-            MdSortModule,
+            MatTableModule,
+            MatPaginatorModule,
+            MatSortModule,
             CdkTableModule,
             FlexLayoutModule,
             ApolloModule.forRoot(provideClient),
       ],
-      providers:[DataService],
-      entryComponents:[ModalComponent],
-      bootstrap:[ExampleComponent]
+      providers: [DataService],
+      entryComponents: [ModalComponent],
+      bootstrap: [ExampleComponent]
 })
 export class ExampleModule { }

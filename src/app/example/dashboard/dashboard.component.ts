@@ -1,6 +1,6 @@
 import { slideToUp, slideToDown, slideToLeft } from 'app/lib/animations/router.animation';
 import { Component, OnInit, ViewChild, ElementRef, HostBinding } from '@angular/core';
-import { MdDialog, MdPaginator, MdSort } from '@angular/material';
+import { MatDialog, MatPaginator, MatSort } from '@angular/material';
 import { ModalComponent } from './../modal/modal.component';
 import { DataSource } from '@angular/cdk/table';
 import { Observable } from 'rxjs/Rx';
@@ -42,11 +42,11 @@ export class DashboardComponent implements OnInit {
       rows: any | null;
       displayedColumns = ['name', 'phone', 'address'];
       @ViewChild('search') search: ElementRef;
-      @ViewChild('MdSort') sort: MdSort;
-      @ViewChild('MdPaginator') paginator: MdPaginator;
+      @ViewChild('MatSort') sort: MatSort;
+      @ViewChild('MatPaginator') paginator: MatPaginator;
 
       constructor(
-            public dialog: MdDialog,
+            public dialog: MatDialog,
             private ds: DataService,
             private _ls: LayoutService
       ) {

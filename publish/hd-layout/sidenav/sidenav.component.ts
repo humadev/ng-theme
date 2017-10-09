@@ -9,6 +9,7 @@ import {
     animate,
     transition
   } from '@angular/animations';
+import { slideToRight } from 'app/lib/animations/router.animation';
 
 @Component({
       selector: 'hd-sidenav',
@@ -27,7 +28,8 @@ import {
           })),
           transition('inactive => active', animate('500ms ease')),
           transition('active => inactive', animate('500ms ease'))
-        ])
+        ]),
+        slideToRight()
       ]
 })
 export class SidenavComponent implements OnInit {
@@ -37,7 +39,7 @@ export class SidenavComponent implements OnInit {
       @Input() navFromRouter: any;
       @Input() lazyLoadPath: string;
       @Output() pageTitle = new EventEmitter();
-      moduleConfig:any;
+      moduleConfig: any;
       opened = true;
 
       constructor(

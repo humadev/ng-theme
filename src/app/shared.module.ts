@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {
-      MdCardModule,
-      MdButtonModule,
-      MdDialogModule,
-      MdInputModule,
-      MdMenuModule,
-      MdGridListModule,
-      MdCheckboxModule,
-      MdSelectModule,
-      MdProgressBarModule
+      MatCardModule,
+      MatButtonModule,
+      MatDialogModule,
+      MatInputModule,
+      MatMenuModule,
+      MatGridListModule,
+      MatCheckboxModule,
+      MatSelectModule,
+      MatProgressBarModule
 } from '@angular/material';
 import { HdLayoutModule } from "./lib/hd-layout/hd-layout.module";
 import {FabSpeedDialModule} from './lib/fab-speed-dial/fab-speed-dial.module';
@@ -17,32 +17,32 @@ import {FabSpeedDialModule} from './lib/fab-speed-dial/fab-speed-dial.module';
 
 @NgModule({
       imports: [
-            MdCardModule,
-            MdButtonModule,
-            MdGridListModule,
-            MdDialogModule,
-            MdInputModule,
-            MdSelectModule,
-            MdMenuModule,
-            MdCheckboxModule,
+            MatCardModule,
+            MatButtonModule,
+            MatGridListModule,
+            MatDialogModule,
+            MatInputModule,
+            MatSelectModule,
+            MatMenuModule,
+            MatCheckboxModule,
             FlexLayoutModule,
             HdLayoutModule,
             FabSpeedDialModule,
-            MdProgressBarModule
+            MatProgressBarModule
       ],
       exports: [
-            MdCardModule,
-            MdButtonModule,
-            MdGridListModule,
-            MdDialogModule,
-            MdInputModule,
-            MdSelectModule,
-            MdMenuModule,
-            MdCheckboxModule,
+            MatCardModule,
+            MatButtonModule,
+            MatGridListModule,
+            MatDialogModule,
+            MatInputModule,
+            MatSelectModule,
+            MatMenuModule,
+            MatCheckboxModule,
             FlexLayoutModule,
             HdLayoutModule,
             FabSpeedDialModule,
-            MdProgressBarModule
+            MatProgressBarModule
       ]
 })
 export class SharedModule { }

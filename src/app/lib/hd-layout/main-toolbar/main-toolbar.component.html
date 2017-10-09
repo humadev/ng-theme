@@ -1,5 +1,5 @@
 <!-- BEGIN: Header -->
-<header class="m-grid__item    m-header"  data-minimize-mobile="hide" data-minimize-offset="200" data-minimize-mobile-offset="200" appunwraptag="" >
+<header class="m-grid__item m-header"  data-minimize-mobile="hide" data-minimize-offset="200" data-minimize-mobile-offset="200" appunwraptag="" >
 	<div class="m-container m-container--fluid m-container--full-height">
 		<div class="m-stack m-stack--ver m-stack--desktop">
 			<!-- BEGIN: Brand -->
@@ -12,25 +12,10 @@
 					</div>
 					<div class="m-stack__item m-stack__item--middle m-brand__tools">
 						<!-- BEGIN: Left Aside Minimize Toggle -->
-						<a href="javascript:;" id="m_aside_left_minimize_toggle" class="m-brand__icon m-brand__toggler m-brand__toggler--left m--visible-desktop-inline-block">
+						<a id="m_aside_left_minimize_toggle" [class]="class" (click)='toggleSidenav()'>
 							<span></span>
 						</a>
 						<!-- END -->
-						<!-- BEGIN: Responsive Aside Left Menu Toggler -->
-						<a href="javascript:;" id="m_aside_left_offcanvas_toggle" class="m-brand__icon m-brand__toggler m-brand__toggler--left m--visible-tablet-and-mobile-inline-block">
-							<span></span>
-						</a>
-						<!-- END -->
-						<!-- BEGIN: Responsive Header Menu Toggler -->
-						<a id="m_aside_header_menu_mobile_toggle" href="javascript:;" class="m-brand__icon m-brand__toggler m--visible-tablet-and-mobile-inline-block">
-							<span></span>
-						</a>
-						<!-- END -->
-						<!-- BEGIN: Topbar Toggler -->
-						<a id="m_aside_header_topbar_mobile_toggle" href="javascript:;" class="m-brand__icon m--visible-tablet-and-mobile-inline-block">
-							<i class="flaticon-more"></i>
-						</a>
-						<!-- BEGIN: Topbar Toggler -->
 					</div>
 				</div>
 			</div>
@@ -40,7 +25,7 @@
 				<div id="m_header_menu" class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-light m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-dark m-aside-header-menu-mobile--submenu-skin-dark"  >
 					<ul class="m-menu__nav  m-menu__nav--submenu-arrow">
 						<li class="m-menu__item  m-menu__item--submenu m-menu__item--rel" [class.m-menu__item--hover]='topMenuOpen' [class.m-menu__item--open-dropdown]='topMenuOpen' (click)='topMenuOpen = !topMenuOpen'  routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"   data-menu-submenu-toggle="click" aria-haspopup="true">
-							<a  href="#" class="m-menu__link m-menu__toggle">
+							<a class="m-menu__link m-menu__toggle">
 								<i class="m-menu__link-icon flaticon-add"></i>
 								<span class="m-menu__link-text">
 									Actions
@@ -202,7 +187,7 @@
 					<div class="m-stack__item m-topbar__nav-wrapper">
 						<ul class="m-topbar__nav m-nav m-nav--inline">
 							<li class="m-nav__item m-topbar__notifications m-topbar__notifications--img m-dropdown m-dropdown--large m-dropdown--header-bg-fill m-dropdown--arrow m-dropdown--align-center 	m-dropdown--mobile-full-width" data-dropdown-toggle="click" data-dropdown-persistent="true" [class.m-dropdown--open]='notificationOpen' (click)='notificationOpen = !notificationOpen' >
-								<a href="#" class="m-nav__link m-dropdown__toggle" id="m_topbar_notification_icon">
+								<a class="m-nav__link m-dropdown__toggle" id="m_topbar_notification_icon">
 									<span class="m-nav__link-badge m-badge m-badge--dot m-badge--dot-small m-badge--danger"></span>
 									<span class="m-nav__link-icon">
 										<i class="flaticon-music-2"></i>
@@ -411,14 +396,14 @@
 								</div>
                             </li>
                             <li id="m_quick_sidebar_toggle" class="m-nav__item">
-								<a href="#" class="m-nav__link m-dropdown__toggle">
+								<a class="m-nav__link m-dropdown__toggle">
 									<span class="m-nav__link-icon">
 										<i class="flaticon-chat"></i>
 									</span>
 								</a>
 							</li>
 							<li class="m-nav__item m-topbar__user-profile m-topbar__user-profile--img  m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--header-bg-fill m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" [class.m-dropdown--open]='accountOpen' (click)='accountOpen = !accountOpen' data-dropdown-toggle="click">
-								<a href="#" class="m-nav__link m-dropdown__toggle">
+								<a class="m-nav__link m-dropdown__toggle">
 									<span class="m-topbar__userpic">
 										<img src="./assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless m--img-centered" alt=""/>
 									</span>

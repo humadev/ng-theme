@@ -44,7 +44,7 @@ export function slideToUp() {
       ]),
       transition(':leave', [  // before 2.1: transition('* => void', [
         style({transform: 'translateY(0%)'}),
-        animate('0.5s ease-in-out', style({transform: 'translateY(100%)'}))
+        animate('0.5s ease-in-out', style({transform: 'translateY(-100%)'}))
       ])
     ]);
   }

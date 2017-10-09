@@ -14,8 +14,8 @@ import {
     ContentChild,
     HostBinding,
     HostListener
-} from "@angular/core";
-import {MdButton} from "@angular/material";
+} from '@angular/core';
+import {MatButton} from '@angular/material';
 
 const Z_INDEX_ITEM: number = 23;
 
@@ -54,7 +54,7 @@ export class SmdFabSpeedDialTrigger {
 })
 export class SmdFabSpeedDialActions implements AfterContentInit {
 
-    @ContentChildren(MdButton) _buttons: QueryList<MdButton>;
+    @ContentChildren(MatButton) _buttons: QueryList<MatButton>;
 
     constructor(@Inject(forwardRef(() => SmdFabSpeedDialComponent)) private _parent: SmdFabSpeedDialComponent, private renderer: Renderer) {
     }

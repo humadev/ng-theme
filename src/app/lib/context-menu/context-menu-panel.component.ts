@@ -5,7 +5,7 @@ import { contextmenu } from './context-menu';
   selector: 'hd-menu-panel',
   template: `
     <div class="hd-context-menu-panel" [style.top.px]="top" [style.left.px]="left" fxLayout="column">
-      <a md-button fxFlex *ngFor="let item of menuItem" (click)="onClick(item.method)"><md-icon>{{item.icon}}</md-icon> {{item.title}}</a>
+      <a mat-button fxFlex *ngFor="let item of menuItem" (click)="onClick(item.method)"><mat-icon>{{item.icon}}</mat-icon> {{item.title}}</a>
     </div>
   `,
   styles:[`
@@ -39,18 +39,18 @@ export class ContextMenuPanelComponent{
       @HostBinding('style.left.px') left = 0;
       @Output() menuItemClicked = new EventEmitter();
       @Input() menuItem:[contextmenu];
-      @Input() menuID:any;
+      @Input() menuID: any;
 
-  onClick(method){
+  onClick(method) {
         this.menuItemClicked.emit(method);
   }
 
   constructor(
-        public el:ElementRef
+        public el: ElementRef
   ){}
 
-   @HostListener('contextmenu',['$event'])
-      onContextMenu(event:MouseEvent):void{
+   @HostListener('contextmenu', ['$event'])
+      onContextMenu(event: MouseEvent): void {
             event.preventDefault();
       }
 }

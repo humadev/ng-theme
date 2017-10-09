@@ -1,5 +1,5 @@
 <md-sidenav-container>
-        <md-sidenav #sidenav [opened]="opened" mode='side' class="m-grid__item m-aside-left m-aside-left--skin-dark" appunwraptag="">
+        <md-sidenav #sidenav [opened]="opened" mode='side' class="m-grid__item m-aside-left m-aside-left--skin-dark" appunwraptag="" [@slideToRight]="">
             <div id="m_ver_menu" class="m-aside-menu m-aside-menu--skin-dark m-aside-menu--submenu-skin-dark" data-menu-vertical="true" data-menu-scrollable="false" data-menu-dropdown-timeout="500">
                 <ul *ngIf="nav === false; else fromVar" class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow">
                     <ng-template ngFor let-level1 [ngForOf]="navFromRouter" let-i="index">
