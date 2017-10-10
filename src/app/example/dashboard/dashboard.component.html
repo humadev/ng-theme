@@ -62,3 +62,133 @@
         Footer
     </mat-card-footer>
 </mat-card>
+
+<mat-card ngClass="hd-card" id="print-section" [@slideToUp]="">
+        <mat-card-header>
+            <mat-card-actions fxLayout fxLayoutAlign="space-between" fxLayoutWrap="nowrap">
+                <mat-input-container fxFlex [ngStyle]="{'margin':'0 20px', 'padding.px':6}">
+                      <input matInput #search placeholder="search">
+                </mat-input-container>
+                <div>
+                      <button mat-raised-button (click)="openDialog()" class="primary">Create</button>
+                      <button mat-raised-button [matMenuTriggerFor]="menu">Print</button>
+                </div>
+                <mat-menu #menu="matMenu">
+                      <button mat-menu-item>
+                            <mat-icon>dialpad</mat-icon>
+                            <span>Redial</span>
+                      </button>
+                      <button mat-menu-item disabled>
+                            <mat-icon>voicemail</mat-icon>
+                            <span>Check voicemail</span>
+                      </button>
+                      <button mat-menu-item>
+                            <mat-icon>notifications_off</mat-icon>
+                            <span>Disable alerts</span>
+                      </button>
+                </mat-menu>
+          </mat-card-actions>
+        </mat-card-header>
+        <!--<img mat-card-image src="Card wide image source">-->
+        <mat-card-content class="table-content">
+                <mat-table #table [dataSource]="rows" matSort (sortChange)="sorting($event)">
+                      <!-- ID Column -->
+                      <ng-container cdkColumnDef="name">
+                            <mat-header-cell *cdkHeaderCellDef mat-sort-header> Name </mat-header-cell>
+                            <mat-cell *cdkCellDef="let row"> {{row.first_name}} </mat-cell>
+                      </ng-container>
+    
+                      <!-- Progress Column -->
+                      <ng-container cdkColumnDef="phone">
+                            <mat-header-cell *cdkHeaderCellDef mat-sort-header> Phone </mat-header-cell>
+                            <mat-cell *cdkCellDef="let row"> {{row.mobile_phone}} </mat-cell>
+                      </ng-container>
+    
+                      <!-- Name Column -->
+                      <ng-container cdkColumnDef="address">
+                            <mat-header-cell *cdkHeaderCellDef mat-sort-header> Address </mat-header-cell>
+                            <mat-cell *cdkCellDef="let row"> {{row.home_address}} </mat-cell>
+                      </ng-container>
+    
+                      <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+                      <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+          <mat-paginator #paginator
+                [length]="10"
+                [pageIndex]="0"
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]">
+          </mat-paginator>
+        </mat-card-content>
+        <mat-card-actions align="start">
+            <button mat-raised-button class="hd-button primary">Action2</button>
+        </mat-card-actions>
+        <mat-card-footer>
+            Footer
+        </mat-card-footer>
+    </mat-card>
+
+    <mat-card ngClass="hd-card" id="print-section" [@slideToUp]="">
+            <mat-card-header>
+                <mat-card-actions fxLayout fxLayoutAlign="space-between" fxLayoutWrap="nowrap">
+                    <mat-input-container fxFlex [ngStyle]="{'margin':'0 20px', 'padding.px':6}">
+                          <input matInput #search placeholder="search">
+                    </mat-input-container>
+                    <div>
+                          <button mat-raised-button (click)="openDialog()" class="primary">Create</button>
+                          <button mat-raised-button [matMenuTriggerFor]="menu">Print</button>
+                    </div>
+                    <mat-menu #menu="matMenu">
+                          <button mat-menu-item>
+                                <mat-icon>dialpad</mat-icon>
+                                <span>Redial</span>
+                          </button>
+                          <button mat-menu-item disabled>
+                                <mat-icon>voicemail</mat-icon>
+                                <span>Check voicemail</span>
+                          </button>
+                          <button mat-menu-item>
+                                <mat-icon>notifications_off</mat-icon>
+                                <span>Disable alerts</span>
+                          </button>
+                    </mat-menu>
+              </mat-card-actions>
+            </mat-card-header>
+            <!--<img mat-card-image src="Card wide image source">-->
+            <mat-card-content class="table-content">
+                    <mat-table #table [dataSource]="rows" matSort (sortChange)="sorting($event)">
+                          <!-- ID Column -->
+                          <ng-container cdkColumnDef="name">
+                                <mat-header-cell *cdkHeaderCellDef mat-sort-header> Name </mat-header-cell>
+                                <mat-cell *cdkCellDef="let row"> {{row.first_name}} </mat-cell>
+                          </ng-container>
+        
+                          <!-- Progress Column -->
+                          <ng-container cdkColumnDef="phone">
+                                <mat-header-cell *cdkHeaderCellDef mat-sort-header> Phone </mat-header-cell>
+                                <mat-cell *cdkCellDef="let row"> {{row.mobile_phone}} </mat-cell>
+                          </ng-container>
+        
+                          <!-- Name Column -->
+                          <ng-container cdkColumnDef="address">
+                                <mat-header-cell *cdkHeaderCellDef mat-sort-header> Address </mat-header-cell>
+                                <mat-cell *cdkCellDef="let row"> {{row.home_address}} </mat-cell>
+                          </ng-container>
+        
+                          <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+                          <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+                    </mat-table>
+              <mat-paginator #paginator
+                    [length]="10"
+                    [pageIndex]="0"
+                    [pageSize]="10"
+                    [pageSizeOptions]="[5, 10, 25, 100]">
+              </mat-paginator>
+            </mat-card-content>
+            <mat-card-actions align="start">
+                <button mat-raised-button class="hd-button primary">Action2</button>
+            </mat-card-actions>
+            <mat-card-footer>
+                Footer
+            </mat-card-footer>
+        </mat-card>

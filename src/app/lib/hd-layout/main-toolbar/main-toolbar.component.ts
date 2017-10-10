@@ -1,5 +1,9 @@
-import { Component, Input, Output, EventEmitter, OnInit, ViewEncapsulation } from '@angular/core';
+import {Overlay, OverlayOrigin, OverlayConfig} from '@angular/cdk/overlay';
+import { Component, Input, Output, EventEmitter, OnInit, ViewEncapsulation, ViewChild, ViewContainerRef, QueryList, ViewChildren, ElementRef } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
+import { Portal } from '@angular/cdk/portal';
+import { TemplatePortalDirective } from '@angular/cdk/portal';
+import { ComponentPortal } from '@angular/cdk/portal';
 
 @Component({
   selector: 'hd-main-toolbar',
@@ -19,7 +23,8 @@ import { MenuService } from '../../services/menu.service';
         width:255px;
     }
   `],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  preserveWhitespaces: false
 })
 export class MainToolbarComponent implements OnInit {
       @Input() notification = false;
@@ -30,6 +35,8 @@ export class MainToolbarComponent implements OnInit {
       @Output() logout = new EventEmitter();
       @Input() titleText = 'Humadev Theme';
       @Input() titleImg: string;
+      @ViewChild('mainMenu') menu: ElementRef;
+      @ViewChildren(TemplatePortalDirective) templatePortals: QueryList<Portal<any>>;
       startMenus = this.menuService.startMenu;
       active;
       accountOpen = false;
@@ -41,10 +48,12 @@ export class MainToolbarComponent implements OnInit {
       @Output() minimize = new EventEmitter();
 
       constructor(
-            private menuService: MenuService
+            private menuService: MenuService,
+            public overlay: Overlay,
+            public viewContainerRef: ViewContainerRef
       ) {}
 
-      ngOnInit(){
+      ngOnInit() {
             this.menuService.moduleActive.subscribe(res => {
                   this.active = res;
             });
@@ -71,4 +80,26 @@ export class MainToolbarComponent implements OnInit {
       onChange(e){
             this.menuService.navigate(e.value);
       }
+
+      clickMenu(e) {
+        const config = new OverlayConfig({
+            hasBackdrop: true,
+            backdropClass: 'cdk-overlay-test',
+            positionStrategy: this.overlay.position()
+            .global()
+            .left(`0px`)
+            .top(`0px`)
+        });
+        const overlayRef = this.overlay.create(config);
+        overlayRef.attach(new ComponentPortal(this.menu.nativeElement, this.viewContainerRef));
+        overlayRef.backdropClick().subscribe(() => overlayRef.detach());
+      }
 }
+
+@Component({
+    selector: 'backdrop-panel',
+    template: '<div class="app-backdrop"></div>'
+  })
+  export class BackdropPanelComponent {
+    
+  }

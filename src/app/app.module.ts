@@ -19,7 +19,7 @@ const appRoutes: Routes = [
                   icon: 'https://sia.undiknas.ac.id/assets/icons/kalender.png',
                   isMenu: false
             },
-            children:[
+            children: [
                   {
                         path: '',
                         component: StartComponent

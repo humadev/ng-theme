@@ -1,5 +1,5 @@
 import { slideToDown } from 'app/lib/animations/router.animation';
-import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Component, Input, EventEmitter, Output, ElementRef, Renderer2 } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
@@ -26,7 +26,10 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
         </hd-sidenav>
     </div>
   `,
-  animations: [slideToDown()]
+styles: [`
+    
+`],
+animations: [slideToDown()]
 })
 export class LayoutComponent {
       @Input() titleText = 'Humadev Theme';
@@ -37,15 +40,24 @@ export class LayoutComponent {
       @Output() logout = new EventEmitter();
       class = '';
 
+      constructor(
+        private elRef: ElementRef,
+        private renderer: Renderer2
+      ){}
+
       onLogout() {
             this.logout.emit();
       }
 
     toggleSidenav(e) {
+        const content = this.elRef.nativeElement.querySelector('.mat-sidenav-content');
+        this.renderer.addClass(content, 'animate-content');
         if (e) {
             this.class = 'm-brand--minimize m-aside-left--minimize';
+            this.renderer.setStyle(content, 'margin-left', '70px');
         }else {
             this.class = '';
+            this.renderer.setStyle(content, 'margin-left', '255px');
         }
     }
 }
