@@ -1,3 +1,4 @@
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { slideToUp, slideToDown, slideToLeft } from 'app/lib/animations/router.animation';
 import { Component, OnInit, ViewChild, ElementRef, HostBinding } from '@angular/core';
 import { MatDialog, MatPaginator, MatSort } from '@angular/material';
@@ -31,30 +32,43 @@ export class DashboardComponent implements OnInit {
           }
       }
 
+    menuklikkanan = [
+        {icon: 'edit', title: 'Edit', method: this.edit, groupPermission: [0]},
+        {icon: 'delete', title: 'Delete', method: this.delete, groupPermission: [0]}
+    ];
+    rows: any | null;
+    displayedColumns = ['name', 'phone', 'address'];
+    @ViewChild('search') search: ElementRef;
+    @ViewChild('MatSort') sort: MatSort;
+    @ViewChild('MatPaginator') paginator: MatPaginator;
+
+    testForm = this.fb.group({
+        nama: ['', Validators.required]
+    });
+
+    orang = [
+        {id: 1, nama: 'satu'},
+        {id: 2, nama: 'dua'},
+        {id: 3, nama: 'tiga'},
+        {id: 4, nama: 'empat'},
+        {id: 5, nama: 'limat'}
+    ];
+
       _click(event: any) {
           console.log(event);
       }
 
-      menuklikkanan = [
-            {icon: 'edit', title: 'Edit', method: this.edit, groupPermission: [0]},
-            {icon: 'delete', title: 'Delete', method: this.delete, groupPermission: [0]}
-      ];
-      rows: any | null;
-      displayedColumns = ['name', 'phone', 'address'];
-      @ViewChild('search') search: ElementRef;
-      @ViewChild('MatSort') sort: MatSort;
-      @ViewChild('MatPaginator') paginator: MatPaginator;
-
       constructor(
             public dialog: MatDialog,
             private ds: DataService,
-            private _ls: LayoutService
+            private _ls: LayoutService,
+            private fb: FormBuilder
       ) {
             _ls.pageProgressBar = true;
       }
 
       ngOnInit() {
-            let data = new TableAdapter(
+            const data = new TableAdapter(
                   this.ds.setData()
             );
             data.sourceData.subscribe(res => this._ls.pageProgressBar = false);
@@ -77,6 +91,11 @@ export class DashboardComponent implements OnInit {
                   disableClose: true
             };
             this.dialog.open(ModalComponent, config);
+      }
+
+      displayFn(e) {
+          console.log(e);
+        return e;
       }
 
 }

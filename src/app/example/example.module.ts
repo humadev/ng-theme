@@ -7,7 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ModalComponent } from './modal/modal.component';
 import { ExampleComponent } from './example.component';
-import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { MatTableModule, MatPaginatorModule, MatSortModule, MatAutocompleteModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 
 
@@ -119,6 +119,7 @@ const appRoutes: Routes = [
             MatSortModule,
             CdkTableModule,
             FlexLayoutModule,
+            MatAutocompleteModule,
             ApolloModule.forRoot(provideClient),
       ],
       providers: [DataService],

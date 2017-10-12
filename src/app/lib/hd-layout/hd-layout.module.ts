@@ -15,12 +15,16 @@ import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
-import { MainToolbarComponent, BackdropPanelComponent } from './main-toolbar/main-toolbar.component';
+import { MainToolbarComponent } from './main-toolbar/main-toolbar.component';
 import { PageToolbarComponent } from './page-toolbar/page-toolbar.component';
 import { StartPageComponent } from './start-page/start-page.component';
 import { MenuService } from '../services/menu.service';
 import { FormsModule } from '@angular/forms';
 import { LayoutService } from '../services/layout.service';
+import { OverlayContainer } from '@angular/cdk/overlay';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { PopMenuDirective } from 'app/lib/directives/pop-menu.directive';
+import { PortalModule } from '@angular/cdk/portal';
 
 @NgModule({
   imports: [
@@ -35,7 +39,9 @@ import { LayoutService } from '../services/layout.service';
       MatProgressBarModule,
       MatSelectModule,
       RouterModule,
-      FormsModule
+      FormsModule,
+      OverlayModule,
+      PortalModule
   ],
   exports: [
       LayoutComponent,
@@ -44,10 +50,17 @@ import { LayoutService } from '../services/layout.service';
       SidenavComponent,
       BreadcrumbComponent,
       StartPageComponent,
-      BackdropPanelComponent
+      PopMenuDirective
   ],
-  declarations: [BackdropPanelComponent, LayoutComponent, BreadcrumbComponent, SidenavComponent, MainToolbarComponent, PageToolbarComponent, StartPageComponent],
-  providers: [MenuService, LayoutService],
-  entryComponents: [BackdropPanelComponent]
+declarations: [
+      LayoutComponent,
+      BreadcrumbComponent,
+      SidenavComponent,
+      MainToolbarComponent,
+      PageToolbarComponent,
+      StartPageComponent,
+      PopMenuDirective
+],
+  providers: [MenuService, LayoutService, OverlayContainer]
 })
 export class HdLayoutModule { }

@@ -24,7 +24,7 @@
 				<!-- BEGIN: Horizontal Menu -->
 				<div id="m_header_menu" class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-light m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-dark m-aside-header-menu-mobile--submenu-skin-dark"  >
 					<ul class="m-menu__nav  m-menu__nav--submenu-arrow">
-						<li class="m-menu__item  m-menu__item--submenu m-menu__item--rel">
+						<li class="m-menu__item  m-menu__item--submenu m-menu__item--rel" (click)="clickMenu($event)" cdk-overlay-origin #mainMenu="cdkOverlayOrigin">
 							<a class="m-menu__link m-menu__toggle">
 								<i class="m-menu__link-icon flaticon-squares-3"></i>
 								<span class="m-menu__link-text">
@@ -32,20 +32,22 @@
 								</span>
 								<i class="m-menu__hor-arrow la la-angle-down"></i>
 								<i class="m-menu__ver-arrow la la-angle-right"></i>
-							</a>
-							<div #mainMenu class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left">
-								<span class="m-menu__arrow m-menu__arrow--adjust"></span>
-								<ul class="m-menu__subnav">
-									<li *ngFor="let menu of startMenus" class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"   aria-haspopup="true">
-										<a  routerLink="/header/actions" class="m-menu__link">
-											<i class="m-menu__link-icon"><img [src]="menu.data.icon" style="width:25px"></i>
-											<span class="m-menu__link-text">
-												{{menu.data.title}}
-											</span>
-										</a>
-									</li>
-								</ul>
-							</div>
+                            </a>
+                            <ng-template cdk-portal>
+                                <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left">
+                                    <span class="m-menu__arrow m-menu__arrow--adjust"></span>
+                                    <ul class="m-menu__subnav">
+                                        <li *ngFor="let menu of startMenus" class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"   aria-haspopup="true">
+                                            <a  routerLink="/header/actions" class="m-menu__link">
+                                                <i class="m-menu__link-icon"><img [src]="menu.data.icon" style="width:25px"></i>
+                                                <span class="m-menu__link-text">
+                                                    {{menu.data.title}}
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </ng-template>
 						</li>
 					</ul>
 				</div>

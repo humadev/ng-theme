@@ -1,3 +1,4 @@
+asdfasf
 <mat-card ngClass="hd-card" id="print-section" [@slideToUp]="">
     <mat-card-header>
         <mat-card-actions fxLayout fxLayoutAlign="space-between" fxLayoutWrap="nowrap">
@@ -192,3 +193,14 @@
                 Footer
             </mat-card-footer>
         </mat-card>
+
+        <form [formGroup]='testForm'>
+            <mat-form-field>
+              <input matInput type="text" placeholder="nama" mdInput formControlName="nama" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let option of orang" [value]="option.id">
+                  {{ option.nama }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form>
