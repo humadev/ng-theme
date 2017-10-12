@@ -32,24 +32,6 @@ import { PopMenuDirective } from 'app/lib/directives/pop-menu.directive';
     .m-brand{
         width:255px;
     }
-    @media (min-width: 993px)
-    .m-header-menu .m-menu__nav.m-menu__nav--submenu-arrow > .m-menu__item.m-menu__item--submenu.m-menu__item--hover > .m-menu__submenu {
-        padding-top: 10px;
-    }
-    @media (min-width: 993px)
-    .m-header-menu .m-menu__nav .m-menu__item.m-menu__item--hover .m-menu__submenu {
-        display: block;
-        -webkit-animation: m-header-menu-submenu-fade-in .3s ease 1, m-header-menu-submenu-move-up .3s ease-out 1;
-        -moz-animation: m-header-menu-submenu-fade-in .3s ease 1, m-header-menu-submenu-move-up .3s ease-out 1;
-        -ms-animation: m-header-menu-submenu-fade-in .3s ease 1, m-header-menu-submenu-move-up .3s ease-out 1;
-        -o-animation: m-header-menu-submenu-fade-in .3s ease 1, m-header-menu-submenu-move-up .3s ease-out 1;
-        animation: m-header-menu-submenu-fade-in .3s ease 1, m-header-menu-submenu-move-up .3s ease-out 1;
-    },
-    @media (min-width: 993px)
-    .m-header-menu .m-menu__nav > .m-menu__item .m-menu__submenu.m-menu__submenu--left {
-        right: auto;
-        left: 0;
-    }
   `],
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false
@@ -112,11 +94,12 @@ export class MainToolbarComponent implements OnInit {
       clickMenu(e) {
         const config = new OverlayConfig({
             hasBackdrop: true,
+            backdropClass: 'menu-overlay-backdrop',
             scrollStrategy: this.overlay.scrollStrategies.block(),
             positionStrategy: this.overlay.position().connectedTo(
                 this.menu.elementRef,
-                {originX: 'end', originY: 'bottom'},
-                {overlayX: 'end', overlayY: 'top'}
+                {originX: 'start', originY: 'bottom'},
+                {overlayX: 'start', overlayY: 'top'}
             )
         });
         const overlayRef = this.overlay.create(config);
