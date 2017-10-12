@@ -11,17 +11,17 @@ hd-login{
       position: fixed;
 }
 
-md-card.hd-login{
+mat-card.hd-login{
       padding-left: 0;
       padding-right: 0;
-      md-card-header{
+      mat-card-header{
             background-color: $color-1;
             padding:20px;
             color:$color-2;
             margin-left:-4px;
             margin-right:-4px;
             text-align: center !important;
-            md-card-title{
+            mat-card-title{
                   width:100%;
                   font-size: 20px !important;
                   padding:0;
@@ -29,10 +29,10 @@ md-card.hd-login{
                   text-align: center !important;
             }
       }
-      md-card-actions{
+      mat-card-actions{
             padding: 0 35px;
       }
-      md-card-content{
+      mat-card-content{
             padding: 40px 20px;
             display:flex;
             flex-direction: column;
@@ -45,7 +45,7 @@ body {
 //   font-family: Roboto, sans-serif;
 }
 
-md-toolbar-row {
+mat-toolbar-row {
   justify-content: space-between;
 }
 
@@ -56,7 +56,7 @@ md-toolbar-row {
   color: white;
 }
 
-html, body, material-app, md-sidenav-container, .my-content {
+html, body, material-app, mat-sidenav-container, .my-content {
   margin: 0;
   width: 100%;
   height: 100%;
@@ -86,7 +86,7 @@ html, body, material-app, md-sidenav-container, .my-content {
 
 //all toolbar
 
-md-toolbar.hd-main-toolbar{
+mat-toolbar.hd-main-toolbar{
       padding:0;
       // min-height: 50px;
       // height:50px;
@@ -99,7 +99,7 @@ md-toolbar.hd-main-toolbar{
             line-height: 1;
             min-width: 0;
             vertical-align: middle;
-            md-icon{
+            mat-icon{
                   font-size: 20px;
                   vertical-align: middle;
                   padding:0;
@@ -114,7 +114,7 @@ md-toolbar.hd-main-toolbar{
             line-height: 1;
             min-width: 0;
             vertical-align: middle;
-            md-icon{
+            mat-icon{
                   font-size: 20px;
                   vertical-align: middle;
                   padding:0;
@@ -129,7 +129,7 @@ md-toolbar.hd-main-toolbar{
             line-height: 1;
             min-width: 0;
             vertical-align: middle;
-            md-icon{
+            mat-icon{
                   font-size: 20px;
                   vertical-align: middle;
                   padding:0;
@@ -144,7 +144,7 @@ md-toolbar.hd-main-toolbar{
       }
 }
 
-md-toolbar.hd-side-toolbar{
+mat-toolbar.hd-side-toolbar{
       font-size: 18px;
       min-height: 50px;
       height:50px;
@@ -153,7 +153,7 @@ md-toolbar.hd-side-toolbar{
       text-transform: uppercase;
 }
 
-md-toolbar.hd-page-toolbar{
+mat-toolbar.hd-page-toolbar{
       font-size: 12px;
       padding: 0 20px;
       color:$color-1;
@@ -165,14 +165,14 @@ md-toolbar.hd-page-toolbar{
 
 
 //sidenav
-md-sidenav-container.hd-sidenav-container{
+mat-sidenav-container.hd-sidenav-container{
       background-color: $color-4;
 }
 
-md-sidenav.hd-sidenav{
+mat-sidenav.hd-sidenav{
       background-color: $color-5;
       color:$color-4;
-      md-nav-list{
+      mat-nav-list{
             padding-top: 0;
       }
       .mat-button{
@@ -189,12 +189,12 @@ md-sidenav.hd-sidenav{
                   font-size: 14px;
                   flex-wrap: nowrap;
                   justify-content: space-between;
-                  md-icon{
+                  mat-icon{
                         font-size: 20px;
                         margin-right:10px;
                         margin-top:-3px;
                   }
-                  md-icon.hd-menu-parent{
+                  mat-icon.hd-menu-parent{
                         margin-right:0;
                   }
             }
@@ -251,11 +251,11 @@ ul.hd-breadcrumb li a:hover {
 
 //end of page
 
-md-card.hd-card{
+mat-card.hd-card{
       max-width: 100%;
       margin:0;
       padding:0;
-      md-card-header{
+      mat-card-header{
             padding:10px;
             margin:0;
             background: $color-6;
@@ -263,19 +263,19 @@ md-card.hd-card{
             .mat-card-header-text{
                   margin:0;
             }
-            md-card-title{
+            mat-card-title{
                   padding:0;
                   margin:0;
                   text-align: left;
                   color:$color-1;
                   font-size:20px !important;
             }
-            md-card-subtitle{
+            mat-card-subtitle{
                   color:$color-3;
                   padding:0;
                   margin:0 !important;
             }
-            md-card-actions{
+            mat-card-actions{
                   border-top:none;
                   background-color: none;
                   font-size: 12px;
@@ -287,7 +287,7 @@ md-card.hd-card{
                   width: auto;
             }
       }
-      md-card-content{
+      mat-card-content{
             padding:20px;
             margin:0;
             text-align: left;
@@ -298,7 +298,7 @@ md-card.hd-card{
             }
       }
 
-      md-card-actions{
+      mat-card-actions{
             border-top:thin solid $color-4;
             background-color: $color-6;
             color:$color-3;
@@ -311,7 +311,7 @@ md-card.hd-card{
             width: auto;
       }
 
-      md-card-footer{
+      mat-card-footer{
             border-top:1px solid $color-4;
             background-color: $color-6;
             color:$color-3;
@@ -358,7 +358,7 @@ hd-menu-panel{
       min-width: 400px;
 }
 
-[md-dialog-title]{
+[mat-dialog-title]{
       background: $color-6;
       color:$color-1;
       padding:20px;
@@ -388,7 +388,7 @@ hd-menu-panel{
             padding:0px 10px !important;
             font-size:13px !important;
             color:$color-3;
-            md-icon{
+            mat-icon{
                   font-size:15px !important;
                   height: 18px !important;
                   padding:0;
@@ -398,7 +398,7 @@ hd-menu-panel{
       }
       button:hover{
             color:$color-1;
-            md-icon{
+            mat-icon{
                   color:$color-1;
             }
       }
@@ -434,7 +434,7 @@ hd-start-page .menubox {
       text-decoration: none;
       padding-top:40px;
 }
-hd-start-page md-grid-tile md-grid-tile-footer{
+hd-start-page mat-grid-tile mat-grid-tile-footer{
       text-align: center;
       background: white;
       color:$color-5 !important;
@@ -451,7 +451,7 @@ hd-start-page md-grid-tile md-grid-tile-footer{
       padding-bottom:40px;
 }
 
-hd-start-page md-grid-tile{
+hd-start-page mat-grid-tile{
       //border:thin solid $color-1;
 }
 
@@ -474,4 +474,12 @@ hd-start-page .container{
       font-size: 14px !important;
       text-transform: uppercase !important;
       font-weight: bold !important;
+}
+
+.animate-content {
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
 }

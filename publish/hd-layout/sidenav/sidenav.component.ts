@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { MenuService } from '../../services/menu.service';
@@ -32,7 +32,7 @@ import { slideToRight } from 'app/lib/animations/router.animation';
         slideToRight()
       ]
 })
-export class SidenavComponent implements OnInit {
+export class SidenavComponent implements OnInit, AfterViewInit {
 
       @Input() nav: any = false;
       @Input() lazyLoadModule: any = false;
@@ -52,6 +52,9 @@ export class SidenavComponent implements OnInit {
             if (this.nav === false) {
                   this.menuService.sidenav.subscribe(res => this.navFromRouter = res);
             }
+      }
+
+      ngAfterViewInit() {
       }
 
       parentOpen(i: any) {

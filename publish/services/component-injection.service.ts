@@ -7,7 +7,7 @@ import {
  * Injection service is a helper to append components
  * dynamically to a known location in the DOM, most
  * noteably for dialogs/tooltips appending to body.
- * 
+ *
  * @export
  * @class InjectionService
  */
@@ -40,9 +40,9 @@ export class ComponentInjectionService {
   /**
    * Overrides the default root view container. This is useful for 
    * things like ngUpgrade that doesn't have a ApplicationRef root.
-   * 
+   *
    * @param {any} container
-   * 
+   *
    * @memberOf InjectionService
    */
   setRootViewContainer(container): void {
@@ -51,10 +51,10 @@ export class ComponentInjectionService {
 
   /**
    * Gets the html element for a component ref.
-   * 
+   *
    * @param {ComponentRef<any>} componentRef
    * @returns {HTMLElement}
-   * 
+   *
    * @memberOf InjectionService
    */
   getComponentRootNode(componentRef: ComponentRef<any>): HTMLElement {
@@ -63,9 +63,9 @@ export class ComponentInjectionService {
 
   /**
    * Gets the root component container html element.
-   * 
+   *
    * @returns {HTMLElement}
-   * 
+   *
    * @memberOf InjectionService
    */
   getRootViewContainerNode(): HTMLElement {
@@ -74,17 +74,17 @@ export class ComponentInjectionService {
 
   /**
    * Projects the inputs onto the component
-   * 
+   *
    * @param {ComponentRef<any>} component
    * @param {*} options
    * @returns {ComponentRef<any>}
-   * 
+   *
    * @memberOf InjectionService
    */
   projectComponentInputs(component: ComponentRef<any>, options: any): ComponentRef<any> {
-    if(options) {
+    if (options) {
       const props = Object.getOwnPropertyNames(options);
-      for(const prop of props) {
+      for (const prop of props) {
         component.instance[prop] = options[prop];
       }
     }
@@ -94,24 +94,24 @@ export class ComponentInjectionService {
 
   /**
    * Appends a component to a adjacent location
-   * 
+   *
    * @template T
    * @param {Type<T>} componentClass
    * @param {*} [options={}]
    * @param {Element} [location=this.getRootViewContainerNode()]
    * @returns {ComponentRef<any>}
-   * 
+   *
    * @memberOf InjectionService
    */
   appendComponent<T>(
-    componentClass: Type<T>, 
-    options: any = {}, 
+    componentClass: Type<T>,
+    options: any = {},
     location: Element = this.getRootViewContainerNode()): ComponentRef<any> {
 
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentClass);
-    let componentRef = componentFactory.create(this.injector);
-    let appRef: any = this.applicationRef;
-    let componentRootNode = this.getComponentRootNode(componentRef);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentClass);
+    const componentRef = componentFactory.create(this.injector);
+    const appRef: any = this.applicationRef;
+    const componentRootNode = this.getComponentRootNode(componentRef);
 
     // project the options passed to the component instance
     this.projectComponentInputs(componentRef, options);
@@ -128,8 +128,8 @@ export class ComponentInjectionService {
       // When creating a component outside of a ViewContainer, we need to manually register
       // its ChangeDetector with the application. This API is unfortunately not published
       // in Angular <= 2.2.0. The change detector must also be deregistered when the component
-      // is destroyed to prevent memory leaks.      
-      let changeDetectorRef = componentRef.changeDetectorRef;
+      // is destroyed to prevent memory leaks.
+      const changeDetectorRef = componentRef.changeDetectorRef;
       appRef.registerChangeDetector(changeDetectorRef);
 
       componentRef.onDestroy(() => {

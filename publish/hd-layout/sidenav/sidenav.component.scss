@@ -1,6 +1,4 @@
-md-sidenav-container{
-   top: 64px !important;
-    position: fixed;
+mat-sidenav-container{
     background:#f2f3f8;
 }
 .m-aside-left.m-aside-left--skin-dark {
@@ -50,4 +48,8 @@ dl, ol, ul {
     height: 100%;
     vertical-align: middle;
     line-height: 0;
+}
+
+.mat-drawer{
+    min-width: 4vw !important;
 }

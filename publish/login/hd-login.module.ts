@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MdCardModule, MdInputModule, MdButtonModule, MdIconModule } from '@angular/material';
-import { LoginComponent } from "./login.component";
-import { ReactiveFormsModule } from "@angular/forms";
+import { MatCardModule, MatInputModule, MatButtonModule, MatIconModule } from '@angular/material';
+import { LoginComponent } from './login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    MdCardModule,
-    MdInputModule,
-    MdIconModule,
-    MdButtonModule,
+    MatCardModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule,
     ReactiveFormsModule
   ],
-  exports:[
+  exports: [
         LoginComponent
   ],
   declarations: [LoginComponent]

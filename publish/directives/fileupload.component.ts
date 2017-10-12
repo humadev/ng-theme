@@ -5,9 +5,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   template: `
     <div>
       <img [src]="image" style="max-height:300px; max-width:200px" *ngIf="image"><br>
-      <button md-raised-button color="{{color}}" type="button" (click)="file.click()">{{buttonText}}</button>
+      <button mat-raised-button color="{{color}}" type="button" (click)="file.click()">{{buttonText}}</button>
       <input type='file' (change)="fileChange($event)" name="{{name}}" style="display:none" #file>
-    </div>  
+    </div>
   `,
   styles: [`
     div{
@@ -17,18 +17,18 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class FileUploadComponent{
 
-  @Input() color = "primary";
+  @Input() color = 'primary';
   @Input() image;
-  @Input() name = "file";
-  @Input() buttonText = "choose file";
+  @Input() name = 'file';
+  @Input() buttonText = 'choose file';
   @Output() getFile = new EventEmitter();
   @Output() getBase64 = new EventEmitter();
 
   fileChange(event){
-    let fileList: FileList = event.target.files;
-    if(fileList.length > 0) {
-        let file: File = fileList[0];
-        let myReader: FileReader = new FileReader();
+    const fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+        const file: File = fileList[0];
+        const myReader: FileReader = new FileReader();
         myReader.onloadend = (e) => {
           this.image = myReader.result;
           this.getBase64.emit(this.image);
@@ -37,5 +37,4 @@ export class FileUploadComponent{
         myReader.readAsDataURL(file);
     }
   }
-
 }

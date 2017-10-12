@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-      MdSidenavModule,
-      MdToolbarModule,
-      MdButtonModule,
-      MdListModule,
-      MdMenuModule,
-      MdIconModule,
-      MdGridListModule,
-      MdSelectModule,
-      MdProgressBarModule
+      MatSidenavModule,
+      MatToolbarModule,
+      MatButtonModule,
+      MatListModule,
+      MatMenuModule,
+      MatIconModule,
+      MatGridListModule,
+      MatSelectModule,
+      MatProgressBarModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
@@ -21,21 +21,27 @@ import { StartPageComponent } from './start-page/start-page.component';
 import { MenuService } from '../services/menu.service';
 import { FormsModule } from '@angular/forms';
 import { LayoutService } from '../services/layout.service';
+import { OverlayContainer } from '@angular/cdk/overlay';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { PopMenuDirective } from 'app/lib/directives/pop-menu.directive';
+import { PortalModule } from '@angular/cdk/portal';
 
 @NgModule({
   imports: [
       CommonModule,
-      MdSidenavModule,
-      MdToolbarModule,
-      MdButtonModule,
-      MdListModule,
-      MdMenuModule,
-      MdIconModule,
-      MdGridListModule,
-      MdProgressBarModule,
-      MdSelectModule,
+      MatSidenavModule,
+      MatToolbarModule,
+      MatButtonModule,
+      MatListModule,
+      MatMenuModule,
+      MatIconModule,
+      MatGridListModule,
+      MatProgressBarModule,
+      MatSelectModule,
       RouterModule,
-      FormsModule
+      FormsModule,
+      OverlayModule,
+      PortalModule
   ],
   exports: [
       LayoutComponent,
@@ -43,9 +49,18 @@ import { LayoutService } from '../services/layout.service';
       PageToolbarComponent,
       SidenavComponent,
       BreadcrumbComponent,
-      StartPageComponent
+      StartPageComponent,
+      PopMenuDirective
   ],
-  declarations: [LayoutComponent, BreadcrumbComponent, SidenavComponent, MainToolbarComponent, PageToolbarComponent, StartPageComponent],
-  providers: [MenuService, LayoutService]
+declarations: [
+      LayoutComponent,
+      BreadcrumbComponent,
+      SidenavComponent,
+      MainToolbarComponent,
+      PageToolbarComponent,
+      StartPageComponent,
+      PopMenuDirective
+],
+  providers: [MenuService, LayoutService, OverlayContainer]
 })
 export class HdLayoutModule { }
