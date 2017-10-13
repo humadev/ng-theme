@@ -576,20 +576,6 @@ hd-start-page .container{
             -o-border-radius: 4px;
             border-radius: 4px;
       }
-
-      .cdk-overlay-container .cdk-overlay-pane .m-menu__submenu>.m-menu__subnav>.m-menu__item {
-            padding: 10px 20px;
-        }
-        .cdk-overlay-container .cdk-overlay-pane .m-menu__submenu .m-menu__nav>.m-menu__item .m-menu__inner>.m-menu__item, .cdk-overlay-container .cdk-overlay-pane .m-menu__submenu .m-menu__nav>.m-menu__item .m-menu__subnav>.m-menu__item {
-            display: block;
-            margin: 0;
-            padding: 10px 20px;
-        }
-
-        .m-header-menu .m-menu__nav>.m-menu__item .m-menu__submenu>.m-menu__subnav>.m-menu__item>.m-menu__link {
-            padding: 9px 30px;
-        }
-        //
         .cdk-overlay-container .cdk-overlay-pane .m-menu__submenu .m-menu__nav>.m-menu__item .m-menu__inner>.m-menu__item .m-menu__link, .cdk-overlay-container .cdk-overlay-pane .m-menu__submenu .m-menu__nav>.m-menu__item .m-menu__subnav>.m-menu__item .m-menu__link {
             display: table;
             table-layout: fixed;
@@ -611,60 +597,5 @@ hd-start-page .container{
         }
         [role=button], a, area, button, input, label, select, summary, textarea {
             touch-action: manipulation;
-        }
-        a {
-            color: #5867dd;
-            text-decoration: none;
-            background-color: transparent;
-            -webkit-text-decoration-skip: objects;
-        }
-
-        .cdk-overlay-container .cdk-overlay-pane .m-menu__submenu .m-menu__nav>.m-menu__item .m-menu__submenu>.m-menu__subnav>.m-menu__item>.m-menu__link .m-menu__link-icon {
-            color: #b8bece;
-        }
-        .cdk-overlay-container .cdk-overlay-pane .m-menu__submenu .m-menu__nav>.m-menu__item .m-menu__submenu>.m-menu__subnav>.m-menu__item>.m-menu__link .m-menu__link-icon {
-            font-size: 1.4rem;
-            width: 33px;
-            text-align: left;
-            padding: 0;
-            line-height: 0;
-        }
-        .cdk-overlay-container .cdk-overlay-pane .m-menu__submenu .m-menu__nav>.m-menu__item .m-menu__inner>.m-menu__item .m-menu__link .m-menu__link-icon, .cdk-overlay-container .cdk-overlay-pane .m-menu__submenu .m-menu__nav>.m-menu__item .m-menu__subnav>.m-menu__item .m-menu__link .m-menu__link-icon {
-            display: table-cell;
-            vertical-align: middle;
-            padding: 0;
-            font-size: 1.4rem;
-            width: 33px;
-            text-align: left;
-        }
-        .cdk-overlay-container .cdk-overlay-pane .m-menu__submenu .m-menu__nav>.m-menu__item .m-menu__link .m-menu__link-icon {
-            display: table-cell;
-            vertical-align: middle;
-            font-size: 18px;
-        }
-
-        .cdk-overlay-container .cdk-overlay-pane .m-menu__submenu .m-menu__nav>.m-menu__item .m-menu__submenu>.m-menu__subnav>.m-menu__item>.m-menu__link .m-menu__link-text {
-            color: #676c7b;
-        }
-        
-        .cdk-overlay-container .cdk-overlay-pane .m-menu__submenu .m-menu__nav>.m-menu__item .m-menu__submenu>.m-menu__subnav>.m-menu__item>.m-menu__link .m-menu__link-text {
-            font-weight: 400;
-            font-size: 1rem;
-            text-transform: initial;
-        }
-        
-        .cdk-overlay-container .cdk-overlay-pane .m-menu__submenu .m-menu__nav>.m-menu__item .m-menu__inner>.m-menu__item .m-menu__link .m-menu__link-text, .cdk-overlay-container .cdk-overlay-pane .m-menu__submenu .m-menu__nav>.m-menu__item .m-menu__subnav>.m-menu__item .m-menu__link .m-menu__link-text {
-            display: table-cell;
-            vertical-align: middle;
-            font-weight: 400;
-            font-size: 1rem;
-            text-transform: initial;
-        }
-        .cdk-overlay-container .cdk-overlay-pane .m-menu__submenu .m-menu__nav>.m-menu__item .m-menu__link .m-menu__link-text {
-            display: table-cell;
-            height: 100%;
-            width: 100%;
-            padding: 0;
-            vertical-align: middle;
         }
 }

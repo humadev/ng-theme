@@ -32,6 +32,36 @@ import { PopMenuDirective } from 'app/lib/directives/pop-menu.directive';
     .m-brand{
         width:255px;
     }
+
+    .m-menu__link {
+        padding: 9px 15px;
+        text-decoration:none !important;
+    }
+
+    .m-menu__link-text {
+        color: #676c7b;
+        font-weight: 400;
+        font-size: 1rem;
+        text-transform: initial;
+    }
+
+    .m-menu__link-text:hover{
+        color: #214E8D !important;
+    }
+
+    .m-menu__link-icon {
+        color: #b8bece;
+        text-align: left;
+        line-height: 0;
+        padding: 0;
+        width: 33px;
+        font-size: 18px;
+        text-transform: initial;
+        font-weight: 400;
+        font-size: 1rem;
+        text-transform: initial;
+        display: table-cell;
+    }
   `],
   encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false
@@ -58,9 +88,7 @@ export class MainToolbarComponent implements OnInit {
       @Output() minimize = new EventEmitter();
 
       constructor(
-            private menuService: MenuService,
-            public overlay: Overlay,
-            public viewContainerRef: ViewContainerRef
+            private menuService: MenuService
       ) {}
 
       ngOnInit() {
@@ -89,23 +117,5 @@ export class MainToolbarComponent implements OnInit {
 
       onChange(e) {
             this.menuService.navigate(e.value);
-      }
-
-      clickMenu(e) {
-        const config = new OverlayConfig({
-            hasBackdrop: true,
-            backdropClass: 'menu-overlay-backdrop',
-            scrollStrategy: this.overlay.scrollStrategies.block(),
-            positionStrategy: this.overlay.position().connectedTo(
-                this.menu.elementRef,
-                {originX: 'start', originY: 'bottom'},
-                {overlayX: 'start', overlayY: 'top'}
-            )
-        });
-        const overlayRef = this.overlay.create(config);
-        overlayRef.attach(this.templatePortals.first);
-        overlayRef.backdropClick().subscribe(() => {
-            overlayRef.detach();
-        });
       }
 }
