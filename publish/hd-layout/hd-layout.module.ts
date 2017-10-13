@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-      MdSidenavModule,
-      MdToolbarModule,
-      MdButtonModule,
-      MdListModule,
-      MdMenuModule,
-      MdIconModule,
-      MdGridListModule,
-      MdSelectModule,
-      MdProgressBarModule
+      MatSidenavModule,
+      MatToolbarModule,
+      MatButtonModule,
+      MatListModule,
+      MatMenuModule,
+      MatIconModule,
+      MatGridListModule,
+      MatSelectModule,
+      MatProgressBarModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
@@ -25,15 +25,15 @@ import { LayoutService } from '../services/layout.service';
 @NgModule({
   imports: [
       CommonModule,
-      MdSidenavModule,
-      MdToolbarModule,
-      MdButtonModule,
-      MdListModule,
-      MdMenuModule,
-      MdIconModule,
-      MdGridListModule,
-      MdProgressBarModule,
-      MdSelectModule,
+      MatSidenavModule,
+      MatToolbarModule,
+      MatButtonModule,
+      MatListModule,
+      MatMenuModule,
+      MatIconModule,
+      MatGridListModule,
+      MatProgressBarModule,
+      MatSelectModule,
       RouterModule,
       FormsModule
   ],

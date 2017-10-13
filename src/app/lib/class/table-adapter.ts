@@ -1,6 +1,6 @@
 import { Observable, Subject, BehaviorSubject } from 'rxjs/Rx';
 import { DataSource } from '@angular/cdk/table';
-import { MdPaginator, MdSort } from '@angular/material';
+import { MatPaginator, MatSort } from '@angular/material';
 import { ElementRef } from '@angular/core';
 
 interface Pagination {
@@ -33,8 +33,8 @@ export class TableAdapter extends DataSource<any> {
       constructor(
             private _data: any,
             private _displayedColumns?: string[],
-            private _paginator?: MdPaginator,
-            private _sort?: MdSort,
+            private _paginator?: MatPaginator,
+            private _sort?: MatSort,
             private _searchColumns?: string[],
             private _filterInput?: ElementRef
       ) {

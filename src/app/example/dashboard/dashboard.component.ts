@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { MdDialog, MdPaginator, MdSort } from "@angular/material";
-import { ModalComponent } from "./../modal/modal.component";
-import { DataSource } from "@angular/cdk/table";
-import { Observable } from "rxjs/Rx";
-import { DataService } from "./../data.service";
-import { TableAdapter } from "app/lib/class/table-adapter";
-import { LayoutService } from "app/lib/services/layout.service";
+import { MatDialog, MatPaginator, MatSort } from '@angular/material';
+import { ModalComponent } from './../modal/modal.component';
+import { DataSource } from '@angular/cdk/table';
+import { Observable } from 'rxjs/Rx';
+import { DataService } from './../data.service';
+import { TableAdapter } from 'app/lib/class/table-adapter';
+import { LayoutService } from 'app/lib/services/layout.service';
 
 @Component({
   selector: 'hd-dashboard-example',
@@ -20,6 +20,16 @@ export class DashboardComponent implements OnInit {
       spin: boolean = true;
       direction: string = 'down';
       animationMode: string = 'scale';
+      menuklikkanan = [
+        {icon: 'edit', title: 'Edit', method: this.edit, groupPermission: [0]},
+        {icon: 'delete', title: 'Delete', method: this.delete, groupPermission: [0]}
+    ];
+    rows: any | null;
+    displayedColumns = ['name', 'phone', 'address'];
+    @ViewChild('search') search: ElementRef;
+    @ViewChild('MdSort') sort: MatSort;
+    @ViewChild('MdPaginator') paginator: MatPaginator;
+
 
       get fixed() { return this._fixed; }
       set fixed(fixed: boolean) {
@@ -33,18 +43,8 @@ export class DashboardComponent implements OnInit {
           console.log(event);
       }
 
-      menuklikkanan = [
-            {icon: 'edit', title: 'Edit', method: this.edit, groupPermission: [0]},
-            {icon: 'delete', title: 'Delete', method: this.delete, groupPermission: [0]}
-      ];
-      rows: any | null;
-      displayedColumns = ['name', 'phone', 'address'];
-      @ViewChild('search') search: ElementRef;
-      @ViewChild('MdSort') sort: MdSort;
-      @ViewChild('MdPaginator') paginator: MdPaginator;
-
       constructor(
-            public dialog: MdDialog,
+            public dialog: MatDialog,
             private ds: DataService,
             private _ls: LayoutService
       ) {
