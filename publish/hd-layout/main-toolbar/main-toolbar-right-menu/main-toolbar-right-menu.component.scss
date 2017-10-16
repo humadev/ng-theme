@@ -1,0 +1,22 @@
+.right-menu{
+    display: table;
+    table-layout: fixed;
+    width: auto;
+    height: 100%;
+    float: right;
+    padding: 0px;
+}
+
+.right-menu-wrapper{
+    display: table-cell;
+    vertical-align: top;
+    height: 100%;
+}
+
+.right-menu-list{
+    margin: 0 20px 0 30px;
+    display: inline-block;
+    width: auto;
+    padding: 0;
+    list-style: none;
+}

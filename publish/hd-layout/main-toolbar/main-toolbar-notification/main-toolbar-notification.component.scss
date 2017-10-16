@@ -1,0 +1,50 @@
+.right-menu-item-link{
+    position: relative;
+    margin: 0 auto;
+    width: auto;
+    padding: 9px 0;
+    display: table;
+    table-layout: fixed;
+    height: 100%;
+    text-decoration: none;
+    outline: none !important;
+    vertical-align: middle;
+    .right-menu-link-icon{
+        text-align: center;
+        line-height: 0;
+        vertical-align: middle;
+        padding: 0;
+        color: #ad5beb;
+        display: table-cell;
+        height: 100%;
+        width: 35px;
+        font-size: 1.4rem;
+    }
+    i{
+        font-size: 1.5rem;
+    }
+    i:before {
+        font-weight: bold;
+        padding: 1px;
+        background: -webkit-linear-gradient(180deg, #ad5beb 25%, #c678db 50%, #da6ea9 75%, #e76e92 100%);
+        background: linear-gradient(180deg, #ad5beb 25%, #c678db 50%, #da6ea9 75%, #e76e92 100%);
+        background-clip: text;
+        text-fill-color: transparent;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before {
+    font-family: Flaticon;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-decoration: inherit;
+    text-rendering: optimizeLegibility;
+    text-transform: none;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+}

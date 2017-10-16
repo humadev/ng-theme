@@ -23,7 +23,7 @@ import { FormsModule } from '@angular/forms';
 import { LayoutService } from '../services/layout.service';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { PopMenuDirective } from 'app/lib/directives/pop-menu.directive';
+import { PopMenuDirective } from '../directives/pop-menu.directive';
 import { PortalModule } from '@angular/cdk/portal';
 import { MainToolbarLeftMenuComponent } from './main-toolbar/main-toolbar-left-menu/main-toolbar-left-menu.component';
 import { MainToolbarRightMenuComponent } from './main-toolbar/main-toolbar-right-menu/main-toolbar-right-menu.component';

@@ -9,7 +9,7 @@ import {
     animate,
     transition
   } from '@angular/animations';
-import { slideToRight } from 'app/lib/animations/router.animation';
+import { slideToRight } from '../../animations/router.animation';
 
 @Component({
       selector: 'hd-sidenav',

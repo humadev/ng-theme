@@ -23,8 +23,14 @@ import { FormsModule } from '@angular/forms';
 import { LayoutService } from '../services/layout.service';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { PopMenuDirective } from 'app/lib/directives/pop-menu.directive';
+import { PopMenuDirective } from '../directives/pop-menu.directive';
 import { PortalModule } from '@angular/cdk/portal';
+import { MainToolbarLeftMenuComponent } from './main-toolbar/main-toolbar-left-menu/main-toolbar-left-menu.component';
+import { MainToolbarRightMenuComponent } from './main-toolbar/main-toolbar-right-menu/main-toolbar-right-menu.component';
+import { MainToolbarMenuItemComponent } from './main-toolbar/main-toolbar-menu-item/main-toolbar-menu-item.component';
+import { MainToolbarNotificationComponent } from './main-toolbar/main-toolbar-notification/main-toolbar-notification.component';
+import { MainToolbarProfileComponent } from './main-toolbar/main-toolbar-profile/main-toolbar-profile.component';
+import { MainToolbarChatComponent } from './main-toolbar/main-toolbar-chat/main-toolbar-chat.component';
 
 @NgModule({
   imports: [
@@ -59,7 +65,13 @@ declarations: [
       MainToolbarComponent,
       PageToolbarComponent,
       StartPageComponent,
-      PopMenuDirective
+      PopMenuDirective,
+      MainToolbarLeftMenuComponent,
+      MainToolbarRightMenuComponent,
+      MainToolbarMenuItemComponent,
+      MainToolbarNotificationComponent,
+      MainToolbarProfileComponent,
+      MainToolbarChatComponent
 ],
   providers: [MenuService, LayoutService, OverlayContainer]
 })

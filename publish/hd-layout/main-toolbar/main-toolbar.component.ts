@@ -13,7 +13,7 @@ import {
     ElementRef, ComponentRef } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { ComponentPortal, Portal, TemplatePortalDirective } from '@angular/cdk/portal';
-import { PopMenuDirective } from 'app/lib/directives/pop-menu.directive';
+import { PopMenuDirective } from '../../directives/pop-menu.directive';
 
 @Component({
   selector: 'hd-main-toolbar',
@@ -32,23 +32,35 @@ import { PopMenuDirective } from 'app/lib/directives/pop-menu.directive';
     .m-brand{
         width:255px;
     }
-    @media (min-width: 993px)
-    .m-header-menu .m-menu__nav.m-menu__nav--submenu-arrow > .m-menu__item.m-menu__item--submenu.m-menu__item--hover > .m-menu__submenu {
-        padding-top: 10px;
+
+    .m-menu__link {
+        padding: 9px 15px;
+        text-decoration:none !important;
     }
-    @media (min-width: 993px)
-    .m-header-menu .m-menu__nav .m-menu__item.m-menu__item--hover .m-menu__submenu {
-        display: block;
-        -webkit-animation: m-header-menu-submenu-fade-in .3s ease 1, m-header-menu-submenu-move-up .3s ease-out 1;
-        -moz-animation: m-header-menu-submenu-fade-in .3s ease 1, m-header-menu-submenu-move-up .3s ease-out 1;
-        -ms-animation: m-header-menu-submenu-fade-in .3s ease 1, m-header-menu-submenu-move-up .3s ease-out 1;
-        -o-animation: m-header-menu-submenu-fade-in .3s ease 1, m-header-menu-submenu-move-up .3s ease-out 1;
-        animation: m-header-menu-submenu-fade-in .3s ease 1, m-header-menu-submenu-move-up .3s ease-out 1;
-    },
-    @media (min-width: 993px)
-    .m-header-menu .m-menu__nav > .m-menu__item .m-menu__submenu.m-menu__submenu--left {
-        right: auto;
-        left: 0;
+
+    .m-menu__link-text {
+        color: #676c7b;
+        font-weight: 400;
+        font-size: 1rem;
+        text-transform: initial;
+    }
+
+    .m-menu__link-text:hover{
+        color: #214E8D !important;
+    }
+
+    .m-menu__link-icon {
+        color: #b8bece;
+        text-align: left;
+        line-height: 0;
+        padding: 0;
+        width: 33px;
+        font-size: 18px;
+        text-transform: initial;
+        font-weight: 400;
+        font-size: 1rem;
+        text-transform: initial;
+        display: table-cell;
     }
   `],
   encapsulation: ViewEncapsulation.None,
@@ -76,9 +88,7 @@ export class MainToolbarComponent implements OnInit {
       @Output() minimize = new EventEmitter();
 
       constructor(
-            private menuService: MenuService,
-            public overlay: Overlay,
-            public viewContainerRef: ViewContainerRef
+            private menuService: MenuService
       ) {}
 
       ngOnInit() {
@@ -107,22 +117,5 @@ export class MainToolbarComponent implements OnInit {
 
       onChange(e) {
             this.menuService.navigate(e.value);
-      }
-
-      clickMenu(e) {
-        const config = new OverlayConfig({
-            hasBackdrop: true,
-            scrollStrategy: this.overlay.scrollStrategies.block(),
-            positionStrategy: this.overlay.position().connectedTo(
-                this.menu.elementRef,
-                {originX: 'end', originY: 'bottom'},
-                {overlayX: 'end', overlayY: 'top'}
-            )
-        });
-        const overlayRef = this.overlay.create(config);
-        overlayRef.attach(this.templatePortals.first);
-        overlayRef.backdropClick().subscribe(() => {
-            overlayRef.detach();
-        });
       }
 }

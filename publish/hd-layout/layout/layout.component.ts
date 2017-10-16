@@ -1,4 +1,4 @@
-import { slideToDown } from 'app/lib/animations/router.animation';
+import { slideToDown } from '../../animations/router.animation';
 import { Component, Input, EventEmitter, Output, ElementRef, Renderer2 } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 

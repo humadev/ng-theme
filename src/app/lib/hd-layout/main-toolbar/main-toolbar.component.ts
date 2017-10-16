@@ -13,7 +13,7 @@ import {
     ElementRef, ComponentRef } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { ComponentPortal, Portal, TemplatePortalDirective } from '@angular/cdk/portal';
-import { PopMenuDirective } from 'app/lib/directives/pop-menu.directive';
+import { PopMenuDirective } from '../../directives/pop-menu.directive';
 
 @Component({
   selector: 'hd-main-toolbar',
