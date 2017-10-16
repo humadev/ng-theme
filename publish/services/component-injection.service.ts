@@ -108,10 +108,10 @@ export class ComponentInjectionService {
     options: any = {}, 
     location: Element = this.getRootViewContainerNode()): ComponentRef<any> {
 
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentClass);
-    let componentRef = componentFactory.create(this.injector);
-    let appRef: any = this.applicationRef;
-    let componentRootNode = this.getComponentRootNode(componentRef);
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(componentClass);
+    const componentRef = componentFactory.create(this.injector);
+    const appRef: any = this.applicationRef;
+    const componentRootNode = this.getComponentRootNode(componentRef);
 
     // project the options passed to the component instance
     this.projectComponentInputs(componentRef, options);
@@ -128,8 +128,8 @@ export class ComponentInjectionService {
       // When creating a component outside of a ViewContainer, we need to manually register
       // its ChangeDetector with the application. This API is unfortunately not published
       // in Angular <= 2.2.0. The change detector must also be deregistered when the component
-      // is destroyed to prevent memory leaks.      
-      let changeDetectorRef = componentRef.changeDetectorRef;
+      // is destroyed to prevent memory leaks.
+      const changeDetectorRef = componentRef.changeDetectorRef;
       appRef.registerChangeDetector(changeDetectorRef);
 
       componentRef.onDestroy(() => {

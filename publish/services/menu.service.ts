@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
-import { Location } from "@angular/common";
-import { BehaviorSubject, Subject } from "rxjs/Rx";
-import { LayoutService } from "./layout.service";
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { Location } from '@angular/common';
+import { BehaviorSubject, Subject } from 'rxjs/Rx';
+import { LayoutService } from './layout.service';
 
 @Injectable()
 export class MenuService {

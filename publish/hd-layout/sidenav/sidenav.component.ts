@@ -6,7 +6,7 @@ import { MenuService } from "../../services/menu.service";
       selector: 'hd-sidenav',
       templateUrl: './sidenav.component.html',
       styles:[`
-            md-sidenav-container{
+            mat-sidenav-container{
                   top: 64px !important;
                   position: fixed;
             }
@@ -19,7 +19,7 @@ export class SidenavComponent implements OnInit {
       @Input() navFromRouter: any;
       @Input() lazyLoadPath: string;
       @Output() pageTitle = new EventEmitter();
-      moduleConfig:any;
+      moduleConfig: any;
       opened = true;
 
       constructor(
