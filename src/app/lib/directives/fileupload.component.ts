@@ -5,7 +5,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   template: `
     <div>
       <img [src]="image" style="max-height:300px; max-width:200px" *ngIf="image"><br>
-      <button md-raised-button color="{{color}}" type="button" (click)="file.click()">{{buttonText}}</button>
+      <button mat-raised-button color="{{color}}" type="button" (click)="file.click()">{{buttonText}}</button>
       <input type='file' (change)="fileChange($event)" name="{{name}}" style="display:none" #file>
     </div>  
   `,

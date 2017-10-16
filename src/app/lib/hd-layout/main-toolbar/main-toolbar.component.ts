@@ -1,37 +1,37 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import { MenuService } from "../../services/menu.service";
+import { MenuService } from '../../services/menu.service';
 
 @Component({
   selector: 'hd-main-toolbar',
   template: `
-      <md-toolbar class="hd-main-toolbar mat-elevation-z8" color="primary">
-            <span class="hd-sidenav-toggle" *ngIf="showSidenavToggle" (click)="onSidenavToggle()"><md-icon>menu</md-icon></span>
+      <mat-toolbar class="hd-main-toolbar mat-elevation-z8" color="primary">
+            <span class="hd-sidenav-toggle" *ngIf="showSidenavToggle" (click)="onSidenavToggle()"><mat-icon>menu</mat-icon></span>
             <img class="hd-title-bar" [src]="titleImg" *ngIf="titleImg; else titleTextEl">
             <ng-template #titleTextEl><span class="hd-title-bar">{{titleText}}</span></ng-template>
-            <md-select class="fill-space" (change)="onChange($event)" [(ngModel)]="active">
+            <mat-select class="fill-space" (change)="onChange($event)" [(ngModel)]="active">
                 <ng-template ngFor let-menu [ngForOf]="startMenus">
-                    <md-option *ngIf="menu.data.isMenu" [value]="menu.path">
+                    <mat-option *ngIf="menu.data.isMenu" [value]="menu.path">
                         {{ menu.data.title }}
-                    </md-option>
+                    </mat-option>
                 </ng-template>
-            </md-select>
-            <md-menu #menu="mdMenu" class="hd-profile-menu" yPosition="below" xPosition="before" [overlapTrigger]="false">
-                  <button md-menu-item (click)="onLogout()">
-                        <md-icon>dashboard</md-icon>
+            </mat-select>
+            <mat-menu #menu="matMenu" class="hd-profile-menu" yPosition="below" xPosition="before" [overlapTrigger]="false">
+                  <button mat-menu-item (click)="onLogout()">
+                        <mat-icon>dashboard</mat-icon>
                         <span>Menu 2</span>
                   </button>
-            </md-menu>
-            <span class="hd-menu hd-right-menu" *ngIf="notification"><md-icon>notifications_none</md-icon></span>
-            <button md-button [mdMenuTriggerFor]="menu" #profileMenu class="hd-menu hd-right-menu" *ngIf="profile">
-                  <md-icon>face</md-icon> Admin
+            </mat-menu>
+            <span class="hd-menu hd-right-menu" *ngIf="notification"><mat-icon>notifications_none</mat-icon></span>
+            <button mat-button [matMenuTriggerFor]="menu" #profileMenu class="hd-menu hd-right-menu" *ngIf="profile">
+                  <mat-icon>face</mat-icon> Admin
             </button>
-            <md-menu #menu="mdMenu" class="hd-profile-menu" yPosition="below" xPosition="before" [overlapTrigger]="false">
-                  <button md-menu-item (click)="onLogout()">
-                        <md-icon>power_settings_new</md-icon>
+            <mat-menu #menu="matMenu" class="hd-profile-menu" yPosition="below" xPosition="before" [overlapTrigger]="false">
+                  <button mat-menu-item (click)="onLogout()">
+                        <mat-icon>power_settings_new</mat-icon>
                         <span>Logout</span>
                   </button>
-            </md-menu>
-      </md-toolbar>
+            </mat-menu>
+      </mat-toolbar>
   `,
   styles: [`
       .hd-main-toolbar{
