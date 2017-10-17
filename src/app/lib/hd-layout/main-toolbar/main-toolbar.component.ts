@@ -19,11 +19,24 @@ import { PopMenuDirective } from '../../directives/pop-menu.directive';
   selector: 'hd-main-toolbar',
   templateUrl: 'main-toolbar.component.html',
   styles: [`
-      .hd-main-toolbar{
-            position: fixed;
-            width: 100%;
-            z-index: 9;
-      }
+  @media (min-width: 993px){
+    .toolbar-menu {
+        width: 100%;
+        display: table-cell;
+        vertical-align: top;
+        height: 100%;
+        -webkit-box-shadow: 0px 1px 15px 1px rgba(113, 106, 202, 0.1);
+        -moz-box-shadow: 0px 1px 15px 1px rgba(113, 106, 202, 0.1);
+        box-shadow: 0px 1px 15px 1px rgba(113, 106, 202, 0.1);
+        display: block;
+        height: auto;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+    }
+  }
       .m-header-head {
             -webkit-box-shadow: 0 1px 15px 1px rgba(113,106,202,.1);
             -moz-box-shadow: 0 1px 15px 1px rgba(113,106,202,.1);
@@ -31,36 +44,6 @@ import { PopMenuDirective } from '../../directives/pop-menu.directive';
     }
     .m-brand{
         width:255px;
-    }
-
-    .m-menu__link {
-        padding: 9px 15px;
-        text-decoration:none !important;
-    }
-
-    .m-menu__link-text {
-        color: #676c7b;
-        font-weight: 400;
-        font-size: 1rem;
-        text-transform: initial;
-    }
-
-    .m-menu__link-text:hover{
-        color: #214E8D !important;
-    }
-
-    .m-menu__link-icon {
-        color: #b8bece;
-        text-align: left;
-        line-height: 0;
-        padding: 0;
-        width: 33px;
-        font-size: 18px;
-        text-transform: initial;
-        font-weight: 400;
-        font-size: 1rem;
-        text-transform: initial;
-        display: table-cell;
     }
   `],
   encapsulation: ViewEncapsulation.None,

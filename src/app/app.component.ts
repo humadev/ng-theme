@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
       </div>-->
       <router-outlet></router-outlet>
   `,
-  styles:[`
+  styles: [`
       .test{
             display:block;
             background: grey;

@@ -20,22 +20,22 @@
 				</div>
 			</div>
 			<!-- END: Brand -->
-			<div class="m-stack__item m-stack__item--fluid m-header-head" id="m_header_nav">
+			<div class="toolbar-menu">
 				<hd-main-toolbar-left-menu>
-                    <hd-main-toolbar-menu-item *ngFor="let menu of startMenus" >
+                    <li hd-left-menu-item *ngFor="let menu of startMenus" >
                         <a routerLink="/header/actions" class="m-menu__link">
                             <i class="m-menu__link-icon"><img [src]="menu.data.icon" style="width:25px"></i>
                             <span class="m-menu__link-text">
                                 {{menu.data.title}}
                             </span>
                         </a>
-                    </hd-main-toolbar-menu-item>
+                    </li>
                 </hd-main-toolbar-left-menu>
 				<!-- BEGIN: Topbar -->
 				<hd-main-toolbar-right-menu>
                     <li hd-main-toolbar-notification></li>
-                    <!-- <hd-main-toolbar-chat></hd-main-toolbar-chat>
-                    <hd-main-toolbar-profile></hd-main-toolbar-profile> -->
+                    <li hd-main-toolbar-chat></li>
+                    <li hd-main-toolbar-profile></li>
                 </hd-main-toolbar-right-menu>
 				<!-- END: Topbar -->
 			</div>

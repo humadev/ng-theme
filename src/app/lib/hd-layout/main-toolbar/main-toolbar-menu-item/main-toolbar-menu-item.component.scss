@@ -1,5 +1,10 @@
-.m-menu__item {
-    display: block;
-    margin: 0;
-    padding: 10px 20px;
+@media (min-width: 993px){
+    :host{
+        position: relative;
+        padding: 0px 20px;
+        height: 100%;
+        display: table-cell;
+        vertical-align: middle;
+        padding: 0px 20px;
+    }
 }

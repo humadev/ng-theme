@@ -1,4 +1,4 @@
-.right-menu{
+:host{
     display: table;
     table-layout: fixed;
     width: auto;
@@ -11,12 +11,25 @@
     display: table-cell;
     vertical-align: top;
     height: 100%;
+    font-size: 14px;
+    font-weight: 300;
+    font-family: "Poppins";
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
 }
 
 .right-menu-list{
     margin: 0 20px 0 30px;
     display: inline-block;
+    height: 100%;
     width: auto;
     padding: 0;
     list-style: none;
+    font-size: 14px;
+    font-weight: 300;
+    font-family: "Poppins";
+    line-height: 1.5;
+    color: #212529;
 }
