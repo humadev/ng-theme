@@ -36,6 +36,7 @@
     font-size: 14px;
     font-weight: 300;
     font-family: "Poppins";
+    cursor: pointer;
     .right-menu-link-icon{
         text-align: center;
         line-height: 0;
@@ -89,4 +90,30 @@
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-smoothing: antialiased;
+}
+
+.notification-dot-blink{
+    left: 50%;
+    margin-left: -2px;
+    position: absolute;
+    top: 11px;
+    background-color: #f4516c;
+    color: #ffffff;
+    padding: 0;
+    line-height: 4px;
+    min-height: 4px;
+    min-width: 4px;
+    height: 4px;
+    width: 4px;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+    border-radius: 100%;
+    webkit-animation: m-animate-blink 1s step-start 0s infinite;
+    -moz-animation: m-animate-blink 1s step-start 0s infinite;
+    -ms-animation: m-animate-blink 1s step-start 0s infinite;
+    -o-animation: m-animate-blink 1s step-start 0s infinite;
+    animation: m-animate-blink 1s step-start 0s infinite;
+    animation-fill-mode: initial;
 }

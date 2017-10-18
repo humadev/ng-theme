@@ -1,17 +1,17 @@
 <ul class="left-menu-list">
-    <li class="m-menu__item  m-menu__item--submenu m-menu__item--rel" (click)="clickMenu($event)" cdk-overlay-origin #mainMenu="cdkOverlayOrigin">
-        <a class="m-menu__link m-menu__toggle">
-            <i class="m-menu__link-icon flaticon-squares-3"></i>
-            <span class="m-menu__link-text">
+    <li class="left-menu-item" (click)="clickMenu($event)" cdk-overlay-origin #mainMenu="cdkOverlayOrigin">
+        <a class="left-menu-link">
+            <i class="icon flaticon-squares-3"></i>
+            <span class="text">
                 Main Menu
             </span>
-            <i class="m-menu__hor-arrow la la-angle-down"></i>
-            <i class="m-menu__ver-arrow la la-angle-right"></i>
+            <i class="arrow la la-angle-down"></i>
+            <!-- <i class="arrow la la-angle-right"></i> -->
         </a>
         <ng-template cdk-portal>
-            <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left">
-                <span class="m-menu__arrow m-menu__arrow--adjust"></span>
-                <ul class="m-menu__subnav">
+            <div class="left-menu-dropdown">
+                <span class="arrow"></span>
+                <ul class="left-dropdown-list">
                     <ng-content></ng-content>
                 </ul>
             </div>

@@ -23,9 +23,11 @@
 			<div class="toolbar-menu">
 				<hd-main-toolbar-left-menu>
                     <li hd-left-menu-item *ngFor="let menu of startMenus" >
-                        <a routerLink="/header/actions" class="m-menu__link">
-                            <i class="m-menu__link-icon"><img [src]="menu.data.icon" style="width:25px"></i>
-                            <span class="m-menu__link-text">
+                        <a routerLink="/header/actions" class="left-dropdown-link">
+                            <i class="left-dropdown-link-icon">
+                                <img [src]="menu.data.icon">
+                            </i>
+                            <span class="left-dropdown-link-text">
                                 {{menu.data.title}}
                             </span>
                         </a>

@@ -33,8 +33,8 @@ export class MainToolbarLeftMenuComponent implements OnInit {
         const overlayRef = this.overlay.create(config);
         overlayRef.attach(this.templatePortals.first);
         overlayRef.backdropClick().subscribe(() => {
-        overlayRef.detach();
-    });
+            overlayRef.dispose();
+        });
   }
 
 }

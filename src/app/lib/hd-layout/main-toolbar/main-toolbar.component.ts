@@ -28,13 +28,15 @@ import { PopMenuDirective } from '../../directives/pop-menu.directive';
         -webkit-box-shadow: 0px 1px 15px 1px rgba(113, 106, 202, 0.1);
         -moz-box-shadow: 0px 1px 15px 1px rgba(113, 106, 202, 0.1);
         box-shadow: 0px 1px 15px 1px rgba(113, 106, 202, 0.1);
-        display: block;
-        height: auto;
         -webkit-transition: all 0.3s ease;
         -moz-transition: all 0.3s ease;
         -ms-transition: all 0.3s ease;
         -o-transition: all 0.3s ease;
         transition: all 0.3s ease;
+        font-size: 14px;
+        font-weight: 300;
+        font-family: "Poppins";
+        -webkit-font-smoothing: antialiased;
     }
   }
       .m-header-head {
