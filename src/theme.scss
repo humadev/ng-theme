@@ -680,8 +680,24 @@ hd-start-page .container{
         -ms-animation: m-dropdown-fade-in .3s ease 1, m-dropdown-move-up .3s ease-out 1;
         -o-animation: m-dropdown-fade-in .3s ease 1, m-dropdown-move-up .3s ease-out 1;
         animation: m-dropdown-fade-in .3s ease 1, m-dropdown-move-up .3s ease-out 1;
+        .profile-dropdown-content{
+            padding: 20px;
+        }
+        .mat-tab-label{
+            min-width: 100px !important;
+            font-family: "Poppins";
+            -ms-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .mat-ink_bar{
+            min-width: 100px !important;
+        }
+        .mat-tab-body-content{
+            padding: 20px;
+        }
         .arrow{
-            color: #214E8D;
+            color: #1e385f;
             line-height: 0;
             display: inline-block;
             overflow: hidden;
@@ -761,5 +777,77 @@ hd-start-page .container{
                 }
             }
         }
+    }
+    .profile-dropdown{
+        width: 325px;
+    }
+}
+
+.cdk-overlay-pane .menu-submenu.minimize{
+    height: 100% !important;
+    overflow: visible !important;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transform-style: preserve-3d;
+    float: none;
+    margin: 0;
+    padding: 0;
+    .arrow{
+        color: #2c2e3e;
+        line-height: 0;
+        display: inline-block;
+        overflow: hidden;
+        width: 10px;
+        height: 40px;
+        left: 0;
+        margin-left: -9px;
+        left: 1px;
+        top: 12px;
+        position: absolute;
+        margin: 0;
+        font-size: 14px;
+        font-weight: 300;
+        font-family: "Poppins";
+        -ms-text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    .arrow:before{
+        position: relative;
+        top: 0;
+        margin-top: 20px;
+        font-size: 40px;
+        display: inline-block;
+        font-family: "Metronic";
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        line-height: 0px;
+        text-decoration: inherit;
+        text-rendering: optimizeLegibility;
+        text-transform: none;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-smoothing: antialiased;
+        content: "";
+    }
+    .menu-subnav{
+        background-color: #2c2e3e;
+        -webkit-box-shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.4);
+        -moz-box-shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.4);
+        box-shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.4);
+        padding: 20px 0;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        -ms-border-radius: 4px;
+        -o-border-radius: 4px;
+        border-radius: 4px;
+        width: 255px !important;
+        margin: 0;
+        margin-left: 9px !important;
+        list-style: none;
     }
 }

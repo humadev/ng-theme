@@ -9,7 +9,8 @@ import {
       MatIconModule,
       MatGridListModule,
       MatSelectModule,
-      MatProgressBarModule
+      MatProgressBarModule,
+      MatTabsModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
@@ -31,6 +32,7 @@ import { MainToolbarMenuItemComponent } from './main-toolbar/main-toolbar-menu-i
 import { MainToolbarNotificationComponent } from './main-toolbar/main-toolbar-notification/main-toolbar-notification.component';
 import { MainToolbarProfileComponent } from './main-toolbar/main-toolbar-profile/main-toolbar-profile.component';
 import { MainToolbarChatComponent } from './main-toolbar/main-toolbar-chat/main-toolbar-chat.component';
+import { SidenavItemComponent } from './sidenav/sidenav-item/sidenav-item.component';
 
 @NgModule({
   imports: [
@@ -47,7 +49,8 @@ import { MainToolbarChatComponent } from './main-toolbar/main-toolbar-chat/main-
       RouterModule,
       FormsModule,
       OverlayModule,
-      PortalModule
+      PortalModule,
+      MatTabsModule
   ],
   exports: [
       LayoutComponent,
@@ -71,7 +74,8 @@ declarations: [
       MainToolbarMenuItemComponent,
       MainToolbarNotificationComponent,
       MainToolbarProfileComponent,
-      MainToolbarChatComponent
+      MainToolbarChatComponent,
+      SidenavItemComponent
 ],
   providers: [MenuService, LayoutService, OverlayContainer]
 })

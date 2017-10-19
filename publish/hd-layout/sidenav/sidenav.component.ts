@@ -16,19 +16,6 @@ import { slideToRight } from '../../animations/router.animation';
       templateUrl: './sidenav.component.html',
       styleUrls: ['./sidenav.component.scss'],
       animations: [
-        trigger('childActive', [
-          state('inactive', style({
-                display: 'block',
-                height: 0,
-                overflow: 'hidden'
-          })),
-          state('active',   style({
-                display: 'block',
-                height: '*'
-          })),
-          transition('inactive => active', animate('500ms ease')),
-          transition('active => inactive', animate('500ms ease'))
-        ]),
         slideToRight()
       ]
 })

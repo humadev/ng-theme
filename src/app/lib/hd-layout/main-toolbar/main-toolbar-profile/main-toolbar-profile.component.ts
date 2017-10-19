@@ -7,7 +7,7 @@ import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/
   templateUrl: './main-toolbar-profile.component.html',
   styleUrls: ['./main-toolbar-profile.component.scss']
 })
-export class MainToolbarProfileComponent{
+export class MainToolbarProfileComponent {
 
     @ViewChild('profile') menu: OverlayOrigin;
     @ViewChildren(TemplatePortalDirective) templatePortals: QueryList<Portal<any>>;
@@ -25,7 +25,7 @@ export class MainToolbarProfileComponent{
                 this.menu.elementRef,
                 {originX: 'start', originY: 'bottom'},
                 {overlayX: 'start', overlayY: 'top'}
-            ).withOffsetX(-320)
+            ).withOffsetX(-265)
         });
         const overlayRef = this.overlay.create(config);
         overlayRef.attach(this.templatePortals.first);
