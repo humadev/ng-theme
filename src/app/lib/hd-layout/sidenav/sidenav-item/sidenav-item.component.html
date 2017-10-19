@@ -1,6 +1,6 @@
 <a class='menu-item'
     (click)="parentOpen(index)"
-    [class.active]="isActive([menu.path]) && menu.path !== ''">
+    [ngClass]="{'active':childrenAndActive(menu)}">
         <i class="icon flaticon-settings"></i>
         <span class="text">
             {{menu.data.name}}

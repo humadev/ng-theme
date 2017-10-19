@@ -33,6 +33,7 @@ export class SidenavItemComponent implements OnInit {
     @Input() navFromRouter: any;
     @ViewChildren(TemplatePortalDirective) templatePortals: QueryList<Portal<any>>;
     @Input() sidenavOpen = true;
+    children = false;
     overlayRef;
 
     constructor(
@@ -67,8 +68,10 @@ export class SidenavItemComponent implements OnInit {
     toggleChildren(level) {
         if (this.sidenavOpen) {
             if (level.children && level.children.length > 0 && (level.isOpen || this.isActive([level.path]))) {
+                this.children = true;
                 return 'active';
             }else {
+                this.children = false;
                 return 'inactive';
             }
         }

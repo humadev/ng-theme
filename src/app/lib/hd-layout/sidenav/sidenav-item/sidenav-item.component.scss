@@ -1,5 +1,5 @@
 :host{
-    background-color: #292b3a;
+    background-color:none;
     position: relative;
     margin: 0;
     display: block;
@@ -12,6 +12,9 @@
     -ms-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    :hover{
+        background-color: #292b3a;
+    }
 }
 
 .menu-item{
@@ -54,6 +57,11 @@
         vertical-align: middle;
         line-height: 0;
         height: 100%;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
     }
     i.arrow:before{
         display: inline-block;
@@ -66,7 +74,12 @@
 }
 
 .menu-item.active{
-    i.arrow{
+    i.arrow:before{
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        transition: all 0.3s ease;
         -webkit-transform: translate3d(0, 0, 0);
         -webkit-transform: rotateZ(90deg);
         -moz-transform: rotateZ(90deg);
@@ -134,8 +147,11 @@
     }
 }
 
-.menu-subnav-item-active a span{
-    color: #214E8D;
+.menu-subnav-item-active a span, .menu-subnav-item-active a i{
+    color: #6c99cf;
+    span{
+        background-color: #6c99cf;
+    }
 }
 
 .menu-submenu{
