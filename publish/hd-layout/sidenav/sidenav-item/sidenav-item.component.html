@@ -1,25 +1,51 @@
-<a (click)="parentOpen(index)" 
-    class="m-menu__link m-menu__toggle"
-    [class.active]="isActive([menu.path]) && menu.path !== ''">
-        <i class="m-menu__link-icon flaticon-settings"></i>
-        <span class="m-menu__link-text">
+<a class='menu-item'  *ngIf="menu.children && menu.children.length > 0; else noChildItem"
+    (click)="parentOpen(index)"
+    [ngClass]="{'active':childrenAndActive(menu), 'minimize':!sidenavOpen}">
+        <i class="icon flaticon-settings"></i>
+        <span class="text">
             {{menu.data.name}}
         </span>
-        <i class="m-menu__ver-arrow la la-angle-right" *ngIf="menu.children && menu.children.length > 0"></i>
+        <i class="arrow la la-angle-right" *ngIf="menu.children && menu.children.length > 0"></i>
 </a>
-<ng-template [ngIf]="menu.children && menu.children.length > 0">
-    <div class="m-menu__submenu" [@childActive]="toggleChildren(menu)">
-        <ul class="m-menu__subnav">
+<ng-template #noChildItem>
+    <a class='menu-item no-child'
+        [routerLink]="[menu?.path]"
+        routerLinkActive="menu-item-active" 
+        routerLinkActiveOptions="{ exact: true }" 
+        [ngClass]="{'minimize':!sidenavOpen}">
+        <i class="icon flaticon-settings"></i>
+        <span class="text">
+            {{menu.data.name}}
+        </span>
+        <i class="arrow la la-angle-right" *ngIf="menu.children && menu.children.length > 0"></i>
+    </a>
+</ng-template>
+<ng-template [ngIf]="menu.children && menu.children.length > 0" cdk-portal>
+    <div 
+        (mouseenter)="onMinHover = true;"
+        (mouseleave)="onMinHover = false; onMinLeave($event)"
+        class="menu-submenu" 
+        [@childActive]="toggleChildren(menu)"
+        [ngClass]="{'minimize':!sidenavOpen}">
+        <span class="arrow"></span>
+        <ul class="menu-subnav">
+            <li class="menu-subnav-item subnav-title">
+                <a>
+                    <span>
+                        {{menu.data.name}}
+                    </span>
+                </a>
+            </li>
             <li 
-                class="m-menu__item m-menu__item--parent menu-subnav-item" 
-                routerLinkActive="m-menu__item--active" 
+                class="menu-subnav-item" 
+                routerLinkActive="menu-subnav-item-active" 
                 routerLinkActiveOptions="{ exact: true}" 
                 aria-haspopup="true"
                 *ngFor="let level2 of menu.children">
-                <a class="m-menu__link" [routerLink]="[menu.path+'/'+level2.path]" >
+                <a [routerLink]="[menu.path+'/'+level2.path]" >
                     <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
-                    <span class="m-menu__link-text">
-                        {{level2.data.name}} tes
+                    <span>
+                        {{level2.data.name}}
                     </span>
                 </a>
             </li>

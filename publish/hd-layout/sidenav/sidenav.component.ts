@@ -19,7 +19,7 @@ import { slideToRight } from '../../animations/router.animation';
         slideToRight()
       ]
 })
-export class SidenavComponent implements OnInit, AfterViewInit {
+export class SidenavComponent implements OnInit {
 
       @Input() nav: any = false;
       @Input() lazyLoadModule: any = false;
@@ -27,7 +27,7 @@ export class SidenavComponent implements OnInit, AfterViewInit {
       @Input() lazyLoadPath: string;
       @Output() pageTitle = new EventEmitter();
       moduleConfig: any;
-      opened = true;
+      @Input() opened = true;
 
       constructor(
             private router: Router,
@@ -39,9 +39,6 @@ export class SidenavComponent implements OnInit, AfterViewInit {
             if (this.nav === false) {
                   this.menuService.sidenav.subscribe(res => this.navFromRouter = res);
             }
-      }
-
-      ngAfterViewInit() {
       }
 
       parentOpen(i: any) {

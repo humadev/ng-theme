@@ -16,6 +16,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
                 (minimize)="toggleSidenav($event)">
         </hd-main-toolbar>
         <hd-sidenav #sidenav
+                [opened]='sidenavOpen'
                 (pageTitle)="pagebar.changePageTitle($event)"
                 [lazyLoadModule]="lazyLoadModule"
                 [nav]="nav">
@@ -38,6 +39,7 @@ export class LayoutComponent {
       @Input() nav: any = false;
       @Input() notification: any = false;
       @Output() logout = new EventEmitter();
+      sidenavOpen = true;
       class = '';
 
       constructor(
@@ -50,6 +52,7 @@ export class LayoutComponent {
       }
 
     toggleSidenav(e) {
+        this.sidenavOpen = !this.sidenavOpen;
         const content = this.elRef.nativeElement.querySelector('.mat-sidenav-content');
         this.renderer.addClass(content, 'animate-content');
         if (e) {

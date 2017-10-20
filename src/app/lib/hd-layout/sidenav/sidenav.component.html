@@ -1,5 +1,7 @@
 <mat-sidenav-container>
-        <mat-sidenav #sidenav 
+        <mat-sidenav #sidenav
+            fixedInViewport='true'
+            fixedTopGap='70'
             opened="true" 
             mode='side' 
             class="m-grid__item m-aside-left m-aside-left--skin-dark" 
@@ -13,7 +15,6 @@
                                     routerLinkActive="m-menu__item--active" 
                                     routerLinkActiveOptions="{ exact: true }" 
                                     aria-haspopup="true"
-                                    *ngIf="level1.children && level1.children.length > 0; else noChild"
                                     [ngClass]="{'m-menu__item--open':childrenAndActive(level1)}"
                                     [menu]='level1' 
                                     [nav]='nav' 

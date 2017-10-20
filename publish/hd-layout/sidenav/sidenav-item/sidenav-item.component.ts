@@ -1,7 +1,9 @@
 import { Router } from '@angular/router';
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, ViewChild, ViewChildren, QueryList, ElementRef, HostListener } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { slideToRight } from '../../../animations/router.animation';
+import { Overlay, OverlayConfig, OverlayOrigin, OverlayRef } from '@angular/cdk/overlay';
+import { TemplatePortalDirective, Portal } from '@angular/cdk/portal';
 
 @Component({
   selector: '[hd-sidenav-item]',
@@ -29,9 +31,18 @@ export class SidenavItemComponent implements OnInit {
     @Input('index') index;
     @Input() nav: any = false;
     @Input() navFromRouter: any;
+    @ViewChildren(TemplatePortalDirective) templatePortals: QueryList<Portal<any>>;
+    @Input() sidenavOpen = true;
+    children = false;
+    overlayRef: OverlayRef;
+    onMinHover = false;
+    hasAttached = false;
+    listHover = false;
 
     constructor(
-        private router: Router
+        private router: Router,
+        private overlay: Overlay,
+        private ref: ElementRef
     ) { }
 
     ngOnInit() {
@@ -58,10 +69,14 @@ export class SidenavItemComponent implements OnInit {
     }
 
     toggleChildren(level) {
-        if (level.children && level.children.length > 0 && (level.isOpen || this.isActive([level.path]))) {
-            return 'active';
-        }else {
-            return 'inactive';
+        if (this.sidenavOpen) {
+            if (level.children && level.children.length > 0 && (level.isOpen || this.isActive([level.path]))) {
+                this.children = true;
+                return 'active';
+            }else {
+                this.children = false;
+                return 'inactive';
+            }
         }
     }
 
@@ -71,6 +86,43 @@ export class SidenavItemComponent implements OnInit {
         }else {
             return false;
         }
+    }
+    @HostListener('mouseenter', ['$event'])
+    onHover(e: MouseEvent) {
+        this.listHover = true;
+        if (!this.sidenavOpen && !this.hasAttached) {
+            const config = new OverlayConfig({
+                scrollStrategy: this.overlay.scrollStrategies.block(),
+                positionStrategy: this.overlay.position().connectedTo(
+                    this.ref,
+                    {originX: 'end', originY: 'top'},
+                    {overlayX: 'start', overlayY: 'top'}
+                ).withOffsetY(-10)
+            });
+            this.overlayRef = this.overlay.create(config);
+            this.overlayRef.attach(this.templatePortals.first);
+            this.hasAttached = true;
+        }
+    }
+
+    @HostListener('mouseleave', ['$event'])
+    onLeave(e) {
+        this.listHover = false;
+        setTimeout(() => {
+            if (!this.sidenavOpen && !this.onMinHover) {
+                this.hasAttached = false;
+                this.overlayRef.dispose();
+            }
+        }, 100);
+    }
+
+    onMinLeave(e) {
+        setTimeout(() => {
+            if (!this.sidenavOpen && !this.onMinHover && !this.listHover) {
+                this.hasAttached = false;
+                this.overlayRef.dispose();
+            }
+        }, 100);
     }
 
 }

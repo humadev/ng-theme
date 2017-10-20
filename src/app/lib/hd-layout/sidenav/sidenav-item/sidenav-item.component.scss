@@ -182,9 +182,16 @@
 }
 
 .menu-subnav-item-active a span, .menu-subnav-item-active a i{
-    color: #2a61ac;
+    color: #2a61ac !important;
     span{
-        background-color: #2a61ac;
+        background-color: #2a61ac !important;
+    }
+}
+
+.menu-item-active span, .menu-item-active i{
+    color: #2a61ac !important;
+    span{
+        background-color: #2a61ac !important;
     }
 }
 

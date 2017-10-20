@@ -53,7 +53,7 @@ const appRoutes: Routes = [
                       groupAccess: 0,
                       icon: 'dashboard'
                 },
-                children:[
+                children: [
                 {
                         path: 'datatable',
                         component: DashboardComponent,
@@ -62,6 +62,42 @@ const appRoutes: Routes = [
                             groupAccess: 0,
                             icon: 'dashboard'
                         }
+                },
+                {
+                    path: 'datatable',
+                    component: DashboardComponent,
+                    data:{
+                            name: 'Data Table',
+                            groupAccess: 0,
+                            icon: 'dashboard'
+                    }
+                },
+                {
+                    path: 'datatable',
+                    component: DashboardComponent,
+                    data:{
+                        name: 'Data Table',
+                        groupAccess: 0,
+                        icon: 'dashboard'
+                    }
+                },
+                {
+                    path: 'datatable',
+                    component: DashboardComponent,
+                    data:{
+                            name: 'Data Table',
+                            groupAccess: 0,
+                            icon: 'dashboard'
+                    }
+                },
+                {
+                    path: 'datatable',
+                    component: DashboardComponent,
+                    data:{
+                        name: 'Data Table',
+                        groupAccess: 0,
+                        icon: 'dashboard'
+                    }
                 },
                 {
                     path: 'datatable',
@@ -81,7 +117,7 @@ const appRoutes: Routes = [
                     groupAccess: 0,
                     icon: 'dashboard'
               },
-              children:[
+              children: [
               {
                       path: 'datatable',
                       component: DashboardComponent,
@@ -99,7 +135,87 @@ const appRoutes: Routes = [
                           groupAccess: 0,
                           icon: 'dashboard'
                   }
-              }]
+              },
+              {
+                path: 'datatable',
+                component: DashboardComponent,
+                data:{
+                    name: 'Data Table',
+                    groupAccess: 0,
+                    icon: 'dashboard'
+                }
+                },
+                {
+                    path: 'datatable',
+                    component: DashboardComponent,
+                    data:{
+                            name: 'Data Table',
+                            groupAccess: 0,
+                            icon: 'dashboard'
+                    }
+                },
+                {
+                    path: 'datatable',
+                    component: DashboardComponent,
+                    data:{
+                        name: 'Data Table',
+                        groupAccess: 0,
+                        icon: 'dashboard'
+                    }
+            },
+            {
+                path: 'datatable',
+                component: DashboardComponent,
+                data:{
+                        name: 'Data Table',
+                        groupAccess: 0,
+                        icon: 'dashboard'
+                }
+            },
+            {
+                path: 'datatable',
+                component: DashboardComponent,
+                data:{
+                    name: 'Data Table',
+                    groupAccess: 0,
+                    icon: 'dashboard'
+                }
+        },
+        {
+            path: 'datatable',
+            component: DashboardComponent,
+            data:{
+                    name: 'Data Table',
+                    groupAccess: 0,
+                    icon: 'dashboard'
+            }
+        },{
+            path: 'datatable',
+            component: DashboardComponent,
+            data:{
+                    name: 'Data Table',
+                    groupAccess: 0,
+                    icon: 'dashboard'
+            }
+        },
+        {
+            path: 'datatable',
+            component: DashboardComponent,
+            data:{
+                name: 'Data Table',
+                groupAccess: 0,
+                icon: 'dashboard'
+            }
+    },
+    {
+        path: 'datatable',
+        component: DashboardComponent,
+        data:{
+                name: 'Data Table',
+                groupAccess: 0,
+                icon: 'dashboard'
+        }
+    }]
         }]
       }];
 

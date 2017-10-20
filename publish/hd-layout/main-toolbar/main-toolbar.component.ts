@@ -20,6 +20,15 @@ import { PopMenuDirective } from '../../directives/pop-menu.directive';
   templateUrl: 'main-toolbar.component.html',
   styles: [`
   @media (min-width: 993px){
+    a.m-brand__toggler--right span{
+        background-color: #2739c1 !important;
+    }
+    a.m-brand__toggler--right span:before{
+        background-color: #2739c1 !important;
+    }
+    a.m-brand__toggler--right span:after{
+        background-color: #2739c1 !important;
+    }
     .toolbar-menu {
         width: 100%;
         display: table-cell;

@@ -1,6 +1,8 @@
 <mat-sidenav-container>
         <mat-sidenav #sidenav 
-            [opened]="opened" 
+            fixedInViewport='true'
+            fixedTopGap='70'
+            opened="true" 
             mode='side' 
             class="m-grid__item m-aside-left m-aside-left--skin-dark" 
             [@slideToRight]="">
@@ -8,26 +10,18 @@
                 <ul *ngIf="nav === false; else fromVar" class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow">
                     <ng-template ngFor let-level1 [ngForOf]="navFromRouter" let-i="index">
                             <ng-template [ngIf]="checkHidden(level1) === false">
-                                <li hd-sidenav-item
+                                <li hd-sidenav-item cdk-overlay-origin
                                     class="m-menu__item" 
                                     routerLinkActive="m-menu__item--active" 
                                     routerLinkActiveOptions="{ exact: true }" 
                                     aria-haspopup="true"
-                                    *ngIf="level1.children && level1.children.length > 0; else noChild"
                                     [ngClass]="{'m-menu__item--open':childrenAndActive(level1)}"
                                     [menu]='level1' 
                                     [nav]='nav' 
                                     [navFromRouter]='navFromRouter' 
-                                    [index]='i'>>
+                                    [index]='i'
+                                    [sidenavOpen]='opened'>
                                 </li>
-                                <!-- <ng-template [ngIf]="level1.children && level1.children.length > 0 && (level1.isOpen || isActive([level1.path]))">
-                                        <mat-nav-list class="hd-menu-child">
-                                            <a mat-button *ngFor="let level2 of level1.children" [routerLink]="[level1.path+'/'+level2.path]" routerLinkActive="active">
-                                                    <mat-icon>{{level2.data.icon}}</mat-icon> {{level2.data.name}}
-                                                    <span class="fill-space"></span>
-                                            </a>
-                                        </mat-nav-list>
-                                </ng-template> -->
                             </ng-template>
                     </ng-template>
                 </ul>
