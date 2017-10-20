@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit, Input, ViewEncapsulation, ViewChild, ViewChildren, QueryList, ElementRef, HostListener } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { slideToRight } from '../../../animations/router.animation';
-import { Overlay, OverlayConfig, OverlayOrigin } from '@angular/cdk/overlay';
+import { Overlay, OverlayConfig, OverlayOrigin, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortalDirective, Portal } from '@angular/cdk/portal';
 
 @Component({
@@ -34,7 +34,10 @@ export class SidenavItemComponent implements OnInit {
     @ViewChildren(TemplatePortalDirective) templatePortals: QueryList<Portal<any>>;
     @Input() sidenavOpen = true;
     children = false;
-    overlayRef;
+    overlayRef: OverlayRef;
+    onMinHover = false;
+    hasAttached = false;
+    listHover = false;
 
     constructor(
         private router: Router,
@@ -84,12 +87,11 @@ export class SidenavItemComponent implements OnInit {
             return false;
         }
     }
-    @HostListener('mouseover', ['$event'])
+    @HostListener('mouseenter', ['$event'])
     onHover(e: MouseEvent) {
-        if (!this.sidenavOpen) {
+        this.listHover = true;
+        if (!this.sidenavOpen && !this.hasAttached) {
             const config = new OverlayConfig({
-                hasBackdrop: true,
-                backdropClass: 'menu-overlay-backdrop',
                 scrollStrategy: this.overlay.scrollStrategies.block(),
                 positionStrategy: this.overlay.position().connectedTo(
                     this.ref,
@@ -99,16 +101,28 @@ export class SidenavItemComponent implements OnInit {
             });
             this.overlayRef = this.overlay.create(config);
             this.overlayRef.attach(this.templatePortals.first);
+            this.hasAttached = true;
         }
     }
 
     @HostListener('mouseleave', ['$event'])
     onLeave(e) {
-        if (!this.sidenavOpen) {
-            setTimeout(() => {
+        this.listHover = false;
+        setTimeout(() => {
+            if (!this.sidenavOpen && !this.onMinHover) {
+                this.hasAttached = false;
                 this.overlayRef.dispose();
-            }, 500);
-        }
-  }
+            }
+        }, 100);
+    }
+
+    onMinLeave(e) {
+        setTimeout(() => {
+            if (!this.sidenavOpen && !this.onMinHover && !this.listHover) {
+                this.hasAttached = false;
+                this.overlayRef.dispose();
+            }
+        }, 100);
+    }
 
 }

@@ -12,23 +12,24 @@
     -ms-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    cursor: pointer;
     :hover{
         background-color: #292b3a;
     }
 }
 
 .menu-item{
-    text-decoration: none;
-    cursor: pointer;
     padding: 9px 30px;
+    height: 44px;
     display: table;
     table-layout: fixed;
     width: 100%;
     margin: 0;
+    text-decoration: none;
     position: relative;
     outline: none;
     i.icon{
-        color: #8c8ea4;
+        color: #525672;
         text-align: left;
         width: 35px;
         font-size: 1.4rem;
@@ -49,7 +50,7 @@
         vertical-align: middle;
     }
     i.arrow{
-        color:#8c8ea4;
+        color:#525672;
         text-align: right;
         width: 20px;
         font-size: 0.7rem;
@@ -57,11 +58,11 @@
         vertical-align: middle;
         line-height: 0;
         height: 100%;
-        -webkit-transition: all 0.3s ease;
-        -moz-transition: all 0.3s ease;
-        -ms-transition: all 0.3s ease;
-        -o-transition: all 0.3s ease;
-        transition: all 0.3s ease;
+        // -webkit-transition: all 0.3s ease;
+        // -moz-transition: all 0.3s ease;
+        // -ms-transition: all 0.3s ease;
+        // -o-transition: all 0.3s ease;
+        // transition: all 0.3s ease;
     }
     i.arrow:before{
         display: inline-block;
@@ -73,7 +74,40 @@
     }
 }
 
+.menu-item:hover i.icon, .menu-item:hover i.arrow{
+    color: #868aa8;
+}
+
+.menu-item.minimize{
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+    height: 44px;
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    margin: 0;
+    text-decoration: none;
+    position: relative;
+    outline: none;
+    span.text, i.arrow{
+        display: none;
+    }
+    i.icon{
+        width: 100%;
+        text-align: center;
+        font-size: 1.4rem;
+        display: table-cell;
+        height: 100%;
+        vertical-align: middle;
+        line-height: 0;
+    }
+} 
+
 .menu-item.active{
+    i.icon, i.arrow{
+        color: #868aa8;
+    }
     i.arrow:before{
         -webkit-transition: all 0.3s ease;
         -moz-transition: all 0.3s ease;
@@ -90,7 +124,7 @@
 }
 
 .menu-subnav-item{
-    display: block !important;
+    display: block;
     margin: 0;
     float: none;
     height: auto;
@@ -148,9 +182,9 @@
 }
 
 .menu-subnav-item-active a span, .menu-subnav-item-active a i{
-    color: #6c99cf;
+    color: #2a61ac;
     span{
-        background-color: #6c99cf;
+        background-color: #2a61ac;
     }
 }
 
@@ -164,6 +198,9 @@
         width: 100%;
         margin: 0;
         list-style: none;
+        .menu-subnav-item.subnav-title{
+            display: none;
+        }
     }
 }
 

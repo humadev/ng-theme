@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/icon?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700');
+@import url('assets/metronic.css');
 
 .full-width{
     width: 100%;
@@ -791,6 +793,11 @@ hd-start-page .container{
     -ms-transform: translateZ(0);
     -o-transform: translateZ(0);
     transform: translateZ(0);
+    -webkit-animation: m-dropdown-fade-in .3s ease 1, m-dropdown-move-up .4s ease-out 1;
+    -moz-animation: m-dropdown-fade-in .3s ease 1, m-dropdown-move-up .4s ease-out 1;
+    -ms-animation: m-dropdown-fade-in .3s ease 1, m-dropdown-move-up .4s ease-out 1;
+    -o-animation: m-dropdown-fade-in .3s ease 1, m-dropdown-move-up .4s ease-out 1;
+    animation: m-dropdown-fade-in .3s ease 1, m-dropdown-move-up .4s ease-out 1;
     -webkit-transform-style: preserve-3d;
     float: none;
     margin: 0;
@@ -839,7 +846,7 @@ hd-start-page .container{
         -webkit-box-shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.4);
         -moz-box-shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.4);
         box-shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.4);
-        padding: 20px 0;
+        padding: 20px 0 !important;
         -webkit-border-radius: 4px;
         -moz-border-radius: 4px;
         -ms-border-radius: 4px;
@@ -849,5 +856,41 @@ hd-start-page .container{
         margin: 0;
         margin-left: 9px !important;
         list-style: none;
+        li{
+            padding: 0;
+            a{
+                padding: 0 30px;
+            }
+        }
+        li.subnav-title{
+            display: block !important;
+            margin: 0;
+            float: none;
+            height: auto;
+            padding: 0;
+            a{
+                height: 40px;
+                padding: 0 30px 10px 30px;
+                text-align: left;
+                display: table;
+                table-layout: fixed;
+                width: 100%;
+                margin: 0;
+                text-decoration: none;
+                position: relative;
+                outline: none;
+                span{
+                    color: #717594;
+                    font-weight: 400;
+                    font-size: 1.05rem;
+                    text-transform: initial;
+                    cursor: text !important;
+                    height: 100%;
+                    width: 100%;
+                    padding: 0;
+                    vertical-align: middle;
+                }
+            }
+        }
     }
 }

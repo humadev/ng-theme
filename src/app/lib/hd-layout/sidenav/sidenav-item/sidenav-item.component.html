@@ -1,6 +1,6 @@
 <a class='menu-item'
     (click)="parentOpen(index)"
-    [ngClass]="{'active':childrenAndActive(menu)}">
+    [ngClass]="{'active':childrenAndActive(menu), 'minimize':!sidenavOpen}">
         <i class="icon flaticon-settings"></i>
         <span class="text">
             {{menu.data.name}}
@@ -9,11 +9,20 @@
 </a>
 <ng-template [ngIf]="menu.children && menu.children.length > 0" cdk-portal>
     <div 
+        (mouseenter)="onMinHover = true;"
+        (mouseleave)="onMinHover = false; onMinLeave($event)"
         class="menu-submenu" 
         [@childActive]="toggleChildren(menu)"
         [ngClass]="{'minimize':!sidenavOpen}">
         <span class="arrow"></span>
         <ul class="menu-subnav">
+            <li class="menu-subnav-item subnav-title">
+                <a>
+                    <span>
+                        {{menu.data.name}}
+                    </span>
+                </a>
+            </li>
             <li 
                 class="menu-subnav-item" 
                 routerLinkActive="menu-subnav-item-active" 
