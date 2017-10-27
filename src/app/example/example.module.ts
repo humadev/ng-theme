@@ -30,16 +30,16 @@ const appRoutes: Routes = [
       {
             path: '',
             component: ExampleComponent,
-            data:{
+            data: {
                   name: 'Example',
                   groupAccess: 0,
                   icon: 'dashboard'
             },
-            children:[
+            children: [
             {
                   path: 'datatable',
                   component: DashboardComponent,
-                  data:{
+                  data: {
                         name: 'Data Table',
                         groupAccess: 0,
                         icon: 'dashboard'
@@ -48,7 +48,7 @@ const appRoutes: Routes = [
             {
                 path: 'datatable1',
                 component: DashboardComponent,
-                data:{
+                data: {
                       name: 'Data Table 1',
                       groupAccess: 0,
                       icon: 'dashboard'
@@ -75,7 +75,7 @@ const appRoutes: Routes = [
                 {
                     path: 'datatable',
                     component: DashboardComponent,
-                    data:{
+                    data: {
                         name: 'Data Table',
                         groupAccess: 0,
                         icon: 'dashboard'
@@ -84,7 +84,7 @@ const appRoutes: Routes = [
                 {
                     path: 'datatable',
                     component: DashboardComponent,
-                    data:{
+                    data: {
                             name: 'Data Table',
                             groupAccess: 0,
                             icon: 'dashboard'
@@ -93,7 +93,7 @@ const appRoutes: Routes = [
                 {
                     path: 'datatable',
                     component: DashboardComponent,
-                    data:{
+                    data: {
                         name: 'Data Table',
                         groupAccess: 0,
                         icon: 'dashboard'
@@ -102,7 +102,7 @@ const appRoutes: Routes = [
                 {
                     path: 'datatable',
                     component: DashboardComponent,
-                    data:{
+                    data: {
                             name: 'Data Table',
                             groupAccess: 0,
                             icon: 'dashboard'
@@ -112,7 +112,7 @@ const appRoutes: Routes = [
           {
               path: 'datatable2',
               component: DashboardComponent,
-              data:{
+              data: {
                     name: 'Data Table 2',
                     groupAccess: 0,
                     icon: 'dashboard'
@@ -121,7 +121,7 @@ const appRoutes: Routes = [
               {
                       path: 'datatable',
                       component: DashboardComponent,
-                      data:{
+                      data: {
                           name: 'Data Table',
                           groupAccess: 0,
                           icon: 'dashboard'
@@ -130,7 +130,7 @@ const appRoutes: Routes = [
               {
                   path: 'datatable',
                   component: DashboardComponent,
-                  data:{
+                  data: {
                           name: 'Data Table',
                           groupAccess: 0,
                           icon: 'dashboard'
@@ -139,7 +139,7 @@ const appRoutes: Routes = [
               {
                 path: 'datatable',
                 component: DashboardComponent,
-                data:{
+                data: {
                     name: 'Data Table',
                     groupAccess: 0,
                     icon: 'dashboard'
@@ -148,7 +148,7 @@ const appRoutes: Routes = [
                 {
                     path: 'datatable',
                     component: DashboardComponent,
-                    data:{
+                    data: {
                             name: 'Data Table',
                             groupAccess: 0,
                             icon: 'dashboard'
@@ -157,7 +157,7 @@ const appRoutes: Routes = [
                 {
                     path: 'datatable',
                     component: DashboardComponent,
-                    data:{
+                    data: {
                         name: 'Data Table',
                         groupAccess: 0,
                         icon: 'dashboard'
@@ -166,7 +166,7 @@ const appRoutes: Routes = [
             {
                 path: 'datatable',
                 component: DashboardComponent,
-                data:{
+                data: {
                         name: 'Data Table',
                         groupAccess: 0,
                         icon: 'dashboard'
@@ -175,7 +175,7 @@ const appRoutes: Routes = [
             {
                 path: 'datatable',
                 component: DashboardComponent,
-                data:{
+                data: {
                     name: 'Data Table',
                     groupAccess: 0,
                     icon: 'dashboard'
@@ -184,15 +184,15 @@ const appRoutes: Routes = [
         {
             path: 'datatable',
             component: DashboardComponent,
-            data:{
+            data: {
                     name: 'Data Table',
                     groupAccess: 0,
                     icon: 'dashboard'
             }
-        },{
+        }, {
             path: 'datatable',
             component: DashboardComponent,
-            data:{
+            data: {
                     name: 'Data Table',
                     groupAccess: 0,
                     icon: 'dashboard'
@@ -201,7 +201,7 @@ const appRoutes: Routes = [
         {
             path: 'datatable',
             component: DashboardComponent,
-            data:{
+            data: {
                 name: 'Data Table',
                 groupAccess: 0,
                 icon: 'dashboard'
@@ -210,7 +210,7 @@ const appRoutes: Routes = [
     {
         path: 'datatable',
         component: DashboardComponent,
-        data:{
+        data: {
                 name: 'Data Table',
                 groupAccess: 0,
                 icon: 'dashboard'
