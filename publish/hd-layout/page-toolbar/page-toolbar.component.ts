@@ -8,7 +8,7 @@ import { LayoutService } from '../../services/layout.service';
   <div class="d-flex align-items-center">
       <div class="mr-auto">
           <h3 class="m-subheader__title">
-              Dashboard
+              {{pageTitle}}
           </h3>
       </div>
       <div>
@@ -26,7 +26,7 @@ import { LayoutService } from '../../services/layout.service';
 </div>
   `
 })
-export class PageToolbarComponent{
+export class PageToolbarComponent {
 
       pageTitle = '';
 

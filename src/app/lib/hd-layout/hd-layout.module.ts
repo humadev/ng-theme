@@ -1,3 +1,4 @@
+import { FileUploadComponent } from './../directives/fileupload.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
@@ -50,7 +51,7 @@ import { SidenavItemComponent } from './sidenav/sidenav-item/sidenav-item.compon
       FormsModule,
       OverlayModule,
       PortalModule,
-      MatTabsModule
+      MatTabsModule,
   ],
   exports: [
       LayoutComponent,
@@ -59,7 +60,8 @@ import { SidenavItemComponent } from './sidenav/sidenav-item/sidenav-item.compon
       SidenavComponent,
       BreadcrumbComponent,
       StartPageComponent,
-      PopMenuDirective
+      PopMenuDirective,
+      FileUploadComponent
   ],
 declarations: [
       LayoutComponent,
@@ -75,7 +77,8 @@ declarations: [
       MainToolbarNotificationComponent,
       MainToolbarProfileComponent,
       MainToolbarChatComponent,
-      SidenavItemComponent
+      SidenavItemComponent,
+      FileUploadComponent
 ],
   providers: [MenuService, LayoutService, OverlayContainer]
 })

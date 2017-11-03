@@ -1,3 +1,4 @@
+import { HdContextMenuModule } from './../lib/context-menu/hd-context-menu.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,7 +16,7 @@ import { ApolloClient, createNetworkInterface } from 'apollo-client';
 import { ApolloModule } from 'apollo-angular';
 import { DataService } from 'app/example/data.service';
 
-const networkInterface = createNetworkInterface({ uri: 'https://sandbox.undiknas.ac.id/graphql' });
+const networkInterface = createNetworkInterface({ uri: 'http://localhost:3000/graphql' });
 
 const client = new ApolloClient({
   networkInterface,
@@ -40,7 +41,7 @@ const appRoutes: Routes = [
                   path: 'datatable',
                   component: DashboardComponent,
                   data: {
-                        name: 'Data Table',
+                        name: 'Example 1',
                         groupAccess: 0,
                         icon: 'dashboard'
                   }
@@ -49,71 +50,71 @@ const appRoutes: Routes = [
                 path: 'datatable1',
                 component: DashboardComponent,
                 data: {
-                      name: 'Data Table 1',
+                      name: 'Example 2',
                       groupAccess: 0,
                       icon: 'dashboard'
                 },
                 children: [
-                {
+                    {
+                            path: 'datatable',
+                            component: DashboardComponent,
+                            data:{
+                                name: 'Example 2.1',
+                                groupAccess: 0,
+                                icon: 'dashboard'
+                            }
+                    },
+                    {
                         path: 'datatable',
                         component: DashboardComponent,
                         data:{
-                            name: 'Data Table',
+                                name: 'Example 2.2',
+                                groupAccess: 0,
+                                icon: 'dashboard'
+                        }
+                    },
+                    {
+                        path: 'datatable',
+                        component: DashboardComponent,
+                        data: {
+                            name: 'Example 2.3',
                             groupAccess: 0,
                             icon: 'dashboard'
                         }
-                },
-                {
-                    path: 'datatable',
-                    component: DashboardComponent,
-                    data:{
-                            name: 'Data Table',
+                    },
+                    {
+                        path: 'datatable',
+                        component: DashboardComponent,
+                        data: {
+                                name: 'Example 2.4',
+                                groupAccess: 0,
+                                icon: 'dashboard'
+                        }
+                    },
+                    {
+                        path: 'datatable',
+                        component: DashboardComponent,
+                        data: {
+                            name: 'Example 2.5',
                             groupAccess: 0,
                             icon: 'dashboard'
-                    }
-                },
-                {
-                    path: 'datatable',
-                    component: DashboardComponent,
-                    data: {
-                        name: 'Data Table',
-                        groupAccess: 0,
-                        icon: 'dashboard'
-                    }
-                },
-                {
-                    path: 'datatable',
-                    component: DashboardComponent,
-                    data: {
-                            name: 'Data Table',
-                            groupAccess: 0,
-                            icon: 'dashboard'
-                    }
-                },
-                {
-                    path: 'datatable',
-                    component: DashboardComponent,
-                    data: {
-                        name: 'Data Table',
-                        groupAccess: 0,
-                        icon: 'dashboard'
-                    }
-                },
-                {
-                    path: 'datatable',
-                    component: DashboardComponent,
-                    data: {
-                            name: 'Data Table',
-                            groupAccess: 0,
-                            icon: 'dashboard'
-                    }
-                }]
+                        }
+                    },
+                    {
+                        path: 'datatable',
+                        component: DashboardComponent,
+                        data: {
+                                name: 'Example 2.6',
+                                groupAccess: 0,
+                                icon: 'dashboard'
+                        }
+                    }]
           },
           {
               path: 'datatable2',
               component: DashboardComponent,
               data: {
-                    name: 'Data Table 2',
+                    name: 'Example 3',
                     groupAccess: 0,
                     icon: 'dashboard'
               },
@@ -122,7 +123,7 @@ const appRoutes: Routes = [
                       path: 'datatable',
                       component: DashboardComponent,
                       data: {
-                          name: 'Data Table',
+                          name: 'Example 3.1',
                           groupAccess: 0,
                           icon: 'dashboard'
                       }
@@ -131,7 +132,7 @@ const appRoutes: Routes = [
                   path: 'datatable',
                   component: DashboardComponent,
                   data: {
-                          name: 'Data Table',
+                          name: 'Example 3.2',
                           groupAccess: 0,
                           icon: 'dashboard'
                   }
@@ -140,7 +141,7 @@ const appRoutes: Routes = [
                 path: 'datatable',
                 component: DashboardComponent,
                 data: {
-                    name: 'Data Table',
+                    name: 'Example 3.3',
                     groupAccess: 0,
                     icon: 'dashboard'
                 }
@@ -237,6 +238,7 @@ const appRoutes: Routes = [
             FlexLayoutModule,
             MatAutocompleteModule,
             ApolloModule.forRoot(provideClient),
+            HdContextMenuModule
       ],
       providers: [DataService],
       entryComponents: [ModalComponent],

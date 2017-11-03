@@ -1,3 +1,4 @@
+import { HdContextMenuModule } from './../../publish/context-menu/hd-context-menu.module';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {
@@ -11,7 +12,7 @@ import {
       MatSelectModule,
       MatProgressBarModule
 } from '@angular/material';
-import { HdLayoutModule } from "./lib/hd-layout/hd-layout.module";
+import { HdLayoutModule } from './lib/hd-layout/hd-layout.module';
 import {FabSpeedDialModule} from './lib/fab-speed-dial/fab-speed-dial.module';
 
 
@@ -28,7 +29,8 @@ import {FabSpeedDialModule} from './lib/fab-speed-dial/fab-speed-dial.module';
             FlexLayoutModule,
             HdLayoutModule,
             FabSpeedDialModule,
-            MatProgressBarModule
+            MatProgressBarModule,
+            HdContextMenuModule
       ],
       exports: [
             MatCardModule,

@@ -5,6 +5,14 @@
     width: 100%;
 }
 
+button:focus {
+    outline: none !important;
+}
+
+a.mat-button:hover{
+    text-decoration: none !important;
+}
+
 hd-login{
       width: 500px;
       display: block;

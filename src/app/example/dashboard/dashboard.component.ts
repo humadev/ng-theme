@@ -16,13 +16,22 @@ import { LayoutService } from 'app/lib/services/layout.service';
 })
 export class DashboardComponent implements OnInit {
 
+    cmItem = [
+          {icon: 'list', title: 'List Mata Kuliah', method: 'listMataKuliah', groupPermission: [0]},
+          {icon: 'edit', title: 'Edit', method: 'onEdit', groupPermission: [0]},
+          {icon: 'delete', title: 'Delete', method: 'onDelete', groupPermission: [0]},
+    ];
+    rows: TableAdapter | null;
+    @ViewChild('search') search: ElementRef;
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort) sort: MatSort;
 
       // speed dial
-      private _fixed: boolean = false;
-      open: boolean = false;
-      spin: boolean = true;
-      direction: string = 'down';
-      animationMode: string = 'scale';
+      private _fixed = false;
+      open = false;
+      spin = true;
+      direction = 'down';
+      animationMode = 'scale';
 
       get fixed() { return this._fixed; }
       set fixed(fixed: boolean) {
@@ -36,11 +45,7 @@ export class DashboardComponent implements OnInit {
         {icon: 'edit', title: 'Edit', method: this.edit, groupPermission: [0]},
         {icon: 'delete', title: 'Delete', method: this.delete, groupPermission: [0]}
     ];
-    rows: any | null;
-    displayedColumns = ['name', 'phone', 'address'];
-    @ViewChild('search') search: ElementRef;
-    @ViewChild('MatSort') sort: MatSort;
-    @ViewChild('MatPaginator') paginator: MatPaginator;
+    displayedColumns = ['first_name', 'mobile_phone', 'home_address'];
 
     testForm = this.fb.group({
         nama: ['', Validators.required]
@@ -62,19 +67,25 @@ export class DashboardComponent implements OnInit {
             public dialog: MatDialog,
             private ds: DataService,
             private _ls: LayoutService,
-            private fb: FormBuilder
+            private fb: FormBuilder,
+            public _dialog: MatDialog
       ) {
             _ls.pageProgressBar = true;
       }
 
       ngOnInit() {
-            const data = new TableAdapter(
-                  this.ds.setData()
+            this.rows = new TableAdapter(
+                    this.ds.setData(),
+                    this.displayedColumns,
+                    this.paginator,
+                    this.sort,
+                    this.displayedColumns,
+                    this.search
             );
-            data.sourceData.subscribe(res => this._ls.pageProgressBar = false);
+            this.ds.setData().subscribe(res => this._ls.pageProgressBar = false);
       }
 
-      test(event) {
+      onContextMenu(event) {
             event.method();
       }
 

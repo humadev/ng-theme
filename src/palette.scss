@@ -1,7 +1,7 @@
 @import '~@angular/material/theming';
 @include mat-core();
 
-$hd-primary: mat-palette($mat-cyan);
+$hd-primary: mat-palette($mat-blue, 700);
 $hd-accent:  mat-palette($mat-yellow, A200, A100, A400);
 $hd-warn:    mat-palette($mat-red);
 $hd-theme: mat-light-theme($hd-primary, $hd-accent, $hd-warn);

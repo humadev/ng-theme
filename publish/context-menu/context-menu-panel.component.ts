@@ -5,10 +5,14 @@ import { contextmenu } from './context-menu';
   selector: 'hd-menu-panel',
   template: `
     <div class="hd-context-menu-panel" [style.top.px]="top" [style.left.px]="left" fxLayout="column">
-      <a mat-button fxFlex *ngFor="let item of menuItem" (click)="onClick(item.method)"><mat-icon>{{item.icon}}</mat-icon> {{item.title}}</a>
+        <a mat-button fxFlex 
+            *ngFor="let item of menuItem" 
+            (click)="onClick(item.method)">
+                <mat-icon>{{item.icon}}</mat-icon> {{item.title}}
+        </a>
     </div>
   `,
-  styles:[`
+  styles: [`
       :host{
             position: fixed !important;
             min-width: 200px;

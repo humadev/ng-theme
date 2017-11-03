@@ -8,8 +8,7 @@ import { MenuService } from '../../services/menu.service';
     :host {
       background-color: grey;
     }
-  `],
-  styleUrls: ['./start-page.component.scss']
+  `]
 })
 export class StartPageComponent implements OnInit{
 
