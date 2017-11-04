@@ -12,17 +12,19 @@ import { MatTableModule, MatPaginatorModule, MatSortModule, MatAutocompleteModul
 import { CdkTableModule } from '@angular/cdk/table';
 
 
-import { ApolloClient, createNetworkInterface } from 'apollo-client';
+import { ApolloClient } from 'apollo-client';
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache, NormalizedCache } from 'apollo-cache-inmemory';
 import { ApolloModule } from 'apollo-angular';
 import { DataService } from 'app/example/data.service';
 
-const networkInterface = createNetworkInterface({ uri: 'http://localhost:3000/graphql' });
 
-const client = new ApolloClient({
-  networkInterface,
+const client = new ApolloClient<NormalizedCache>({
+  link: new HttpLink({ uri: 'http://localhost:3000/graphql' }),
+  cache: new InMemoryCache()
 });
 
-export function provideClient(): ApolloClient {
+export function provideClient(): ApolloClient<NormalizedCache> {
   return client;
 }
 
@@ -237,7 +239,7 @@ const appRoutes: Routes = [
             CdkTableModule,
             FlexLayoutModule,
             MatAutocompleteModule,
-            ApolloModule.forRoot(provideClient),
+            ApolloModule.withClient(provideClient),
             HdContextMenuModule
       ],
       providers: [DataService],
