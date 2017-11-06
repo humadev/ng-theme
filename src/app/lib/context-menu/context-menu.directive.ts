@@ -1,3 +1,4 @@
+import { LayoutService } from '../services/layout.service';
 import {
     Directive,
     Input,
@@ -12,7 +13,7 @@ import {
 import { ContextMenuPanelComponent } from './context-menu-panel.component';
 import { contextmenu } from './context-menu';
 import { ComponentInjectionService } from './../services/component-injection.service';
-import { OverlayConfig } from '@angular/cdk/overlay';
+import { OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { Overlay } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { OverlayOrigin } from '@angular/cdk/overlay';
@@ -27,39 +28,45 @@ export class ContextMenuDirective {
       @Input() menuItem: [contextmenu]; // data menu yg akan ditampikan, data ini sesuai dengan interface framework contextmenu
       panel: any;
       clickWatcher$: any;
-      overlayRef; any;
+      overlayRef: OverlayRef;
+      active = false;
 
       constructor(
             private ref: ElementRef,
             private render: Renderer2,
             private ar: ApplicationRef,
             private vc: ViewContainerRef,
-            public overlay: Overlay
+            public overlay: Overlay,
+            public layoutService: LayoutService
       ) {
             render.setStyle(ref.nativeElement, 'cursor', 'context-menu'); // add context-menu cursor to element used this directive
       }
 
       @HostListener('contextmenu', ['$event'])
       onContextMenu(event: MouseEvent): void {
-            event.preventDefault();
+        event.preventDefault();
+        this.layoutService.lockScroll.next(true);
+        if (!this.active) {
             this.render.addClass(this.ref.nativeElement, 'hd-contextmenu-active'); // coloring row with class
             this.createPanel();
             this.addPanelItem();
             this.calcPosition(event);
             this.outsideListener();
+        }
       }
 
       private createPanel(): void {
             const config = new OverlayConfig({
-                  hasBackdrop: true,
-                  backdropClass: 'context-overlay-backdrop',
-                  scrollStrategy: this.overlay.scrollStrategies.close()
+                  scrollStrategy: this.overlay.scrollStrategies.block()
             });
             this.overlayRef = this.overlay.create(config);
             const contextMenu = new ComponentPortal(ContextMenuPanelComponent);
             this.panel = this.overlayRef.attach(contextMenu);
+            this.active = true;
             this.overlayRef.backdropClick().subscribe(() => {
                   this.overlayRef.dispose();
+                  this.active = false;
+                  this.layoutService.lockScroll.next(false);
             });
       }
 
@@ -85,12 +92,16 @@ export class ContextMenuDirective {
                         this.render.removeClass(this.ref.nativeElement, 'hd-contextmenu-active');
                         // this.clickWatcher$.unsubscribe();
                         this.overlayRef.dispose();
+                        this.active = false;
+                        this.layoutService.lockScroll.next(false);
             });
-            this.render.listen('document','contextmenu', (event) => {
+            this.render.listen('document', 'contextmenu', (event) => {
                   if (!this.ref.nativeElement.contains(event.target)) {
                         this.render.removeClass(this.ref.nativeElement, 'hd-contextmenu-active');
                         // this.clickWatcher$.unsubscribe();
                         this.overlayRef.dispose();
+                        this.active = false;
+                        this.layoutService.lockScroll.next(false);
                   }
             });
       }

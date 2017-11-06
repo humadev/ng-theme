@@ -1,3 +1,4 @@
+import { LayoutService } from './../../services/layout.service';
 import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
@@ -30,15 +31,29 @@ export class SidenavComponent implements OnInit {
       @Input() opened = true;
 
       constructor(
+            private render: Renderer2,
+            private ref: ElementRef,
             private router: Router,
             private activeRoute: ActivatedRoute,
-            private menuService: MenuService
+            private menuService: MenuService,
+            public layoutService: LayoutService
       ) { }
 
       ngOnInit() {
             if (this.nav === false) {
                   this.menuService.sidenav.subscribe(res => this.navFromRouter = res);
             }
+            this.lockScroll();
+      }
+
+      lockScroll() {
+          this.layoutService.lockScroll.subscribe((isScroll) => {
+                if (isScroll) {
+                    this.render.addClass(this.ref.nativeElement, 'lock-scroll');
+                } else {
+                    this.render.removeClass(this.ref.nativeElement, 'lock-scroll');
+                }
+          });
       }
 
       parentOpen(i: any) {

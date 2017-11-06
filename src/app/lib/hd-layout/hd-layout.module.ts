@@ -1,3 +1,4 @@
+import { LibSharedModule } from './../lib-shared.module';
 import { FileUploadComponent } from './../directives/fileupload.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -52,6 +53,7 @@ import { SidenavItemComponent } from './sidenav/sidenav-item/sidenav-item.compon
       OverlayModule,
       PortalModule,
       MatTabsModule,
+      LibSharedModule
   ],
   exports: [
       LayoutComponent,
@@ -80,6 +82,6 @@ declarations: [
       SidenavItemComponent,
       FileUploadComponent
 ],
-  providers: [MenuService, LayoutService, OverlayContainer]
+  providers: [MenuService, OverlayContainer]
 })
 export class HdLayoutModule { }

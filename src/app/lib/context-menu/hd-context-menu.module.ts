@@ -1,3 +1,4 @@
+import { LibSharedModule } from './../lib-shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContextMenuPanelComponent } from './context-menu-panel.component';
@@ -9,7 +10,7 @@ import {
 import { ComponentInjectionService } from './../services/component-injection.service';
 
 @NgModule({
-      imports: [ CommonModule, MatButtonModule, MatIconModule ],
+      imports: [ CommonModule, MatButtonModule, MatIconModule, LibSharedModule ],
       declarations: [ ContextMenuPanelComponent, ContextMenuDirective ],
       exports: [ ContextMenuPanelComponent, ContextMenuDirective ],
       providers: [ComponentInjectionService],

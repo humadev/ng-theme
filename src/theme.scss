@@ -907,3 +907,7 @@ hd-start-page .container{
         }
     }
 }
+
+.lock-scroll .mat-sidenav-container .mat-sidenav-content{
+    overflow: hidden !important;
+}

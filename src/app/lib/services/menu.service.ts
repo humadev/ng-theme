@@ -49,13 +49,13 @@ export class MenuService {
                   this._ls.pageTitle.next(res.name);
                   this.pageTitle.next(res.name);
             });
-            if (this.lazyLoad){
+            if (this.lazyLoad) {
                   this.moduleIndex.subscribe(res => {
-                        if(this.router.config[res]['_loadedConfig']){
+                        if (this.router.config[res]['_loadedConfig']){
                               this.sidenav.next(this.router.config[res]['_loadedConfig'].routes[0].children)
                         }
                   });
-            }else {
+            } else {
                   this.sidenav.next(this.router.config);
             }
 

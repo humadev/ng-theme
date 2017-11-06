@@ -5,5 +5,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 export class LayoutService {
 
       pageTitle = new BehaviorSubject<string>('');
-      pageProgressBar= true;
+      pageProgressBar = true;
+      lockScroll = new BehaviorSubject<boolean>(false);
 }
