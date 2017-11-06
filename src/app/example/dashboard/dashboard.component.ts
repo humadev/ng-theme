@@ -1,13 +1,13 @@
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { slideToUp, slideToDown, slideToLeft } from 'app/lib/animations/router.animation';
+import { slideToUp, slideToDown, slideToLeft } from './../../lib/animations/router.animation';
 import { Component, OnInit, ViewChild, ElementRef, HostBinding } from '@angular/core';
 import { MatDialog, MatPaginator, MatSort } from '@angular/material';
 import { ModalComponent } from './../modal/modal.component';
 import { DataSource } from '@angular/cdk/table';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { DataService } from './../data.service';
-import { TableAdapter } from 'app/lib/class/table-adapter';
-import { LayoutService } from 'app/lib/services/layout.service';
+import { TableAdapter } from './../../lib/class/table-adapter';
+import { LayoutService } from './../../lib/services/layout.service';
 
 @Component({
   selector: 'hd-dashboard-example',

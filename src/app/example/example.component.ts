@@ -1,6 +1,6 @@
-import { slideToUp } from 'app/lib/animations/router.animation';
+import { slideToUp } from './../lib/animations/router.animation';
 import { Component, OnInit } from '@angular/core';
-import { LayoutService } from "app/lib/services/layout.service";
+import { LayoutService } from "./../lib/services/layout.service";
 
 @Component({
   selector: 'hd-example',

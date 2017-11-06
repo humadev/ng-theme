@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject, BehaviorSubject } from 'rxjs/Rx';
-import { DataSource } from '@angular/cdk/table';
-import { Apollo, ApolloQueryObservable} from 'apollo-angular';
+import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 
 @Injectable()
-export class DataService{
+export class DataService {
 
       constructor(
             private _apollo: Apollo
@@ -32,7 +30,7 @@ export class DataService{
                   notifyOnNetworkStatusChange: true
             })
             .map((res: any) => {
-                  let data = [];
+                  const data = [];
                   res.data.pegawai.forEach(element => {
                         data.push(element);
                   });

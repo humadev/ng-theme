@@ -49,6 +49,7 @@
                   <mat-row
                   *cdkRowDef="let row; columns: displayedColumns; let i=index"
                   (hdContextMenu)='onContextMenu($event)'
+                   cdk-overlay-origin
                   [menuID]='row.id_pegawai'
                   [menuItem]='cmItem'></mat-row>
             </mat-table>

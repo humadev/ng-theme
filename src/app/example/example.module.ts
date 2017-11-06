@@ -2,7 +2,7 @@ import { HdContextMenuModule } from './../lib/context-menu/hd-context-menu.modul
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from 'app/shared.module';
+import { SharedModule } from './../shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -12,19 +12,17 @@ import { MatTableModule, MatPaginatorModule, MatSortModule, MatAutocompleteModul
 import { CdkTableModule } from '@angular/cdk/table';
 
 
-import { ApolloClient } from 'apollo-client';
-import { HttpLink } from 'apollo-link-http';
-import { InMemoryCache, NormalizedCache } from 'apollo-cache-inmemory';
+import { ApolloClient, createNetworkInterface } from 'apollo-client';
 import { ApolloModule } from 'apollo-angular';
-import { DataService } from 'app/example/data.service';
+import { DataService } from './data.service';
 
+const networkInterface = createNetworkInterface({ uri: 'http://localhost:3000/graphql' });
 
-const client = new ApolloClient<NormalizedCache>({
-  link: new HttpLink({ uri: 'http://localhost:3000/graphql' }),
-  cache: new InMemoryCache()
+const client = new ApolloClient({
+  networkInterface,
 });
 
-export function provideClient(): ApolloClient<NormalizedCache> {
+export function provideClient(): ApolloClient {
   return client;
 }
 
@@ -239,7 +237,7 @@ const appRoutes: Routes = [
             CdkTableModule,
             FlexLayoutModule,
             MatAutocompleteModule,
-            ApolloModule.withClient(provideClient),
+            ApolloModule.forRoot(provideClient),
             HdContextMenuModule
       ],
       providers: [DataService],
