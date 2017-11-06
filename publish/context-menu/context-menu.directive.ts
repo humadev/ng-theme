@@ -12,6 +12,10 @@ import {
 import { ContextMenuPanelComponent } from './context-menu-panel.component';
 import { contextmenu } from './context-menu';
 import { ComponentInjectionService } from './../services/component-injection.service';
+import { OverlayConfig } from '@angular/cdk/overlay';
+import { Overlay } from '@angular/cdk/overlay';
+import { ComponentPortal } from '@angular/cdk/portal';
+import { OverlayOrigin } from '@angular/cdk/overlay';
 
 @Directive({
   selector: '[hdContextMenu]'
@@ -23,33 +27,40 @@ export class ContextMenuDirective {
       @Input() menuItem: [contextmenu]; // data menu yg akan ditampikan, data ini sesuai dengan interface framework contextmenu
       panel: any;
       clickWatcher$: any;
+      overlayRef; any;
 
       constructor(
             private ref: ElementRef,
             private render: Renderer2,
             private ar: ApplicationRef,
-            private cis: ComponentInjectionService,
-            private vc: ViewContainerRef
+            private vc: ViewContainerRef,
+            public overlay: Overlay
       ) {
-            render.setStyle(ref.nativeElement, 'cursor','context-menu'); // add context-menu cursor to element used this directive
+            render.setStyle(ref.nativeElement, 'cursor', 'context-menu'); // add context-menu cursor to element used this directive
       }
 
       @HostListener('contextmenu', ['$event'])
       onContextMenu(event: MouseEvent): void {
             event.preventDefault();
-            if (this.panel) {
-                this.ar.detachView(this.panel.hostView);
-            }
             this.render.addClass(this.ref.nativeElement, 'hd-contextmenu-active'); // coloring row with class
             this.createPanel();
             this.addPanelItem();
             this.calcPosition(event);
             this.outsideListener();
-            this.watchItemClick();
       }
 
       private createPanel(): void {
-            this.panel = this.cis.appendComponent(ContextMenuPanelComponent, {menuID: this.menuID});
+            const config = new OverlayConfig({
+                  hasBackdrop: true,
+                  backdropClass: 'context-overlay-backdrop',
+                  scrollStrategy: this.overlay.scrollStrategies.close()
+            });
+            this.overlayRef = this.overlay.create(config);
+            const contextMenu = new ComponentPortal(ContextMenuPanelComponent);
+            this.panel = this.overlayRef.attach(contextMenu);
+            this.overlayRef.backdropClick().subscribe(() => {
+                  this.overlayRef.dispose();
+            });
       }
 
       private addPanelItem(): void {
@@ -64,7 +75,7 @@ export class ContextMenuDirective {
       private watchItemClick(): void {
             this.clickWatcher$ = this.panel.instance.menuItemClicked.subscribe(
                   (emitted, i) => {
-                        this.hdContextMenu.emit({method:emitted, index:this.menuID});
+                        this.hdContextMenu.emit({method: emitted, index: this.menuID});
                   }
             );
       }
@@ -73,13 +84,13 @@ export class ContextMenuDirective {
             this.render.listen('document', 'click',(event) => {
                         this.render.removeClass(this.ref.nativeElement, 'hd-contextmenu-active');
                         // this.clickWatcher$.unsubscribe();
-                        this.ar.detachView(this.panel.hostView);
+                        this.overlayRef.dispose();
             });
-            this.render.listen('document','contextmenu',(event) => {
+            this.render.listen('document','contextmenu', (event) => {
                   if (!this.ref.nativeElement.contains(event.target)) {
                         this.render.removeClass(this.ref.nativeElement, 'hd-contextmenu-active');
                         // this.clickWatcher$.unsubscribe();
-                        this.ar.detachView(this.panel.hostView);
+                        this.overlayRef.dispose();
                   }
             });
       }
