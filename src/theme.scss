@@ -13,6 +13,12 @@ a.mat-button:hover{
     text-decoration: none !important;
 }
 
+.cdk-global-scrollblock {
+    overflow-y: hidden !important;
+}
+
+
+
 hd-login{
       width: 500px;
       display: block;
