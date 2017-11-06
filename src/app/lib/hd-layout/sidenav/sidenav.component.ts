@@ -29,6 +29,7 @@ export class SidenavComponent implements OnInit {
       @Output() pageTitle = new EventEmitter();
       moduleConfig: any;
       @Input() opened = true;
+      scrollListener = () => null;
 
       constructor(
             private render: Renderer2,
@@ -49,9 +50,9 @@ export class SidenavComponent implements OnInit {
       lockScroll() {
           this.layoutService.lockScroll.subscribe((isScroll) => {
                 if (isScroll) {
-                    this.render.addClass(this.ref.nativeElement, 'lock-scroll');
+                    this.scrollListener = this.render.listen(this.ref.nativeElement, 'wheel', (event) => false);
                 } else {
-                    this.render.removeClass(this.ref.nativeElement, 'lock-scroll');
+                    this.scrollListener();
                 }
           });
       }

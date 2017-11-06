@@ -911,3 +911,16 @@ hd-start-page .container{
 .lock-scroll .mat-sidenav-container .mat-sidenav-content{
     overflow: hidden !important;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+::-webkit-scrollbar-thumb {
+  background-color: #686c89;
+  outline: 1px solid #686c89;
+}

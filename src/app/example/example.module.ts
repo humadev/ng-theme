@@ -38,10 +38,10 @@ const appRoutes: Routes = [
             },
             children: [
             {
-                  path: 'datatable',
+                  path: 'dashboard',
                   component: DashboardComponent,
                   data: {
-                        name: 'Example 1',
+                        name: 'Dashboard',
                         groupAccess: 0,
                         icon: 'dashboard'
                   }

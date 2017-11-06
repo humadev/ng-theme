@@ -45,8 +45,8 @@ export class ContextMenuDirective {
       @HostListener('contextmenu', ['$event'])
       onContextMenu(event: MouseEvent): void {
         event.preventDefault();
-        this.layoutService.lockScroll.next(true);
         if (!this.active) {
+            setTimeout(() => this.layoutService.lockScroll.next(true), 100)
             this.render.addClass(this.ref.nativeElement, 'hd-contextmenu-active'); // coloring row with class
             this.createPanel();
             this.addPanelItem();
@@ -63,11 +63,6 @@ export class ContextMenuDirective {
             const contextMenu = new ComponentPortal(ContextMenuPanelComponent);
             this.panel = this.overlayRef.attach(contextMenu);
             this.active = true;
-            this.overlayRef.backdropClick().subscribe(() => {
-                  this.overlayRef.dispose();
-                  this.active = false;
-                  this.layoutService.lockScroll.next(false);
-            });
       }
 
       private addPanelItem(): void {
