@@ -1,11 +1,13 @@
 import { TemplatePortalDirective, Portal } from '@angular/cdk/portal';
 import { OverlayOrigin, Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { Component, OnInit, ViewChild, ViewChildren, QueryList, ElementRef } from '@angular/core';
+import { fadeUp, ringing } from '../../../animations/router.animation';
 
 @Component({
   selector: '[hd-main-toolbar-notification]',
   templateUrl: './main-toolbar-notification.component.html',
-  styleUrls: ['./main-toolbar-notification.component.scss']
+  styleUrls: ['./main-toolbar-notification.component.scss'],
+  animations: [fadeUp(), ringing()]
 })
 export class MainToolbarNotificationComponent {
 

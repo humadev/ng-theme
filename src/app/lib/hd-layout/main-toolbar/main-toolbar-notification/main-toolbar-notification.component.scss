@@ -47,11 +47,6 @@
         height: 100%;
         width: 35px;
         font-size: 1.4rem;
-        -webkit-animation: m-animate-shake 0.1s ease-in 0.1s infinite alternate;
-        -moz-animation: m-animate-shake 0.1s ease-in 0.1s infinite alternate;
-        -ms-animation: m-animate-shake 0.1s ease-in 0.1s infinite alternate;
-        -o-animation: m-animate-shake 0.1s ease-in 0.1s infinite alternate;
-        animation: m-animate-shake 0.1s ease-in 0.1s infinite alternate;
         animation-fill-mode: initial;
         text-decoration: none;
         background-color: transparent;
@@ -110,10 +105,97 @@
     -ms-border-radius: 100%;
     -o-border-radius: 100%;
     border-radius: 100%;
-    webkit-animation: m-animate-blink 1s step-start 0s infinite;
+    animation-fill-mode: initial;
+}
+
+@-webkit-keyframes m-animate-blink {
+    50% {
+      opacity: 0.0; } }
+  
+  @-moz-keyframes m-animate-blink {
+    50% {
+      opacity: 0.0; } }
+  
+  @-o-keyframes m-animate-blink {
+    50% {
+      opacity: 0.0; } }
+  
+  @keyframes m-animate-blink {
+    50% {
+      opacity: 0.0; } }
+  
+  @-webkit-keyframes m-animate-shake {
+    from {
+      -webkit-transform: rotate(13deg);
+      -moz-transform: rotate(13deg);
+      -ms-transform: rotate(13deg);
+      -o-transform: rotate(13deg);
+      transform: rotate(13deg); }
+    to {
+      -webkit-transform-origin: center center;
+      -webkit-transform: rotate(-13deg);
+      -moz-transform: rotate(-13deg);
+      -ms-transform: rotate(-13deg);
+      -o-transform: rotate(-13deg);
+      transform: rotate(-13deg); } }
+  
+  @-moz-keyframes m-animate-shake {
+    from {
+      -webkit-transform: rotate(13deg);
+      -moz-transform: rotate(13deg);
+      -ms-transform: rotate(13deg);
+      -o-transform: rotate(13deg);
+      transform: rotate(13deg); }
+    to {
+      -webkit-transform-origin: center center;
+      -webkit-transform: rotate(-13deg);
+      -moz-transform: rotate(-13deg);
+      -ms-transform: rotate(-13deg);
+      -o-transform: rotate(-13deg);
+      transform: rotate(-13deg); } }
+  
+  @-o-keyframes m-animate-shake {
+    from {
+      -webkit-transform: rotate(13deg);
+      -moz-transform: rotate(13deg);
+      -ms-transform: rotate(13deg);
+      -o-transform: rotate(13deg);
+      transform: rotate(13deg); }
+    to {
+      -webkit-transform-origin: center center;
+      -webkit-transform: rotate(-13deg);
+      -moz-transform: rotate(-13deg);
+      -ms-transform: rotate(-13deg);
+      -o-transform: rotate(-13deg);
+      transform: rotate(-13deg); } }
+  
+  @keyframes m-animate-shake {
+    from {
+      -webkit-transform: rotate(13deg);
+      -moz-transform: rotate(13deg);
+      -ms-transform: rotate(13deg);
+      -o-transform: rotate(13deg);
+      transform: rotate(13deg); }
+    to {
+      -webkit-transform-origin: center center;
+      -webkit-transform: rotate(-13deg);
+      -moz-transform: rotate(-13deg);
+      -ms-transform: rotate(-13deg);
+      -o-transform: rotate(-13deg);
+      transform: rotate(-13deg); } }
+
+.m-animate-blink {
+    -webkit-animation: m-animate-blink 1s step-start 0s infinite;
     -moz-animation: m-animate-blink 1s step-start 0s infinite;
     -ms-animation: m-animate-blink 1s step-start 0s infinite;
     -o-animation: m-animate-blink 1s step-start 0s infinite;
     animation: m-animate-blink 1s step-start 0s infinite;
-    animation-fill-mode: initial;
-}
+    animation-fill-mode: initial; }
+  
+  .m-animate-shake {
+    -webkit-animation: m-animate-shake 0.1s ease-in 0.1s infinite alternate;
+    -moz-animation: m-animate-shake 0.1s ease-in 0.1s infinite alternate;
+    -ms-animation: m-animate-shake 0.1s ease-in 0.1s infinite alternate;
+    -o-animation: m-animate-shake 0.1s ease-in 0.1s infinite alternate;
+    animation: m-animate-shake 0.1s ease-in 0.1s infinite alternate;
+    animation-fill-mode: initial; }

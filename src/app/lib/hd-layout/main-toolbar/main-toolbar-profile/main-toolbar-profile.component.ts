@@ -1,11 +1,13 @@
 import { TemplatePortalDirective, Portal } from '@angular/cdk/portal';
 import { OverlayOrigin, Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
+import { fadeUp } from '../../../animations/router.animation';
 
 @Component({
   selector: '[hd-main-toolbar-profile]',
   templateUrl: './main-toolbar-profile.component.html',
-  styleUrls: ['./main-toolbar-profile.component.scss']
+  styleUrls: ['./main-toolbar-profile.component.scss'],
+  animations: [fadeUp()]
 })
 export class MainToolbarProfileComponent {
 

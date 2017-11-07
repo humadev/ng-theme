@@ -10,7 +10,8 @@ import {
       MatGridListModule,
       MatCheckboxModule,
       MatSelectModule,
-      MatProgressBarModule
+      MatProgressBarModule,
+      MatIconModule
 } from '@angular/material';
 import { HdLayoutModule } from './lib/hd-layout/hd-layout.module';
 import {FabSpeedDialModule} from './lib/fab-speed-dial/fab-speed-dial.module';
@@ -30,7 +31,8 @@ import {FabSpeedDialModule} from './lib/fab-speed-dial/fab-speed-dial.module';
             HdLayoutModule,
             FabSpeedDialModule,
             MatProgressBarModule,
-            HdContextMenuModule
+            HdContextMenuModule,
+            MatIconModule
       ],
       exports: [
             MatCardModule,
@@ -44,7 +46,8 @@ import {FabSpeedDialModule} from './lib/fab-speed-dial/fab-speed-dial.module';
             FlexLayoutModule,
             HdLayoutModule,
             FabSpeedDialModule,
-            MatProgressBarModule
+            MatProgressBarModule,
+            MatIconModule
       ]
 })
 export class SharedModule { }

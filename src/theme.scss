@@ -544,16 +544,7 @@ hd-start-page .container{
             padding-top: 10px;
       }
 }
-@media (min-width: 993px){
-      .cdk-overlay-container .cdk-overlay-pane .m-menu__submenu {
-            display: block;
-            -webkit-animation: m-header-menu-submenu-fade-in .3s ease 1, m-header-menu-submenu-move-up .3s ease-out 1;
-            -moz-animation: m-header-menu-submenu-fade-in .3s ease 1, m-header-menu-submenu-move-up .3s ease-out 1;
-            -ms-animation: m-header-menu-submenu-fade-in .3s ease 1, m-header-menu-submenu-move-up .3s ease-out 1;
-            -o-animation: m-header-menu-submenu-fade-in .3s ease 1, m-header-menu-submenu-move-up .3s ease-out 1;
-            animation: m-header-menu-submenu-fade-in .3s ease 1, m-header-menu-submenu-move-up .3s ease-out 1;
-      }
-}
+
 
 @media (min-width: 993px){
       .cdk-overlay-container .cdk-overlay-pane .m-menu__submenu {
@@ -609,11 +600,6 @@ hd-start-page .container{
     .left-menu-dropdown{
         padding-top: 10px;
         display: block;
-        -webkit-animation: m-header-menu-submenu-fade-in .3s ease 1, m-header-menu-submenu-move-up .3s ease-out 1;
-        -moz-animation: m-header-menu-submenu-fade-in .3s ease 1, m-header-menu-submenu-move-up .3s ease-out 1;
-        -ms-animation: m-header-menu-submenu-fade-in .3s ease 1, m-header-menu-submenu-move-up .3s ease-out 1;
-        -o-animation: m-header-menu-submenu-fade-in .3s ease 1, m-header-menu-submenu-move-up .3s ease-out 1;
-        animation: m-header-menu-submenu-fade-in .3s ease 1, m-header-menu-submenu-move-up .3s ease-out 1;
         width: 275px;
         -webkit-transform: translateZ(0);
         -moz-transform: translateZ(0);

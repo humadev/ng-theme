@@ -19,11 +19,10 @@
 }
 
 .menu-item{
-    padding: 9px 30px;
+    padding: 2px 30px;
     height: 44px;
     display: table;
     table-layout: fixed;
-    width: 100%;
     margin: 0;
     text-decoration: none;
     position: relative;
@@ -37,6 +36,8 @@
         height: 100%;
         vertical-align: middle;
         line-height: 0;
+        padding: 0;
+        padding-right: 15px;
     }
     span.text{
         color: #868aa8;
@@ -46,7 +47,7 @@
         display: table-cell;
         height: 100%;
         width: 100%;
-        padding: 0;
+        padding: 0 !important;
         vertical-align: middle;
     }
     i.arrow{
@@ -58,6 +59,7 @@
         vertical-align: middle;
         line-height: 0;
         height: 100%;
+        padding: 0 !important;
         // -webkit-transition: all 0.3s ease;
         // -moz-transition: all 0.3s ease;
         // -ms-transition: all 0.3s ease;
@@ -101,6 +103,7 @@
         height: 100%;
         vertical-align: middle;
         line-height: 0;
+        padding: 0 !important;
     }
 } 
 
