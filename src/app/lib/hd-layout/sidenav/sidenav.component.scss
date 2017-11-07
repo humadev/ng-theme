@@ -55,3 +55,23 @@ dl, ol, ul {
 .mat-drawer{
     min-width: 4vw !important;
 }
+
+.m-aside-left.minimize {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  width: 70px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.mat-sidenav{
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    width: 255px;
+}

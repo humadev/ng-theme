@@ -5,9 +5,13 @@ import { LayoutService } from "./../lib/services/layout.service";
 @Component({
   selector: 'hd-example',
   template: `
-      <hd-layout lazyLoadModule='true' title="Undiknas SIM" notification="true">
-            <router-outlet></router-outlet>
-      </hd-layout>
+        <hd-main-toolbar titleImg="assets/logo.png"></hd-main-toolbar>
+        <hd-sidenav #sidenav lazyLoadModule="true">
+                <hd-page-toolbar #pagebar></hd-page-toolbar>
+                <div class='hd-page'>
+                    <router-outlet></router-outlet>
+                </div>
+        </hd-sidenav>
   `
 })
 export class ExampleComponent implements OnInit {

@@ -1,3 +1,4 @@
+import { LayoutService } from './../../../services/layout.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, Input, ViewEncapsulation, ViewChild, ViewChildren, QueryList, ElementRef, HostListener } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
@@ -32,7 +33,7 @@ export class SidenavItemComponent implements OnInit {
     @Input() nav: any = false;
     @Input() navFromRouter: any;
     @ViewChildren(TemplatePortalDirective) templatePortals: QueryList<Portal<any>>;
-    @Input() sidenavOpen = true;
+    @Input() sidenavOpen = {minimize: true};
     children = false;
     overlayRef: OverlayRef;
     onMinHover = false;
@@ -42,7 +43,8 @@ export class SidenavItemComponent implements OnInit {
     constructor(
         private router: Router,
         private overlay: Overlay,
-        private ref: ElementRef
+        private ref: ElementRef,
+        private layout: LayoutService
     ) { }
 
     ngOnInit() {
@@ -69,7 +71,7 @@ export class SidenavItemComponent implements OnInit {
     }
 
     toggleChildren(level) {
-        if (this.sidenavOpen) {
+        if (!this.sidenavOpen.minimize) {
             if (level.children && level.children.length > 0 && (level.isOpen || this.isActive([level.path]))) {
                 this.children = true;
                 return 'active';
@@ -90,7 +92,7 @@ export class SidenavItemComponent implements OnInit {
     @HostListener('mouseenter', ['$event'])
     onHover(e: MouseEvent) {
         this.listHover = true;
-        if (!this.sidenavOpen && !this.hasAttached) {
+        if (!!this.sidenavOpen.minimize && !this.hasAttached) {
             const config = new OverlayConfig({
                 scrollStrategy: this.overlay.scrollStrategies.block(),
                 positionStrategy: this.overlay.position().connectedTo(
@@ -109,7 +111,7 @@ export class SidenavItemComponent implements OnInit {
     onLeave(e) {
         this.listHover = false;
         setTimeout(() => {
-            if (!this.sidenavOpen && !this.onMinHover) {
+            if (!!this.sidenavOpen.minimize && !this.onMinHover) {
                 this.hasAttached = false;
                 this.overlayRef.dispose();
             }
@@ -118,7 +120,7 @@ export class SidenavItemComponent implements OnInit {
 
     onMinLeave(e) {
         setTimeout(() => {
-            if (!this.sidenavOpen && !this.onMinHover && !this.listHover) {
+            if (!!this.sidenavOpen.minimize && !this.onMinHover && !this.listHover) {
                 this.hasAttached = false;
                 this.overlayRef.dispose();
             }

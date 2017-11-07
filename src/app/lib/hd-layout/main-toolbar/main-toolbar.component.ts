@@ -1,3 +1,4 @@
+import { LayoutService } from './../../services/layout.service';
 import {Overlay, OverlayOrigin, OverlayConfig} from '@angular/cdk/overlay';
 import {
     Component,
@@ -10,55 +11,17 @@ import {
     ViewContainerRef,
     QueryList,
     ViewChildren,
-    ElementRef, ComponentRef } from '@angular/core';
+    ElementRef, ComponentRef, Renderer2 } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { ComponentPortal, Portal, TemplatePortalDirective } from '@angular/cdk/portal';
 import { PopMenuDirective } from '../../directives/pop-menu.directive';
 
 @Component({
-  selector: 'hd-main-toolbar',
-  templateUrl: 'main-toolbar.component.html',
-  styles: [`
-  @media (min-width: 993px){
-    a.m-brand__toggler--right span{
-        background-color: #2739c1 !important;
-    }
-    a.m-brand__toggler--right span:before{
-        background-color: #2739c1 !important;
-    }
-    a.m-brand__toggler--right span:after{
-        background-color: #2739c1 !important;
-    }
-    .toolbar-menu {
-        width: 100%;
-        display: table-cell;
-        vertical-align: top;
-        height: 100%;
-        -webkit-box-shadow: 0px 1px 15px 1px rgba(113, 106, 202, 0.1);
-        -moz-box-shadow: 0px 1px 15px 1px rgba(113, 106, 202, 0.1);
-        box-shadow: 0px 1px 15px 1px rgba(113, 106, 202, 0.1);
-        -webkit-transition: all 0.3s ease;
-        -moz-transition: all 0.3s ease;
-        -ms-transition: all 0.3s ease;
-        -o-transition: all 0.3s ease;
-        transition: all 0.3s ease;
-        font-size: 14px;
-        font-weight: 300;
-        font-family: "Poppins";
-        -webkit-font-smoothing: antialiased;
-    }
-  }
-      .m-header-head {
-            -webkit-box-shadow: 0 1px 15px 1px rgba(113,106,202,.1);
-            -moz-box-shadow: 0 1px 15px 1px rgba(113,106,202,.1);
-            box-shadow: 0 1px 15px 1px rgba(113,106,202,.1);
-    }
-    .m-brand{
-        width:255px;
-    }
-  `],
-  encapsulation: ViewEncapsulation.None,
-  preserveWhitespaces: false
+    selector: 'hd-main-toolbar',
+    templateUrl: 'main-toolbar.component.html',
+    styleUrls: ['main-toolbar.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    preserveWhitespaces: false
 })
 export class MainToolbarComponent implements OnInit {
       @Input() notification = false;
@@ -77,12 +40,21 @@ export class MainToolbarComponent implements OnInit {
       notificationOpen = false;
       messageOpen = false;
       topMenuOpen = false;
-      class = 'm-brand__icon m-brand__toggler m-brand__toggler--left m--visible-desktop-inline-block';
+      brandClass = {
+        minimize: false
+      };
+      brandToggle = {
+          'toggler-right': false,
+          'toggler-left': true
+      };
       sidenav = true;
       @Output() minimize = new EventEmitter();
 
       constructor(
-            private menuService: MenuService
+            private menuService: MenuService,
+            private renderer: Renderer2,
+            private elRef: ElementRef,
+            private layout: LayoutService
       ) {}
 
       ngOnInit() {
@@ -93,12 +65,15 @@ export class MainToolbarComponent implements OnInit {
 
       toggleSidenav() {
         if (this.sidenav) {
-            this.class = 'm-brand__icon m-brand__toggler m-brand__toggler--right m--visible-desktop-inline-block';
+            this.brandToggle['toggler-right'] = true;
+            this.brandToggle['toggler-left'] = false;
         }else {
-            this.class = 'm-brand__icon m-brand__toggler m-brand__toggler--left m--visible-desktop-inline-block';
+            this.brandToggle['toggler-right'] = false;
+            this.brandToggle['toggler-left'] = true;
         }
         this.sidenav = !this.sidenav;
-        this.minimize.emit(!this.sidenav);
+        this.layout.sidebarOpen.next(this.sidenav);
+        this.brandClass.minimize = !this.sidenav;
       }
 
       onSidenavToggle() {

@@ -20,7 +20,7 @@ import { slideToRight } from '../../animations/router.animation';
         slideToRight()
       ]
 })
-export class SidenavComponent implements OnInit {
+export class SidenavComponent implements OnInit, AfterViewInit {
 
       @Input() nav: any = false;
       @Input() lazyLoadModule: any = false;
@@ -29,6 +29,9 @@ export class SidenavComponent implements OnInit {
       @Output() pageTitle = new EventEmitter();
       moduleConfig: any;
       @Input() opened = true;
+      sidenavClass = {
+          minimize: false
+      };
       scrollListener = () => null;
 
       constructor(
@@ -45,6 +48,21 @@ export class SidenavComponent implements OnInit {
                   this.menuService.sidenav.subscribe(res => this.navFromRouter = res);
             }
             this.lockScroll();
+            this.layoutService.sidebarOpen.subscribe((open) => {
+                this.sidenavClass.minimize = !open;
+            });
+      }
+
+      ngAfterViewInit() {
+          this.layoutService.sidebarOpen.subscribe((open) => {
+              const content = this.ref.nativeElement.querySelector('.mat-sidenav-content');
+              this.render.addClass(content, 'animate-content');
+              if (open) {
+                  this.render.setStyle(content, 'margin-left', '255px');
+              } else {
+                  this.render.setStyle(content, 'margin-left', '70px');
+              }
+          });
       }
 
       lockScroll() {

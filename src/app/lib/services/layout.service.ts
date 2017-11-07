@@ -7,4 +7,5 @@ export class LayoutService {
       pageTitle = new BehaviorSubject<string>('');
       pageProgressBar = true;
       lockScroll = new BehaviorSubject<boolean>(false);
+      sidebarOpen = new BehaviorSubject<boolean>(true);
 }
