@@ -32,9 +32,9 @@ export class MainToolbarComponent implements OnInit {
       @Output() logout = new EventEmitter();
       @Input() titleText = 'Humadev Theme';
       @Input() titleImg: string;
+      @Input() theme: 'default' | 'dark' | 'light' = 'dark';
       @ViewChild('mainMenu') menu: OverlayOrigin;
       @ViewChildren(TemplatePortalDirective) templatePortals: QueryList<Portal<any>>;
-      startMenus = this.menuService.startMenu;
       active;
       accountOpen = false;
       notificationOpen = false;
@@ -43,6 +43,7 @@ export class MainToolbarComponent implements OnInit {
       brandClass = {
         minimize: false
       };
+      brandBackground = '#282a3c';
       brandToggle = {
           'toggler-right': false,
           'toggler-left': true
@@ -55,12 +56,18 @@ export class MainToolbarComponent implements OnInit {
             private renderer: Renderer2,
             private elRef: ElementRef,
             private layout: LayoutService
-      ) {}
+      ) {
+      }
 
       ngOnInit() {
             this.menuService.moduleActive.subscribe(res => {
                   this.active = res;
             });
+            if (this.theme === 'dark') {
+                this.brandBackground = '#282a3c';
+            } else {
+                this.brandBackground = '#ffffff';
+            }
       }
 
       toggleSidenav() {

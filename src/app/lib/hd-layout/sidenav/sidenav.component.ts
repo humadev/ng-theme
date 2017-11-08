@@ -54,8 +54,8 @@ export class SidenavComponent implements OnInit, AfterViewInit {
       }
 
       ngAfterViewInit() {
+          const content = this.ref.nativeElement.querySelector('.mat-sidenav-content');
           this.layoutService.sidebarOpen.subscribe((open) => {
-              const content = this.ref.nativeElement.querySelector('.mat-sidenav-content');
               this.render.addClass(content, 'animate-content');
               if (open) {
                   this.render.setStyle(content, 'margin-left', '255px');

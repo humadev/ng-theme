@@ -63,7 +63,13 @@ import { SidenavItemComponent } from './sidenav/sidenav-item/sidenav-item.compon
       BreadcrumbComponent,
       StartPageComponent,
       PopMenuDirective,
-      FileUploadComponent
+      FileUploadComponent,
+      MainToolbarLeftMenuComponent,
+      MainToolbarRightMenuComponent,
+      MainToolbarMenuItemComponent,
+      MainToolbarNotificationComponent,
+      MainToolbarProfileComponent,
+      MainToolbarChatComponent
   ],
 declarations: [
       LayoutComponent,

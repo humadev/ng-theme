@@ -4,22 +4,18 @@ import { MenuService } from '../../services/menu.service';
 @Component({
   selector: 'hd-start-page',
   templateUrl: './start-page.component.html',
-  styles: [`
-    :host {
-      background-color: grey;
-    }
-  `]
+  styleUrls: ['start-page.component.scss']
 })
-export class StartPageComponent implements OnInit{
+export class StartPageComponent implements OnInit {
 
-      @Input() menus: any;
-      img = 'https://sia.undiknas.ac.id/assets/icons/admission.png';
+    @Input() menus: any;
+    @Input() copyright: string;
 
-      constructor(
-            private menuService: MenuService
-      ) {}
+    constructor(
+        private menuService: MenuService
+    ) {}
 
-      ngOnInit() {
-             this.menus = this.menuService.startMenu;
-      }
+    ngOnInit() {
+        this.menus = this.menuService.startMenu;
+    }
 }

@@ -1,13 +1,14 @@
 <div class="container">
-      <mat-grid-list cols="5" rowHeight="2:1" gutterSize="15px">
-            <ng-template ngFor let-menu [ngForOf]="menus" let-i="index">
-                  <mat-grid-tile *ngIf="menu.data.isMenu">
-                        <a [routerLink]="[menu.path]" class="menubox">
-                              <img [src]="menu.data.icon">
-                        </a>
-                        <mat-grid-tile-footer>{{menu.data.title}}</mat-grid-tile-footer>
-                  </mat-grid-tile>
-            </ng-template>
-      </mat-grid-list>
-      <div class="clear"></div>
+    <div class="start-menu">
+        <ng-template ngFor let-menu [ngForOf]="menus" let-i="index">
+            <a class="item" [routerLink]="[menu.path]" *ngIf="menu.data.isMenu">
+                <img [src]="menu.data.icon">
+                <span class='text'>{{menu.data.title}}</span>
+                <span class='description'>{{menu.data.description}}</span>
+            </a>
+        </ng-template>
+    </div>
+</div>
+<div class='copyright'>
+    <span>{{copyright}}</span>
 </div>

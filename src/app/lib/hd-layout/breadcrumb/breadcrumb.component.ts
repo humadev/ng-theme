@@ -30,12 +30,15 @@ export class BreadcrumbComponent implements OnInit {
 
       breadcrumbs: IBreadcrumb[];
 
-      constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
+      constructor(private router: Router, private activatedRoute: ActivatedRoute) { 
+      }
 
-      ngOnInit() {
-            // subscribe to the NavigationEnd event
-            this.router.events.filter(
-                  event => event instanceof NavigationEnd)
+    ngOnInit() {
+        // init when refreh page
+        const root: ActivatedRoute = this.activatedRoute.root;
+        this.breadcrumbs = this.getBreadcrumbs(root);
+            // used when navigate trough angular router
+            this.router.events.filter(event => event instanceof NavigationEnd)
             .subscribe(event => {
                   // set breadcrumbs
                   const root: ActivatedRoute = this.activatedRoute.root;

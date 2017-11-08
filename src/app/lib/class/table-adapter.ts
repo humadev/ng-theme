@@ -63,43 +63,41 @@ export class TableAdapter extends DataSource<any> {
 
       /** Connect function called by the table to retrieve one stream containing the data to render. */
       connect(): Observable<any> {
-            let connectData = [];
-            if(this._filterInput){
+            const connectData = [];
+            if (this._filterInput) {
                   connectData.push(this.filter);
             }
-            if(this._sort){
+            if (this._sort) {
                   connectData.push(this._sort.sortChange);
             }
-            if(this._paginator){
+            if (this._paginator) {
                   connectData.push(this._paginator.page);
             }
 
             return this._data
             .map((res) => this.setData(res))
                   .switchMap(res => {
-                        if(connectData.length > 0){
+                        if (connectData.length > 0) {
                               return Observable.merge(...connectData);
-                        }else{
+                        }else {
                               return Observable.of(res);
                         }
                   })
                   .map(() => this.filtering())
                   .map(() => this.sorting())
-                  .map(() => {
-                        return this.paging();
-                  });
+                  .map(() =>  this.paging());
       }
 
       setData(data: any[]) {
             this.sourceData.next(data);
             this.tableData.next(data);
-            if(this._paginator){
+            if (this._paginator) {
                   this._paginator.length = this.tableData.value.length;
             }
       }
 
       paging() {
-            if (this._paginator){
+            if (this._paginator) {
                   this._paginator.length = this.tableData.value.length;
                   const data = this.tableData.value.slice();
 

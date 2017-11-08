@@ -5,7 +5,16 @@ import { LayoutService } from "./../lib/services/layout.service";
 @Component({
   selector: 'hd-example',
   template: `
-        <hd-main-toolbar titleImg="assets/logo.png"></hd-main-toolbar>
+        <hd-main-toolbar titleImg="assets/logo.png">
+            <!-- BEGIN: Topbar -->
+            <hd-main-toolbar-left-menu></hd-main-toolbar-left-menu>
+            <hd-main-toolbar-right-menu>
+                <li hd-main-toolbar-notification></li>
+                <li hd-main-toolbar-chat></li>
+                <li hd-main-toolbar-profile></li>
+            </hd-main-toolbar-right-menu>
+            <!-- END: Topbar -->
+        </hd-main-toolbar>
         <hd-sidenav #sidenav lazyLoadModule="true">
                 <hd-page-toolbar #pagebar></hd-page-toolbar>
                 <div class='hd-page'>
