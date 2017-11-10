@@ -34,7 +34,7 @@ export class TableAdapter extends DataSource<any> {
             length: this.tableData.value.length
       });
       filter = new BehaviorSubject<String>('');
-      sort   = new BehaviorSubject<Sort>({
+      sort = new BehaviorSubject<Sort>({
             active: '',
             direction: 'asc'
       });
@@ -48,15 +48,15 @@ export class TableAdapter extends DataSource<any> {
             private _filterInput?: ElementRef
       ) {
             super();
-            if(_searchColumns && _searchColumns.length === 0){
+            if (_searchColumns && _searchColumns.length === 0) {
                   _searchColumns = _displayedColumns;
             }
 
-            if(_filterInput){
+            if (_filterInput) {
                   Observable.fromEvent(_filterInput.nativeElement, 'keyup')
-                  .debounceTime(100)
-                  .distinctUntilChanged()
-                  .subscribe(() => this.filter.next(_filterInput.nativeElement.value));
+                        .debounceTime(100)
+                        .distinctUntilChanged()
+                        .subscribe(() => this.filter.next(_filterInput.nativeElement.value));
             }
 
       }
@@ -75,17 +75,17 @@ export class TableAdapter extends DataSource<any> {
             }
 
             return this._data
-            .map((res) => this.setData(res))
+                  .map((res) => this.setData(res))
                   .switchMap(res => {
                         if (connectData.length > 0) {
                               return Observable.merge(...connectData);
-                        }else {
+                        } else {
                               return Observable.of(res);
                         }
                   })
                   .map(() => this.filtering())
                   .map(() => this.sorting())
-                  .map(() =>  this.paging());
+                  .map(() => this.paging());
       }
 
       setData(data: any[]) {
@@ -103,7 +103,7 @@ export class TableAdapter extends DataSource<any> {
 
                   const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
                   return data.splice(startIndex, this._paginator.pageSize);
-            }else{
+            } else {
                   return this.tableData.value;
             }
       }
@@ -115,8 +115,8 @@ export class TableAdapter extends DataSource<any> {
             }
 
             data.sort((a, b) => {
-                  let propertyA: number|string = '';
-                  let propertyB: number|string = '';
+                  let propertyA: number | string = '';
+                  let propertyB: number | string = '';
 
                   [propertyA, propertyB] = [a[this._sort.active], b[this._sort.active]];
 
@@ -130,7 +130,7 @@ export class TableAdapter extends DataSource<any> {
       }
 
       filtering() {
-            if(!this._filterInput){
+            if (!this._filterInput) {
                   return this.tableData.value;
             }
             if (this.filter.value === '') {
@@ -141,15 +141,15 @@ export class TableAdapter extends DataSource<any> {
                   let exist = false;
                   let result = -1;
                   this._searchColumns.forEach(obj => {
-                        if(typeof item[obj] === 'string'){
+                        if (typeof item[obj] === 'string') {
                               const query: String = this.filter.value;
                               if (typeof item[obj] !== 'undefined' && typeof query !== 'undefined') {
                                     const searchStr = item[obj].toLowerCase();
                                     result = searchStr.indexOf(query.toLowerCase());
                               }
-                        }else if (typeof item[obj] !== 'undefined' && typeof this.filter.value !== 'undefined') {
-                                    const searchStr = item[obj].toString();
-                                    result = searchStr.indexOf(this.filter.value);
+                        } else if (typeof item[obj] !== 'undefined' && typeof this.filter.value !== 'undefined') {
+                              const searchStr = item[obj].toString();
+                              result = searchStr.indexOf(this.filter.value);
                         }
                         if (result !== -1) {
                               exist = true;
@@ -163,6 +163,6 @@ export class TableAdapter extends DataSource<any> {
             return tableData;
       }
 
-      disconnect() {}
+      disconnect() { }
 
 }

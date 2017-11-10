@@ -70,10 +70,11 @@ export class DashboardComponent implements OnInit {
             private fb: FormBuilder,
             public _dialog: MatDialog
       ) {
-            _ls.pageProgressBar = true;
+            
       }
 
       ngOnInit() {
+            this._ls.topProgressBar.next(true);
             this.rows = new TableAdapter(
                     this.ds.setData(),
                     this.displayedColumns,
@@ -82,7 +83,7 @@ export class DashboardComponent implements OnInit {
                     this.displayedColumns,
                     this.search
             );
-            this.ds.setData().subscribe(res => this._ls.pageProgressBar = false);
+            this.ds.setData().subscribe(res => this._ls.topProgressBar.next(false));
       }
 
       onContextMenu(event) {

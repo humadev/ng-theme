@@ -10,16 +10,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build:dev": "ng build",
+    "build:lib": "ng-packagr",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "copy": "node tools/copy-package.js && node tools/cleanup.js",
-    "bundle": "rm -rf publish && cp -a src/app/lib publish",
-    "copy-style": "cp src/theme.scss publish/theme.scss && cp src/palette.scss publish/palette.scss",
-    "prepublish": "npm run bundle && npm run copy && npm run copy-style"
+    "packagr": "ng-packagr -p ng-package.json && cp src/theme.scss dist/theme.scss && cp src/palette.scss dist/palette.scss && cp -a src/assets dist"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^5.0.0",
     "@angular/cdk": "^5.0.0-rc0",
@@ -33,16 +31,18 @@
     "@angular/platform-browser": "^5.0.0",
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
-    "apollo-angular": "^0.13.3",
-    "apollo-angular-link-http": "^1.0.0-beta.5",
-    "apollo-cache-inmemory": "^1.1.0",
-    "apollo-client": "^1.9.3",
     "core-js": "^2.4.1",
-    "graphql": "^0.11.7",
-    "graphql-tag": "^2.5.0",
-    "hammerjs": "^2.0.8",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
+  },
+  "peerDependencies": {
+      "apollo-angular": "^0.13.3",
+      "apollo-angular-link-http": "^1.0.0-beta.5",
+      "apollo-cache-inmemory": "^1.1.0",
+      "apollo-client": "^1.9.3",
+      "graphql": "^0.11.7",
+      "graphql-tag": "^2.5.0",
+      "hammerjs": "^2.0.8"  
   },
   "devDependencies": {
     "@angular/cli": "1.5.0",
@@ -59,6 +59,7 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "ng-packagr": "^1.5.0",
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",

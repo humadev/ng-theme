@@ -402,3 +402,11 @@ header .m-header-head {
   }
 }
 
+.loader{
+    z-index: 9999;
+}
+
+.mat-progress-bar .mat-progress-bar-element,
+.mat-progress-bar .mat-progress-bar-fill::after{
+    height: 3px !important;
+}

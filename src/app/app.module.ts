@@ -7,7 +7,7 @@ import { HdLayoutModule } from './lib/hd-layout/hd-layout.module';
 import {FabSpeedDialModule} from './lib/fab-speed-dial/fab-speed-dial.module';
 import { StartComponent } from './start.component';
 import { MenuService } from './lib/services/menu.service';
-import { HdLoginModule } from './lib';
+import { HdLoginModule } from './lib/login/hd-login.module';
 
 const appRoutes: Routes = [
       {

@@ -8,7 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ModalComponent } from './modal/modal.component';
 import { ExampleComponent } from './example.component';
-import { MatTableModule, MatPaginatorModule, MatSortModule, MatAutocompleteModule } from '@angular/material';
+import { MatTableModule, MatPaginatorModule, MatSortModule, MatAutocompleteModule, MatTabsModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
 
 
@@ -234,6 +234,7 @@ const appRoutes: Routes = [
             MatTableModule,
             MatPaginatorModule,
             MatSortModule,
+            MatTabsModule,
             CdkTableModule,
             FlexLayoutModule,
             MatAutocompleteModule,

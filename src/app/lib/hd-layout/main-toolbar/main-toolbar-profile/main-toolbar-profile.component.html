@@ -24,69 +24,7 @@
                 </div>
             </div>
             <div class='content'>
-                <ul class="lists">
-                    <li class="section hide">
-                        <span class="m-nav__section-text">
-                            Section
-                        </span>
-                    </li>
-                    <li class="item">
-                        <a routerLink="/header/profile" class="link">
-                            <i class="icon flaticon-profile-1"></i>
-                            <span class="title">
-                                <span class="wrap">
-                                    <span class="text">
-                                        My Profile
-                                    </span>
-                                    <span class="link-badge">
-                                        <span class="badge badge-success">
-                                            2
-                                        </span>
-                                    </span>
-                                </span>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="item">
-                        <a routerLink="/header/profile" class="link">
-                            <i class="icon flaticon-share"></i>
-                            <span class="text">
-                                Activity
-                            </span>
-                        </a>
-                    </li>
-                    <li class="item">
-                        <a routerLink="/header/profile" class="link">
-                            <i class="icon flaticon-chat-1"></i>
-                            <span class="text">
-                                Messages
-                            </span>
-                        </a>
-                    </li>
-                    <li class="separator"></li>
-                    <li class="item">
-                        <a routerLink="/header/profile" class="link">
-                            <i class="icon flaticon-info"></i>
-                            <span class="text">
-                                FAQ
-                            </span>
-                        </a>
-                    </li>
-                    <li class="item">
-                        <a routerLink="/header/profile" class="link">
-                            <i class="icon flaticon-lifebuoy"></i>
-                            <span class="text">
-                                Support
-                            </span>
-                        </a>
-                    </li>
-                    <li class="separator"></li>
-                    <li class="item">
-                        <a routerLink="/snippets/pages/user/login-1" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder" routerLink="/logout">
-                            Logout
-                        </a>
-                    </li>
-                </ul>
+                <ng-content></ng-content>
             </div>
         </div>
     </div>

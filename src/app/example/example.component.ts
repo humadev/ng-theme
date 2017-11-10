@@ -9,9 +9,50 @@ import { LayoutService } from "./../lib/services/layout.service";
             <!-- BEGIN: Topbar -->
             <hd-main-toolbar-left-menu></hd-main-toolbar-left-menu>
             <hd-main-toolbar-right-menu>
-                <li hd-main-toolbar-notification></li>
+                  <li hd-main-toolbar-notification>
+                        <mat-tab-group>
+                              <mat-tab label="Alert" class="notification-tab">
+                                    <hd-timeline>
+                                          <hd-timeline-item badge='pending' time="just now">12 new users registered</hd-timeline-item>
+                                          <hd-timeline-item badge='pending' time="just now">12 new users registered</hd-timeline-item>
+                                          <hd-timeline-item badge='pending' time="just now">12 new users registered</hd-timeline-item>
+                                    </hd-timeline>
+                              </mat-tab>
+                              <mat-tab label="Event">
+                                    <hd-timeline>
+                                          <hd-timeline-item badge='pending' time="just now">12 new users registered</hd-timeline-item>
+                                          <hd-timeline-item badge='pending' time="just now">12 new users registered</hd-timeline-item>
+                                          <hd-timeline-item badge='pending' time="just now">12 new users registered</hd-timeline-item>
+                                    </hd-timeline>
+                              </mat-tab>
+                              <mat-tab label="Logs">
+                                    <hd-timeline>
+                                          <div class="center middle">
+                                                All caught up!
+                                                <br>
+                                                No new logs.
+                                          </div>
+                                    </hd-timeline>
+                                    </mat-tab>
+                              </mat-tab-group>
+                  </li>
                 <li hd-main-toolbar-chat></li>
-                <li hd-main-toolbar-profile></li>
+                <li hd-main-toolbar-profile>
+                        <ul hd-profile-list>
+                              <li hd-profile-item badge='2' icon="icon flaticon-profile-1">
+                                    My Profile
+                              </li>
+                              <li hd-profile-item icon="icon flaticon-share">Activity</li>
+                              <li hd-profile-item icon="icon flaticon-chat">Messages</li>
+                              <li hd-profile-separator></li>
+                              <li hd-profile-item icon="icon flaticon-info">FAQ</li>
+                              <li hd-profile-item icon="icon flaticon-lifebuoy">Support</li>
+                              <li hd-profile-separator></li>
+                              <li hd-profile-button>
+                                    <a mat-raised-button color='primary'>Logout</a>
+                              </li>
+                        </ul>
+                </li>
             </hd-main-toolbar-right-menu>
             <!-- END: Topbar -->
         </hd-main-toolbar>
@@ -26,11 +67,11 @@ import { LayoutService } from "./../lib/services/layout.service";
 export class ExampleComponent implements OnInit {
 
   constructor(private _ls: LayoutService) {
-        _ls.pageProgressBar = true;
+        _ls.topProgressBar.next(true);
   }
 
   ngOnInit() {
-        this._ls.pageProgressBar = false;
+        this._ls.topProgressBar.next(false);
   }
 
 }

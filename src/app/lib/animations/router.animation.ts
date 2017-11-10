@@ -1,10 +1,10 @@
-import {trigger, state, animate, style, transition} from '@angular/core';
+import {trigger, state, animate, style, transition, AnimationTriggerMetadata} from '@angular/core';
 
-export function routerTransition() {
+export function routerTransition(): AnimationTriggerMetadata {
     return slideToRight();
 }
 
-export function slideToRight() {
+export function slideToRight(): AnimationTriggerMetadata {
   return trigger('slideToRight', [
     state('void', style({width: '*'}) ),
     state('*', style({width: '*'}) ),
@@ -19,7 +19,7 @@ export function slideToRight() {
   ]);
 }
 
-export function slideToLeft() {
+export function slideToLeft(): AnimationTriggerMetadata {
     return trigger('slideToLeft', [
       state('void', style({width: '*'}) ),
       state('*', style({width: '*'}) ),
@@ -34,7 +34,7 @@ export function slideToLeft() {
     ]);
   }
 
-export function slideToUp() {
+export function slideToUp(): AnimationTriggerMetadata {
     return trigger('slideToUp', [
       state('void', style({width: '*'}) ),
       state('*', style({width: '*'}) ),
@@ -50,7 +50,7 @@ export function slideToUp() {
   }
 
 
-export function slideToDown() {
+export function slideToDown(): AnimationTriggerMetadata {
     return trigger('slideToDown', [
       state('void', style({width: '*'}) ),
       state('*', style({width: '*'}) ),
@@ -65,7 +65,7 @@ export function slideToDown() {
     ]);
   }
 
-export function fadeUp() {
+export function fadeUp(): AnimationTriggerMetadata {
       return trigger('fadeUp', [
             state('void', style({ width: '*' })),
             state('*', style({ width: '*' })),
@@ -80,7 +80,7 @@ export function fadeUp() {
       ])
 }
 
-export function ringing() {
+export function ringing(): AnimationTriggerMetadata {
       return trigger('ringing', [
             transition('* => *', [
                   style({ transform: 'rotate(13deg)'}),

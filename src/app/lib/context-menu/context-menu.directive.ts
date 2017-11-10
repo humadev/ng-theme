@@ -12,7 +12,6 @@ import {
     ViewContainerRef } from '@angular/core';
 import { ContextMenuPanelComponent } from './context-menu-panel.component';
 import { contextmenu } from './context-menu';
-import { ComponentInjectionService } from './../services/component-injection.service';
 import { OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { Overlay } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
