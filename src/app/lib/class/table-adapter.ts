@@ -12,13 +12,13 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import { MatPaginator, MatSort } from '@angular/material';
 import { ElementRef } from '@angular/core';
 
-interface Pagination {
+export interface Pagination {
       pageIndex: number;
       pageSize: number;
       length: number;
 }
 
-interface Sort {
+export interface Sort {
       active: string;
       direction: string;
 }
