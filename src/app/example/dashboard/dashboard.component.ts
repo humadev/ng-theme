@@ -74,7 +74,6 @@ export class DashboardComponent implements OnInit {
       }
 
       ngOnInit() {
-            this._ls.topProgressBar.next(true);
             this.rows = new TableAdapter(
                     this.ds.setData(),
                     this.displayedColumns,

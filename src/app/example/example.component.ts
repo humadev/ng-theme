@@ -67,7 +67,7 @@ import { LayoutService } from "./../lib/services/layout.service";
 export class ExampleComponent implements OnInit {
 
   constructor(private _ls: LayoutService) {
-        _ls.topProgressBar.next(true);
+        
   }
 
   ngOnInit() {

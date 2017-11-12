@@ -15,6 +15,7 @@ import {
 import { MenuService } from '../../services/menu.service';
 import { ComponentPortal, Portal, TemplatePortalDirective } from '@angular/cdk/portal';
 import { PopMenuDirective } from '../../directives/pop-menu.directive';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'hd-main-toolbar',
@@ -56,8 +57,10 @@ export class MainToolbarComponent implements OnInit {
             private menuService: MenuService,
             private renderer: Renderer2,
             private elRef: ElementRef,
-            private layout: LayoutService
+            private layout: LayoutService,
+            private router: Router
       ) {
+            this.router.events.subscribe(() => this.layout.topProgressBar.next(true));
       }
 
       ngOnInit() {
