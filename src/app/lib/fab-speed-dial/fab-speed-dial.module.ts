@@ -2,14 +2,14 @@ import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 
 import {
-    SmdFabSpeedDialTrigger,
-    SmdFabSpeedDialActions,
+    SmdFabSpeedDialTriggerComponent,
+    SmdFabSpeedDialActionsComponent,
     SmdFabSpeedDialComponent
 } from './component';
 
 const COMPONENTS = [
-    SmdFabSpeedDialTrigger,
-    SmdFabSpeedDialActions,
+    SmdFabSpeedDialTriggerComponent,
+    SmdFabSpeedDialActionsComponent,
     SmdFabSpeedDialComponent
 ];
 
