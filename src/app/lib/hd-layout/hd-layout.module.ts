@@ -96,7 +96,6 @@ declarations: [
       MainToolbarProfileComponent,
       MainToolbarChatComponent,
       SidenavItemComponent,
-      FileUploadComponent,
       ProfileItemComponent,
       ProfileSeparatorComponent,
       ProfileSectionComponent,
