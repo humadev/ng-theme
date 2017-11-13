@@ -1,6 +1,6 @@
-export class contextmenu {
+export class ContextMenu {
     icon: String;
     title: String;
-    method: String;
+    callback: Function;
     groupPermission: [number];
 }

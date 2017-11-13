@@ -1,13 +1,22 @@
-import { Component, HostBinding, Output, EventEmitter, Input, HostListener, ElementRef, Renderer2 } from '@angular/core';
-import { contextmenu } from './context-menu';
+import {
+      Component,
+      Output,
+      EventEmitter,
+      Input,
+      HostListener,
+      HostBinding} from '@angular/core';
+import { ContextMenu } from './context-menu';
 
 @Component({
   selector: 'hd-menu-panel',
   template: `
-    <div class="hd-context-menu-panel" [style.top.px]="top" [style.left.px]="left" fxLayout="column">
-        <a mat-button fxFlex 
-            *ngFor="let item of menuItem" 
-            (click)="onClick(item.method)">
+    <div class="hd-context-menu-panel"
+      [style.top.px]="top"
+      [style.left.px]="left"
+      fxLayout="column">
+        <a mat-button fxFlex
+            *ngFor="let item of menuItem"
+            (click)='onClick(item.callback)'>
                 <mat-icon>{{item.icon}}</mat-icon> {{item.title}}
         </a>
     </div>
@@ -38,20 +47,15 @@ import { contextmenu } from './context-menu';
       }
   `]
 })
-export class ContextMenuPanelComponent{
+export class ContextMenuPanelComponent {
       @HostBinding('style.top.px') top = 0;
       @HostBinding('style.left.px') left = 0;
       @Output() menuItemClicked = new EventEmitter();
-      @Input() menuItem:[contextmenu];
-      @Input() menuID: any;
+      @Input() menuItem: [ContextMenu];
 
-  onClick(method) {
-        this.menuItemClicked.emit(method);
+  onClick(callback) {
+        this.menuItemClicked.emit(callback);
   }
-
-  constructor(
-        public el: ElementRef
-  ){}
 
    @HostListener('contextmenu', ['$event'])
       onContextMenu(event: MouseEvent): void {

@@ -11,7 +11,7 @@ import {
     ViewChild,
     ViewContainerRef } from '@angular/core';
 import { ContextMenuPanelComponent } from './context-menu-panel.component';
-import { contextmenu } from './context-menu';
+import { ContextMenu } from './context-menu';
 import { OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { Overlay } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
@@ -24,7 +24,7 @@ export class ContextMenuDirective {
 
       @Output() hdContextMenu = new EventEmitter();
       @Input() menuID: any; // id dari row yg diklik kanan
-      @Input() menuItem: [contextmenu]; // data menu yg akan ditampikan, data ini sesuai dengan interface framework contextmenu
+      @Input() menuItem: [ContextMenu]; // data menu yg akan ditampikan, data ini sesuai dengan interface framework contextmenu
       panel: any;
       clickWatcher$: any;
       overlayRef: OverlayRef;
@@ -85,7 +85,6 @@ export class ContextMenuDirective {
       private outsideListener(): void {
             this.render.listen('document', 'click', (event) => {
                         this.render.removeClass(this.ref.nativeElement, 'hd-contextmenu-active');
-                        // this.clickWatcher$.unsubscribe();
                         this.overlayRef.dispose();
                         this.active = false;
                         this.layoutService.lockScroll.next(false);
@@ -93,7 +92,6 @@ export class ContextMenuDirective {
             this.render.listen('document', 'contextmenu', (event) => {
                   if (!this.ref.nativeElement.contains(event.target)) {
                         this.render.removeClass(this.ref.nativeElement, 'hd-contextmenu-active');
-                        // this.clickWatcher$.unsubscribe();
                         this.overlayRef.dispose();
                         this.active = false;
                         this.layoutService.lockScroll.next(false);

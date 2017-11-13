@@ -17,28 +17,22 @@ import { LayoutService } from './../../lib/services/layout.service';
 export class DashboardComponent implements OnInit {
 
     cmItem = [
-        { 
-            icon: 'list', 
-            title: 'List Mata Kuliah', 
-            method: (event, i) => {
-                this.edit(i);
-            }, 
+        {
+            icon: 'list',
+            title: 'List Mata Kuliah',
+            callback: this.edit,
             groupPermission: [0]
         },
         {
             icon: 'edit',
             title: 'Edit',
-            method: (i) => {
-                console.log(i);
-            }, 
+            callback: this.edit,
             groupPermission: [0]
         },
         {
-            icon: 'delete', 
-            title: 'Delete', 
-            method: (event, i) => {
-                this.delete(i);
-            }, 
+            icon: 'delete',
+            title: 'Delete',
+            callback: this.delete,
             groupPermission: [0]
         },
     ];
@@ -101,10 +95,6 @@ export class DashboardComponent implements OnInit {
                     this.displayedColumns,
                     this.search
             );
-      }
-
-      onContextMenu(event) {
-            this[event.method](event.i);
       }
 
       edit(i) {

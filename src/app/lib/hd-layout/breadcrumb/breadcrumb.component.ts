@@ -14,8 +14,8 @@ export interface IBreadcrumb {
             <ul class="hd-breadcrumb">
                   <li><a routerLink="">Home</a></li>
                   <li *ngFor="let breadcrumb of breadcrumbs">
-                        <a 
-                        [routerLink]="[breadcrumb.url]" 
+                        <a
+                        [routerLink]="[breadcrumb.url]"
                         *ngIf="breadcrumb.class == 'link'; else nonLink">
                               {{breadcrumb.label}}
                         </a>
