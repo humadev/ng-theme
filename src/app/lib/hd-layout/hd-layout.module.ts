@@ -1,4 +1,3 @@
-import { FileUploadComponent } from './../directives/fileupload.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
@@ -68,7 +67,6 @@ import { TimelineItemComponent } from './timeline/timeline-item/timeline-item.co
       BreadcrumbComponent,
       StartPageComponent,
       PopMenuDirective,
-      FileUploadComponent,
       MainToolbarLeftMenuComponent,
       MainToolbarRightMenuComponent,
       MainToolbarMenuItemComponent,
