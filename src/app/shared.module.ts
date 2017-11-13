@@ -1,4 +1,4 @@
-import { HdContextMenuModule } from './../../publish/context-menu/hd-context-menu.module';
+import { HdContextMenuModule } from './lib/context-menu/hd-context-menu.module';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {

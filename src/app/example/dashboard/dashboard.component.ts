@@ -1,6 +1,6 @@
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { slideToUp, slideToDown, slideToLeft } from './../../lib/animations/router.animation';
-import { Component, OnInit, ViewChild, ElementRef, HostBinding } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, HostBinding, AfterViewInit } from '@angular/core';
 import { MatDialog, MatPaginator, MatSort } from '@angular/material';
 import { ModalComponent } from './../modal/modal.component';
 import { DataSource } from '@angular/cdk/table';
@@ -69,20 +69,21 @@ export class DashboardComponent implements OnInit {
             private _ls: LayoutService,
             private fb: FormBuilder,
             public _dialog: MatDialog
-      ) {
-            
-      }
+      ) {}
 
       ngOnInit() {
             this.rows = new TableAdapter(
-                    this.ds.setData(),
+                    this.ds.setData()
+                    .map(data => {
+                        this._ls.topProgressBar.next(false);
+                        return data;
+                    }),
                     this.displayedColumns,
                     this.paginator,
                     this.sort,
                     this.displayedColumns,
                     this.search
             );
-            this.ds.setData().subscribe(res => this._ls.topProgressBar.next(false));
       }
 
       onContextMenu(event) {

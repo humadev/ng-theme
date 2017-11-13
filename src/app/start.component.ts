@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LayoutService } from './lib/services/layout.service';
 
 @Component({
   selector: 'hd-start',
@@ -19,11 +20,16 @@ import { Router } from '@angular/router';
   `,
   styles: []
 })
-export class StartComponent {
+export class StartComponent implements OnInit{
 
       startMenus = this.router.config;
 
       constructor(
-            private router: Router
+            private router: Router,
+            private _ls: LayoutService
       ) {}
+
+    ngOnInit() {
+        this._ls.topProgressBar.next(false);
+    }
 }
