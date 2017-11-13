@@ -69,20 +69,20 @@ export class DashboardComponent implements OnInit {
             private _ls: LayoutService,
             private fb: FormBuilder,
             public _dialog: MatDialog
-      ) {
-            _ls.pageProgressBar = true;
-      }
+      ) {}
 
       ngOnInit() {
             this.rows = new TableAdapter(
-                    this.ds.setData(),
+                    this.ds.setData().map((data) => {
+                        this._ls.topProgressBar.next(false);
+                        return data;
+                    }),
                     this.displayedColumns,
                     this.paginator,
                     this.sort,
                     this.displayedColumns,
                     this.search
             );
-            this.ds.setData().subscribe(res => this._ls.pageProgressBar = false);
       }
 
       onContextMenu(event) {

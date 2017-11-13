@@ -8,6 +8,7 @@ import {FabSpeedDialModule} from './lib/fab-speed-dial/fab-speed-dial.module';
 import { StartComponent } from './start.component';
 import { MenuService } from './lib/services/menu.service';
 import { HdLoginModule } from './lib';
+import { MatTabsModule, MatButtonModule } from '@angular/material';
 
 const appRoutes: Routes = [
       {
@@ -49,9 +50,11 @@ const appRoutes: Routes = [
       BrowserAnimationsModule,
       HdLayoutModule,
       FabSpeedDialModule,
-      HdLoginModule
+      HdLoginModule,
+      MatTabsModule,
+      MatButtonModule
   ],
   bootstrap: [AppComponent],
-  providers:[MenuService]
+  providers: [MenuService]
 })
 export class AppModule { }

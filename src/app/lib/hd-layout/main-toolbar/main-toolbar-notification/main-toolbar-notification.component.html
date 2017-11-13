@@ -16,60 +16,7 @@
                     User Notifications
                 </span>
             </div>
-            <mat-tab-group>
-                <mat-tab label="Alert" class="notification-tab">
-                    <div class="timeline">
-                        <div class="items">
-                            <div class="item">
-                                <span class="badge"></span>
-                                <span class="text">
-                                    12 new users registered
-                                    <span class="badge badge-success">pending</span>
-                                </span>
-                                <span class="time">
-                                    Just now
-                                </span>
-                            </div>
-                            <div class="item">
-                                <span class="badge"></span>
-                                <span class="text">
-                                    12 new users registered
-                                    <span class="badge badge-success">pending</span>
-                                </span>
-                                <span class="time">
-                                    Just now
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </mat-tab>
-                <mat-tab label="Event">
-                    <div class="timeline">
-                        <div class="items">
-                            <div class="item">
-                                <span class="badge badge-success"></span>
-                                <span class="text">
-                                    12 new users registered
-                                </span>
-                                <span class="time">
-                                    Just now
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </mat-tab>
-                <mat-tab label="Logs">
-                    <div class="timeline">
-                        <div class="center middle">
-                            <span class="">
-                                All caught up!
-                                <br>
-                                No new logs.
-                            </span>
-                        </div>
-                    </div>
-                  </mat-tab>
-              </mat-tab-group>
+            <ng-content></ng-content>
         </div>
     </div>
 </ng-template>

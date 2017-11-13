@@ -35,6 +35,13 @@ import { MainToolbarNotificationComponent } from './main-toolbar/main-toolbar-no
 import { MainToolbarProfileComponent } from './main-toolbar/main-toolbar-profile/main-toolbar-profile.component';
 import { MainToolbarChatComponent } from './main-toolbar/main-toolbar-chat/main-toolbar-chat.component';
 import { SidenavItemComponent } from './sidenav/sidenav-item/sidenav-item.component';
+import { ProfileItemComponent } from './main-toolbar/main-toolbar-profile/profile-item.component';
+import { ProfileSeparatorComponent } from './main-toolbar/main-toolbar-profile/profile-separator.component';
+import { ProfileSectionComponent } from './main-toolbar/main-toolbar-profile/profile-section.component';
+import { ProfileButtonComponent } from './main-toolbar/main-toolbar-profile/profile-button.component';
+import { ProfileListComponent } from './main-toolbar/main-toolbar-profile/profile-list.component';
+import { TimelineComponent } from './timeline/timeline.component';
+import { TimelineItemComponent } from './timeline/timeline-item/timeline-item.component';
 
 @NgModule({
   imports: [
@@ -69,7 +76,14 @@ import { SidenavItemComponent } from './sidenav/sidenav-item/sidenav-item.compon
       MainToolbarMenuItemComponent,
       MainToolbarNotificationComponent,
       MainToolbarProfileComponent,
-      MainToolbarChatComponent
+      MainToolbarChatComponent,
+      ProfileItemComponent,
+      ProfileSeparatorComponent,
+      ProfileSectionComponent,
+      ProfileButtonComponent,
+      ProfileListComponent,
+      TimelineComponent,
+      TimelineItemComponent
   ],
 declarations: [
       LayoutComponent,
@@ -86,7 +100,14 @@ declarations: [
       MainToolbarProfileComponent,
       MainToolbarChatComponent,
       SidenavItemComponent,
-      FileUploadComponent
+      FileUploadComponent,
+      ProfileItemComponent,
+      ProfileSeparatorComponent,
+      ProfileSectionComponent,
+      ProfileButtonComponent,
+      ProfileListComponent,
+      TimelineComponent,
+      TimelineItemComponent
 ],
   providers: [MenuService, OverlayContainer]
 })

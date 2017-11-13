@@ -49,6 +49,7 @@ export class MainToolbarComponent implements OnInit {
           'toggler-left': true
       };
       sidenav = true;
+      progressBar = false;
       @Output() minimize = new EventEmitter();
 
       constructor(
@@ -68,6 +69,8 @@ export class MainToolbarComponent implements OnInit {
             } else {
                 this.brandBackground = '#ffffff';
             }
+
+            this.layout.topProgressBar.subscribe((progress) => this.progressBar = progress);
       }
 
       toggleSidenav() {
