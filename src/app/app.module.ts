@@ -52,6 +52,6 @@ const appRoutes: Routes = [
       HdLoginModule
   ],
   bootstrap: [AppComponent],
-  providers:[MenuService]
+  providers: [MenuService]
 })
 export class AppModule { }

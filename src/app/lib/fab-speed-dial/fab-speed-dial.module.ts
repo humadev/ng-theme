@@ -18,7 +18,7 @@ const COMPONENTS = [
     declarations: COMPONENTS,
     exports: COMPONENTS,
     providers: [],
-    entryComponents: [HdFabSpeedDialActionsComponent, HdFabSpeedDialTriggerComponent],
+    entryComponents: [HdFabSpeedDialActionsComponent, HdFabSpeedDialTriggerComponent, HdFabSpeedDialComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class FabSpeedDialModule {

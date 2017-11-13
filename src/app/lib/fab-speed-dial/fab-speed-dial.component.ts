@@ -17,11 +17,11 @@ import { HdFabSpeedDialActionsComponent } from './fab-speed-dial-actions/fab-spe
     selector: 'hd-fab-speed-dial',
     template: `
         <div class="smd-fab-speed-dial-container">
-            <ng-content select="smd-fab-trigger"></ng-content>
-            <ng-content select="smd-fab-actions"></ng-content>
+            <ng-content select="smd-fab-speed-dial-trigger"></ng-content>
+            <ng-content select="smd-fab-speed-dial-actions"></ng-content>
         </div>
     `,
-    styleUrls: ['fab-speed-dial.scss'],
+    styleUrls: ['fab-speed-dial.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
 export class HdFabSpeedDialComponent implements AfterContentInit {

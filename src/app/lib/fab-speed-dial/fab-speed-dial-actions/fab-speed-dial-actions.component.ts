@@ -39,7 +39,7 @@ export class HdFabSpeedDialActionsComponent implements AfterContentInit {
 
     private initButtonStates() {
         this._buttons.toArray().forEach((button, i) => {
-            this.renderer.setElementClass(button._getHostElement(), 'Hdsmd-fab-action-item', true);
+            this.renderer.setElementClass(button._getHostElement(), 'smd-fab-action-item', true);
             this.changeElementStyle(button._getHostElement(), 'z-index', '' + (Z_INDEX_ITEM - i));
         })
     }
