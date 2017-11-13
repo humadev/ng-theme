@@ -50,6 +50,7 @@ export class ContextMenuDirective {
             this.createPanel();
             this.addPanelItem();
             this.calcPosition(event);
+            this.watchItemClick();
             this.outsideListener();
         }
       }
@@ -75,14 +76,14 @@ export class ContextMenuDirective {
 
       private watchItemClick(): void {
             this.clickWatcher$ = this.panel.instance.menuItemClicked.subscribe(
-                  (emitted, i) => {
-                        this.hdContextMenu.emit({method: emitted, index: this.menuID});
+                  (emitted) => {
+                      emitted(this.menuID);
                   }
             );
       }
 
       private outsideListener(): void {
-            this.render.listen('document', 'click',(event) => {
+            this.render.listen('document', 'click', (event) => {
                         this.render.removeClass(this.ref.nativeElement, 'hd-contextmenu-active');
                         // this.clickWatcher$.unsubscribe();
                         this.overlayRef.dispose();

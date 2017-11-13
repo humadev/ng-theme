@@ -17,9 +17,30 @@ import { LayoutService } from './../../lib/services/layout.service';
 export class DashboardComponent implements OnInit {
 
     cmItem = [
-          {icon: 'list', title: 'List Mata Kuliah', method: 'listMataKuliah', groupPermission: [0]},
-          {icon: 'edit', title: 'Edit', method: 'onEdit', groupPermission: [0]},
-          {icon: 'delete', title: 'Delete', method: 'onDelete', groupPermission: [0]},
+        { 
+            icon: 'list', 
+            title: 'List Mata Kuliah', 
+            method: (event, i) => {
+                this.edit(i);
+            }, 
+            groupPermission: [0]
+        },
+        {
+            icon: 'edit',
+            title: 'Edit',
+            method: (i) => {
+                console.log(i);
+            }, 
+            groupPermission: [0]
+        },
+        {
+            icon: 'delete', 
+            title: 'Delete', 
+            method: (event, i) => {
+                this.delete(i);
+            }, 
+            groupPermission: [0]
+        },
     ];
     rows: TableAdapter | null;
     @ViewChild('search') search: ElementRef;
@@ -41,10 +62,6 @@ export class DashboardComponent implements OnInit {
           }
       }
 
-    menuklikkanan = [
-        {icon: 'edit', title: 'Edit', method: this.edit, groupPermission: [0]},
-        {icon: 'delete', title: 'Delete', method: this.delete, groupPermission: [0]}
-    ];
     displayedColumns = ['first_name', 'mobile_phone', 'home_address'];
 
     testForm = this.fb.group({
@@ -87,14 +104,14 @@ export class DashboardComponent implements OnInit {
       }
 
       onContextMenu(event) {
-            event.method();
+            this[event.method](event.i);
       }
 
-      edit() {
-
+      edit(i) {
+        console.log(i);
       }
 
-      delete() {
+      delete(i) {
             alert('delete');
       }
 
