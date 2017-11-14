@@ -48,7 +48,7 @@
                   <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
                   <mat-row
                   *cdkRowDef="let row; columns: displayedColumns; let i=index"
-                  (hdContextMenu)='onContextMenu($event)'
+                  hdContextMenu
                    cdk-overlay-origin
                   [menuID]='i'
                   [menuItem]='cmItem'></mat-row>

@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 import { DataService } from './../data.service';
 import { TableAdapter } from './../../lib/class/table-adapter';
 import { LayoutService } from './../../lib/services/layout.service';
+import { ContextMenu } from '../../lib/context-menu/context-menu';
 
 @Component({
   selector: 'hd-dashboard-example',
@@ -16,23 +17,23 @@ import { LayoutService } from './../../lib/services/layout.service';
 })
 export class DashboardComponent implements OnInit {
 
-    cmItem = [
+    cmItem: [ContextMenu] = [
         {
             icon: 'list',
             title: 'List Mata Kuliah',
-            callback: this.edit,
+            callback: (i) => this.test(i),
             groupPermission: [0]
         },
         {
             icon: 'edit',
             title: 'Edit',
-            callback: this.edit,
+            callback: (i) => this.edit(i),
             groupPermission: [0]
         },
         {
             icon: 'delete',
             title: 'Delete',
-            callback: this.delete,
+            callback: (i) => this.delete(i),
             groupPermission: [0]
         },
     ];
@@ -84,25 +85,30 @@ export class DashboardComponent implements OnInit {
 
       ngOnInit() {
             this.rows = new TableAdapter(
-                    this.ds.setData()
-                    .map(data => {
-                        this._ls.topProgressBar.next(false);
-                        return data;
-                    }),
-                    this.displayedColumns,
-                    this.paginator,
-                    this.sort,
-                    this.displayedColumns,
-                    this.search
+                this.ds.setData()
+                .map(data => {
+                    this._ls.topProgressBar.next(false);
+                    return data;
+                }),
+                this.displayedColumns,
+                this.paginator,
+                this.sort,
+                this.displayedColumns,
+                this.search
             );
       }
 
       edit(i) {
+          this.test('test');
         console.log(i);
       }
 
+      test(i) {
+            alert('test');
+      }
+
       delete(i) {
-            alert('delete');
+        alert('del');
       }
 
       openDialog() {

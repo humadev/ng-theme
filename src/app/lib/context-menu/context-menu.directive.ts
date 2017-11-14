@@ -77,7 +77,7 @@ export class ContextMenuDirective {
       private watchItemClick(): void {
             this.clickWatcher$ = this.panel.instance.menuItemClicked.subscribe(
                   (emitted) => {
-                      emitted(this.menuID);
+                      emitted.callback(this.menuID);
                   }
             );
       }
@@ -98,5 +98,4 @@ export class ContextMenuDirective {
                   }
             });
       }
-
 }
