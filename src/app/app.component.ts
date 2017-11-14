@@ -3,10 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-      <!--<div class="test">
-            <hd-login class="mat-elevation-z8" title="test"></hd-login>
-      </div>-->
-      <router-outlet></router-outlet>
+    <hd-login>
+        <hd-left-side>
+            <hd-login-form logo="./assets/logo.png"></hd-login-form>
+        </hd-left-side>
+        <hd-right-side background="./assets/bg-login.jpg"></hd-right-side>
+    </hd-login>
   `,
   styles: [`
       .test{
@@ -18,5 +20,5 @@ import { Component } from '@angular/core';
   `]
 })
 
-export class AppComponent{
+export class AppComponent {
 }

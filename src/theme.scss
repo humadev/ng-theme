@@ -611,43 +611,6 @@ a.mat-button:hover{
     overflow-y: hidden !important;
 }
 
-
-
-hd-login{
-      width: 500px;
-      display: block;
-      margin: 15vh 30vw;
-      position: fixed;
-}
-
-mat-card.hd-login{
-      padding-left: 0;
-      padding-right: 0;
-      mat-card-header{
-            background-color: $color-1;
-            padding:20px;
-            color:$color-2;
-            margin-left:-4px;
-            margin-right:-4px;
-            text-align: center !important;
-            mat-card-title{
-                  width:100%;
-                  font-size: 20px !important;
-                  padding:0;
-                  margin:0;
-                  text-align: center !important;
-            }
-      }
-      mat-card-actions{
-            padding: 0 35px;
-      }
-      mat-card-content{
-            padding: 40px 20px;
-            display:flex;
-            flex-direction: column;
-      }
-}
-
 //clean up
 body {
   margin: 0;
@@ -8887,4 +8850,8 @@ hd-start-page .container{
 
 .icons8-arrows-04:before {
   content: "\f1b4";
+}
+
+input:-webkit-autofill {
+  background-color: white !important;
 }

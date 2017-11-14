@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule, MatInputModule, MatButtonModule, MatIconModule } from '@angular/material';
 import { LoginComponent } from './login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LeftSideComponent } from './left-side/left-side.component';
+import { RightSideComponent } from './right-side/right-side.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   imports: [
@@ -13,9 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     ReactiveFormsModule
   ],
-  exports: [
-        LoginComponent
-  ],
-  declarations: [LoginComponent]
+    exports: [LoginComponent, LeftSideComponent, RightSideComponent, LoginFormComponent],
+  declarations: [LoginComponent, LeftSideComponent, RightSideComponent, LoginFormComponent]
 })
 export class HdLoginModule {}
