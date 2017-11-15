@@ -12,7 +12,7 @@ export class LayoutService {
 
     constructor() {
         this.closeOverlay.subscribe((res) => {
-            if(res) {
+            if (res) {
                 this.closeOverlay.next(false);
             }
         });

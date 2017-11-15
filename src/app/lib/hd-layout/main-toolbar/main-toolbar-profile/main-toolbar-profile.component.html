@@ -1,6 +1,6 @@
 <a cdk-overlay-origin class="right-menu-item-link" #profile="cdkOverlayOrigin" (click)="clickMenu($event)">
     <span class="right-menu-link-picture">
-        <img src="./assets/user.jpg" class="m--img-rounded m--marginless m--img-centered" alt=""/>
+        <img [src]="imgProfile" class="m--img-rounded m--marginless m--img-centered" alt=""/>
     </span>
     <span class="m-topbar__username hide">
         Nick
@@ -12,14 +12,14 @@
         <div class="inner">
             <div class="header" style="background: url(./assets/profile.jpg); background-size: cover;">
                 <div class="user-pic">
-                    <img src="./assets/user.jpg"/>
+                    <img [src]="imgProfile"/>
                 </div>
                 <div class="details">
                     <span class="name">
-                        Huma Prathama
+                        {{name}}
                     </span>
-                    <a href="mail:humaprathama@gmail.com" class="email">
-                        humaprathama@gmail.com
+                    <a [href]="'mail:'+email" class="email">
+                        {{email}}
                     </a>
                 </div>
             </div>

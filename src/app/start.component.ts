@@ -10,7 +10,7 @@ import { LayoutService } from './lib/services/layout.service';
         <hd-main-toolbar-right-menu>
             <li hd-main-toolbar-notification></li>
             <li hd-main-toolbar-chat></li>
-            <li hd-main-toolbar-profile></li>
+            <li hd-main-toolbar-profile imgProfile='./assets/user.jpg' name="Humadev" email='huma.elektro@gmail.com'></li>
         </hd-main-toolbar-right-menu>
         <!-- END: Topbar -->
     </hd-main-toolbar>
