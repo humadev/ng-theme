@@ -3,12 +3,13 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <hd-login>
+    <!--<hd-login>
         <hd-left-side>
             <hd-login-form logo="./assets/logo.png"></hd-login-form>
         </hd-left-side>
         <hd-right-side background="./assets/bg-login.jpg"></hd-right-side>
-    </hd-login>
+    </hd-login>-->
+    <router-outlet></router-outlet>
   `,
   styles: [`
       .test{
