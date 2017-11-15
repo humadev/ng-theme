@@ -21,6 +21,7 @@ export class MainToolbarProfileComponent {
     ) { }
 
     clickMenu(e) {
+        this.ls.closeOverlay.next(false);
         const config = new OverlayConfig({
             hasBackdrop: true,
             backdropClass: 'menu-overlay-backdrop',
@@ -39,7 +40,6 @@ export class MainToolbarProfileComponent {
 
         this.ls.closeOverlay.subscribe((res) => {
             if (res) {
-                this.ls.closeOverlay.next(false);
                 overlayRef.dispose();
             }
         });
