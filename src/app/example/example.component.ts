@@ -49,7 +49,7 @@ import { LayoutService } from './../lib/services/layout.service';
                               <li hd-profile-item icon="icon flaticon-lifebuoy">Support</li>
                               <li hd-profile-separator></li>
                               <li hd-profile-button>
-                                    <a mat-raised-button color='primary' class="close-on-click">Logout</a>
+                                    <a mat-raised-button color='primary' class="close-on-click" [routerLink]="['/']">Logout</a>
                               </li>
                         </ul>
                 </li>

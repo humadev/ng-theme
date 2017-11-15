@@ -148,8 +148,8 @@ export class TableAdapter extends DataSource<any> {
                                     result = searchStr.indexOf(query.toLowerCase());
                               }
                         } else if (typeof item[obj] !== 'undefined' && typeof this.filter.value !== 'undefined') {
-                              const searchStr = item[obj].toString();
-                              result = searchStr.indexOf(this.filter.value);
+                              const searchStr2 = item[obj].toString();
+                              result = searchStr2.indexOf(this.filter.value);
                         }
                         if (result !== -1) {
                               exist = true;

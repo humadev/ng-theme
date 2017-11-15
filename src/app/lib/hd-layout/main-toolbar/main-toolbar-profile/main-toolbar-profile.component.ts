@@ -39,8 +39,8 @@ export class MainToolbarProfileComponent {
 
         this.ls.closeOverlay.subscribe((res) => {
             if (res) {
-                overlayRef.dispose();
                 this.ls.closeOverlay.next(false);
+                overlayRef.dispose();
             }
         });
   }
