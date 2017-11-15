@@ -119,27 +119,27 @@ export class SidenavComponent implements OnInit, AfterViewInit {
             }
       }
 
-      @Output()
-      toggle() {
-            this.opened = !this.opened;
-      }
+    @Output()
+    toggle() {
+        this.opened = !this.opened;
+    }
 
-      checkHidden(navItem) {
-            let hidden = false;
-            if (navItem.hasOwnProperty('redirectTo')) {
-                  hidden = true;
-            } else {
-                  if (navItem.hasOwnProperty('data')) {
-                        if (navItem.data.hasOwnProperty('hidden')){
-                              hidden = navItem.data.hidden;
-                        }
-                  }
-            }
-            return hidden;
-      }
+    checkHidden(navItem) {
+        let hidden = false;
+        if (navItem.hasOwnProperty('redirectTo')) {
+                hidden = true;
+        } else {
+                if (navItem.hasOwnProperty('data')) {
+                    if (navItem.data.hasOwnProperty('hidden')) {
+                            hidden = navItem.data.hidden;
+                    }
+                }
+        }
+        return hidden;
+    }
 
-      setPageToolbar(item) {
-            this.pageTitle.emit(item.name);
-      }
+    setPageToolbar(item) {
+        this.pageTitle.emit(item.name);
+    }
 
 }

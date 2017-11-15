@@ -4,8 +4,9 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class LayoutService {
 
-      pageTitle = new BehaviorSubject<string>('');
-      topProgressBar = new BehaviorSubject<boolean>(false);
-      lockScroll = new BehaviorSubject<boolean>(false);
-      sidebarOpen = new BehaviorSubject<boolean>(true);
+    pageTitle = new BehaviorSubject<string>('');
+    topProgressBar = new BehaviorSubject<boolean>(false);
+    lockScroll = new BehaviorSubject<boolean>(false);
+    sidebarOpen = new BehaviorSubject<boolean>(true);
+    closeOverlay = new BehaviorSubject<boolean>(false);
 }

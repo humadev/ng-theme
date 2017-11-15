@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Renderer2 } from '@angular/core';
+import { LayoutService } from '../../../services/layout.service';
 
 @Component({
   selector: '[hd-profile-button]',
@@ -15,9 +16,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileButtonComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+      private render: Renderer2,
+      private el: ElementRef,
+      private ls: LayoutService
+  ) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+        if (this.el.nativeElement.querySelector('.close-on-click')) {
+            this.render.listen(this.el.nativeElement.querySelector('.close-on-click'), 'click', () => {
+                this.ls.closeOverlay.next(true);
+            });
+        }
+    }
 
 }

@@ -1,6 +1,6 @@
 import { slideToUp } from './../lib/animations/router.animation';
 import { Component, OnInit } from '@angular/core';
-import { LayoutService } from "./../lib/services/layout.service";
+import { LayoutService } from './../lib/services/layout.service';
 
 @Component({
   selector: 'hd-example',
@@ -49,7 +49,7 @@ import { LayoutService } from "./../lib/services/layout.service";
                               <li hd-profile-item icon="icon flaticon-lifebuoy">Support</li>
                               <li hd-profile-separator></li>
                               <li hd-profile-button>
-                                    <a mat-raised-button color='primary'>Logout</a>
+                                    <a mat-raised-button color='primary' class="close-on-click">Logout</a>
                               </li>
                         </ul>
                 </li>

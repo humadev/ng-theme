@@ -2,6 +2,7 @@ import { TemplatePortalDirective, Portal } from '@angular/cdk/portal';
 import { OverlayOrigin, Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { fadeUp } from '../../../animations/router.animation';
+import { LayoutService } from '../../../services/layout.service';
 
 @Component({
   selector: '[hd-main-toolbar-profile]',
@@ -15,7 +16,8 @@ export class MainToolbarProfileComponent {
     @ViewChildren(TemplatePortalDirective) templatePortals: QueryList<Portal<any>>;
 
     constructor(
-        public overlay: Overlay
+        public overlay: Overlay,
+        private ls: LayoutService
     ) { }
 
     clickMenu(e) {
@@ -33,6 +35,13 @@ export class MainToolbarProfileComponent {
         overlayRef.attach(this.templatePortals.first);
         overlayRef.backdropClick().subscribe(() => {
             overlayRef.dispose();
+        });
+
+        this.ls.closeOverlay.subscribe((res) => {
+            if (res) {
+                overlayRef.dispose();
+                this.ls.closeOverlay.next(false);
+            }
         });
   }
 

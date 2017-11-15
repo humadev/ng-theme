@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { LayoutService } from './../../../services/layout.service';
+import { Component, OnInit, Input, Renderer2, ElementRef } from '@angular/core';
 
 @Component({
   selector: '[hd-profile-item]',
@@ -26,9 +27,18 @@ export class ProfileItemComponent implements OnInit {
     @Input() badge: number;
     @Input() icon: string;
 
-    constructor() { }
+    constructor(
+        private render: Renderer2,
+        private el: ElementRef,
+        private ls: LayoutService
+    ) { }
 
     ngOnInit() {
+        if (this.el.nativeElement.querySelector('.close-on-click')) {
+            this.render.listen(this.el.nativeElement.querySelector('.close-on-click'), 'click', () => {
+                this.ls.closeOverlay.next(true);
+            });
+        }
     }
 
 }
