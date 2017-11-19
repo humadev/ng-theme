@@ -28,26 +28,17 @@
                 </ul>
                 <ng-template #fromVar>
                     <ng-template ngFor let-level1 [ngForOf]="nav" let-i="index">
-                            <a mat-button (click)="parentOpen(i)" routerLinkActive="active" [class.active]="isActive([level1.path])"  *ngIf="level1.children && level1.children.length > 0; else noChild">
-                                <mat-icon>{{level1.icon}}</mat-icon> {{level1.name}}
-                                <span class="fill-space"></span>
-                                <mat-icon class="hd-menu-parent" *ngIf="level1.isOpen || isActive([level1.path]); else arrowRight">keyboard_arrow_down</mat-icon>
-                                <ng-template #arrowRight><mat-icon class="hd-menu-parent">keyboard_arrow_right</mat-icon></ng-template>
-                            </a>
-                            <ng-template #noChild>
-                                <a mat-button [routerLink]="[level1.path]" routerLinkActive="active" (click)='setPageToolbar(level1)'>
-                                        <mat-icon>{{level1.icon}}</mat-icon> {{level1.name}}
-                                        <span class="fill-space"></span>
-                                </a>
-                            </ng-template>
-                            <ng-template [ngIf]="level1.children && level1.children.length > 0 && (level1.isOpen || isActive([level1.path]))">
-                                <mat-nav-list class="hd-menu-child">
-                                        <a mat-button *ngFor="let level2 of level1.children" [routerLink]="[level1.path+'/'+level2.path]" routerLinkActive="active" (click)='setPageToolbar(level2)'>
-                                            <mat-icon>{{level2.icon}}</mat-icon> {{level2.name}}
-                                            <span class="fill-space"></span>
-                                        </a>
-                                </mat-nav-list>
-                            </ng-template>
+                        <li hd-sidenav-item cdk-overlay-origin 
+                              class="m-menu__item" 
+                              routerLinkActive="m-menu__item--active" 
+                              routerLinkActiveOptions="{ exact: true }"
+                              aria-haspopup="true" 
+                              [ngClass]="{'m-menu__item--open':childrenAndActive(level1)}" 
+                              [menu]='level1' 
+                              [nav]='nav' 
+                              [index]='i'
+                              [sidenavOpen]='sidenavClass'>
+                        </li>
                     </ng-template>
                 </ng-template>
                 </div>

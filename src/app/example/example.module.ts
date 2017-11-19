@@ -34,7 +34,8 @@ const appRoutes: Routes = [
             data: {
                   name: 'Example',
                   groupAccess: 0,
-                  icon: 'dashboard'
+                  icon: 'dashboard',
+                  badge: '3'
             },
             children: [
             {
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
                   data: {
                         name: 'Dashboard',
                         groupAccess: 0,
-                        icon: 'dashboard'
+                        icon: 'dashboard',
+                        badge: '3'
                   }
             },
             {

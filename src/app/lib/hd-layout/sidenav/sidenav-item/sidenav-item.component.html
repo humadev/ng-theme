@@ -17,7 +17,9 @@
         <span class="text">
             {{menu.data.name}}
         </span>
-        <i class="arrow la la-angle-right" *ngIf="menu.children && menu.children.length > 0"></i>
+      <span class="badge" *ngIf="menu.data.badge">
+            <span>{{menu.data.badge}}</span>
+      </span>
     </a>
 </ng-template>
 <ng-template [ngIf]="menu.children && menu.children.length > 0" cdk-portal>
@@ -31,9 +33,12 @@
         <ul class="menu-subnav">
             <li class="menu-subnav-item subnav-title">
                 <a>
-                    <span>
+                    <span class="text">
                         {{menu.data.name}}
                     </span>
+                  <span class="badge" *ngIf="menu.data.badge">
+                        <span>{{menu.data.badge}}</span>
+                  </span>
                 </a>
             </li>
             <li 
@@ -43,10 +48,13 @@
                 aria-haspopup="true"
                 *ngFor="let level2 of menu.children">
                 <a [routerLink]="[menu.path+'/'+level2.path]" >
-                    <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
-                    <span>
-                        {{level2.data.name}}
-                    </span>
+                  <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
+                  <span class="text">
+                  {{level2.data.name}}
+                  </span>
+                  <span class="badge" *ngIf="menu.data.badge">
+                        <span>{{level2.data.badge}}</span>
+                  </span>
                 </a>
             </li>
         </ul>
