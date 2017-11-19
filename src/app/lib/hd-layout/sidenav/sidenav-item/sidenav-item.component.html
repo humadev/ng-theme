@@ -9,7 +9,7 @@
 </a>
 <ng-template #noChildItem>
     <a class='menu-item no-child'
-        [routerLink]="[menu?.path]"
+        [routerLink]="menu?.path"
         routerLinkActive="menu-item-active" 
         routerLinkActiveOptions="{ exact: true }" 
         [ngClass]="{'minimize':sidenavOpen.minimize}">
@@ -47,7 +47,7 @@
                 routerLinkActiveOptions="{ exact: true}" 
                 aria-haspopup="true"
                 *ngFor="let level2 of menu.children">
-                <a [routerLink]="[menu.path+'/'+level2.path]" >
+                <a [routerLink]="menu.path+'/'+level2.path" >
                   <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
                   <span class="text">
                   {{level2.data.name}}
