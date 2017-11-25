@@ -15,7 +15,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     }
   `]
 })
-export class FileUploadComponent{
+export class FileUploadComponent {
 
   @Input() color = 'primary';
   @Input() image;
