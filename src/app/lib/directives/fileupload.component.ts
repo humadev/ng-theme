@@ -15,7 +15,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     }
   `]
 })
-export class FileUploadComponent{
+export class FileUploadComponent {
 
   @Input() color = 'primary';
   @Input() image;
@@ -24,7 +24,7 @@ export class FileUploadComponent{
   @Output() getFile = new EventEmitter();
   @Output() getBase64 = new EventEmitter();
 
-  fileChange(event){
+  fileChange(event) {
     const fileList: FileList = event.target.files;
     if (fileList.length > 0) {
         const file: File = fileList[0];

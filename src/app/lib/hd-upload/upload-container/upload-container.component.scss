@@ -1,0 +1,18 @@
+.hd-upload-container {
+    cursor: pointer;
+    border: thin dashed grey;
+    padding: 20px;
+    text-align: center;
+    .mat-icon{
+        vertical-align: middle;
+    }
+    .hd-upload-hint {
+        text-align: center;
+        display: block;
+        font-size: 10px;
+    }
+}
+
+input[type=file] {
+  display: none;
+}

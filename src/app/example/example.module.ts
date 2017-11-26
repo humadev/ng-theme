@@ -1,3 +1,4 @@
+import { HdUploadModule } from './../lib/hd-upload/hd-upload.module';
 import { HdContextMenuModule } from './../lib/context-menu/hd-context-menu.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
@@ -58,7 +59,7 @@ const appRoutes: Routes = [
                     {
                             path: 'datatable',
                             component: DashboardComponent,
-                            data:{
+                            data: {
                                 name: 'Example 2.1',
                                 groupAccess: 0,
                                 icon: 'dashboard'
@@ -239,7 +240,8 @@ const appRoutes: Routes = [
             FlexLayoutModule,
             MatAutocompleteModule,
             ApolloModule.forRoot(provideClient),
-            HdContextMenuModule
+            HdContextMenuModule,
+            HdUploadModule
       ],
       providers: [DataService],
       entryComponents: [ModalComponent],
