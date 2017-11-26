@@ -1,3 +1,4 @@
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UploadFileDirective } from './upload-file.directive';
@@ -8,7 +9,9 @@ import { MatIconModule } from '@angular/material';
 @NgModule({
     imports: [
         CommonModule,
-        MatIconModule
+        MatIconModule,
+        ReactiveFormsModule,
+        FormsModule
     ],
     exports: [UploadFileDirective, UploadImageDirective, UploadContainerComponent],
     declarations: [UploadFileDirective, UploadImageDirective, UploadContainerComponent]

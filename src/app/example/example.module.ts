@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from './../shared.module';
 import { RouterModule, Routes } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ModalComponent } from './modal/modal.component';
 import { ExampleComponent } from './example.component';
@@ -234,6 +234,7 @@ const appRoutes: Routes = [
             SharedModule,
             RouterModule.forChild(appRoutes),
             ReactiveFormsModule,
+            FormsModule,
             MatTableModule,
             MatPaginatorModule,
             MatSortModule,

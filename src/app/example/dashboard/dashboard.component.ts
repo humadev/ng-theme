@@ -59,8 +59,8 @@ export class DashboardComponent implements OnInit {
 
     displayedColumns = ['first_name', 'mobile_phone', 'home_address'];
 
-    testForm = this.fb.group({
-        nama: ['', Validators.required]
+    form = this.fb.group({
+        file: ['']
     });
 
     orang = [
@@ -103,10 +103,7 @@ export class DashboardComponent implements OnInit {
         console.log(i);
       }
 
-      test(i) {
-            alert('test');
-      }
-
+      
       delete(i) {
         alert('del');
       }
@@ -121,6 +118,10 @@ export class DashboardComponent implements OnInit {
       displayFn(e) {
           console.log(e);
         return e;
+      }
+
+      test(e){
+          console.log(this.form.value);
       }
 
 }

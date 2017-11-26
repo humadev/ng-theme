@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewEncapsulation, Input, HostListener, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Component, ViewEncapsulation, Input, HostListener, AfterViewInit, ContentChild } from '@angular/core';
 import { UploadFileDirective } from '../upload-file.directive';
-import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
   selector: 'hd-upload-container',
@@ -8,27 +8,26 @@ import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
   styleUrls: ['./upload-container.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class UploadContainerComponent implements OnInit, AfterViewInit {
+export class UploadContainerComponent implements AfterViewInit {
 
     @Input() placeholder = 'Upload file';
     @Input() hint = 'click to browse file';
-    @ViewChild(UploadFileDirective) uploadFile: UploadFileDirective;
+    @ContentChild(UploadFileDirective) uploadFile: UploadFileDirective;
+
+    constructor() {
+    }
+
     @HostListener('click', ['$event'])
     onClick(e) {
         this.uploadFile.click();
     }
 
-
-    constructor() {
-        console.log('construct', this.uploadFile);
-    }
-
-    ngOnInit() {
-        console.log('On Init', this.uploadFile);
-    }
-
     ngAfterViewInit() {
-        console.log('After View Init', this.uploadFile);
+        this.uploadFile.filename.subscribe(e => {
+            this.placeholder = e;
+        });
+        this.uploadFile.base64.subscribe(e => {
+            console.log(e);
+        });
     }
-
 }
