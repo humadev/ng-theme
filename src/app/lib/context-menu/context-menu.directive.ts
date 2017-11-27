@@ -74,7 +74,7 @@ export class ContextMenuDirective {
             const menuHeight = 250;
             const clickHeight = event.pageY;
             const windowWidth = window.screen.width;
-            const menuWidth = 100;
+            const menuWidth = 200;
             const clickWidth = event.pageX;
             const sisaHeight = windowHeight - clickHeight;
             const sisaWidth = windowWidth - clickWidth;

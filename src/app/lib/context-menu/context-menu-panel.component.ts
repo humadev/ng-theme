@@ -23,6 +23,8 @@ import { ContextMenu } from './context-menu';
   `,
     styles: [`
         :host{
+            max-height: 250px;
+            overflow-y: scroll;
             position: fixed !important;
             min-width: 200px;
             display: block;
