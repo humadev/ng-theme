@@ -4,8 +4,11 @@ import {
     EventEmitter,
     Input,
     HostListener,
-    HostBinding} from '@angular/core';
+    HostBinding,
+      ElementRef,
+      AfterViewInit} from '@angular/core';
 import { ContextMenu } from './context-menu';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Component({
   selector: 'hd-menu-panel',
@@ -23,7 +26,7 @@ import { ContextMenu } from './context-menu';
   `,
     styles: [`
         :host{
-            max-height: 250px;
+            max-height: 500px;
             overflow-y: scroll;
             position: fixed !important;
             min-width: 200px;
@@ -50,18 +53,29 @@ import { ContextMenu } from './context-menu';
     `]
 })
 
-export class ContextMenuPanelComponent {
-    @HostBinding('style.top.px') top = 0;
-    @HostBinding('style.left.px') left = 0;
-    @Output() menuItemClicked = new EventEmitter();
-    @Input() menuItem: [ContextMenu];
+export class ContextMenuPanelComponent implements AfterViewInit{
+      @HostBinding('style.top.px') top = 0;
+      @HostBinding('style.left.px') left = 0;
+      @Output() menuItemClicked = new EventEmitter();
+      @Input() menuItem: [ContextMenu];
+      height = new BehaviorSubject(0);
+      width = new BehaviorSubject(0);
 
-    onClick(item) {
-        this.menuItemClicked.emit(item);
-    }
+      constructor(
+            private _el: ElementRef
+      ) {}
 
-    @HostListener('contextmenu', ['$event'])
-        onContextMenu(event: MouseEvent): void {
+      onClick(item) {
+            this.menuItemClicked.emit(item);
+      }
+
+      @HostListener('contextmenu', ['$event'])
+      onContextMenu(event: MouseEvent): void {
             event.preventDefault();
-        }
+      }
+
+      ngAfterViewInit() {
+            this.height.next(this._el.nativeElement.offsetHeight);
+            this.width.next(this._el.nativeElement.offsetWidth);
+      }
 }

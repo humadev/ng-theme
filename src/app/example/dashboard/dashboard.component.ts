@@ -11,36 +11,36 @@ import { LayoutService } from './../../lib/services/layout.service';
 import { ContextMenu } from '../../lib/context-menu/context-menu';
 
 @Component({
-  selector: 'hd-dashboard-example',
-  templateUrl: './dashboard.component.html',
-  animations: [slideToUp()]
+      selector: 'hd-dashboard-example',
+      templateUrl: './dashboard.component.html',
+      animations: [slideToUp()]
 })
 export class DashboardComponent implements OnInit {
 
-    cmItem: [ContextMenu] = [
-        {
-            icon: 'list',
-            title: 'List Mata Kuliah',
-            callback: (i) => this.test(i),
-            groupPermission: [0]
-        },
-        {
-            icon: 'edit',
-            title: 'Edit',
-            callback: (i) => this.edit(i),
-            groupPermission: [0]
-        },
-        {
-            icon: 'delete',
-            title: 'Delete',
-            callback: (i) => this.delete(i),
-            groupPermission: [0]
-        },
-    ];
-    rows: TableAdapter | null;
-    @ViewChild('search') search: ElementRef;
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-    @ViewChild(MatSort) sort: MatSort;
+      cmItem: [ContextMenu] = [
+            {
+                  icon: 'list',
+                  title: 'List Mata Kuliah',
+                  callback: (i) => this.test(i),
+                  groupPermission: [0]
+            },
+            {
+                  icon: 'edit',
+                  title: 'Edit',
+                  callback: (i) => this.edit(i),
+                  groupPermission: [0]
+            },
+            {
+                  icon: 'delete',
+                  title: 'Delete',
+                  callback: (i) => this.delete(i),
+                  groupPermission: [0]
+            },
+      ];
+      rows: TableAdapter | null;
+      @ViewChild('search') search: ElementRef;
+      @ViewChild(MatPaginator) paginator: MatPaginator;
+      @ViewChild(MatSort) sort: MatSort;
 
       // speed dial
       private _fixed = false;
@@ -51,29 +51,28 @@ export class DashboardComponent implements OnInit {
 
       get fixed() { return this._fixed; }
       set fixed(fixed: boolean) {
-          this._fixed = fixed;
-          if (this._fixed) {
-              this.open = true;
-          }
+            this._fixed = fixed;
+            if (this._fixed) {
+                  this.open = true;
+            }
       }
 
-    displayedColumns = ['first_name', 'mobile_phone', 'home_address'];
+      displayedColumns = ['first_name', 'mobile_phone', 'home_address'];
 
-    form = this.fb.group({
-        file: [''],
-        file2: [''],
-    });
+      testForm = this.fb.group({
+            nama: ['', Validators.required]
+      });
 
-    orang = [
-        {id: 1, nama: 'satu'},
-        {id: 2, nama: 'dua'},
-        {id: 3, nama: 'tiga'},
-        {id: 4, nama: 'empat'},
-        {id: 5, nama: 'limat'}
-    ];
+      orang = [
+            { id: 1, nama: 'satu' },
+            { id: 2, nama: 'dua' },
+            { id: 3, nama: 'tiga' },
+            { id: 4, nama: 'empat' },
+            { id: 5, nama: 'limat' }
+      ];
 
       _click(event: any) {
-          console.log(event);
+            console.log(event);
       }
 
       constructor(
@@ -82,31 +81,34 @@ export class DashboardComponent implements OnInit {
             private _ls: LayoutService,
             private fb: FormBuilder,
             public _dialog: MatDialog
-      ) {}
+      ) { }
 
       ngOnInit() {
             this.rows = new TableAdapter(
-                this.ds.setData()
-                .map(data => {
-                    this._ls.topProgressBar.next(false);
-                    return data;
-                }),
-                this.displayedColumns,
-                this.paginator,
-                this.sort,
-                this.displayedColumns,
-                this.search
+                  this.ds.setData()
+                        .map(data => {
+                              this._ls.topProgressBar.next(false);
+                              return data;
+                        }),
+                  this.displayedColumns,
+                  this.paginator,
+                  this.sort,
+                  this.displayedColumns,
+                  this.search
             );
       }
 
       edit(i) {
-          this.test('test');
-        console.log(i);
+            this.test('test');
+            console.log(i);
       }
 
-      
+      test(i) {
+            alert('test');
+      }
+
       delete(i) {
-        alert('del');
+            alert('del');
       }
 
       openDialog() {
@@ -117,12 +119,8 @@ export class DashboardComponent implements OnInit {
       }
 
       displayFn(e) {
-          console.log(e);
-        return e;
-      }
-
-      test(e){
-          console.log(this.form.value);
+            console.log(e);
+            return e;
       }
 
 }

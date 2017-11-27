@@ -12,10 +12,11 @@ import {
     ViewContainerRef } from '@angular/core';
 import { ContextMenuPanelComponent } from './context-menu-panel.component';
 import { ContextMenu } from './context-menu';
-import { OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
-import { Overlay } from '@angular/cdk/overlay';
+import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { OverlayOrigin } from '@angular/cdk/overlay';
+import { Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/zip';
 
 @Directive({
   selector: '[hdContextMenu]'
@@ -70,29 +71,35 @@ export class ContextMenuDirective {
       }
 
       private calcPosition(event): void {
-            const windowHeight = window.screen.height;
-            const menuHeight = 250;
-            const clickHeight = event.pageY;
-            const windowWidth = window.screen.width;
-            const menuWidth = 200;
-            const clickWidth = event.pageX;
-            const sisaHeight = windowHeight - clickHeight;
-            const sisaWidth = windowWidth - clickWidth;
-            let posisiTop = 0;
-            let posisiLeft = 0;
-            if (sisaHeight > menuHeight) {
-                  posisiTop = clickHeight;
-            } else {
-                  posisiTop = clickHeight - menuHeight;
-            }
+            console.log(window.screen);
+            Observable.zip(this.panel.instance.width, this.panel.instance.height)
+            .subscribe((dimension) => {
+                  if (dimension[0] !== 0 && dimension[1] !== 0) {
+                        const windowHeight = window.screen.availHeight;
+                        const menuHeight = dimension[1];
+                        const clickHeight = event.pageY;
+                        const windowWidth = window.screen.availWidth;
+                        const menuWidth = dimension[0];
+                        const clickWidth = event.pageX;
+                        const sisaHeight = windowHeight - clickHeight;
+                        const sisaWidth = windowWidth - clickWidth;
+                        let posisiTop = 0;
+                        let posisiLeft = 0;
+                        if (sisaHeight > menuHeight) {
+                              posisiTop = clickHeight;
+                        } else {
+                              posisiTop = clickHeight - menuHeight;
+                        }
 
-            if (sisaWidth > menuWidth) {
-                  posisiLeft = clickHeight;
-            } else {
-                  posisiLeft = clickHeight - menuWidth;
-            }
-            this.panel.instance.top = posisiTop;
-            this.panel.instance.left = posisiLeft;
+                        if (sisaWidth > menuWidth) {
+                              posisiLeft = clickWidth;
+                        } else {
+                              posisiLeft = clickWidth - menuWidth;
+                        }
+                        this.panel.instance.top = posisiTop;
+                        this.panel.instance.left = posisiLeft;
+                  }
+            });
       }
 
       private watchItemClick(): void {
