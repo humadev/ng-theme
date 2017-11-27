@@ -1,7 +1,10 @@
 
 <form [formGroup]="form" (ngSubmit)="test($event)">
 <hd-upload-container fxFlex='50'>
-    <input hdUploadFile formControlName='file' type="file">
+    <input hdUploadFile formControlName='file'>
+</hd-upload-container>
+<hd-upload-container fxFlex='50'>
+    <input hdUploadFile formControlName='file2'>
 </hd-upload-container>
 <button>save</button>
 </form>

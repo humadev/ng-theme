@@ -1,6 +1,7 @@
 .hd-upload-container {
     cursor: pointer;
-    border: thin dashed grey;
+    border: thin dashed #676c7b;
+    color: #676c7b;
     padding: 20px;
     text-align: center;
     .mat-icon{
@@ -10,6 +11,13 @@
         text-align: center;
         display: block;
         font-size: 10px;
+    }
+
+    .hd-upload-filename {
+        display: block;
+        text-align: center;
+        font-size: 12px;
+        min-height: 18px;
     }
 }
 

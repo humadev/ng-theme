@@ -1,5 +1,15 @@
 import { FormControl } from '@angular/forms';
-import { Component, ViewEncapsulation, Input, HostListener, AfterViewInit, ContentChild } from '@angular/core';
+import {
+    Component,
+    ViewEncapsulation,
+    Input,
+    HostListener,
+    AfterViewInit,
+    ContentChild,
+    ViewChild,
+    ElementRef,
+    Renderer2
+} from '@angular/core';
 import { UploadFileDirective } from '../upload-file.directive';
 
 @Component({
@@ -11,23 +21,64 @@ import { UploadFileDirective } from '../upload-file.directive';
 export class UploadContainerComponent implements AfterViewInit {
 
     @Input() placeholder = 'Upload file';
-    @Input() hint = 'click to browse file';
+    @Input() hint = '';
     @ContentChild(UploadFileDirective) uploadFile: UploadFileDirective;
+    @ViewChild('filetoupload') uploadInput: ElementRef;
+    filename: string;
 
-    constructor() {
+    constructor(
+        private render: Renderer2
+    ) {
     }
 
     @HostListener('click', ['$event'])
     onClick(e) {
-        this.uploadFile.click();
+        this.uploadInput.nativeElement.click();
     }
 
     ngAfterViewInit() {
-        this.uploadFile.filename.subscribe(e => {
-            this.placeholder = e;
+        this.render.listen(this.uploadInput.nativeElement, 'change', e => {
+            if (e.target.files.length) {
+                this.filename = e.target.files[0].name;
+            }
+            const fileList: FileList = e.target.files;
+            if (fileList.length > 0) {
+                const file: File = fileList[0];
+                const myReader: FileReader = new FileReader();
+                myReader.onloadend = (event) => {
+                    const image = myReader.result;
+                    this.uploadFile.setValue(image);
+                }
+                myReader.readAsDataURL(file);
+            }
         });
-        this.uploadFile.base64.subscribe(e => {
-            console.log(e);
-        });
+    }
+
+    @HostListener('dragover', ['$event']) public onDragOver(evt) {
+        evt.preventDefault();
+        evt.stopPropagation();
+        // this.background = '#999';
+    }
+    @HostListener('dragleave', ['$event']) public onDragLeave(evt) {
+        evt.preventDefault();
+        evt.stopPropagation();
+        // this.background = '#eee'
+    }
+    @HostListener('drop', ['$event']) public onDrop(evt) {
+        evt.preventDefault();
+        evt.stopPropagation();
+        if (evt.dataTransfer.files.length) {
+            this.filename = evt.dataTransfer.files[0].name;
+        }
+        const fileList: FileList = evt.dataTransfer.files;
+        if (fileList.length > 0) {
+            const file: File = fileList[0];
+            const myReader: FileReader = new FileReader();
+            myReader.onloadend = (event) => {
+                const image = myReader.result;
+                this.uploadFile.setValue(image);
+            }
+            myReader.readAsDataURL(file);
+        }
     }
 }

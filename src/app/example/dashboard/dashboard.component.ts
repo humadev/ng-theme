@@ -60,7 +60,8 @@ export class DashboardComponent implements OnInit {
     displayedColumns = ['first_name', 'mobile_phone', 'home_address'];
 
     form = this.fb.group({
-        file: ['']
+        file: [''],
+        file2: [''],
     });
 
     orang = [

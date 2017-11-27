@@ -159,6 +159,70 @@
     height: auto;
     padding: 0;
     cursor: pointer;
+    span.text {
+      color: #868aa8;
+      font-weight: 400;
+      font-size: 1.02rem;
+      text-transform: initial;
+      display: table-cell;
+      height: 100%;
+      width: 100%;
+      padding: 0 !important;
+      vertical-align: middle;
+    }
+
+    span.badge {
+      display: table-cell;
+      height: 100%;
+      vertical-align: middle;
+      white-space: nowrap;
+      padding: 0px 0px 0px 5px;
+      text-align: right;
+      span {
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        border-radius: 10px;
+        background: #eaeaea;
+        font-size: 0.8rem;
+        line-height: 20px;
+        min-height: 20px;
+        min-width: 20px;
+        vertical-align: middle;
+        text-align: center;
+        display: inline-block;
+        padding: 0px 2px;
+        background-color: #f4516c;
+        color: #ffffff;
+      }
+    }
+
+    i.arrow {
+      color: #525672;
+      text-align: right;
+      width: 20px;
+      font-size: 0.7rem;
+      display: table-cell;
+      vertical-align: middle;
+      line-height: 0;
+      height: 100%;
+      padding: 0 !important; // -webkit-transition: all 0.3s ease;
+      // -moz-transition: all 0.3s ease;
+      // -ms-transition: all 0.3s ease;
+      // -o-transition: all 0.3s ease;
+      // transition: all 0.3s ease;
+    }
+
+    i.arrow:before {
+      display: inline-block;
+      -webkit-transition: all 0.3s ease;
+      -moz-transition: all 0.3s ease;
+      -ms-transition: all 0.3s ease;
+      -o-transition: all 0.3s ease;
+      transition: all 0.3s ease;
+    }
+
     a{
         padding: 0 30px;
         padding-left: 50px;
@@ -241,6 +305,10 @@
     span span.badge{
         color:white;
     }
+}
+
+.menu-item-active{
+    background-color: #292b3a;
 }
 
 .menu-item-active span, .menu-item-active i{

@@ -1,41 +1,32 @@
-import { Directive, ElementRef, HostListener, Output, Renderer2 } from '@angular/core';
-import { EventEmitter } from 'events';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Directive, ElementRef, Renderer2, Injector, OnInit } from '@angular/core';
 import { NgControl } from '@angular/forms';
 
 @Directive({
   selector: '[hdUploadFile]',
   exportAs: 'hdUploadFile'
 })
-export class UploadFileDirective {
+export class UploadFileDirective implements OnInit {
 
-    filename = new BehaviorSubject('');
-    base64 = new BehaviorSubject('');
+    control: NgControl;
 
-  constructor(
-      private _er: ElementRef,
-      private control: NgControl,
-      private render: Renderer2
-  ) { }
-
-  click() {
-      this._er.nativeElement.click();
-  }
-
-  @HostListener('change', ['$event'])
-  onChange(e) {
-    this.filename.next(e.target.files[0].name);
-    const fileList: FileList = e.target.files;
-    if (fileList.length > 0) {
-        const file: File = fileList[0];
-        const myReader: FileReader = new FileReader();
-        myReader.onloadend = (event) => {
-            const image = myReader.result;
-            this.base64.next(image);
-            this.render.setValue(this._er, image);
-        }
-        myReader.readAsDataURL(file);
+    constructor(
+        private _er: ElementRef,
+        private inj: Injector,
+        private render: Renderer2
+    ) {
+        this.render.setStyle(this._er.nativeElement, 'display', 'none');
     }
-  }
+
+    click() {
+        this._er.nativeElement.click();
+    }
+
+    ngOnInit() {
+        this.control = this.inj.get(NgControl);
+    }
+
+    setValue(value) {
+        this.control.control.setValue(value);
+    }
 
 }
