@@ -70,8 +70,29 @@ export class ContextMenuDirective {
       }
 
       private calcPosition(event): void {
-            this.panel.instance.top = event.pageY;
-            this.panel.instance.left = event.pageX;
+            const windowHeight = window.screen.height;
+            const menuHeight = 250;
+            const clickHeight = event.pageY;
+            const windowWidth = window.screen.width;
+            const menuWidth = 100;
+            const clickWidth = event.pageX;
+            const sisaHeight = windowHeight - clickHeight;
+            const sisaWidth = windowWidth - clickWidth;
+            let posisiTop = 0;
+            let posisiLeft = 0;
+            if (sisaHeight > menuHeight) {
+                  posisiTop = clickHeight;
+            } else {
+                  posisiTop = clickHeight - menuHeight;
+            }
+
+            if (sisaWidth > menuWidth) {
+                  posisiLeft = clickHeight;
+            } else {
+                  posisiLeft = clickHeight - menuWidth;
+            }
+            this.panel.instance.top = posisiTop;
+            this.panel.instance.left = posisiLeft;
       }
 
       private watchItemClick(): void {
