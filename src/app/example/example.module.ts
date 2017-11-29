@@ -11,21 +11,8 @@ import { ModalComponent } from './modal/modal.component';
 import { ExampleComponent } from './example.component';
 import { MatTableModule, MatPaginatorModule, MatSortModule, MatAutocompleteModule, MatTabsModule } from '@angular/material';
 import { CdkTableModule } from '@angular/cdk/table';
-
-
-import { ApolloClient, createNetworkInterface } from 'apollo-client';
-import { ApolloModule } from 'apollo-angular';
 import { DataService } from './data.service';
-
-const networkInterface = createNetworkInterface({ uri: 'http://localhost:3000/graphql' });
-
-const client = new ApolloClient({
-  networkInterface,
-});
-
-export function provideClient(): ApolloClient {
-  return client;
-}
+import { HttpClientModule } from '@angular/common/http';
 
 
 const appRoutes: Routes = [
@@ -242,9 +229,9 @@ const appRoutes: Routes = [
             CdkTableModule,
             FlexLayoutModule,
             MatAutocompleteModule,
-            ApolloModule.forRoot(provideClient),
             HdContextMenuModule,
-            HdUploadModule
+            HdUploadModule,
+            HttpClientModule
       ],
       providers: [DataService],
       entryComponents: [ModalComponent],

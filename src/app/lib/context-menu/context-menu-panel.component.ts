@@ -58,8 +58,8 @@ export class ContextMenuPanelComponent implements AfterViewInit{
       @HostBinding('style.left.px') left = 0;
       @Output() menuItemClicked = new EventEmitter();
       @Input() menuItem: [ContextMenu];
-      height = new BehaviorSubject(0);
-      width = new BehaviorSubject(0);
+      height = new BehaviorSubject<number>(null);
+      width = new BehaviorSubject<number>(null);
 
       constructor(
             private _el: ElementRef

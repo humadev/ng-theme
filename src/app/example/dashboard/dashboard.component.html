@@ -106,7 +106,7 @@
                   </ng-container>
 
                   <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
-                  <mat-row *cdkRowDef="let row; columns: displayedColumns; let i=index" (hdContextMenu)='onContextMenu($event)' cdk-overlay-origin
+                  <mat-row *cdkRowDef="let row; columns: displayedColumns; let i=index" hdContextMenu cdk-overlay-origin
                         [menuID]='row.id_pegawai' [menuItem]='cmItem'></mat-row>
             </mat-table>
             <mat-paginator #paginator [pageSizeOptions]="[5, 10, 25, 100]" [length]="rows.tableData.value.length" [pageSize]="10">
@@ -119,15 +119,3 @@
             Footer
       </mat-card-footer>
 </mat-card>
-
-
-<form [formGroup]='testForm'>
-      <mat-form-field>
-            <input matInput type="text" placeholder="nama" mdInput formControlName="nama" [matAutocomplete]="auto">
-            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                  <mat-option *ngFor="let option of orang" [value]="option.id">
-                        {{ option.nama }}
-                  </mat-option>
-            </mat-autocomplete>
-      </mat-form-field>
-</form>

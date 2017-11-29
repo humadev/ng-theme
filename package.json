@@ -24,7 +24,7 @@
     "@angular/common": "^5.0.0",
     "@angular/compiler": "^5.0.0",
     "@angular/core": "^5.0.0",
-    "@angular/flex-layout": "^2.0.0-beta.10",
+    "@angular/flex-layout": "^2.0.0-beta.10-4905443",
     "@angular/forms": "^5.0.0",
     "@angular/http": "^5.0.0",
     "@angular/material": "^5.0.0-rc0",
@@ -32,15 +32,9 @@
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
     "core-js": "^2.4.1",
+    "hammerjs": "^2.0.8",
     "rxjs": "^5.5.2",
-    "zone.js": "^0.8.14",
-    "apollo-angular": "^0.13.3",
-    "apollo-angular-link-http": "^1.0.0-beta.5",
-    "apollo-cache-inmemory": "^1.1.0",
-    "apollo-client": "^1.9.3",
-    "graphql": "^0.11.7",
-    "graphql-tag": "^2.5.0",
-    "hammerjs": "^2.0.8"
+    "zone.js": "^0.8.14"
   },
   "peerDependencies": {},
   "devDependencies": {

@@ -1438,7 +1438,7 @@ hd-start-page .container{
                 text-decoration: none;
                 position: relative;
                 outline: none;
-                span{
+                span.text{
                     color: #717594;
                     font-weight: 400;
                     font-size: 1.05rem;
@@ -1449,6 +1449,33 @@ hd-start-page .container{
                     padding: 0;
                     vertical-align: middle;
                 }
+                span.badge {
+                  display: table-cell;
+                  height: 100%;
+                  vertical-align: middle;
+                  white-space: nowrap;
+                  padding: 0px 0px 0px 5px;
+                  text-align: right;
+                  span {
+                    -webkit-border-radius: 10px;
+                    -moz-border-radius: 10px;
+                    -ms-border-radius: 10px;
+                    -o-border-radius: 10px;
+                    border-radius: 10px;
+                    background: #eaeaea;
+                    font-size: 0.8rem;
+                    line-height: 20px;
+                    min-height: 20px;
+                    min-width: 20px;
+                    vertical-align: middle;
+                    text-align: center;
+                    display: inline-block;
+                    padding: 0px 2px;
+                    background-color: #f4516c;
+                    color: #ffffff;
+                  }
+                }
+
             }
         }
     }

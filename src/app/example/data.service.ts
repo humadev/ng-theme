@@ -1,41 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Apollo } from 'apollo-angular';
-import gql from 'graphql-tag';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class DataService {
 
-      constructor(
-            private _apollo: Apollo
-      ) {}
+    constructor(
+        private _http: HttpClient
+    ) {}
 
       /** Connect function called by the table to retrieve one stream containing the data to render. */
-      setData() {
-            return this._apollo.watchQuery({
-                  query: gql`{
-                        pegawai(where:{show:"1"}){
-                              first_name
-                              last_name
-                              pre_title
-                              post_title
-                              birth
-                              place_birth
-                              home_address
-                              work_address
-                              work_phone
-                              mobile_phone
-                        }
-                  }`,
-                  fetchPolicy: 'network-only',
-                  notifyOnNetworkStatusChange: true
-            })
-            .map((res: any) => {
-                  const data = [];
-                  res.data.pegawai.forEach(element => {
-                        data.push(element);
-                  });
-                  return data;
-            });
-      }
+    setData() {
+        return this._http.get('/assets/data.json').map((res: any) => res.pegawai);
+    }
 }
 

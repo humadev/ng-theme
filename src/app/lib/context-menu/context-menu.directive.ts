@@ -71,7 +71,6 @@ export class ContextMenuDirective {
       }
 
       private calcPosition(event): void {
-            console.log(window.screen);
             Observable.zip(this.panel.instance.width, this.panel.instance.height)
             .subscribe((dimension) => {
                   if (dimension[0] !== 0 && dimension[1] !== 0) {

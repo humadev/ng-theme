@@ -137,25 +137,28 @@ export class TableAdapter extends DataSource<any> {
                   this.tableData.next(this.sourceData.value);
                   return this.sourceData.value;
             }
-            const tableData = this.sourceData.value.slice().filter((item) => {
-                  let exist = false;
-                  let result = -1;
-                  this._searchColumns.forEach(obj => {
+            const query: string[] = this.filter.value.split(' ');
+            let tableData = this.sourceData.value;
+            query.forEach(q => {
+                tableData = tableData.slice().filter((item) => {
+                    let exist = false;
+                    let result = -1;
+                    this._searchColumns.forEach(obj => {
                         if (typeof item[obj] === 'string') {
-                              const query: String = this.filter.value;
-                              if (typeof item[obj] !== 'undefined' && typeof query !== 'undefined') {
-                                    const searchStr = item[obj].toLowerCase();
-                                    result = searchStr.indexOf(query.toLowerCase());
-                              }
+                            if (typeof item[obj] !== 'undefined' && typeof query !== 'undefined') {
+                                const searchStr = item[obj].toLowerCase();
+                                result = searchStr.indexOf(q.toLowerCase());
+                            }
                         } else if (typeof item[obj] !== 'undefined' && typeof this.filter.value !== 'undefined') {
-                              const searchStr2 = item[obj].toString();
-                              result = searchStr2.indexOf(this.filter.value);
+                            const searchStr2 = item[obj].toString();
+                            result = searchStr2.indexOf(q);
                         }
                         if (result !== -1) {
-                              exist = true;
+                            exist = true;
                         }
-                  });
-                  return exist;
+                    });
+                    return exist;
+                });
             });
             this.tableData.next(tableData);
             this._paginator.pageIndex = 0;

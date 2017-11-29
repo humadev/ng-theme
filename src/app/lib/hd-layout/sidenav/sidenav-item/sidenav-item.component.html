@@ -17,9 +17,9 @@
         <span class="text">
             {{menu.data.name}}
         </span>
-      <span class="badge" *ngIf="menu.data.badge">
-            <span>{{menu.data.badge}}</span>
-      </span>
+        <span class="badge" *ngIf="menu.data.badge">
+                <span>{{menu.data.badge}}</span>
+        </span>
     </a>
 </ng-template>
 <ng-template [ngIf]="menu.children && menu.children.length > 0" cdk-portal>

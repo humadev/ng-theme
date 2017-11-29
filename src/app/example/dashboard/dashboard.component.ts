@@ -85,16 +85,16 @@ export class DashboardComponent implements OnInit {
 
       ngOnInit() {
             this.rows = new TableAdapter(
-                  this.ds.setData()
-                        .map(data => {
-                              this._ls.topProgressBar.next(false);
-                              return data;
-                        }),
-                  this.displayedColumns,
-                  this.paginator,
-                  this.sort,
-                  this.displayedColumns,
-                  this.search
+                this.ds.setData()
+                .map(data => {
+                    this._ls.topProgressBar.next(false);
+                    return data;
+                }),
+                this.displayedColumns,
+                this.paginator,
+                this.sort,
+                this.displayedColumns,
+                this.search
             );
       }
 
@@ -119,7 +119,6 @@ export class DashboardComponent implements OnInit {
       }
 
       displayFn(e) {
-            console.log(e);
             return e;
       }
 
