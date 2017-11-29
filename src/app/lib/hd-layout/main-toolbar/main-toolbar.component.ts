@@ -14,7 +14,6 @@ import {
     ElementRef, ComponentRef, Renderer2 } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { ComponentPortal, Portal, TemplatePortalDirective } from '@angular/cdk/portal';
-import { PopMenuDirective } from '../../directives/pop-menu.directive';
 import { Router } from '@angular/router';
 
 @Component({
