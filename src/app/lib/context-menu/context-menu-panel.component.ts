@@ -17,11 +17,12 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
       [style.top.px]="top"
       [style.left.px]="left"
       fxLayout="column">
-        <a mat-button fxFlex
-            *ngFor="let item of menuItem"
-            (click)='onClick(item)'>
-                <mat-icon>{{item.icon}}</mat-icon> {{item.title}}
-        </a>
+        <ng-template ngFor let-item [ngForOf]="menuItem">
+            <a mat-button *ngIf="item.display !== false"
+                (click)='onClick(item)'>
+                    <mat-icon>{{item.icon}}</mat-icon> {{item.title}}
+            </a>
+        </ng-template>
     </div>
   `,
     styles: [`

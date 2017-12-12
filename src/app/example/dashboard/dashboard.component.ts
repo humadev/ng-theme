@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
                   icon: 'list',
                   title: 'List Mata Kuliah',
                   callback: (i) => this.test(i),
-                  groupPermission: [0]
+                  display: false
             },
             {
                   icon: 'edit',
