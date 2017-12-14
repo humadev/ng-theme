@@ -1,6 +1,6 @@
 <a cdk-overlay-origin class="right-menu-item-link" #notification="cdkOverlayOrigin" (click)="clickMenu($event)">
-    <span class="notification-dot-blink m-animate-blink"></span>
-    <span class="right-menu-link-icon m-animate-shake">
+    <span *ngIf='blink' class="notification-dot-blink m-animate-blink"></span>
+    <span #shake class="right-menu-link-icon">
         <i class="flaticon-music-2"></i>
     </span>
 </a>
