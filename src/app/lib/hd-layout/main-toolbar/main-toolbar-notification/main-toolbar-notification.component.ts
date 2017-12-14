@@ -1,3 +1,4 @@
+import { LayoutService } from './../../../services/layout.service';
 import { TemplatePortalDirective, Portal } from '@angular/cdk/portal';
 import { OverlayOrigin, Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { Component, OnInit, ViewChild, ViewChildren, QueryList, ElementRef, Renderer2, Input } from '@angular/core';
@@ -9,7 +10,7 @@ import { fadeUp, ringing } from '../../../animations/router.animation';
   styleUrls: ['./main-toolbar-notification.component.scss'],
   animations: [fadeUp(), ringing()]
 })
-export class MainToolbarNotificationComponent {
+export class MainToolbarNotificationComponent implements OnInit {
 
     @ViewChild('notification') menu: OverlayOrigin;
     @ViewChild('shake') shake: ElementRef;
@@ -18,18 +19,20 @@ export class MainToolbarNotificationComponent {
 
     constructor(
         public overlay: Overlay,
-        private _render: Renderer2
+        private _render: Renderer2,
+        private _layout: LayoutService
     ) { }
 
-    @Input()
-    set shakeAndBlink(set: boolean) {
-        if (set) {
-            this.blink = true;
-            this._render.addClass(this.shake.nativeElement, 'm-animate-shake');
-        }else {
-            this.blink = false;
-            this._render.removeClass(this.shake.nativeElement, 'm-animate-shake');
-        }
+    ngOnInit() {
+        this._layout.showNotification.subscribe(res => {
+            if (res) {
+                this.blink = true;
+                this._render.addClass(this.shake.nativeElement, 'm-animate-shake');
+            } else {
+                this.blink = false;
+                this._render.removeClass(this.shake.nativeElement, 'm-animate-shake');
+            }
+        });
     }
 
     clickMenu(e) {

@@ -9,8 +9,8 @@ import { LayoutService } from './../lib/services/layout.service';
             <!-- BEGIN: Topbar -->
             <hd-main-toolbar-left-menu></hd-main-toolbar-left-menu>
             <hd-main-toolbar-right-menu>
-            <button (click)="shakeAndBlink = true">test</button>
-                  <li hd-main-toolbar-notification [shakeAndBlink]='shakeAndBlink'>
+            <button (click)="_ls.showNotification.next(true)">test</button>
+                  <li hd-main-toolbar-notification>
                         <mat-tab-group>
                               <mat-tab label="Alert" class="notification-tab">
                                     <hd-timeline>
@@ -69,7 +69,7 @@ export class ExampleComponent implements OnInit {
 
     shakeAndBlink = false;
 
-    constructor(private _ls: LayoutService) {
+    constructor(public _ls: LayoutService) {
     }
 
     ngOnInit() {
