@@ -51,13 +51,14 @@ const appRoutes: Routes = [
                             data: {
                                 name: 'Example 2.1',
                                 groupAccess: 0,
-                                icon: 'dashboard'
+                                icon: 'dashboard',
+                                badge: '3'
                             }
                     },
                     {
                         path: 'datatable',
                         component: DashboardComponent,
-                        data:{
+                        data: {
                                 name: 'Example 2.2',
                                 groupAccess: 0,
                                 icon: 'dashboard'

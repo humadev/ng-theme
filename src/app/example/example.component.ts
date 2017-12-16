@@ -9,6 +9,7 @@ import { LayoutService } from './../lib/services/layout.service';
             <!-- BEGIN: Topbar -->
             <hd-main-toolbar-left-menu></hd-main-toolbar-left-menu>
             <hd-main-toolbar-right-menu>
+            <button (click)="_ls.showNotification.next(true)">test</button>
                   <li hd-main-toolbar-notification>
                         <mat-tab-group>
                               <mat-tab label="Alert" class="notification-tab">
@@ -66,12 +67,13 @@ import { LayoutService } from './../lib/services/layout.service';
 })
 export class ExampleComponent implements OnInit {
 
-  constructor(private _ls: LayoutService) {
-        
-  }
+    shakeAndBlink = false;
 
-  ngOnInit() {
+    constructor(public _ls: LayoutService) {
+    }
+
+    ngOnInit() {
         this._ls.topProgressBar.next(false);
-  }
+    }
 
 }
