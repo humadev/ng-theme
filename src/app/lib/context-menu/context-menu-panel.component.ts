@@ -14,8 +14,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
   selector: 'hd-menu-panel',
   template: `
     <div class="hd-context-menu-panel"
-      [style.top.px]="top"
-      [style.left.px]="left"
       fxLayout="column">
         <ng-template ngFor let-item [ngForOf]="menuItem">
             <a mat-button *ngIf="item.display !== false"
@@ -55,8 +53,6 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 })
 
 export class ContextMenuPanelComponent implements AfterViewInit{
-      @HostBinding('style.top.px') top = 0;
-      @HostBinding('style.left.px') left = 0;
       @Output() menuItemClicked = new EventEmitter();
       @Input() menuItem: [ContextMenu];
       height = new BehaviorSubject<number>(null);

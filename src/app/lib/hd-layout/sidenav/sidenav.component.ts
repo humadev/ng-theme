@@ -66,13 +66,13 @@ export class SidenavComponent implements OnInit, AfterViewInit {
       }
 
       lockScroll() {
-          this.layoutService.lockScroll.subscribe((isScroll) => {
-                if (isScroll) {
-                    this.scrollListener = this.render.listen(this.ref.nativeElement, 'wheel', (event) => false);
-                } else {
-                    this.scrollListener();
-                }
-          });
+        //   this.layoutService.lockScroll.subscribe((isScroll) => {
+        //         if (isScroll) {
+        //             this.scrollListener = this.render.listen(this.ref.nativeElement, 'wheel', (event) => false);
+        //         } else {
+        //             this.scrollListener();
+        //         }
+        //   });
       }
 
       parentOpen(i: any) {
