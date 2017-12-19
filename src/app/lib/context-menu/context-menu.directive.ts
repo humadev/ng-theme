@@ -40,14 +40,12 @@ export class ContextMenuDirective {
             public layoutService: LayoutService
       ) {
             render.setStyle(ref.nativeElement, 'cursor', 'context-menu'); // add context-menu cursor to element used this directive
-            // render.setAttribute(ref.nativeElement, 'cdk-overlay-origin', '');
       }
 
       @HostListener('contextmenu', ['$event'])
       onContextMenu(event: MouseEvent): void {
         event.preventDefault();
         if (!this.active) {
-            // setTimeout(() => this.layoutService.lockScroll.next(true), 100)
             this.render.addClass(this.ref.nativeElement, 'hd-contextmenu-active'); // coloring row with class
             this.createPanel(event);
             this.addPanelItem();
@@ -58,16 +56,22 @@ export class ContextMenuDirective {
       }
 
         private createPanel(event): void {
-            console.log(event);
-            console.log(this.ref);
+            let offsetX = event.offsetX;
+            let offsetY = event.offsetY;
+            if (event.path[0].nodeName === 'MAT-CELL') {
+                offsetX = event.offsetX + event.path[0].offsetLeft;
+                offsetY = event.offsetY + event.path[0].offsetHeight;
+            }
+            console.log(event.path);
             const positionStrategy = this.overlay.position()
                 .connectedTo(
                 this.ref,
                 { originX: 'start', originY: 'top' },
                 { overlayX: 'start', overlayY: 'top' });
             const config = new OverlayConfig({
-                positionStrategy: positionStrategy.withOffsetX(event.offsetX).withOffsetY(event.offsetY),
-                scrollStrategy: this.overlay.scrollStrategies.reposition()
+                positionStrategy: positionStrategy.withOffsetX(offsetX).withOffsetY(offsetY),
+                scrollStrategy: this.overlay.scrollStrategies.reposition(),
+                panelClass: 'contextmenu-overlay'
             });
             this.overlayRef = this.overlay.create(config);
             const contextMenu = new ComponentPortal(ContextMenuPanelComponent);
@@ -123,14 +127,12 @@ export class ContextMenuDirective {
                         this.render.removeClass(this.ref.nativeElement, 'hd-contextmenu-active');
                         this.overlayRef.dispose();
                         this.active = false;
-                        // this.layoutService.lockScroll.next(false);
             });
             this.render.listen('document', 'contextmenu', (event) => {
                   if (!this.ref.nativeElement.contains(event.target)) {
                         this.render.removeClass(this.ref.nativeElement, 'hd-contextmenu-active');
                         this.overlayRef.dispose();
                         this.active = false;
-                        // this.layoutService.lockScroll.next(false);
                   }
             });
       }
