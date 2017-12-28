@@ -18,7 +18,9 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
         <ng-template ngFor let-item [ngForOf]="menuItem">
             <a mat-button *ngIf="item.display !== false"
                 (click)='onClick(item)'>
-                    <mat-icon>{{item.icon}}</mat-icon> {{item.title}}
+                    <mat-icon style="width:15%; font-size: 16px; height: auto">{{item.icon}}</mat-icon>
+                    <div style="display: inline-block; width:75%">{{item.title}}</div>
+                    <mat-icon style="width:10%" *ngIf='item.children && item.children.length'>keyboard_arrow_right</mat-icon>
             </a>
         </ng-template>
     </div>
@@ -40,19 +42,19 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
             padding:4px 10px;
             font-size:12px;
             md-icon{
-                font-size:14px !important;
+                font-size:12px !important;
                 height: 16px;
             }
         }
 
         :host div a md-icon{
-            font-size:14px !important;
+            font-size:12px !important;
             height: 16px;
         }
     `]
 })
 
-export class ContextMenuPanelComponent implements AfterViewInit{
+export class ContextMenuPanelComponent implements AfterViewInit {
       @Output() menuItemClicked = new EventEmitter();
       @Input() menuItem: [ContextMenu];
       height = new BehaviorSubject<number>(null);

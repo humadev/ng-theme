@@ -25,17 +25,37 @@ export class DashboardComponent implements OnInit {
                   display: false
             },
             {
-                  icon: 'edit',
-                  title: 'Edit',
-                  callback: (i) => this.edit(i),
-                  groupPermission: [0]
+                icon: 'edit',
+                title: 'Edit',
+                callback: (i) => this.edit(i),
+                groupPermission: [0],
+                children: [
+                    {
+                        icon: 'list',
+                        title: 'List Mata Kuliah',
+                        callback: (i) => this.test(i),
+                        display: false
+                    },
+                    {
+                        icon: 'edit',
+                        title: 'Edit',
+                        callback: (i) => this.edit(i),
+                        groupPermission: [0]
+                    },
+                    {
+                        icon: 'delete',
+                        title: 'Delete',
+                        callback: (i) => this.delete(i),
+                        groupPermission: [0]
+                    },
+                ]
             },
             {
                   icon: 'delete',
                   title: 'Delete',
                   callback: (i) => this.delete(i),
                   groupPermission: [0]
-            },
+            }
       ];
       rows: TableAdapter | null;
       @ViewChild('search') search: ElementRef;

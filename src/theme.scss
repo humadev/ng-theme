@@ -923,6 +923,9 @@ button.primary{
 
 hd-menu-panel{
       background-color: $color-5;
+      .hd-context-menu-panel{
+          overflow-x: hidden;
+      }
       div.hd-context-menu-panel a{
             color:$color-3;
       }

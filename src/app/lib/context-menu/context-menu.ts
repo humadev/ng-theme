@@ -4,4 +4,5 @@ export class ContextMenu {
     callback: Function;
     groupPermission?: [number];
     display?: Boolean;
+    children?: [ContextMenu]
 }
