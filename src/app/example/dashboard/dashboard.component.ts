@@ -21,8 +21,8 @@ export class DashboardComponent implements OnInit {
             {
                   icon: 'list',
                   title: 'List Mata Kuliah',
-                  callback: (i) => this.test(i),
-                  display: false
+                  callback: (i) => this.openDialog(),
+                  display: true
             },
             {
                 icon: 'edit',
@@ -33,8 +33,8 @@ export class DashboardComponent implements OnInit {
                     {
                         icon: 'list',
                         title: 'List Mata Kuliah',
-                        callback: (i) => this.test(i),
-                        display: false
+                        callback: (i) => this.openDialog(),
+                        display: true
                     },
                     {
                         icon: 'edit',
@@ -133,7 +133,8 @@ export class DashboardComponent implements OnInit {
 
       openDialog() {
             const config = {
-                  disableClose: true
+                  disableClose: true,
+                  height: '100vh'
             };
             this.dialog.open(ModalComponent, config);
       }
