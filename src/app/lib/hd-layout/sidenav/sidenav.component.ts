@@ -32,7 +32,6 @@ export class SidenavComponent implements OnInit, AfterViewInit {
       sidenavClass = {
           minimize: false
       };
-      scrollListener = () => null;
 
       constructor(
             private render: Renderer2,
@@ -47,7 +46,6 @@ export class SidenavComponent implements OnInit, AfterViewInit {
             if (this.nav === false) {
                   this.menuService.sidenav.subscribe(res => this.navFromRouter = res);
             }
-            this.lockScroll();
             this.layoutService.sidebarOpen.subscribe((open) => {
                 this.sidenavClass.minimize = !open;
             });
@@ -63,16 +61,6 @@ export class SidenavComponent implements OnInit, AfterViewInit {
                   this.render.setStyle(content, 'margin-left', '70px');
               }
           });
-      }
-
-      lockScroll() {
-        //   this.layoutService.lockScroll.subscribe((isScroll) => {
-        //         if (isScroll) {
-        //             this.scrollListener = this.render.listen(this.ref.nativeElement, 'wheel', (event) => false);
-        //         } else {
-        //             this.scrollListener();
-        //         }
-        //   });
       }
 
       parentOpen(i: any) {

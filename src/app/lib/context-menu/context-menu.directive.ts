@@ -44,7 +44,7 @@ export class ContextMenuDirective {
 
       @HostListener('contextmenu', ['$event'])
       onContextMenu(event: MouseEvent): void {
-        event.preventDefault();
+            event.preventDefault();
         if (!this.active) {
             this.render.addClass(this.ref.nativeElement, 'hd-contextmenu-active'); // coloring row with class
             this.createPanel(event);
