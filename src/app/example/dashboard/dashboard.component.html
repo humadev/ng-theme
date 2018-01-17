@@ -46,7 +46,7 @@
                   </ng-container>
 
                   <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
-                  <mat-row *cdkRowDef="let row; columns: displayedColumns; let i=index" hdContextMenu [menuID]='i' [menuItem]='cmItem'></mat-row>
+                  <mat-row *cdkRowDef="let row; columns: displayedColumns; let i=index" hdContextMenu [menuID]='i' [menuItem]='cmItem' cdk-overlay-origin [contextMenuOrigin]="cdkOverlayOrigin"></mat-row>
             </mat-table>
             <mat-paginator #paginator [pageSizeOptions]="[5, 10, 25, 100]" [length]="rows.tableData.value.length" [pageSize]="10">
             </mat-paginator>

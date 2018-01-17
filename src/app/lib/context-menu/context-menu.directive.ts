@@ -12,7 +12,7 @@ import {
     ViewContainerRef } from '@angular/core';
 import { ContextMenuPanelComponent } from './context-menu-panel.component';
 import { ContextMenu } from './context-menu';
-import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
+import { Overlay, OverlayConfig, OverlayRef, CdkOverlayOrigin } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { OverlayOrigin } from '@angular/cdk/overlay';
 import { Observable} from 'rxjs/Observable';
@@ -27,6 +27,8 @@ export class ContextMenuDirective {
       @Output() hdContextMenu = new EventEmitter();
       @Input() menuID: any; // id dari row yg diklik kanan
       @Input() menuItem: [ContextMenu]; // data menu yg akan ditampikan, data ini sesuai dengan interface framework contextmenu
+      @ViewChild(CdkOverlayOrigin) _overlayOrigin: CdkOverlayOrigin;
+      @Input() contextMenuOrigin: CdkOverlayOrigin;
       panel: any;
       clickWatcher$: any;
       overlayRef: OverlayRef;
@@ -47,6 +49,7 @@ export class ContextMenuDirective {
       @HostListener('contextmenu', ['$event'])
       onContextMenu(event: MouseEvent): void {
             event.preventDefault();
+            event.stopPropagation();
             this._service.closeAllContextMenus();
             const refs = this._service.getRef();
             if (refs) {
@@ -55,7 +58,7 @@ export class ContextMenuDirective {
                });
             }
             this._service.destroyAllRef();
-        
+
             this._service.setRef(this.ref);
             this.render.addClass(this.ref.nativeElement, 'hd-contextmenu-active'); // coloring row with class
             this.createPanel(event);
@@ -66,19 +69,17 @@ export class ContextMenuDirective {
       }
 
         private createPanel(event): void {
-            let offsetX = event.offsetX;
-            let offsetY = event.offsetY;
-            if (event.target.nodeName === 'MAT-CELL') {
-               offsetX = event.offsetX + event.target.offsetLeft;
-               offsetY = event.offsetY + event.target.offsetHeight;
-            }
+            const offsetX = event.offsetX;
+            const offsetY = event.offsetY;
             const positionStrategy = this.overlay.position()
-                .connectedTo(
-                this.ref,
-                { originX: 'start', originY: 'top' },
-                { overlayX: 'start', overlayY: 'top' });
+               .connectedTo(
+                  {nativeElement: event.target},
+                  { originX: 'start', originY: 'top' },
+                  { overlayX: 'start', overlayY: 'top' })
+               .withOffsetX(offsetX)
+               .withOffsetY(offsetY);
             const config = new OverlayConfig({
-                positionStrategy: positionStrategy.withOffsetX(offsetX).withOffsetY(offsetY),
+                positionStrategy: positionStrategy,
                 scrollStrategy: this.overlay.scrollStrategies.reposition(),
                 panelClass: 'contextmenu-overlay'
             });
@@ -133,10 +134,13 @@ export class ContextMenuDirective {
       }
 
       private outsideListener(): void {
-            // this.render.listen('document', 'click', (event) => {
-            //             this.render.removeClass(this.ref.nativeElement, 'hd-contextmenu-active');
-            //             this.overlayRef.dispose();
-            //             this.active = false;
-            // });
+            this.render.listen('document', 'click', (event) => {
+               if (event.type === 'click' && event.button === 2) {
+                  return;
+               }
+               this._service.closeAllContextMenus();
+               this.render.removeClass(this.ref.nativeElement, 'hd-contextmenu-active');
+               this.active = false;
+            });
       }
 }
