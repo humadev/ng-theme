@@ -17,6 +17,7 @@ import { ComponentPortal } from '@angular/cdk/portal';
 import { OverlayOrigin } from '@angular/cdk/overlay';
 import { Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/zip';
+import { ContextMenuService } from './context-menu.service';
 
 @Directive({
   selector: '[hdContextMenu]'
@@ -37,7 +38,8 @@ export class ContextMenuDirective {
             private ar: ApplicationRef,
             private vc: ViewContainerRef,
             public overlay: Overlay,
-            public layoutService: LayoutService
+            public layoutService: LayoutService,
+            private _service: ContextMenuService
       ) {
             render.setStyle(ref.nativeElement, 'cursor', 'context-menu'); // add context-menu cursor to element used this directive
       }
@@ -45,24 +47,31 @@ export class ContextMenuDirective {
       @HostListener('contextmenu', ['$event'])
       onContextMenu(event: MouseEvent): void {
             event.preventDefault();
-        if (!this.active) {
+            this._service.closeAllContextMenus();
+            const refs = this._service.getRef();
+            if (refs) {
+               refs.forEach((ref, index) => {
+                  this.render.removeClass(ref.nativeElement, 'hd-contextmenu-active');
+               });
+            }
+            this._service.destroyAllRef();
+        
+            this._service.setRef(this.ref);
             this.render.addClass(this.ref.nativeElement, 'hd-contextmenu-active'); // coloring row with class
             this.createPanel(event);
             this.addPanelItem();
             // this.calcPosition(event);
             this.watchItemClick();
             this.outsideListener();
-        }
       }
 
         private createPanel(event): void {
             let offsetX = event.offsetX;
             let offsetY = event.offsetY;
-            if (event.path[0].nodeName === 'MAT-CELL') {
-                offsetX = event.offsetX + event.path[0].offsetLeft;
-                offsetY = event.offsetY + event.path[0].offsetHeight;
+            if (event.target.nodeName === 'MAT-CELL') {
+               offsetX = event.offsetX + event.target.offsetLeft;
+               offsetY = event.offsetY + event.target.offsetHeight;
             }
-            console.log(event.path);
             const positionStrategy = this.overlay.position()
                 .connectedTo(
                 this.ref,
@@ -74,6 +83,7 @@ export class ContextMenuDirective {
                 panelClass: 'contextmenu-overlay'
             });
             this.overlayRef = this.overlay.create(config);
+            this._service.setContextMenuOverlay(this.overlayRef);
             const contextMenu = new ComponentPortal(ContextMenuPanelComponent);
             this.panel = this.overlayRef.attach(contextMenu);
             this.active = true;
@@ -123,17 +133,10 @@ export class ContextMenuDirective {
       }
 
       private outsideListener(): void {
-            this.render.listen('document', 'click', (event) => {
-                        this.render.removeClass(this.ref.nativeElement, 'hd-contextmenu-active');
-                        this.overlayRef.dispose();
-                        this.active = false;
-            });
-            this.render.listen('document', 'contextmenu', (event) => {
-                  if (!this.ref.nativeElement.contains(event.target)) {
-                        this.render.removeClass(this.ref.nativeElement, 'hd-contextmenu-active');
-                        this.overlayRef.dispose();
-                        this.active = false;
-                  }
-            });
+            // this.render.listen('document', 'click', (event) => {
+            //             this.render.removeClass(this.ref.nativeElement, 'hd-contextmenu-active');
+            //             this.overlayRef.dispose();
+            //             this.active = false;
+            // });
       }
 }

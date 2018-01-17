@@ -6,11 +6,13 @@ import {
       MatButtonModule,
       MatIconModule
 } from '@angular/material';
+import { ContextMenuService } from './context-menu.service';
 
 @NgModule({
       imports: [ CommonModule, MatButtonModule, MatIconModule ],
       declarations: [ ContextMenuPanelComponent, ContextMenuDirective ],
       exports: [ ContextMenuPanelComponent, ContextMenuDirective ],
+      providers: [ContextMenuService],
       entryComponents: [ContextMenuPanelComponent]
 })
 export class HdContextMenuModule {}

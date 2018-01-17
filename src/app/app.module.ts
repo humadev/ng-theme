@@ -4,7 +4,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HdLayoutModule } from './lib/hd-layout/hd-layout.module';
-import {FabSpeedDialModule} from './lib/fab-speed-dial/fab-speed-dial.module';
 import { StartComponent } from './start.component';
 import { MenuService } from './lib/services/menu.service';
 import { HdLoginModule } from './lib/login/hd-login.module';
@@ -268,7 +267,6 @@ const appRoutes: Routes = [
       RouterModule.forRoot(appRoutes),
       BrowserAnimationsModule,
       HdLayoutModule,
-      FabSpeedDialModule,
       HdLoginModule
   ],
   bootstrap: [AppComponent],

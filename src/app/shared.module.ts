@@ -14,7 +14,6 @@ import {
       MatIconModule
 } from '@angular/material';
 import { HdLayoutModule } from './lib/hd-layout/hd-layout.module';
-import {FabSpeedDialModule} from './lib/fab-speed-dial/fab-speed-dial.module';
 
 
 @NgModule({
@@ -29,7 +28,6 @@ import {FabSpeedDialModule} from './lib/fab-speed-dial/fab-speed-dial.module';
             MatCheckboxModule,
             FlexLayoutModule,
             HdLayoutModule,
-            FabSpeedDialModule,
             MatProgressBarModule,
             HdContextMenuModule,
             MatIconModule
@@ -45,7 +43,6 @@ import {FabSpeedDialModule} from './lib/fab-speed-dial/fab-speed-dial.module';
             MatCheckboxModule,
             FlexLayoutModule,
             HdLayoutModule,
-            FabSpeedDialModule,
             MatProgressBarModule,
             MatIconModule
       ]
