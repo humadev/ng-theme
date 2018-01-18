@@ -63,7 +63,6 @@ export class ContextMenuDirective {
             this.render.addClass(this.ref.nativeElement, 'hd-contextmenu-active'); // coloring row with class
             this.createPanel(event);
             this.addPanelItem();
-            // this.calcPosition(event);
             this.watchItemClick();
             this.outsideListener();
       }
@@ -92,37 +91,6 @@ export class ContextMenuDirective {
 
       private addPanelItem(): void {
             this.panel.instance.menuItem = this.menuItem;
-      }
-
-      private calcPosition(event): void {
-            Observable.zip(this.panel.instance.width, this.panel.instance.height)
-            .subscribe((dimension) => {
-                  if (dimension[0] !== 0 && dimension[1] !== 0) {
-                        const windowHeight = window.screen.availHeight;
-                        const menuHeight = dimension[1];
-                        const clickHeight = event.pageY;
-                        const windowWidth = window.screen.availWidth;
-                        const menuWidth = dimension[0];
-                        const clickWidth = event.pageX;
-                        const sisaHeight = windowHeight - clickHeight;
-                        const sisaWidth = windowWidth - clickWidth;
-                        let posisiTop = 0;
-                        let posisiLeft = 0;
-                        if (sisaHeight > menuHeight) {
-                              posisiTop = clickHeight;
-                        } else {
-                              posisiTop = clickHeight - menuHeight;
-                        }
-
-                        if (sisaWidth > menuWidth) {
-                              posisiLeft = clickWidth;
-                        } else {
-                              posisiLeft = clickWidth - menuWidth;
-                        }
-                        this.panel.instance.top = posisiTop;
-                        this.panel.instance.left = posisiLeft;
-                  }
-            });
       }
 
       private watchItemClick(): void {
