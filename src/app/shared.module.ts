@@ -28,14 +28,9 @@ import { HdLayoutModule } from './lib/hd-layout/hd-layout.module';
             MatCheckboxModule,
             FlexLayoutModule,
             HdLayoutModule,
-<<<<<<< HEAD
-            FabSpeedDialModule,
-            MatProgressBarModule
-=======
             MatProgressBarModule,
             HdContextMenuModule,
             MatIconModule
->>>>>>> development
       ],
       exports: [
             MatCardModule,
@@ -48,13 +43,8 @@ import { HdLayoutModule } from './lib/hd-layout/hd-layout.module';
             MatCheckboxModule,
             FlexLayoutModule,
             HdLayoutModule,
-<<<<<<< HEAD
-            FabSpeedDialModule,
-            MatProgressBarModule
-=======
             MatProgressBarModule,
             MatIconModule
->>>>>>> development
       ]
 })
 export class SharedModule { }
