@@ -1,15 +1,24 @@
-import { Observable, Subject, BehaviorSubject } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { DataSource } from '@angular/cdk/table';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/observable/merge';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 import { MatPaginator, MatSort } from '@angular/material';
 import { ElementRef } from '@angular/core';
 
-interface Pagination {
+export interface Pagination {
       pageIndex: number;
       pageSize: number;
       length: number;
 }
 
-interface Sort {
+export interface Sort {
       active: string;
       direction: string;
 }
@@ -25,7 +34,7 @@ export class TableAdapter extends DataSource<any> {
             length: this.tableData.value.length
       });
       filter = new BehaviorSubject<String>('');
-      sort   = new BehaviorSubject<Sort>({
+      sort = new BehaviorSubject<Sort>({
             active: '',
             direction: 'asc'
       });
@@ -39,15 +48,15 @@ export class TableAdapter extends DataSource<any> {
             private _filterInput?: ElementRef
       ) {
             super();
-            if(_searchColumns && _searchColumns.length === 0){
+            if (_searchColumns && _searchColumns.length === 0) {
                   _searchColumns = _displayedColumns;
             }
 
-            if(_filterInput){
+            if (_filterInput) {
                   Observable.fromEvent(_filterInput.nativeElement, 'keyup')
-                  .debounceTime(100)
-                  .distinctUntilChanged()
-                  .subscribe(() => this.filter.next(_filterInput.nativeElement.value));
+                        .debounceTime(100)
+                        .distinctUntilChanged()
+                        .subscribe(() => this.filter.next(_filterInput.nativeElement.value));
             }
 
       }
@@ -55,36 +64,34 @@ export class TableAdapter extends DataSource<any> {
       /** Connect function called by the table to retrieve one stream containing the data to render. */
       connect(): Observable<any> {
             const connectData = [];
-            if(this._filterInput) {
+            if (this._filterInput) {
                   connectData.push(this.filter);
             }
-            if(this._sort) {
+            if (this._sort) {
                   connectData.push(this._sort.sortChange);
             }
-            if(this._paginator) {
+            if (this._paginator) {
                   connectData.push(this._paginator.page);
             }
 
             return this._data
-            .map((res) => this.setData(res))
+                  .map((res) => this.setData(res))
                   .switchMap(res => {
-                        if(connectData.length > 0) {
+                        if (connectData.length > 0) {
                               return Observable.merge(...connectData);
-                        }else{
+                        } else {
                               return Observable.of(res);
                         }
                   })
                   .map(() => this.filtering())
                   .map(() => this.sorting())
-                  .map(() => {
-                        return this.paging();
-                  });
+                  .map(() => this.paging());
       }
 
       setData(data: any[]) {
             this.sourceData.next(data);
             this.tableData.next(data);
-            if(this._paginator) {
+            if (this._paginator) {
                   this._paginator.length = this.tableData.value.length;
             }
       }
@@ -96,7 +103,7 @@ export class TableAdapter extends DataSource<any> {
 
                   const startIndex = this._paginator.pageIndex * this._paginator.pageSize;
                   return data.splice(startIndex, this._paginator.pageSize);
-            }else{
+            } else {
                   return this.tableData.value;
             }
       }
@@ -108,8 +115,8 @@ export class TableAdapter extends DataSource<any> {
             }
 
             data.sort((a, b) => {
-                  let propertyA: number|string = '';
-                  let propertyB: number|string = '';
+                  let propertyA: number | string = '';
+                  let propertyB: number | string = '';
 
                   [propertyA, propertyB] = [a[this._sort.active], b[this._sort.active]];
 
@@ -130,25 +137,28 @@ export class TableAdapter extends DataSource<any> {
                   this.tableData.next(this.sourceData.value);
                   return this.sourceData.value;
             }
-            const tableData = this.sourceData.value.slice().filter((item) => {
-                  let exist = false;
-                  let result = -1;
-                  this._searchColumns.forEach(obj => {
-                        if(typeof item[obj] === 'string'){
-                              const query: String = this.filter.value;
-                              if (typeof item[obj] !== 'undefined' && typeof query !== 'undefined') {
-                                    const searchStr = item[obj].toLowerCase();
-                                    result = searchStr.indexOf(query.toLowerCase());
-                              }
-                        }else if (typeof item[obj] !== 'undefined' && typeof this.filter.value !== 'undefined') {
-                                    const searchStr = item[obj].toString();
-                                    result = searchStr.indexOf(this.filter.value);
+            const query: string[] = this.filter.value.split(' ');
+            let tableData = this.sourceData.value;
+            query.forEach(q => {
+                tableData = tableData.slice().filter((item) => {
+                    let exist = false;
+                    let result = -1;
+                    this._searchColumns.forEach(obj => {
+                        if (typeof item[obj] === 'string') {
+                            if (typeof item[obj] !== 'undefined' && typeof query !== 'undefined') {
+                                const searchStr = item[obj].toLowerCase();
+                                result = searchStr.indexOf(q.toLowerCase());
+                            }
+                        } else if (typeof item[obj] !== 'undefined' && typeof this.filter.value !== 'undefined') {
+                            const searchStr2 = item[obj].toString();
+                            result = searchStr2.indexOf(q);
                         }
                         if (result !== -1) {
-                              exist = true;
+                            exist = true;
                         }
-                  });
-                  return exist;
+                    });
+                    return exist;
+                });
             });
             this.tableData.next(tableData);
             this._paginator.pageIndex = 0;
@@ -156,6 +166,6 @@ export class TableAdapter extends DataSource<any> {
             return tableData;
       }
 
-      disconnect() {}
+      disconnect() { }
 
 }

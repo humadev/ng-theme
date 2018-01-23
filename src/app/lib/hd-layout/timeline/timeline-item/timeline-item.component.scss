@@ -1,0 +1,98 @@
+ :host {
+   position: relative;
+   display: table;
+   table-layout: fixed;
+   width: 100%;
+   padding: 6px 0;
+   margin: 5px 0;
+   >.badge {
+     text-align: left;
+     vertical-align: middle;
+     display: table-cell;
+     position: relative;
+     width: 20px;
+   }
+   .badge::before {
+     background-color: #ebedf2;
+     position: absolute;
+     display: block;
+     content: '';
+     width: 7px;
+     height: 7px;
+     left: 0;
+     top: 50%;
+     margin-top: -3.5px;
+     -webkit-border-radius: 100%;
+     -moz-border-radius: 100%;
+     -ms-border-radius: 100%;
+     -o-border-radius: 100%;
+     border-radius: 100%;
+   }
+   .text {
+     color: #575962;
+     display: table-cell;
+     text-align: left;
+     vertical-align: middle;
+     width: 100%;
+     padding: 0 5px 0 0;
+     font-size: 1rem;
+     font-weight: 300;
+     font-family: Poppins;
+     -ms-text-size-adjust: 100%;
+     -webkit-font-smoothing: antialiased;
+     .badge {
+       letter-spacing: 0.6px;
+       padding: 1px 10px;
+       -webkit-border-radius: 10px;
+       -moz-border-radius: 10px;
+       -ms-border-radius: 10px;
+       -o-border-radius: 10px;
+       border-radius: 10px;
+       background: #eaeaea;
+       font-size: 0.8rem;
+       line-height: 20px;
+       min-height: 20px;
+       min-width: 20px;
+       width: auto;
+       vertical-align: middle;
+       text-align: center;
+       display: inline-block;
+     }
+     .badge.badge-success {
+       background-color: #34bfa3;
+       color: #ffffff;
+     }
+   }
+   .time {
+     color: #7b7e8a;
+     display: table-cell;
+     text-align: right;
+     vertical-align: middle;
+     width: 80px;
+     padding: 0 7px 0 0;
+     font-size: 0.85rem;
+   }
+ }
+
+ :host:first-child:before {
+   background-color: white;
+   position: absolute;
+   display: block;
+   content: '';
+   width: 1px;
+   height: 50%;
+   top: 0;
+   bottom: 0;
+   left: 3px;
+ }
+
+ :host:last-child:before {
+   background-color: white;
+   position: absolute;
+   display: block;
+   content: '';
+   width: 1px;
+   height: 50%;
+   bottom: 0;
+   left: 3px;
+ }

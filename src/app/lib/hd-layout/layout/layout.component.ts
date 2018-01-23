@@ -1,26 +1,28 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core';
-
+import { slideToDown } from '../../animations/router.animation';
+import { Component, Input, EventEmitter, Output, ElementRef, Renderer2 } from '@angular/core';
 
 @Component({
-  selector: 'hd-layout',
-  template: `
-      <hd-main-toolbar
-            [notification]="notification"
-            (sidenavToggle)="sidenav.toggle()"
-            (logout)="onLogout()"
-            [titleText]="titleText"
-            [titleImg]="titleImg">
-      </hd-main-toolbar>
-      <hd-sidenav #sidenav
-            (pageTitle)="pagebar.changePageTitle($event)"
-            [lazyLoadModule]="lazyLoadModule"
-            [nav]="nav">
-            <hd-page-toolbar #pagebar></hd-page-toolbar>
-            <div class='hd-page'>
-                  <ng-content></ng-content>
-            </div>
-      </hd-sidenav>
-  `
+    // tslint:disable-next-line:component-selector
+    selector: 'hd-layout',
+    template: `
+        <hd-main-toolbar
+                [notification]="notification"
+                (sidenavToggle)="sidenav.toggle()"
+                (logout)="onLogout()"
+                [titleText]="titleText"
+                [titleImg]="titleImg">
+        </hd-main-toolbar>
+        <hd-sidenav #sidenav
+                [opened]='sidenavOpen'
+                (pageTitle)="pagebar.changePageTitle($event)"
+                [lazyLoadModule]="lazyLoadModule"
+                [nav]="nav">
+                <hd-page-toolbar #pagebar></hd-page-toolbar>
+                <div class='hd-page'>
+                    <ng-content></ng-content>
+                </div>
+        </hd-sidenav>
+    `
 })
 export class LayoutComponent {
       @Input() titleText = 'Humadev Theme';
@@ -29,6 +31,12 @@ export class LayoutComponent {
       @Input() nav: any = false;
       @Input() notification: any = false;
       @Output() logout = new EventEmitter();
+      sidenavOpen = true;
+
+      constructor(
+        private elRef: ElementRef,
+        private renderer: Renderer2
+      ){}
 
       onLogout() {
             this.logout.emit();

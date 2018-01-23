@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
-import { BehaviorSubject, Subject } from 'rxjs/Rx';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/switchMap';
+import { Subject } from 'rxjs/Subject';
 import { LayoutService } from './layout.service';
 
 @Injectable()
@@ -45,13 +49,13 @@ export class MenuService {
                   this._ls.pageTitle.next(res.name);
                   this.pageTitle.next(res.name);
             });
-            if (this.lazyLoad){
+            if (this.lazyLoad) {
                   this.moduleIndex.subscribe(res => {
-                        if(this.router.config[res]['_loadedConfig']){
+                        if (this.router.config[res]['_loadedConfig']){
                               this.sidenav.next(this.router.config[res]['_loadedConfig'].routes[0].children)
                         }
                   });
-            }else {
+            } else {
                   this.sidenav.next(this.router.config);
             }
 

@@ -1,18 +1,38 @@
 import { Component } from '@angular/core';
-import { LayoutService } from "../../services/layout.service";
+import { LayoutService } from '../../services/layout.service';
 
 @Component({
   selector: 'hd-page-toolbar',
   template: `
-      <md-toolbar class="hd-page-toolbar mat-elevation-z2">
-            <span class="hd-page-title">{{pageTitle}}</span>
-            <span class="fill-space"></span>
-            <hd-breadcrumb></hd-breadcrumb>
-      </md-toolbar>
-      <md-progress-bar mode="indeterminate" *ngIf="_ls.pageProgressBar"></md-progress-bar>
-  `
+        <h3 class="title">
+            {{pageTitle}}
+        </h3>
+        <hd-breadcrumb></hd-breadcrumb>
+    `,
+    styles: [`
+        :host{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            margin-top: 70px;
+            padding: 20px;
+            padding-top: 30px;
+            padding-bottom: 0;
+            vertical-align: middle;
+        }
+        .title{
+                padding: 7px 25px 7px 0;
+                font-family: Roboto;
+                font-weight: 300;
+                font-size: 1.55rem;
+                font-weight: 500;
+                vertical-align: middle;
+                color: #3f4047;
+        }
+    `]
 })
-export class PageToolbarComponent{
+export class PageToolbarComponent {
 
       pageTitle = '';
 

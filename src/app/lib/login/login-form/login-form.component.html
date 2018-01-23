@@ -1,0 +1,35 @@
+<div>
+    <img [src]="logo">
+</div>
+<h3>Sign in to admin</h3>
+<form [formGroup]='loginForm' (ngSubmit)="onLogin($event)">
+    <mat-form-field>
+        <input matInput formControlName="email" placeholder="Email" autofill="off">
+        <mat-hint align="start" class="error" *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched">
+            <span *ngIf="loginForm.controls.email.errors.required">
+                Email harus diisi
+            </span>
+            <span *ngIf="loginForm.controls.email.errors.email">
+                Format email salah
+            </span>
+        </mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput formControlName="password" type="password" placeholder="Password" #pass>
+        <button type="button" mat-icon-button matSuffix (click)="changePasswordType(pass)">
+            <mat-icon>visibility</mat-icon>
+        </button>
+        <mat-hint align="start" class="error" *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched">
+            <span *ngIf="loginForm.controls.password.errors.required">
+                Password harus diisi
+            </span>
+            <span *ngIf="loginForm.controls.password.errors.minlength">
+                Password minimal {{loginForm.controls.password.errors.minlength.requiredLength}} karakter
+            </span>
+            <span *ngIf="loginForm.controls.password.errors.maxlength">
+                Password maximal {{loginForm.controls.password.errors.maxlength.requiredLength}} karakter
+            </span>
+        </mat-hint>
+    </mat-form-field>
+    <button mat-raised-button color="primary" class='mat-elevation-z5'>Sign In</button>
+</form>

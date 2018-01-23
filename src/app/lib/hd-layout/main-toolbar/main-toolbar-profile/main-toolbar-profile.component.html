@@ -1,0 +1,31 @@
+<a cdk-overlay-origin class="right-menu-item-link" #profile="cdkOverlayOrigin" (click)="clickMenu($event)">
+<span class="right-menu-link-picture m--img-rounded m--marginless m--img-centered">
+        <img [src]="imgProfile"/>
+    </span>
+    <span class="m-topbar__username hide">
+        Nick
+    </span>
+</a>
+<ng-template cdk-portal>
+    <div class="profile-dropdown" [@fadeUp]="">
+        <span class="arrow" style="left: 88%"></span>
+        <div class="inner">
+            <div class="header" style="background: url(./assets/profile.jpg); background-size: cover;">
+                <div class="user-pic">
+                    <img [src]="imgProfile"/>
+                </div>
+                <div class="details">
+                    <span class="name">
+                        {{name}}
+                    </span>
+                    <a [href]="'mail:'+email" class="email">
+                        {{email}}
+                    </a>
+                </div>
+            </div>
+            <div class='content'>
+                <ng-content></ng-content>
+            </div>
+        </div>
+    </div>
+</ng-template>

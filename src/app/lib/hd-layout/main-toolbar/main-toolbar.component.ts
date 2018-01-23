@@ -1,45 +1,27 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { LayoutService } from './../../services/layout.service';
+import {Overlay, OverlayOrigin, OverlayConfig} from '@angular/cdk/overlay';
+import {
+    Component,
+    Input,
+    Output,
+    EventEmitter,
+    OnInit,
+    ViewEncapsulation,
+    ViewChild,
+    ViewContainerRef,
+    QueryList,
+    ViewChildren,
+    ElementRef, ComponentRef, Renderer2 } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
+import { ComponentPortal, Portal, TemplatePortalDirective } from '@angular/cdk/portal';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'hd-main-toolbar',
-  template: `
-      <mat-toolbar class="hd-main-toolbar mat-elevation-z8" color="primary">
-            <span class="hd-sidenav-toggle" *ngIf="showSidenavToggle" (click)="onSidenavToggle()"><mat-icon>menu</mat-icon></span>
-            <img class="hd-title-bar" [src]="titleImg" *ngIf="titleImg; else titleTextEl">
-            <ng-template #titleTextEl><span class="hd-title-bar">{{titleText}}</span></ng-template>
-            <mat-select class="fill-space" (change)="onChange($event)" [(ngModel)]="active">
-                <ng-template ngFor let-menu [ngForOf]="startMenus">
-                    <mat-option *ngIf="menu.data.isMenu" [value]="menu.path">
-                        {{ menu.data.title }}
-                    </mat-option>
-                </ng-template>
-            </mat-select>
-            <mat-menu #menu="matMenu" class="hd-profile-menu" yPosition="below" xPosition="before" [overlapTrigger]="false">
-                  <button mat-menu-item (click)="onLogout()">
-                        <mat-icon>dashboard</mat-icon>
-                        <span>Menu 2</span>
-                  </button>
-            </mat-menu>
-            <span class="hd-menu hd-right-menu" *ngIf="notification"><mat-icon>notifications_none</mat-icon></span>
-            <button mat-button [matMenuTriggerFor]="menu" #profileMenu class="hd-menu hd-right-menu" *ngIf="profile">
-                  <mat-icon>face</mat-icon> Admin
-            </button>
-            <mat-menu #menu="matMenu" class="hd-profile-menu" yPosition="below" xPosition="before" [overlapTrigger]="false">
-                  <button mat-menu-item (click)="onLogout()">
-                        <mat-icon>power_settings_new</mat-icon>
-                        <span>Logout</span>
-                  </button>
-            </mat-menu>
-      </mat-toolbar>
-  `,
-  styles: [`
-      .hd-main-toolbar{
-            position: fixed;
-            width: 100%;
-            z-index: 9;
-      }
-  `]
+    selector: 'hd-main-toolbar',
+    templateUrl: 'main-toolbar.component.html',
+    styleUrls: ['main-toolbar.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    preserveWhitespaces: false
 })
 export class MainToolbarComponent implements OnInit {
       @Input() notification = false;
@@ -50,28 +32,71 @@ export class MainToolbarComponent implements OnInit {
       @Output() logout = new EventEmitter();
       @Input() titleText = 'Humadev Theme';
       @Input() titleImg: string;
-      startMenus = this.menuService.startMenu;
+      @Input() theme: 'default' | 'dark' | 'light' = 'dark';
+      @ViewChild('mainMenu') menu: OverlayOrigin;
+      @ViewChildren(TemplatePortalDirective) templatePortals: QueryList<Portal<any>>;
       active;
+      accountOpen = false;
+      notificationOpen = false;
+      messageOpen = false;
+      topMenuOpen = false;
+      brandClass = {
+        minimize: false
+      };
+      brandBackground = '#282a3c';
+      brandToggle = {
+          'toggler-right': false,
+          'toggler-left': true
+      };
+      sidenav = true;
+      progressBar = false;
+      @Output() minimize = new EventEmitter();
 
       constructor(
-            private menuService: MenuService
-      ) {}
+            private menuService: MenuService,
+            private renderer: Renderer2,
+            private elRef: ElementRef,
+            private layout: LayoutService,
+            private router: Router
+      ) {
+            this.router.events.subscribe(() => this.layout.topProgressBar.next(true));
+      }
 
-      ngOnInit(){
+      ngOnInit() {
             this.menuService.moduleActive.subscribe(res => {
                   this.active = res;
             });
+            if (this.theme === 'dark') {
+                this.brandBackground = '#282a3c';
+            } else {
+                this.brandBackground = '#ffffff';
+            }
+
+            this.layout.topProgressBar.subscribe((progress) => this.progressBar = progress);
+      }
+
+      toggleSidenav() {
+        if (this.sidenav) {
+            this.brandToggle['toggler-right'] = true;
+            this.brandToggle['toggler-left'] = false;
+        }else {
+            this.brandToggle['toggler-right'] = false;
+            this.brandToggle['toggler-left'] = true;
+        }
+        this.sidenav = !this.sidenav;
+        this.layout.sidebarOpen.next(this.sidenav);
+        this.brandClass.minimize = !this.sidenav;
       }
 
       onSidenavToggle() {
             this.sidenavToggle.emit();
       }
 
-      onLogout(){
+      onLogout() {
             this.logout.emit();
       }
 
-      onChange(e){
+      onChange(e) {
             this.menuService.navigate(e.value);
       }
 }

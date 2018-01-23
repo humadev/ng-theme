@@ -1,0 +1,26 @@
+<!-- BEGIN: Header -->
+<header>
+    <!-- BEGIN: Brand -->
+    <div class="toolbar-brand" [ngClass]="brandClass" [ngStyle]="{background: brandBackground}">
+        <div class="logo">
+            <a routerLink="">
+                <img [src]="titleImg">
+            </a>
+        </div>
+        <div class="toggler" *ngIf='showSidenavToggle'>
+            <!-- BEGIN: Left Aside Minimize Toggle -->
+            <a 
+                [ngClass]="brandToggle" 
+                (click)='toggleSidenav()'>
+                <span></span>
+            </a>
+            <!-- END -->
+        </div>
+    </div>
+    <!-- END: Brand -->
+    <div class="toolbar-menu">
+        <ng-content></ng-content>
+    </div>
+</header>
+<mat-progress-bar class="loader" mode="indeterminate" *ngIf='progressBar'></mat-progress-bar>
+<!-- END: Header -->

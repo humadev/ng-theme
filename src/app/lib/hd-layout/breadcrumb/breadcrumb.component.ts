@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute, PRIMARY_OUTLET, Params } from '@angular/router';
 
-interface IBreadcrumb {
+export interface IBreadcrumb {
       label: string;
       params?: Params;
       url: string;
@@ -14,7 +14,7 @@ interface IBreadcrumb {
             <ul class="hd-breadcrumb">
                   <li><a routerLink="">Home</a></li>
                   <li *ngFor="let breadcrumb of breadcrumbs">
-                        <a 
+                        <a
                         [routerLink]="[breadcrumb.url]"
                         *ngIf="breadcrumb.class == 'link'; else nonLink">
                               {{breadcrumb.label}}
@@ -30,12 +30,15 @@ export class BreadcrumbComponent implements OnInit {
 
       breadcrumbs: IBreadcrumb[];
 
-      constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
+      constructor(private router: Router, private activatedRoute: ActivatedRoute) { 
+      }
 
-      ngOnInit() {
-            // subscribe to the NavigationEnd event
-            this.router.events.filter(
-                  event => event instanceof NavigationEnd)
+    ngOnInit() {
+        // init when refreh page
+        const root: ActivatedRoute = this.activatedRoute.root;
+        this.breadcrumbs = this.getBreadcrumbs(root);
+            // used when navigate trough angular router
+            this.router.events.filter(event => event instanceof NavigationEnd)
             .subscribe(event => {
                   // set breadcrumbs
                   const root: ActivatedRoute = this.activatedRoute.root;

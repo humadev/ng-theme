@@ -3,11 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { HdLayoutModule } from 'app/lib/hd-layout/hd-layout.module';
-import {FabSpeedDialModule} from 'app/lib/fab-speed-dial/fab-speed-dial.module';
-import { StartComponent } from 'app/start.component';
-import { MenuService } from 'app/lib/services/menu.service';
-import { HdLoginModule } from 'app/lib';
+import { HdLayoutModule } from './lib/hd-layout/hd-layout.module';
+import { StartComponent } from './start.component';
+import { MenuService } from './lib/services/menu.service';
+import { HdLoginModule } from './lib/login/hd-login.module';
 
 const appRoutes: Routes = [
       {
@@ -16,10 +15,10 @@ const appRoutes: Routes = [
             data: {
                   title: 'Home',
                   groupAccess: 0,
-                  icon: 'https://sia.undiknas.ac.id/assets/icons/kalender.png',
+                  icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
                   isMenu: false
             },
-            children:[
+            children: [
                   {
                         path: '',
                         component: StartComponent
@@ -30,11 +29,232 @@ const appRoutes: Routes = [
             loadChildren: './example/example.module#ExampleModule',
             data: {
                   title: 'Example',
-                  icon: 'https://sia.undiknas.ac.id/assets/icons/kalender.png',
+                  description: 'menu untuk mengelola data example',
+                  icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
                   groupAccess: 0,
                   isMenu: true
             }
-      }
+    },
+    {
+        path: 'example',
+        loadChildren: './example/example.module#ExampleModule',
+        data: {
+            title: 'Example',
+            description: 'menu untuk mengelola data example',
+            icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
+            groupAccess: 0,
+            isMenu: true
+        }
+    },
+    {
+        path: 'example',
+        loadChildren: './example/example.module#ExampleModule',
+        data: {
+            title: 'Example',
+            description: 'menu untuk mengelola data example',
+            icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
+            groupAccess: 0,
+            isMenu: true
+        }
+    },
+    {
+        path: 'example',
+        loadChildren: './example/example.module#ExampleModule',
+        data: {
+            title: 'Example',
+            description: 'menu untuk mengelola data example',
+            icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
+            groupAccess: 0,
+            isMenu: true
+        }
+    },
+    {
+        path: 'example',
+        loadChildren: './example/example.module#ExampleModule',
+        data: {
+            title: 'Example',
+            description: 'menu untuk mengelola data example',
+            icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
+            groupAccess: 0,
+            isMenu: true
+        }
+    },
+    {
+        path: 'example',
+        loadChildren: './example/example.module#ExampleModule',
+        data: {
+            title: 'Example',
+            description: 'menu untuk mengelola data example',
+            icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
+            groupAccess: 0,
+            isMenu: true
+        }
+    },
+    {
+        path: 'example',
+        loadChildren: './example/example.module#ExampleModule',
+        data: {
+            title: 'Example',
+            description: 'menu untuk mengelola data example',
+            icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
+            groupAccess: 0,
+            isMenu: true
+        }
+    },
+    {
+        path: 'example',
+        loadChildren: './example/example.module#ExampleModule',
+        data: {
+            title: 'Example',
+            description: 'menu untuk mengelola data example',
+            icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
+            groupAccess: 0,
+            isMenu: true
+        }
+    },
+    {
+        path: 'example',
+        loadChildren: './example/example.module#ExampleModule',
+        data: {
+            title: 'Example',
+            description: 'menu untuk mengelola data example',
+            icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
+            groupAccess: 0,
+            isMenu: true
+        }
+    },
+    {
+        path: 'example',
+        loadChildren: './example/example.module#ExampleModule',
+        data: {
+            title: 'Example',
+            description: 'menu untuk mengelola data example',
+            icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
+            groupAccess: 0,
+            isMenu: true
+        }
+    },
+    {
+        path: 'example',
+        loadChildren: './example/example.module#ExampleModule',
+        data: {
+            title: 'Example',
+            description: 'menu untuk mengelola data example',
+            icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
+            groupAccess: 0,
+            isMenu: true
+        }
+    },
+    {
+        path: 'example',
+        loadChildren: './example/example.module#ExampleModule',
+        data: {
+            title: 'Example',
+            description: 'menu untuk mengelola data example',
+            icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
+            groupAccess: 0,
+            isMenu: true
+        }
+    },
+    {
+        path: 'example',
+        loadChildren: './example/example.module#ExampleModule',
+        data: {
+            title: 'Example',
+            description: 'menu untuk mengelola data example',
+            icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
+            groupAccess: 0,
+            isMenu: true
+        }
+    },
+    {
+        path: 'example',
+        loadChildren: './example/example.module#ExampleModule',
+        data: {
+            title: 'Example',
+            description: 'menu untuk mengelola data example',
+            icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
+            groupAccess: 0,
+            isMenu: true
+        }
+    },
+    {
+        path: 'example',
+        loadChildren: './example/example.module#ExampleModule',
+        data: {
+            title: 'Example',
+            description: 'menu untuk mengelola data example',
+            icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
+            groupAccess: 0,
+            isMenu: true
+        }
+    },
+    {
+        path: 'example',
+        loadChildren: './example/example.module#ExampleModule',
+        data: {
+            title: 'Example',
+            description: 'menu untuk mengelola data example',
+            icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
+            groupAccess: 0,
+            isMenu: true
+        }
+    },
+    {
+        path: 'example',
+        loadChildren: './example/example.module#ExampleModule',
+        data: {
+            title: 'Example',
+            description: 'menu untuk mengelola data example',
+            icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
+            groupAccess: 0,
+            isMenu: true
+        }
+    },
+    {
+        path: 'example',
+        loadChildren: './example/example.module#ExampleModule',
+        data: {
+            title: 'Example',
+            description: 'menu untuk mengelola data example',
+            icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
+            groupAccess: 0,
+            isMenu: true
+        }
+    },
+    {
+        path: 'example',
+        loadChildren: './example/example.module#ExampleModule',
+        data: {
+            title: 'Example',
+            description: 'menu untuk mengelola data example',
+            icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
+            groupAccess: 0,
+            isMenu: true
+        }
+    },
+    {
+        path: 'example',
+        loadChildren: './example/example.module#ExampleModule',
+        data: {
+            title: 'Example',
+            description: 'menu untuk mengelola data example',
+            icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
+            groupAccess: 0,
+            isMenu: true
+        }
+    },
+    {
+        path: 'example',
+        loadChildren: './example/example.module#ExampleModule',
+        data: {
+            title: 'Example',
+            description: 'menu untuk mengelola data example',
+            icon: 'https://sia.undiknas.ac.id/assets/icons/doit.png',
+            groupAccess: 0,
+            isMenu: true
+        }
+    }
 ];
 
 @NgModule({
@@ -47,10 +267,9 @@ const appRoutes: Routes = [
       RouterModule.forRoot(appRoutes),
       BrowserAnimationsModule,
       HdLayoutModule,
-      FabSpeedDialModule,
       HdLoginModule
   ],
   bootstrap: [AppComponent],
-  providers:[MenuService]
+  providers: [MenuService]
 })
 export class AppModule { }

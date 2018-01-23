@@ -1,15 +1,15 @@
 <div mat-dialog-title>Title</div>
 
 <mat-dialog-content fxLayout fxLayoutAlign="space-between" fxLayoutWrap="wrap">
-    <mat-input-container fxFlex='49'>
-        <input mdInput name="componentProperty" type="text" placeholder="nama">
-    </mat-input-container>
-    <mat-input-container fxFlex='49'>
-        <input mdInput name="componentProperty" type="text" placeholder="alamat">
-    </mat-input-container>
-    <mat-input-container fxFlex='49'>
-        <input mdInput name="componentProperty" type="text" placeholder="telpon">
-    </mat-input-container>
+    <mat-form-field fxFlex='49'>
+        <input matInput name="componentProperty" type="text" placeholder="nama">
+    </mat-form-field>
+    <mat-form-field fxFlex='49'>
+        <input matInput name="componentProperty" type="text" placeholder="alamat">
+    </mat-form-field>
+    <mat-form-field fxFlex='49'>
+        <input matInput name="componentProperty" type="text" placeholder="telpon">
+    </mat-form-field>
     <mat-select placeholder="Favorite food" name="food" fxFlex="49">
         <mat-option value="1">
           1
@@ -24,12 +24,12 @@
             1
           </mat-option>
       </mat-select>
-    <mat-input-container fxFlex='49'>
-        <input mdInput name="componentProperty" type="text" placeholder="test">
-    </mat-input-container>
+    <mat-form-field fxFlex='49'>
+        <input matInput name="componentProperty" type="text" placeholder="test">
+    </mat-form-field>
 </mat-dialog-content>
 
-<mat-dialog-actions [attr.align]="end">
+<mat-dialog-actions attr.align="end">
     <button mat-raised-button mat-dialog-close>Close dialog</button>
     <button mat-raised-button>Action</button>
 </mat-dialog-actions>
