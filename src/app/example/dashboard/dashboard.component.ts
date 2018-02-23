@@ -17,7 +17,7 @@ import { ContextMenu } from '../../lib/context-menu/context-menu';
 })
 export class DashboardComponent implements OnInit {
 
-      cmItem: [ContextMenu] = [
+      cmItem = [
             {
                   icon: 'list',
                   title: 'List Mata Kuliah',
@@ -28,7 +28,10 @@ export class DashboardComponent implements OnInit {
                 icon: 'edit',
                 title: 'Edit',
                 callback: (i) => this.edit(i),
-                groupPermission: [0],
+                groupPermission: {
+                    permissions: [0],
+                    groups: [2]
+                },
                 children: [
                     {
                         icon: 'list',
@@ -40,13 +43,19 @@ export class DashboardComponent implements OnInit {
                         icon: 'edit',
                         title: 'Edit',
                         callback: (i) => this.edit(i),
-                        groupPermission: [0]
+                        groupPermission: {
+                            permissions: [0],
+                            groups: [0]
+                        }
                     },
                     {
                         icon: 'delete',
                         title: 'Delete',
                         callback: (i) => this.delete(i),
-                        groupPermission: [0]
+                        groupPermission: {
+                            permissions: [0],
+                            groups: [0]
+                        }
                     },
                 ]
             },
@@ -54,7 +63,10 @@ export class DashboardComponent implements OnInit {
                   icon: 'delete',
                   title: 'Delete',
                   callback: (i) => this.delete(i),
-                  groupPermission: [0]
+                  groupPermission: {
+                      permissions: [0],
+                      groups: [4]
+                  }
             }
       ];
       rows: TableAdapter | null;

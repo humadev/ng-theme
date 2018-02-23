@@ -1,5 +1,5 @@
 import { LayoutService } from './../../services/layout.service';
-import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ElementRef, AfterViewInit, Renderer2, group } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import { MenuService } from '../../services/menu.service';
@@ -11,6 +11,7 @@ import {
     transition
   } from '@angular/animations';
 import { slideToRight } from '../../animations/router.animation';
+import * as _ from 'lodash';
 
 @Component({
       selector: 'hd-sidenav',
@@ -128,6 +129,19 @@ export class SidenavComponent implements OnInit, AfterViewInit {
 
     setPageToolbar(item) {
         this.pageTitle.emit(item.name);
+    }
+
+    checkGroupAccess(groupAccess) {
+        if(groupAccess && groupAccess.permissions && groupAccess.groups) {
+            const allowed = _.intersection(groupAccess.permissions, groupAccess.groups).length > 0 ? true : false;
+            if (allowed) {
+                return true;
+            } else {
+                return false
+            }
+        } else {
+            return true;
+        }
     }
 
 }

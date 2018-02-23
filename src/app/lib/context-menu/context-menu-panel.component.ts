@@ -9,6 +9,7 @@ import {
       AfterViewInit} from '@angular/core';
 import { ContextMenu } from './context-menu';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'hd-menu-panel',
@@ -16,7 +17,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
     <div class="hd-context-menu-panel"
       fxLayout="column">
         <ng-template ngFor let-item [ngForOf]="menuItem">
-            <a mat-button *ngIf="item.display !== false"
+            <a mat-button *ngIf="item.display !== false && checkGroupAccess(item.groupPermission)"
                 (click)='onClick(item)'>
                     <mat-icon style="width:15%; font-size: 16px; height: auto">{{item.icon}}</mat-icon>
                     <div style="display: inline-block; width:75%">{{item.title}}</div>
@@ -77,4 +78,17 @@ export class ContextMenuPanelComponent implements AfterViewInit {
             this.height.next(this._el.nativeElement.offsetHeight);
             this.width.next(this._el.nativeElement.offsetWidth);
       }
+
+    checkGroupAccess(groupAccess) {
+        if (groupAccess && groupAccess.permissions && groupAccess.groups) {
+            const allowed = _.intersection(groupAccess.permissions, groupAccess.groups).length > 0 ? true : false;
+            if (allowed) {
+                return true;
+            } else {
+                return false
+            }
+        } else {
+            return true;
+        }
+    }
 }

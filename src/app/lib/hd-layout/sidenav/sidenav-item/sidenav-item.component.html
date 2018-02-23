@@ -1,4 +1,4 @@
-<a class='menu-item'  *ngIf="menu.children && menu.children.length > 0; else noChildItem"
+<a class='menu-item' *ngIf="menu.children && menu.children.length > 0; else noChildItem"
     (click)="parentOpen(index)"
     [ngClass]="{'active':childrenAndActive(menu), 'minimize':sidenavOpen.minimize}">
         <i class="icon flaticon-settings"></i>

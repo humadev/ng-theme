@@ -21,7 +21,10 @@ const appRoutes: Routes = [
             component: ExampleComponent,
             data: {
                   name: 'Example',
-                  groupAccess: 0,
+                  groupAccess: {
+                      permissions: [0],
+                      groups: [0]
+                  },
                   icon: 'dashboard',
                   badge: '3'
             },
@@ -31,7 +34,10 @@ const appRoutes: Routes = [
                   component: DashboardComponent,
                   data: {
                         name: 'Dashboard',
-                        groupAccess: 0,
+                        groupAccess: {
+                            permissions: [0],
+                            groups: [1]
+                        },
                         icon: 'dashboard',
                         badge: '3'
                   }
@@ -40,8 +46,11 @@ const appRoutes: Routes = [
                 path: 'datatable1',
                 component: DashboardComponent,
                 data: {
-                      name: 'Example 2',
-                      groupAccess: 0,
+                      name: 'Example 21',
+                      groupAccess: {
+                          permissions: [0],
+                          groups: [2]
+                      },
                       icon: 'dashboard'
                 },
                 children: [
@@ -50,7 +59,10 @@ const appRoutes: Routes = [
                             component: DashboardComponent,
                             data: {
                                 name: 'Example 2.1',
-                                groupAccess: 0,
+                                groupAccess: {
+                                    permissions: [0],
+                                    groups: [0]
+                                },
                                 icon: 'dashboard',
                                 badge: '3'
                             }
@@ -60,7 +72,10 @@ const appRoutes: Routes = [
                         component: DashboardComponent,
                         data: {
                                 name: 'Example 2.2',
-                                groupAccess: 0,
+                                groupAccess: {
+                                    permissions: [0],
+                                    groups: [0]
+                                },
                                 icon: 'dashboard'
                         }
                     },
@@ -69,7 +84,10 @@ const appRoutes: Routes = [
                         component: DashboardComponent,
                         data: {
                             name: 'Example 2.3',
-                            groupAccess: 0,
+                            groupAccess: {
+                                permissions: [0],
+                                groups: [0]
+                            },
                             icon: 'dashboard'
                         }
                     },
@@ -78,7 +96,10 @@ const appRoutes: Routes = [
                         component: DashboardComponent,
                         data: {
                                 name: 'Example 2.4',
-                                groupAccess: 0,
+                                groupAccess: {
+                                    permissions: [0],
+                                    groups: [0]
+                                },
                                 icon: 'dashboard'
                         }
                     },
@@ -87,7 +108,10 @@ const appRoutes: Routes = [
                         component: DashboardComponent,
                         data: {
                             name: 'Example 2.5',
-                            groupAccess: 0,
+                            groupAccess: {
+                                permissions: [0],
+                                groups: [0]
+                            },
                             icon: 'dashboard'
                         }
                     },
@@ -96,7 +120,10 @@ const appRoutes: Routes = [
                         component: DashboardComponent,
                         data: {
                                 name: 'Example 2.6',
-                                groupAccess: 0,
+                                groupAccess: {
+                                    permissions: [0],
+                                    groups: [0]
+                                },
                                 icon: 'dashboard'
                         }
                     }]
@@ -106,7 +133,10 @@ const appRoutes: Routes = [
               component: DashboardComponent,
               data: {
                     name: 'Example 3',
-                    groupAccess: 0,
+                    groupAccess: {
+                        permissions: [0],
+                        groups: [0]
+                    },
                     icon: 'dashboard'
               },
               children: [
@@ -115,7 +145,10 @@ const appRoutes: Routes = [
                       component: DashboardComponent,
                       data: {
                           name: 'Example 3.1',
-                          groupAccess: 0,
+                          groupAccess: {
+                              permissions: [0],
+                              groups: [0]
+                          },
                           icon: 'dashboard'
                       }
               },
@@ -124,7 +157,10 @@ const appRoutes: Routes = [
                   component: DashboardComponent,
                   data: {
                           name: 'Example 3.2',
-                          groupAccess: 0,
+                          groupAccess: {
+                              permissions: [0],
+                              groups: [0]
+                          },
                           icon: 'dashboard'
                   }
               },
@@ -133,7 +169,10 @@ const appRoutes: Routes = [
                 component: DashboardComponent,
                 data: {
                     name: 'Example 3.3',
-                    groupAccess: 0,
+                    groupAccess: {
+                        permissions: [0],
+                        groups: [0]
+                    },
                     icon: 'dashboard'
                 }
                 },
@@ -142,7 +181,10 @@ const appRoutes: Routes = [
                     component: DashboardComponent,
                     data: {
                             name: 'Data Table',
-                            groupAccess: 0,
+                            groupAccess: {
+                                permissions: [0],
+                                groups: [0]
+                            },
                             icon: 'dashboard'
                     }
                 },
@@ -151,7 +193,10 @@ const appRoutes: Routes = [
                     component: DashboardComponent,
                     data: {
                         name: 'Data Table',
-                        groupAccess: 0,
+                        groupAccess: {
+                            permissions: [0],
+                            groups: [0]
+                        },
                         icon: 'dashboard'
                     }
             },
@@ -160,7 +205,10 @@ const appRoutes: Routes = [
                 component: DashboardComponent,
                 data: {
                         name: 'Data Table',
-                        groupAccess: 0,
+                        groupAccess: {
+                            permissions: [0],
+                            groups: [0]
+                        },
                         icon: 'dashboard'
                 }
             },
@@ -169,7 +217,10 @@ const appRoutes: Routes = [
                 component: DashboardComponent,
                 data: {
                     name: 'Data Table',
-                    groupAccess: 0,
+                    groupAccess: {
+                        permissions: [0],
+                        groups: [0]
+                    },
                     icon: 'dashboard'
                 }
         },
@@ -178,7 +229,10 @@ const appRoutes: Routes = [
             component: DashboardComponent,
             data: {
                     name: 'Data Table',
-                    groupAccess: 0,
+                    groupAccess: {
+                        permissions: [0],
+                        groups: [0]
+                    },
                     icon: 'dashboard'
             }
         }, {
@@ -186,7 +240,10 @@ const appRoutes: Routes = [
             component: DashboardComponent,
             data: {
                     name: 'Data Table',
-                    groupAccess: 0,
+                    groupAccess: {
+                        permissions: [0],
+                        groups: [0]
+                    },
                     icon: 'dashboard'
             }
         },
@@ -195,7 +252,10 @@ const appRoutes: Routes = [
             component: DashboardComponent,
             data: {
                 name: 'Data Table',
-                groupAccess: 0,
+                groupAccess: {
+                    permissions: [0],
+                    groups: [0]
+                },
                 icon: 'dashboard'
             }
     },
@@ -204,7 +264,10 @@ const appRoutes: Routes = [
         component: DashboardComponent,
         data: {
                 name: 'Data Table',
-                groupAccess: 0,
+                groupAccess: {
+                    permissions: [0],
+                    groups: [0]
+                },
                 icon: 'dashboard'
         }
     }]
