@@ -131,9 +131,9 @@ export class SidenavComponent implements OnInit, AfterViewInit {
         this.pageTitle.emit(item.name);
     }
 
-    checkGroupAccess(groupAccess) {
-        if(groupAccess && groupAccess.permissions && groupAccess.groups) {
-            const allowed = intersection(groupAccess.permissions, groupAccess.groups).length > 0 ? true : false;
+    checkGroupAccess(menu) {
+        if (menu && menu.data && menu.data.groupAccess.permissions && menu.data.groupAccess.groups) {
+            const allowed = intersection(menu.data.groupAccess.permissions, menu.data.groupAccess.groups).length > 0 ? true : false;
             if (allowed) {
                 return true;
             } else {
