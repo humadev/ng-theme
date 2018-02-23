@@ -15,9 +15,9 @@
         [ngClass]="{'minimize':sidenavOpen.minimize}">
         <i class="icon flaticon-settings"></i>
         <span class="text">
-            {{menu?.data?.name}}
+            {{menu.data.name}}
         </span>
-        <span class="badge" *ngIf="menu && menu.data && menu.data.badge">
+        <span class="badge" *ngIf="menu.data.badge">
                 <span>{{menu.data.badge}}</span>
         </span>
     </a>
@@ -34,9 +34,9 @@
             <li class="menu-subnav-item subnav-title">
                 <a>
                     <span class="text">
-                        {{menu?.data?.name}}
+                        {{menu.data.name}}
                     </span>
-                  <span class="badge" *ngIf="menu && menu.data && menu.data.badge">
+                  <span class="badge" *ngIf="menu.data.badge">
                         <span>{{menu.data.badge}}</span>
                   </span>
                 </a>
@@ -50,10 +50,10 @@
                 <a [routerLink]="menu.path+'/'+level2.path" >
                   <i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
                   <span class="text">
-                  {{level2?.data?.name}}
+                  {{level2.data.name}}
                   </span>
                   <span class="badge" *ngIf="level2.data.badge">
-                        <span>{{level2?.data?.badge}}</span>
+                        <span>{{level2.data.badge}}</span>
                   </span>
                 </a>
             </li>

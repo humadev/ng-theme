@@ -50,6 +50,7 @@ export class SidenavComponent implements OnInit, AfterViewInit {
             this.layoutService.sidebarOpen.subscribe((open) => {
                 this.sidenavClass.minimize = !open;
             });
+            console.log(this.nav);
       }
 
       ngAfterViewInit() {
@@ -131,7 +132,7 @@ export class SidenavComponent implements OnInit, AfterViewInit {
         this.pageTitle.emit(item.name);
     }
 
-    checkGroupAccess(menu) {
+    checkGroupAccess(menu, asal = '') {
         console.log(menu);
         if (menu && menu.data && menu.data.groupAccess.permissions && menu.data.groupAccess.groups) {
             const allowed = intersection(menu.data.groupAccess.permissions, menu.data.groupAccess.groups).length > 0 ? true : false;

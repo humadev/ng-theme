@@ -57,7 +57,7 @@ import { LayoutService } from './../lib/services/layout.service';
             </hd-main-toolbar-right-menu>
             <!-- END: Topbar -->
         </hd-main-toolbar>
-        <hd-sidenav #sidenav lazyLoadModule="true">
+        <hd-sidenav #sidenav [nav]="menu">
                 <hd-page-toolbar #pagebar></hd-page-toolbar>
                 <div class='hd-page'>
                     <router-outlet></router-outlet>
@@ -66,6 +66,245 @@ import { LayoutService } from './../lib/services/layout.service';
   `
 })
 export class ExampleComponent implements OnInit {
+
+    menu = [
+        {
+            path: '',
+            component: ExampleComponent,
+            data: {
+                name: 'Example',
+                groupAccess: {
+                    permissions: [0],
+                    groups: [0]
+                },
+                icon: 'dashboard',
+                badge: '3'
+            },
+            children: [
+                {
+                    path: 'dashboard',
+                    data: {
+                        name: 'Dashboard',
+                        groupAccess: {
+                            permissions: [0],
+                            groups: [1]
+                        },
+                        icon: 'dashboard',
+                        badge: '3'
+                    }
+                },
+                {
+                    path: 'datatable1',
+                    data: {
+                        name: 'Example 21',
+                        groupAccess: {
+                            permissions: [0],
+                            groups: [2]
+                        },
+                        icon: 'dashboard'
+                    },
+                    children: [
+                        {
+                            path: 'datatable',
+                            data: {
+                                name: 'Example 2.1',
+                                groupAccess: {
+                                    permissions: [0],
+                                    groups: [0]
+                                },
+                                icon: 'dashboard',
+                                badge: '3'
+                            }
+                        },
+                        {
+                            path: 'datatable',
+                            data: {
+                                name: 'Example 2.2',
+                                groupAccess: {
+                                    permissions: [0],
+                                    groups: [0]
+                                },
+                                icon: 'dashboard'
+                            }
+                        },
+                        {
+                            path: 'datatable',
+                            data: {
+                                name: 'Example 2.3',
+                                groupAccess: {
+                                    permissions: [0],
+                                    groups: [0]
+                                },
+                                icon: 'dashboard'
+                            }
+                        },
+                        {
+                            path: 'datatable',
+                            data: {
+                                name: 'Example 2.4',
+                                groupAccess: {
+                                    permissions: [0],
+                                    groups: [0]
+                                },
+                                icon: 'dashboard'
+                            }
+                        },
+                        {
+                            path: 'datatable',
+                            data: {
+                                name: 'Example 2.5',
+                                groupAccess: {
+                                    permissions: [0],
+                                    groups: [0]
+                                },
+                                icon: 'dashboard'
+                            }
+                        },
+                        {
+                            path: 'datatable',
+                            data: {
+                                name: 'Example 2.6',
+                                groupAccess: {
+                                    permissions: [0],
+                                    groups: [0]
+                                },
+                                icon: 'dashboard'
+                            }
+                        }]
+                },
+                {
+                    path: 'datatable2',
+                    data: {
+                        name: 'Example 3',
+                        groupAccess: {
+                            permissions: [0],
+                            groups: [0]
+                        },
+                        icon: 'dashboard'
+                    },
+                    children: [
+                        {
+                            path: 'datatable',
+                            data: {
+                                name: 'Example 3.1',
+                                groupAccess: {
+                                    permissions: [0],
+                                    groups: [0]
+                                },
+                                icon: 'dashboard'
+                            }
+                        },
+                        {
+                            path: 'datatable',
+                            data: {
+                                name: 'Example 3.2',
+                                groupAccess: {
+                                    permissions: [0],
+                                    groups: [0]
+                                },
+                                icon: 'dashboard'
+                            }
+                        },
+                        {
+                            path: 'datatable',
+                            data: {
+                                name: 'Example 3.3',
+                                groupAccess: {
+                                    permissions: [0],
+                                    groups: [0]
+                                },
+                                icon: 'dashboard'
+                            }
+                        },
+                        {
+                            path: 'datatable',
+                            data: {
+                                name: 'Data Table',
+                                groupAccess: {
+                                    permissions: [0],
+                                    groups: [0]
+                                },
+                                icon: 'dashboard'
+                            }
+                        },
+                        {
+                            path: 'datatable',
+                            data: {
+                                name: 'Data Table',
+                                groupAccess: {
+                                    permissions: [0],
+                                    groups: [0]
+                                },
+                                icon: 'dashboard'
+                            }
+                        },
+                        {
+                            path: 'datatable',
+                            data: {
+                                name: 'Data Table',
+                                groupAccess: {
+                                    permissions: [0],
+                                    groups: [0]
+                                },
+                                icon: 'dashboard'
+                            }
+                        },
+                        {
+                            path: 'datatable',
+                            data: {
+                                name: 'Data Table',
+                                groupAccess: {
+                                    permissions: [0],
+                                    groups: [0]
+                                },
+                                icon: 'dashboard'
+                            }
+                        },
+                        {
+                            path: 'datatable',
+                            data: {
+                                name: 'Data Table',
+                                groupAccess: {
+                                    permissions: [0],
+                                    groups: [0]
+                                },
+                                icon: 'dashboard'
+                            }
+                        }, {
+                            path: 'datatable',
+                            data: {
+                                name: 'Data Table',
+                                groupAccess: {
+                                    permissions: [0],
+                                    groups: [0]
+                                },
+                                icon: 'dashboard'
+                            }
+                        },
+                        {
+                            path: 'datatable',
+                            data: {
+                                name: 'Data Table',
+                                groupAccess: {
+                                    permissions: [0],
+                                    groups: [0]
+                                },
+                                icon: 'dashboard'
+                            }
+                        },
+                        {
+                            path: 'datatable',
+                            data: {
+                                name: 'Data Table',
+                                groupAccess: {
+                                    permissions: [0],
+                                    groups: [0]
+                                },
+                                icon: 'dashboard'
+                            }
+                        }]
+                }]
+        }];
 
     shakeAndBlink = false;
 

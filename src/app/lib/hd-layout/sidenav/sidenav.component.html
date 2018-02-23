@@ -27,18 +27,13 @@
                     </ng-template>
                 </ul>
                 <ng-template #fromVar>
-                    <ng-template ngFor let-level1 [ngForOf]="nav" let-i="index" [ngIf]="checkGroupAccess(level1)">
-                        <li hd-sidenav-item cdk-overlay-origin 
-                              class="m-menu__item" 
-                              routerLinkActive="m-menu__item--active" 
-                              routerLinkActiveOptions="{ exact: true }"
-                              aria-haspopup="true" 
-                              [ngClass]="{'m-menu__item--open':childrenAndActive(level1)}" 
-                              [menu]='level1' 
-                              [nav]='nav' 
-                              [index]='i'
-                              [sidenavOpen]='sidenavClass'>
-                        </li>
+                    <ng-template ngFor let-level1 [ngForOf]="nav" let-i="index">
+                        <ng-template [ngIf]="checkHidden(level1) === false && checkGroupAccess(level1)">
+                            <li hd-sidenav-item cdk-overlay-origin class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"
+                                aria-haspopup="true" [ngClass]="{'m-menu__item--open':childrenAndActive(level1)}" [menu]='level1' [nav]='nav' [index]='i'
+                                [sidenavOpen]='sidenavClass'>
+                            </li>
+                        </ng-template>
                     </ng-template>
                 </ng-template>
                 </div>
