@@ -133,7 +133,6 @@ export class SidenavComponent implements OnInit, AfterViewInit {
     }
 
     checkGroupAccess(menu, asal = '') {
-        console.log(menu);
         if (menu && menu.data && menu.data.groupAccess.permissions && menu.data.groupAccess.groups) {
             const allowed = intersection(menu.data.groupAccess.permissions, menu.data.groupAccess.groups).length > 0 ? true : false;
             if (allowed) {
