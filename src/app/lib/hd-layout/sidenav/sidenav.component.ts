@@ -11,7 +11,7 @@ import {
     transition
   } from '@angular/animations';
 import { slideToRight } from '../../animations/router.animation';
-import * as _ from 'lodash';
+import intersection from 'lodash-es/intersection';
 
 @Component({
       selector: 'hd-sidenav',
@@ -133,7 +133,7 @@ export class SidenavComponent implements OnInit, AfterViewInit {
 
     checkGroupAccess(groupAccess) {
         if(groupAccess && groupAccess.permissions && groupAccess.groups) {
-            const allowed = _.intersection(groupAccess.permissions, groupAccess.groups).length > 0 ? true : false;
+            const allowed = intersection(groupAccess.permissions, groupAccess.groups).length > 0 ? true : false;
             if (allowed) {
                 return true;
             } else {

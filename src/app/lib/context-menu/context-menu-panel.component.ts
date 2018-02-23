@@ -9,7 +9,7 @@ import {
       AfterViewInit} from '@angular/core';
 import { ContextMenu } from './context-menu';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import * as _ from 'lodash';
+import intersection from 'lodash-es/intersection';
 
 @Component({
   selector: 'hd-menu-panel',
@@ -81,7 +81,7 @@ export class ContextMenuPanelComponent implements AfterViewInit {
 
     checkGroupAccess(groupAccess) {
         if (groupAccess && groupAccess.permissions && groupAccess.groups) {
-            const allowed = _.intersection(groupAccess.permissions, groupAccess.groups).length > 0 ? true : false;
+            const allowed = intersection(groupAccess.permissions, groupAccess.groups).length > 0 ? true : false;
             if (allowed) {
                 return true;
             } else {
