@@ -1,4 +1,4 @@
-import {trigger, state, animate, style, transition, AnimationTriggerMetadata} from '@angular/core';
+import {trigger, state, animate, style, transition, AnimationTriggerMetadata} from '@angular/animations';
 
 export function routerTransition(): AnimationTriggerMetadata {
     return slideToRight();

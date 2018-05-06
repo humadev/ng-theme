@@ -1,5 +1,5 @@
 import { TemplatePortalDirective, Portal } from '@angular/cdk/portal';
-import { OverlayOrigin, Overlay, OverlayConfig } from '@angular/cdk/overlay';
+import { CdkOverlayOrigin, Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { Component, OnInit, ViewChild, ViewChildren, QueryList, Input } from '@angular/core';
 import { fadeUp } from '../../../animations/router.animation';
 import { LayoutService } from '../../../services/layout.service';
@@ -15,7 +15,7 @@ export class MainToolbarProfileComponent {
     @Input() imgProfile: string;
     @Input() name: string;
     @Input() email: string;
-    @ViewChild('profile') menu: OverlayOrigin;
+    @ViewChild('profile') menu: CdkOverlayOrigin;
     @ViewChildren(TemplatePortalDirective) templatePortals: QueryList<Portal<any>>;
 
     constructor(

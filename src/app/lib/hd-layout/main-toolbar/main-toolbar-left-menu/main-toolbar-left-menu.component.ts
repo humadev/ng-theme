@@ -1,6 +1,6 @@
 import { MenuService } from './../../../services/menu.service';
 import { TemplatePortalDirective, Portal } from '@angular/cdk/portal';
-import { OverlayConfig, Overlay, OverlayOrigin } from '@angular/cdk/overlay';
+import { OverlayConfig, Overlay, CdkOverlayOrigin } from '@angular/cdk/overlay';
 import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { fadeUp } from '../../../animations/router.animation';
 
@@ -14,7 +14,7 @@ import { fadeUp } from '../../../animations/router.animation';
 })
 export class MainToolbarLeftMenuComponent implements OnInit {
 
-    @ViewChild('mainMenu') menu: OverlayOrigin;
+    @ViewChild('mainMenu') menu: CdkOverlayOrigin;
     @ViewChildren(TemplatePortalDirective) templatePortals: QueryList<Portal<any>>;
     startMenus = this.menuService.startMenu;
 

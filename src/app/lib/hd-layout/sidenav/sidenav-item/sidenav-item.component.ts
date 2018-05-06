@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit, Input, ViewEncapsulation, ViewChild, ViewChildren, QueryList, ElementRef, HostListener } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { slideToRight } from '../../../animations/router.animation';
-import { Overlay, OverlayConfig, OverlayOrigin, OverlayRef } from '@angular/cdk/overlay';
+import { Overlay, OverlayConfig, CdkOverlayOrigin, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortalDirective, Portal } from '@angular/cdk/portal';
 
 @Component({

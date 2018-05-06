@@ -1,5 +1,5 @@
 import { LayoutService } from './../../services/layout.service';
-import {Overlay, OverlayOrigin, OverlayConfig} from '@angular/cdk/overlay';
+import {Overlay, CdkOverlayOrigin, OverlayConfig} from '@angular/cdk/overlay';
 import {
     Component,
     Input,
@@ -33,7 +33,7 @@ export class MainToolbarComponent implements OnInit {
       @Input() titleText = 'Humadev Theme';
       @Input() titleImg: string;
       @Input() theme: 'default' | 'dark' | 'light' = 'dark';
-      @ViewChild('mainMenu') menu: OverlayOrigin;
+      @ViewChild('mainMenu') menu: CdkOverlayOrigin;
       @ViewChildren(TemplatePortalDirective) templatePortals: QueryList<Portal<any>>;
       active;
       accountOpen = false;

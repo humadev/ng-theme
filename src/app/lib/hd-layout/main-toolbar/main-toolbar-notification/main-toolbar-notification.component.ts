@@ -1,6 +1,6 @@
 import { LayoutService } from './../../../services/layout.service';
 import { TemplatePortalDirective, Portal } from '@angular/cdk/portal';
-import { OverlayOrigin, Overlay, OverlayConfig } from '@angular/cdk/overlay';
+import { CdkOverlayOrigin, Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { Component, OnInit, ViewChild, ViewChildren, QueryList, ElementRef, Renderer2, Input } from '@angular/core';
 import { fadeUp, ringing } from '../../../animations/router.animation';
 
@@ -12,7 +12,7 @@ import { fadeUp, ringing } from '../../../animations/router.animation';
 })
 export class MainToolbarNotificationComponent implements OnInit {
 
-    @ViewChild('notification') menu: OverlayOrigin;
+    @ViewChild('notification') menu: CdkOverlayOrigin;
     @ViewChild('shake') shake: ElementRef;
     @Input() blink = false;
     @ViewChildren(TemplatePortalDirective) templatePortals: QueryList<Portal<any>>;

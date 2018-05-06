@@ -14,7 +14,6 @@ import { ContextMenuPanelComponent } from './context-menu-panel.component';
 import { ContextMenu } from './context-menu';
 import { Overlay, OverlayConfig, OverlayRef, CdkOverlayOrigin } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { OverlayOrigin } from '@angular/cdk/overlay';
 import { Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/zip';
 import { ContextMenuService } from './context-menu.service';
