@@ -121,46 +121,6 @@
           }
         }
       }
-    },
-    "ng-humadev-theme": {
-      "root": "projects/ng-humadev-theme",
-      "sourceRoot": "projects/ng-humadev-theme/src",
-      "projectType": "library",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/ng-humadev-theme/tsconfig.lib.json",
-            "project": "projects/ng-humadev-theme/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "projects/ng-humadev-theme/ng-package.prod.json"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/ng-humadev-theme/src/test.ts",
-            "tsConfig": "projects/ng-humadev-theme/tsconfig.spec.json",
-            "karmaConfig": "projects/ng-humadev-theme/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ng-humadev-theme/tsconfig.lib.json",
-              "projects/ng-humadev-theme/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
     }
   },
   "defaultProject": "humadev-angular-theme",

@@ -19,11 +19,6 @@
   },
   "private": false,
   "dependencies": {
-    "@angular/common": "^6.0.0",
-    "@angular/core": "^6.0.0",
-    "@angular/compiler": "^6.0.0"
-  },
-  "peerDependencies": {
     "@angular/animations": "6.0.0",
     "@angular/cdk": "^6.0.0",
     "@angular/common": "6.0.0",
@@ -43,6 +38,7 @@
     "rxjs-compat": "^6.1.0",
     "zone.js": "^0.8.26"
   },
+  "peerDependencies": {},
   "devDependencies": {
     "@angular/compiler-cli": "6.0.0",
     "@angular-devkit/build-ng-packagr": "~0.6.0",
