@@ -17,6 +17,7 @@
     ],
     "paths": {
       "ng-humadev-theme": [
+        "dist/ng-humadev-theme",
         "dist/ng-humadev-theme"
       ]
     }

@@ -5,7 +5,7 @@
   "description": "simple theme to quick start angular 2+ project",
   "author": {
     "name": "Huma Prathama",
-    "email": "huma.elektro@gmail.com"
+    "email": "humaprathama@gmail.com"
   },
   "scripts": {
     "ng": "ng",
@@ -31,9 +31,11 @@
     "@angular/platform-browser": "6.0.0",
     "@angular/platform-browser-dynamic": "6.0.0",
     "@angular/router": "6.0.0",
+    "@humadev/ng-theme": "^1.0.1",
     "core-js": "^2.4.1",
     "hammerjs": "^2.0.8",
     "lodash-es": "^4.17.5",
+    "ng-humadev-theme": "^1.0.0",
     "rxjs": "^6.1.0",
     "rxjs-compat": "^6.1.0",
     "zone.js": "^0.8.26"
