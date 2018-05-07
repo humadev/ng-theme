@@ -8,11 +8,13 @@ import 'rxjs/add/operator/switchMap';
 import { Subject } from 'rxjs/Subject';
 import { LayoutService } from './layout.service';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class MenuService {
 
       pageTitle = new BehaviorSubject<string>('');
-      lazyLoad= true;
+      lazyLoad = true;
       sidenav = new BehaviorSubject([]);
       moduleIndex = new Subject<number>();
       startMenu = [];
@@ -51,7 +53,7 @@ export class MenuService {
             });
             if (this.lazyLoad) {
                   this.moduleIndex.subscribe(res => {
-                        if (this.router.config[res]['_loadedConfig']){
+                        if (this.router.config[res]['_loadedConfig']) {
                               this.sidenav.next(this.router.config[res]['_loadedConfig'].routes[0].children)
                         }
                   });
@@ -62,7 +64,7 @@ export class MenuService {
             this.startMenu = this.router.config;
       }
 
-      navigate(url: string){
+      navigate(url: string) {
             console.log(url);
             this.router.navigate(['/' + url]);
       }

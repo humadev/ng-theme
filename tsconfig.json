@@ -16,9 +16,8 @@
       "dom"
     ],
     "paths": {
-      "ng-humadev-theme": [
-        "dist/ng-humadev-theme",
-        "dist/ng-humadev-theme"
+      "@humadev/ng-theme": [
+        "dist/@humadev/ng-theme"
       ]
     }
   }
