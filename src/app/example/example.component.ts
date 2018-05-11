@@ -1,6 +1,5 @@
-import { slideToUp } from './../lib/animations/router.animation';
+import { slideToUp, LayoutService } from '@humadev/ng-theme';
 import { Component, OnInit } from '@angular/core';
-import { LayoutService } from './../lib/services/layout.service';
 
 @Component({
   selector: 'hd-example',

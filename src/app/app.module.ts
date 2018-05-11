@@ -3,10 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { HdLayoutModule } from './lib/hd-layout/hd-layout.module';
+import { HdLayoutModule, MenuService, HdLoginModule } from '@humadev/ng-theme';
 import { StartComponent } from './start.component';
-import { MenuService } from './lib/services/menu.service';
-import { HdLoginModule } from './lib/login/hd-login.module';
+
 
 const appRoutes: Routes = [
       {

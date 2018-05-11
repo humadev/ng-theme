@@ -1,5 +1,4 @@
-import { HdUploadModule } from './../lib/hd-upload/hd-upload.module';
-import { HdContextMenuModule } from './../lib/context-menu/hd-context-menu.module';
+import { HdUploadModule, HdContextMenuModule } from '@humadev/ng-theme';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';

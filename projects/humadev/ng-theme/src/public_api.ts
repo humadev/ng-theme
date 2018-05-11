@@ -10,3 +10,4 @@ export * from './lib/class/table-adapter';
 export { LayoutService } from './lib/services/layout.service';
 export { MenuService } from './lib/services/menu.service';
 export * from './lib/animations/router.animation';
+export { ContextMenu } from './lib/context-menu/context-menu';

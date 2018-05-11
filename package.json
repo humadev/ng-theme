@@ -15,15 +15,15 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "packagr": "ng-packagr -p ng-package.json && cp src/theme.scss dist/theme.scss && cp src/palette.scss dist/palette.scss && mkdir dist/assets/ && cp -a src/assets/fonts dist/assets/"
+    "package-assets": "cp projects/humadev/ng-theme/src/theme.scss dist/@humadev/ng-theme/theme.scss && cp projects/humadev/ng-theme/src/palette.scss dist/@humadev/ng-theme/palette.scss && mkdir dist/@humadev/ng-theme/assets/ && cp -a projects/humadev/ng-theme/src/assets/fonts dist/@humadev/ng-theme/assets/"
   },
   "private": false,
   "dependencies": {
-    "@angular/common": "6.0.0",
-    "@angular/core": "6.0.0",
-    "@angular/compiler": "6.0.0",
     "@angular/animations": "6.0.0",
     "@angular/cdk": "^6.0.0",
+    "@angular/common": "6.0.0",
+    "@angular/compiler": "6.0.0",
+    "@angular/core": "6.0.0",
     "@angular/flex-layout": "^5.0.0-beta.14",
     "@angular/forms": "6.0.0",
     "@angular/http": "6.0.0",
@@ -31,7 +31,7 @@
     "@angular/platform-browser": "6.0.0",
     "@angular/platform-browser-dynamic": "6.0.0",
     "@angular/router": "6.0.0",
-    "@humadev/ng-theme": "^1.0.1",
+    "@humadev/ng-theme": "^1.1.4",
     "core-js": "^2.4.1",
     "hammerjs": "^2.0.8",
     "lodash-es": "^4.17.5",

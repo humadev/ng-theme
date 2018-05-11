@@ -29,10 +29,5 @@
   "exclude": [
     "src/test.ts",
     "**/*.spec.ts"
-  ],
-  "include": [
-    "src/assets/*",
-    "src/pallete.scss",
-    "src/theme.scss"
-]
+  ]
 }
