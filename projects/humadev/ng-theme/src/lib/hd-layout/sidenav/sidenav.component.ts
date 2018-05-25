@@ -1,7 +1,7 @@
 import { LayoutService } from './../../services/layout.service';
 import { Component, OnInit, Input, EventEmitter, Output, ViewChild, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 import { MenuService } from '../../services/menu.service';
 import {
     trigger,
@@ -11,7 +11,7 @@ import {
     transition
   } from '@angular/animations';
 import { slideToRight } from '../../animations/router.animation';
-import intersection from 'lodash-es/intersection';
+import { intersection } from 'lodash-es';
 
 @Component({
       selector: 'hd-sidenav',

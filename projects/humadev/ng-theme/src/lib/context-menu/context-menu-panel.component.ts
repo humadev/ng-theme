@@ -5,15 +5,16 @@ import {
     Input,
     HostListener,
     HostBinding,
-      ElementRef,
-      AfterViewInit} from '@angular/core';
+    ElementRef,
+    AfterViewInit
+} from '@angular/core';
 import { ContextMenu } from './context-menu';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import intersection from 'lodash-es/intersection';
+import { BehaviorSubject } from 'rxjs';
+import { intersection } from 'lodash-es';
 
 @Component({
-  selector: 'hd-menu-panel',
-  template: `
+    selector: 'hd-menu-panel',
+    template: `
     <div class="hd-context-menu-panel"
       fxLayout="column">
         <ng-template ngFor let-item [ngForOf]="menuItem">
@@ -56,28 +57,28 @@ import intersection from 'lodash-es/intersection';
 })
 
 export class ContextMenuPanelComponent implements AfterViewInit {
-      @Output() menuItemClicked = new EventEmitter();
-      @Input() menuItem: [ContextMenu];
-      height = new BehaviorSubject<number>(null);
-      width = new BehaviorSubject<number>(null);
+    @Output() menuItemClicked = new EventEmitter();
+    @Input() menuItem: [ContextMenu];
+    height = new BehaviorSubject<number>(null);
+    width = new BehaviorSubject<number>(null);
 
-      constructor(
-            private _el: ElementRef
-      ) {}
+    constructor(
+        private _el: ElementRef
+    ) { }
 
-      onClick(item) {
-            this.menuItemClicked.emit(item);
-      }
+    onClick(item) {
+        this.menuItemClicked.emit(item);
+    }
 
-      @HostListener('contextmenu', ['$event'])
-      onContextMenu(event: MouseEvent): void {
-            event.preventDefault();
-      }
+    @HostListener('contextmenu', ['$event'])
+    onContextMenu(event: MouseEvent): void {
+        event.preventDefault();
+    }
 
-      ngAfterViewInit() {
-            this.height.next(this._el.nativeElement.offsetHeight);
-            this.width.next(this._el.nativeElement.offsetWidth);
-      }
+    ngAfterViewInit() {
+        this.height.next(this._el.nativeElement.offsetHeight);
+        this.width.next(this._el.nativeElement.offsetWidth);
+    }
 
     checkGroupAccess(groupAccess) {
         if (groupAccess && groupAccess.permissions && groupAccess.groups) {

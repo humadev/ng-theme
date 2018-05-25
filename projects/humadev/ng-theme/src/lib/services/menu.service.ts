@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Location } from '@angular/common';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/switchMap';
-import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { LayoutService } from './layout.service';
+import { map, filter, switchMap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -26,27 +24,28 @@ export class MenuService {
             private loc: Location,
             private _ls: LayoutService
       ) {
-            this.router.events
-            .map(event => {
-                  if (loc.path() !== '') {
+            this.router.events.pipe(
+                map(event => {
+                    if (loc.path() !== '') {
                         const modulePath = loc.path().split('/')[1];
                         this.moduleActive.next(modulePath);
                         this.router.config.forEach((el, i) => {
-                              if (el.path === modulePath) {
-                                    this.moduleIndex.next(i);
-                              }
+                            if (el.path === modulePath) {
+                                this.moduleIndex.next(i);
+                            }
                         });
-                  }
-                  return event;
-            })
-            .filter(event => event instanceof NavigationEnd)
-            .map(() => this.activeRoute)
-            .map(route => {
-                  while (route.firstChild) {route = route.firstChild; };
-                  return route;
-            })
-            .filter(route => route.outlet === 'primary')
-            .switchMap(route => route.data)
+                    }
+                    return event;
+                }),
+                filter(event => event instanceof NavigationEnd),
+                map(() => this.activeRoute),
+                map(route => {
+                    while (route.firstChild) { route = route.firstChild; };
+                    return route;
+                }),
+                filter(route => route.outlet === 'primary'),
+                switchMap(route => route.data)
+            )
             .subscribe(res => {
                   this._ls.pageTitle.next(res.name);
                   this.pageTitle.next(res.name);

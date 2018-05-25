@@ -23,6 +23,11 @@
             "styles": [
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "dist"
+              ]
+            },
             "scripts": [
               "node_modules/hammerjs/hammer.min.js"
             ]

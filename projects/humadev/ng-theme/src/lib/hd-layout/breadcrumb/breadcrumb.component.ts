@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute, PRIMARY_OUTLET, Params } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 export interface IBreadcrumb {
       label: string;
@@ -38,7 +39,9 @@ export class BreadcrumbComponent implements OnInit {
         const root: ActivatedRoute = this.activatedRoute.root;
         this.breadcrumbs = this.getBreadcrumbs(root);
             // used when navigate trough angular router
-            this.router.events.filter(event => event instanceof NavigationEnd)
+            this.router.events.pipe(
+                filter(event => event instanceof NavigationEnd)
+            )
             .subscribe(event => {
                   // set breadcrumbs
                   const root: ActivatedRoute = this.activatedRoute.root;
