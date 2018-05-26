@@ -1,20 +1,19 @@
 import {
-    Component,
-    Output,
-    EventEmitter,
-    Input,
-    HostListener,
-    HostBinding,
-    ElementRef,
-    AfterViewInit
+  Component,
+  Output,
+  EventEmitter,
+  Input,
+  HostListener,
+  ElementRef,
+  AfterViewInit
 } from '@angular/core';
 import { ContextMenu } from './context-menu';
 import { BehaviorSubject } from 'rxjs';
 import { intersection } from 'lodash-es';
 
 @Component({
-    selector: 'hd-menu-panel',
-    template: `
+  selector: 'hd-menu-panel',
+  template: `
     <div class="hd-context-menu-panel"
       fxLayout="column">
         <ng-template ngFor let-item [ngForOf]="menuItem">
@@ -27,7 +26,8 @@ import { intersection } from 'lodash-es';
         </ng-template>
     </div>
   `,
-    styles: [`
+  styles: [
+    `
         :host{
             max-height: 500px;
             overflow-y: scroll;
@@ -53,43 +53,44 @@ import { intersection } from 'lodash-es';
             font-size:12px !important;
             height: 16px;
         }
-    `]
+    `
+  ]
 })
-
 export class ContextMenuPanelComponent implements AfterViewInit {
-    @Output() menuItemClicked = new EventEmitter();
-    @Input() menuItem: [ContextMenu];
-    height = new BehaviorSubject<number>(null);
-    width = new BehaviorSubject<number>(null);
+  @Output() menuItemClicked = new EventEmitter();
+  @Input() menuItem: [ContextMenu];
+  height = new BehaviorSubject<number>(null);
+  width = new BehaviorSubject<number>(null);
 
-    constructor(
-        private _el: ElementRef
-    ) { }
+  constructor(private _el: ElementRef) {}
 
-    onClick(item) {
-        this.menuItemClicked.emit(item);
+  onClick(item) {
+    this.menuItemClicked.emit(item);
+  }
+
+  @HostListener('contextmenu', ['$event'])
+  onContextMenu(event: MouseEvent): void {
+    event.preventDefault();
+  }
+
+  ngAfterViewInit() {
+    this.height.next(this._el.nativeElement.offsetHeight);
+    this.width.next(this._el.nativeElement.offsetWidth);
+  }
+
+  checkGroupAccess(groupAccess) {
+    if (groupAccess && groupAccess.permissions && groupAccess.groups) {
+      const allowed =
+        intersection(groupAccess.permissions, groupAccess.groups).length > 0
+          ? true
+          : false;
+      if (allowed) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return true;
     }
-
-    @HostListener('contextmenu', ['$event'])
-    onContextMenu(event: MouseEvent): void {
-        event.preventDefault();
-    }
-
-    ngAfterViewInit() {
-        this.height.next(this._el.nativeElement.offsetHeight);
-        this.width.next(this._el.nativeElement.offsetWidth);
-    }
-
-    checkGroupAccess(groupAccess) {
-        if (groupAccess && groupAccess.permissions && groupAccess.groups) {
-            const allowed = intersection(groupAccess.permissions, groupAccess.groups).length > 0 ? true : false;
-            if (allowed) {
-                return true;
-            } else {
-                return false
-            }
-        } else {
-            return true;
-        }
-    }
+  }
 }

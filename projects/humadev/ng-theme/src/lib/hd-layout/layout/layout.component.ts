@@ -1,10 +1,10 @@
 import { slideToDown } from '../../animations/router.animation';
-import { Component, Input, EventEmitter, Output, ElementRef, Renderer2 } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
-    // tslint:disable-next-line:component-selector
-    selector: 'hd-layout',
-    template: `
+  // tslint:disable-next-line:component-selector
+  selector: 'hd-layout',
+  template: `
         <hd-main-toolbar
                 [notification]="notification"
                 (sidenavToggle)="sidenav.toggle()"
@@ -25,20 +25,15 @@ import { Component, Input, EventEmitter, Output, ElementRef, Renderer2 } from '@
     `
 })
 export class LayoutComponent {
-      @Input() titleText = 'Humadev Theme';
-      @Input() titleImg: string;
-      @Input() lazyLoadModule = false;
-      @Input() nav: any = false;
-      @Input() notification: any = false;
-      @Output() logout = new EventEmitter();
-      sidenavOpen = true;
+  @Input() titleText = 'Humadev Theme';
+  @Input() titleImg: string;
+  @Input() lazyLoadModule = false;
+  @Input() nav: any = false;
+  @Input() notification: any = false;
+  @Output() logout = new EventEmitter();
+  sidenavOpen = true;
 
-      constructor(
-        private elRef: ElementRef,
-        private renderer: Renderer2
-      ){}
-
-      onLogout() {
-            this.logout.emit();
-      }
+  onLogout() {
+    this.logout.emit();
+  }
 }

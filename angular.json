@@ -16,21 +16,12 @@
             "main": "src/main.ts",
             "tsConfig": "src/tsconfig.app.json",
             "polyfills": "src/polyfills.ts",
-            "assets": [
-              "src/assets",
-              "src/favicon.ico"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/assets", "src/favicon.ico"],
+            "styles": ["src/styles.scss"],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "dist"
-              ]
+              "includePaths": ["dist"]
             },
-            "scripts": [
-              "node_modules/hammerjs/hammer.min.js"
-            ]
+            "scripts": ["node_modules/hammerjs/hammer.min.js"]
           },
           "configurations": {
             "production": {
@@ -76,28 +67,16 @@
             "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
-            "scripts": [
-              "node_modules/hammerjs/hammer.min.js"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
-            "assets": [
-              "src/assets",
-              "src/favicon.ico"
-            ]
+            "scripts": ["node_modules/hammerjs/hammer.min.js"],
+            "styles": ["src/styles.scss"],
+            "assets": ["src/assets", "src/favicon.ico"]
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["src/tsconfig.app.json", "src/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -117,12 +96,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -131,7 +106,7 @@
       "root": "projects/humadev/ng-theme",
       "sourceRoot": "projects/humadev/ng-theme/src",
       "projectType": "library",
-      "prefix": "lib",
+      "prefix": "hd",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
@@ -160,9 +135,7 @@
               "projects/humadev/ng-theme/tsconfig.lib.json",
               "projects/humadev/ng-theme/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -172,9 +145,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "hd",
-      "styleext": [
-        "scss"
-      ]
+      "styleext": ["scss"]
     },
     "@schematics/angular:directive": {
       "prefix": "hd"
