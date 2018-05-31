@@ -34,7 +34,7 @@
       </li>
       <li class="menu-subnav-item" routerLinkActive="menu-subnav-item-active" routerLinkActiveOptions="{ exact: true}" aria-haspopup="true"
         *ngFor="let level2 of menu.children">
-        <a [routerLink]="[level2.path]">
+        <a [routerLink]="[menu.path+'/'+level2.path]">
           <i class="m-menu__link-bullet m-menu__link-bullet--dot">
             <span></span>
           </i>
