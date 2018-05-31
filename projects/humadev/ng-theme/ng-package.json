@@ -3,6 +3,9 @@
   "dest": "../../../dist/@humadev/ng-theme",
   "deleteDestPath": false,
   "lib": {
-    "entryFile": "src/public_api.ts"
+    "entryFile": "src/public_api.ts",
+    "umdModuleIds": {
+      "lodash-es": "lodash-es"
+    }
   }
 }

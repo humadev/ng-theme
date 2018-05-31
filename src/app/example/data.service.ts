@@ -8,8 +8,6 @@ export class DataService {
 
   /** Connect function called by the table to retrieve one stream containing the data to render. */
   setData() {
-    return this._http
-      .get('/assets/data.json')
-      .pipe(map((res: any) => res.pegawai));
+    return this._http.get('assets/data.json');
   }
 }

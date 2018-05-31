@@ -56,7 +56,7 @@ import { Component, OnInit } from '@angular/core';
             </hd-main-toolbar-right-menu>
             <!-- END: Topbar -->
         </hd-main-toolbar>
-        <hd-sidenav #sidenav [nav]="menu">
+        <hd-sidenav #sidenav>
                 <hd-page-toolbar #pagebar></hd-page-toolbar>
                 <div class='hd-page'>
                     <router-outlet></router-outlet>

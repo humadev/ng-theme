@@ -10,7 +10,7 @@
     [ngClass]="{'minimize':sidenavOpen.minimize}">
     <i class="icon flaticon-settings"></i>
     <span class="text">
-      {{menu.data.name}} a
+      {{menu.data.name}}
     </span>
     <span class="badge" *ngIf="menu.data.badge">
       <span>{{menu.data.badge}}</span>
@@ -25,7 +25,7 @@
       <li class="menu-subnav-item subnav-title">
         <a>
           <span class="text">
-            {{menu.data.name}} b
+            {{menu.data.name}}
           </span>
           <span class="badge" *ngIf="menu.data.badge">
             <span>{{menu.data.badge}}</span>
@@ -34,12 +34,12 @@
       </li>
       <li class="menu-subnav-item" routerLinkActive="menu-subnav-item-active" routerLinkActiveOptions="{ exact: true}" aria-haspopup="true"
         *ngFor="let level2 of menu.children">
-        <a [routerLink]="menu.path+'/'+level2.path">
+        <a [routerLink]="[level2.path]">
           <i class="m-menu__link-bullet m-menu__link-bullet--dot">
             <span></span>
           </i>
           <span class="text">
-            {{level2.data.name}} c
+            {{level2.data.name}}
           </span>
           <span class="badge" *ngIf="level2.data.badge">
             <span>{{level2.data.badge}}</span>
