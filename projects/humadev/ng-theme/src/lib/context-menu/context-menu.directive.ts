@@ -36,6 +36,16 @@ export class ContextMenuDirective {
   clickWatcher$: any;
   overlayRef: OverlayRef;
   active = false;
+  private fakeElement: any = {
+    getBoundingClientRect: (): ClientRect => ({
+      bottom: 0,
+      height: 0,
+      left: 0,
+      right: 0,
+      top: 0,
+      width: 0
+    })
+  };
 
   constructor(
     private ref: ElementRef,
@@ -70,18 +80,44 @@ export class ContextMenuDirective {
   private createPanel(event): void {
     const offsetX = event.offsetX;
     const offsetY = event.offsetY;
+    this.fakeElement.getBoundingClientRect = (): ClientRect => ({
+      bottom: event.clientY,
+      height: 0,
+      left: event.clientX,
+      right: event.clientX,
+      top: event.clientY,
+      width: 0
+    });
     const positionStrategy = this.overlay
       .position()
       .connectedTo(
-        { nativeElement: event.target },
-        { originX: 'start', originY: 'top' },
+        new ElementRef(this.fakeElement),
+        { originX: 'start', originY: 'bottom' },
         { overlayX: 'start', overlayY: 'top' }
       )
-      .withOffsetX(offsetX)
-      .withOffsetY(offsetY);
+      .withFallbackPosition(
+        { originX: 'start', originY: 'top' },
+        { overlayX: 'start', overlayY: 'bottom' }
+      )
+      .withFallbackPosition(
+        { originX: 'end', originY: 'top' },
+        { overlayX: 'start', overlayY: 'top' }
+      )
+      .withFallbackPosition(
+        { originX: 'start', originY: 'top' },
+        { overlayX: 'end', overlayY: 'top' }
+      )
+      .withFallbackPosition(
+        { originX: 'end', originY: 'center' },
+        { overlayX: 'start', overlayY: 'center' }
+      )
+      .withFallbackPosition(
+        { originX: 'start', originY: 'center' },
+        { overlayX: 'end', overlayY: 'center' }
+      );
     const config = new OverlayConfig({
       positionStrategy: positionStrategy,
-      scrollStrategy: this.overlay.scrollStrategies.reposition(),
+      scrollStrategy: this.overlay.scrollStrategies.close(),
       panelClass: 'contextmenu-overlay'
     });
     this.overlayRef = this.overlay.create(config);
