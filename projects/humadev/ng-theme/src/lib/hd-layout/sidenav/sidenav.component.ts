@@ -24,6 +24,7 @@ import { slideToRight } from '../../animations/router.animation';
 import { intersection } from 'lodash-es';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'hd-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss'],
