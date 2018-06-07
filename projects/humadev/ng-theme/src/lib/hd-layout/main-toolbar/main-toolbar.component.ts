@@ -16,6 +16,8 @@ import {
 } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { Router } from '@angular/router';
+import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'hd-main-toolbar',
@@ -41,7 +43,8 @@ export class MainToolbarComponent implements OnInit {
   messageOpen = false;
   topMenuOpen = false;
   brandClass = {
-    minimize: false
+    minimize: false,
+    hide: false
   };
   brandBackground = '#282a3c';
   brandToggle = {
@@ -51,13 +54,15 @@ export class MainToolbarComponent implements OnInit {
   sidenav = true;
   progressBar = false;
   @Output() minimize = new EventEmitter();
+  isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
 
   constructor(
     private menuService: MenuService,
     private renderer: Renderer2,
     private elRef: ElementRef,
     private layout: LayoutService,
-    private router: Router
+    private router: Router,
+      private breakpointObserver: BreakpointObserver
   ) {
     this.router.events.subscribe(() => this.layout.topProgressBar.next(true));
   }
@@ -75,6 +80,7 @@ export class MainToolbarComponent implements OnInit {
     this.layout.topProgressBar.subscribe(
       progress => (this.progressBar = progress)
     );
+
   }
 
   toggleSidenav() {
@@ -87,7 +93,7 @@ export class MainToolbarComponent implements OnInit {
     }
     this.sidenav = !this.sidenav;
     this.layout.sidebarOpen.next(this.sidenav);
-    this.brandClass.minimize = !this.sidenav;
+    this.brandClass.minimize = false;
   }
 
   onSidenavToggle() {

@@ -1,7 +1,8 @@
 <!-- BEGIN: Header -->
 <header>
     <!-- BEGIN: Brand -->
-    <div class="toolbar-brand" [ngClass]="brandClass" [ngStyle]="{background: brandBackground}">
+<div class="toolbar-brand" [ngClass]="brandClass" [ngStyle]="{background: brandBackground}" *ngIf="(isHandset | async)!.matches ? false : true">
+
         <div class="logo">
             <a routerLink="">
                 <img [src]="titleImg">

@@ -1,6 +1,8 @@
 <mat-sidenav-container>
-  <mat-sidenav #sidenav fixedInViewport='true' fixedTopGap='70' opened="true" mode='side' class="m-grid__item m-aside-left m-aside-left--skin-dark"
-    [ngClass]="sidenavClass" [@slideToRight]="">
+  <mat-sidenav #sidenav fixedInViewport='true' fixedTopGap='70' class="m-grid__item m-aside-left m-aside-left--skin-dark"
+ [ngClass]="sidenavClass" [@slideToRight]="" [attr.role]="isHandset
+? 'dialog' : 'navigation'" [mode]="(isHandset | async)!.matches ? 'over' : 'side'" [opened]="!(isHandset | async)!.matches">
+
     <div id="m_ver_menu" class="m-aside-menu m-aside-menu--skin-dark m-aside-menu--submenu-skin-dark" data-menu-vertical="true"
       data-menu-scrollable="false" data-menu-dropdown-timeout="500">
       <ul *ngIf="nav === false; else fromVar" class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow">

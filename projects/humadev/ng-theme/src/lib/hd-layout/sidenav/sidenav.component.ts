@@ -22,6 +22,7 @@ import {
 } from '@angular/animations';
 import { slideToRight } from '../../animations/router.animation';
 import { intersection } from 'lodash-es';
+import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -41,6 +42,7 @@ export class SidenavComponent implements OnInit, AfterViewInit {
   sidenavClass = {
     minimize: false
   };
+    isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
 
   constructor(
     private render: Renderer2,
@@ -48,7 +50,8 @@ export class SidenavComponent implements OnInit, AfterViewInit {
     private router: Router,
     private activeRoute: ActivatedRoute,
     private menuService: MenuService,
-    public layoutService: LayoutService
+    public layoutService: LayoutService,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit() {
@@ -74,6 +77,11 @@ export class SidenavComponent implements OnInit, AfterViewInit {
         this.render.setStyle(content, 'margin-left', '70px');
       }
     });
+    this.isHandset.subscribe(res => {
+        if(res) {
+            this.render.setStyle(content, 'margin-left', '0');
+        }
+    })
   }
 
   parentOpen(i: any) {
