@@ -6,9 +6,10 @@ import { Component, OnInit } from '@angular/core';
   template: `
         <hd-main-toolbar titleImg="assets/logo.png">
             <!-- BEGIN: Topbar -->
-            <hd-main-toolbar-left-menu></hd-main-toolbar-left-menu>
             <hd-main-toolbar-right-menu>
-            <button (click)="_ls.showNotification.next(true)">test</button>
+                <li>
+                    <button (click)="_ls.showNotification.next(true)">test</button>
+                </li>
                   <li hd-main-toolbar-notification>
                         <mat-tab-group>
                               <mat-tab label="Alert" class="notification-tab">

@@ -93,7 +93,7 @@ export class MainToolbarComponent implements OnInit {
     }
     this.sidenav = !this.sidenav;
     this.layout.sidebarOpen.next(this.sidenav);
-    this.brandClass.minimize = false;
+    // this.brandClass.minimize = false;
   }
 
   onSidenavToggle() {

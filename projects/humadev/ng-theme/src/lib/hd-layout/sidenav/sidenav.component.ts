@@ -61,27 +61,28 @@ export class SidenavComponent implements OnInit, AfterViewInit {
       });
     }
     this.layoutService.sidebarOpen.subscribe(open => {
+        this.opened = !open;
       this.sidenavClass.minimize = !open;
     });
   }
 
   ngAfterViewInit() {
-    const content = this.ref.nativeElement.querySelector(
-      '.mat-sidenav-content'
-    );
-    this.layoutService.sidebarOpen.subscribe(open => {
-      this.render.addClass(content, 'animate-content');
-      if (open) {
-        this.render.setStyle(content, 'margin-left', '255px');
-      } else {
-        this.render.setStyle(content, 'margin-left', '70px');
-      }
-    });
-    this.isHandset.subscribe(res => {
-        if(res) {
-            this.render.setStyle(content, 'margin-left', '0');
-        }
-    })
+    // const content = this.ref.nativeElement.querySelector(
+    //   '.mat-sidenav-content'
+    // );
+    // this.layoutService.sidebarOpen.subscribe(open => {
+    //   this.render.addClass(content, 'animate-content');
+    //   if (open) {
+    //     this.render.setStyle(content, 'margin-left', '255px');
+    //   } else {
+    //     this.render.setStyle(content, 'margin-left', '70px');
+    //   }
+    // });
+    // this.isHandset.subscribe(res => {
+    //     if(res) {
+    //         this.render.setStyle(content, 'margin-left', '0');
+    //     }
+    // })
   }
 
   parentOpen(i: any) {

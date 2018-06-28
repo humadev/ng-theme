@@ -1,4 +1,4 @@
-<a class='menu-item' *ngIf="menu.children && menu.children.length > 0; else noChildItem" (click)="parentOpen(index)" [ngClass]="{'active':childrenAndActive(menu), 'minimize':sidenavOpen.minimize}">
+<a class='menu-item' *ngIf="menu.children && menu.children.length > 0; else noChildItem" (click)="parentOpen(index)" [ngClass]="{'active':childrenAndActive(menu)}">
   <i class="icon flaticon-settings"></i>
   <span class="text">
     {{menu.data.name}}
@@ -6,8 +6,7 @@
   <i class="arrow la la-angle-right" *ngIf="menu.children && menu.children.length > 0"></i>
 </a>
 <ng-template #noChildItem>
-  <a class='menu-item no-child' [routerLink]="menu?.path" routerLinkActive="menu-item-active" routerLinkActiveOptions="{ exact: true }"
-    [ngClass]="{'minimize':sidenavOpen.minimize}">
+  <a class='menu-item no-child' [routerLink]="menu?.path" routerLinkActive="menu-item-active" routerLinkActiveOptions="{ exact: true }">
     <i class="icon flaticon-settings"></i>
     <span class="text">
       {{menu.data.name}}

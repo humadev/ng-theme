@@ -1,7 +1,7 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav fixedInViewport='true' fixedTopGap='70' class="m-grid__item m-aside-left m-aside-left--skin-dark"
- [ngClass]="sidenavClass" [@slideToRight]="" [attr.role]="isHandset
-? 'dialog' : 'navigation'" [mode]="(isHandset | async)!.matches ? 'over' : 'side'" [opened]="!(isHandset | async)!.matches">
+  [attr.role]="isHandset
+? 'dialog' : 'navigation'" [mode]="(isHandset | async)!.matches ? 'over' : 'side'" [opened]="!(isHandset | async)!.matches || opened">
 
     <div id="m_ver_menu" class="m-aside-menu m-aside-menu--skin-dark m-aside-menu--submenu-skin-dark" data-menu-vertical="true"
       data-menu-scrollable="false" data-menu-dropdown-timeout="500">
@@ -10,7 +10,7 @@
           <ng-template [ngIf]="checkHidden(level1) === false && checkGroupAccess(level1)">
             <li hd-sidenav-item cdk-overlay-origin class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"
               aria-haspopup="true" [ngClass]="{'m-menu__item--open':childrenAndActive(level1)}" [menu]='level1' [nav]='nav'
-              [navFromRouter]='navFromRouter' [index]='i' [sidenavOpen]='sidenavClass'>
+              [navFromRouter]='navFromRouter' [index]='i'>
             </li>
           </ng-template>
         </ng-template>
@@ -20,12 +20,14 @@
           <ng-template [ngIf]="checkHidden(level1) === false && checkGroupAccess(level1)">
             <li hd-sidenav-item cdk-overlay-origin class="m-menu__item" routerLinkActive="m-menu__item--active" routerLinkActiveOptions="{ exact: true }"
               aria-haspopup="true" [ngClass]="{'m-menu__item--open':childrenAndActive(level1)}" [menu]='level1' [nav]='nav'
-              [index]='i' [sidenavOpen]='sidenavClass'>
+              [index]='i'>
             </li>
           </ng-template>
         </ng-template>
       </ng-template>
     </div>
   </mat-sidenav>
-  <ng-content></ng-content>
+    <mat-sidenav-content>
+        <ng-content></ng-content>
+    </mat-sidenav-content>
 </mat-sidenav-container>

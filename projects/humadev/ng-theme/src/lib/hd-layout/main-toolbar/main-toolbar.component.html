@@ -1,14 +1,22 @@
 <!-- BEGIN: Header -->
 <header>
     <!-- BEGIN: Brand -->
-<div class="toolbar-brand" [ngClass]="brandClass" [ngStyle]="{background: brandBackground}" *ngIf="(isHandset | async)!.matches ? false : true">
-
+<div class="toolbar-brand" [ngClass]="brandClass">
+        <div class="toggler" *ngIf="(isHandset | async)!.matches ? true : false">
+            <!-- BEGIN: Left Aside Minimize Toggle -->
+            <a 
+                [ngClass]="brandToggle" 
+                (click)='toggleSidenav()'>
+                <span></span>
+            </a>
+            <!-- END -->
+        </div>
         <div class="logo">
             <a routerLink="">
                 <img [src]="titleImg">
             </a>
         </div>
-        <div class="toggler" *ngIf='showSidenavToggle'>
+        <div class="toggler" *ngIf="(isHandset | async)!.matches ? false : true">
             <!-- BEGIN: Left Aside Minimize Toggle -->
             <a 
                 [ngClass]="brandToggle" 
