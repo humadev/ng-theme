@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LayoutService } from './lib/services/layout.service';
+import { LayoutService } from '@humadev/ng-theme';
 
 @Component({
   selector: 'hd-start',
@@ -20,7 +20,7 @@ import { LayoutService } from './lib/services/layout.service';
   `,
   styles: []
 })
-export class StartComponent implements OnInit{
+export class StartComponent implements OnInit {
 
       startMenus = this.router.config;
 

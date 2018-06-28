@@ -1,4 +1,4 @@
-import { HdContextMenuModule } from './lib/context-menu/hd-context-menu.module';
+import { HdContextMenuModule, HdLayoutModule } from '@humadev/ng-theme';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {
@@ -13,7 +13,6 @@ import {
       MatProgressBarModule,
       MatIconModule
 } from '@angular/material';
-import { HdLayoutModule } from './lib/hd-layout/hd-layout.module';
 
 
 @NgModule({
