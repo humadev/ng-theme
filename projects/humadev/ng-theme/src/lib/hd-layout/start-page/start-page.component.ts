@@ -11,6 +11,7 @@ import { intersection } from 'lodash-es';
 export class StartPageComponent implements OnInit {
 
     @Input() menus: any;
+    @Input() fromRouter = true;
     @Input() copyright: string;
 
     constructor(
@@ -18,7 +19,9 @@ export class StartPageComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.menus = this.menuService.startMenu;
+        if(this.fromRouter) {
+            this.menus = this.menuService.startMenu;
+        }
     }
 
     checkGroupAccess(menu, asal = '') {
