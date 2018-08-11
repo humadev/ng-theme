@@ -22,7 +22,12 @@ import {
 } from '@angular/animations';
 import { slideToRight } from '../../animations/router.animation';
 import { intersection } from 'lodash-es';
-import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/layout';
+import {
+  BreakpointObserver,
+  BreakpointState,
+  Breakpoints
+} from '@angular/cdk/layout';
+import { MatSidenav } from '@angular/material';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -32,17 +37,29 @@ import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/l
   animations: [slideToRight()]
 })
 export class SidenavComponent implements OnInit, AfterViewInit {
-  @Input() nav: any = false;
-  @Input() lazyLoadModule: any = false;
-  @Input() navFromRouter: any;
-  @Input() lazyLoadPath: string;
-  @Output() pageTitle = new EventEmitter();
+  @Input()
+  titleImg: string;
+  @Input()
+  nav: any = false;
+  @Input()
+  lazyLoadModule: any = false;
+  @Input()
+  navFromRouter: any;
+  @Input()
+  lazyLoadPath: string;
+  @Output()
+  pageTitle = new EventEmitter();
   moduleConfig: any;
-  @Input() opened = true;
+  @Input()
+  opened = true;
   sidenavClass = {
     minimize: false
   };
-    isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
+  @ViewChild('sidenav')
+  sidenav: MatSidenav;
+  isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(
+    Breakpoints.Handset
+  );
 
   constructor(
     private render: Renderer2,
@@ -61,8 +78,11 @@ export class SidenavComponent implements OnInit, AfterViewInit {
       });
     }
     this.layoutService.sidebarOpen.subscribe(open => {
-        this.opened = !open;
-      this.sidenavClass.minimize = !open;
+      if (open) {
+        this.sidenav.open();
+      } else {
+        this.sidenav.close();
+      }
     });
   }
 
@@ -145,7 +165,8 @@ export class SidenavComponent implements OnInit, AfterViewInit {
 
   @Output()
   toggle() {
-    this.opened = !this.opened;
+    this.sidenav.close();
+    this.layoutService.sidebarOpen.next(false);
   }
 
   checkHidden(navItem) {

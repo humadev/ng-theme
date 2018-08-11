@@ -1,35 +1,24 @@
 <!-- BEGIN: Header -->
 <header>
-    <!-- BEGIN: Brand -->
-<div class="toolbar-brand" [ngClass]="brandClass">
-        <div class="toggler" *ngIf="(isHandset | async)!.matches ? true : false">
-            <!-- BEGIN: Left Aside Minimize Toggle -->
-            <a 
-                [ngClass]="brandToggle" 
-                (click)='toggleSidenav()'>
-                <span></span>
-            </a>
-            <!-- END -->
-        </div>
-        <div class="logo">
-            <a routerLink="">
-                <img [src]="titleImg">
-            </a>
-        </div>
-        <div class="toggler" *ngIf="(isHandset | async)!.matches ? false : true">
-            <!-- BEGIN: Left Aside Minimize Toggle -->
-            <a 
-                [ngClass]="brandToggle" 
-                (click)='toggleSidenav()'>
-                <span></span>
-            </a>
-            <!-- END -->
-        </div>
+  <!-- BEGIN: Brand -->
+  <div class="toolbar-brand" *ngIf="!sidenavOpen">
+    <div class="toggler">
+      <!-- BEGIN: Left Aside Minimize Toggle -->
+      <a (click)='toggleSidenav()'>
+        <span></span>
+      </a>
+      <!-- END -->
     </div>
-    <!-- END: Brand -->
-    <div class="toolbar-menu">
-        <ng-content></ng-content>
+    <div class="logo">
+      <a routerLink="">
+        <img [src]="titleImg">
+      </a>
     </div>
+  </div>
+  <!-- END: Brand -->
+  <div class="toolbar-menu">
+    <ng-content></ng-content>
+  </div>
 </header>
 <mat-progress-bar class="loader" mode="indeterminate" *ngIf='progressBar'></mat-progress-bar>
 <!-- END: Header -->
