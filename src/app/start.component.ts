@@ -21,15 +21,11 @@ import { LayoutService } from '@humadev/ng-theme';
   styles: []
 })
 export class StartComponent implements OnInit {
+  startMenus = this.router.config;
 
-      startMenus = this.router.config;
+  constructor(private router: Router, private _ls: LayoutService) {}
 
-      constructor(
-            private router: Router,
-            private _ls: LayoutService
-      ) {}
-
-    ngOnInit() {
-        this._ls.topProgressBar.next(false);
-    }
+  ngOnInit() {
+    this._ls.topProgressBar.next(false);
+  }
 }

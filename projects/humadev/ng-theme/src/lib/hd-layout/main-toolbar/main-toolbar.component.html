@@ -1,27 +1,21 @@
 <!-- BEGIN: Header -->
-<header>
-    <!-- BEGIN: Brand -->
-<div class="toolbar-brand" [ngClass]="brandClass" [ngStyle]="{background: brandBackground}" *ngIf="(isHandset | async)!.matches ? false : true">
-
-        <div class="logo">
-            <a routerLink="">
-                <img [src]="titleImg">
-            </a>
-        </div>
-        <div class="toggler" *ngIf='showSidenavToggle'>
-            <!-- BEGIN: Left Aside Minimize Toggle -->
-            <a 
-                [ngClass]="brandToggle" 
-                (click)='toggleSidenav()'>
-                <span></span>
-            </a>
-            <!-- END -->
-        </div>
-    </div>
-    <!-- END: Brand -->
-    <div class="toolbar-menu">
-        <ng-content></ng-content>
-    </div>
-</header>
-<mat-progress-bar class="loader" mode="indeterminate" *ngIf='progressBar'></mat-progress-bar>
+<!-- BEGIN: Brand -->
+<div class="toolbar-brand" *ngIf="!sidenavOpen || (isHandset | async).matches || !showSidenavToggle">
+  <div class="toggler" (click)='toggleSidenav()' *ngIf='showSidenavToggle'>
+    <!-- BEGIN: Left Aside Minimize Toggle -->
+    <a>
+      <span></span>
+    </a>
+    <!-- END -->
+  </div>
+  <div class="logo" *ngIf="!(isHandset | async)!.matches">
+    <a routerLink="">
+      <img [src]="titleImg">
+    </a>
+  </div>
+</div>
+<!-- END: Brand -->
+<div class="toolbar-menu">
+  <ng-content></ng-content>
+</div>
 <!-- END: Header -->

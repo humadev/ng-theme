@@ -1,4 +1,4 @@
-import { LayoutService } from './../../services/layout.service';
+import { LayoutService } from '../../services/layout.service';
 import {
   Component,
   OnInit,
@@ -22,7 +22,12 @@ import {
 } from '@angular/animations';
 import { slideToRight } from '../../animations/router.animation';
 import { intersection } from 'lodash-es';
-import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/layout';
+import {
+  BreakpointObserver,
+  BreakpointState,
+  Breakpoints
+} from '@angular/cdk/layout';
+import { MatSidenav } from '@angular/material';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -32,17 +37,30 @@ import { BreakpointObserver, BreakpointState, Breakpoints } from '@angular/cdk/l
   animations: [slideToRight()]
 })
 export class SidenavComponent implements OnInit, AfterViewInit {
-  @Input() nav: any = false;
-  @Input() lazyLoadModule: any = false;
-  @Input() navFromRouter: any;
-  @Input() lazyLoadPath: string;
-  @Output() pageTitle = new EventEmitter();
+  @Input()
+  titleImg: string;
+  @Input()
+  nav: any = false;
+  @Input()
+  lazyLoadModule: any = false;
+  @Input()
+  navFromRouter: any;
+  @Input()
+  lazyLoadPath: string;
+  @Output()
+  pageTitle = new EventEmitter();
   moduleConfig: any;
-  @Input() opened = true;
+  @Input()
+  opened = false;
   sidenavClass = {
     minimize: false
   };
-    isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
+  progressBar = false;
+  @ViewChild('sidenav')
+  sidenav: MatSidenav;
+  isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(
+    Breakpoints.Handset
+  );
 
   constructor(
     private render: Renderer2,
@@ -52,7 +70,11 @@ export class SidenavComponent implements OnInit, AfterViewInit {
     private menuService: MenuService,
     public layoutService: LayoutService,
     private breakpointObserver: BreakpointObserver
-  ) {}
+  ) {
+    this.router.events.subscribe(() =>
+      this.layoutService.topProgressBar.next(true)
+    );
+  }
 
   ngOnInit() {
     if (this.nav === false) {
@@ -61,27 +83,34 @@ export class SidenavComponent implements OnInit, AfterViewInit {
       });
     }
     this.layoutService.sidebarOpen.subscribe(open => {
-      this.sidenavClass.minimize = !open;
+      if (open) {
+        this.sidenav.open();
+      } else {
+        this.sidenav.close();
+      }
     });
+    this.layoutService.topProgressBar.subscribe(
+      progress => (this.progressBar = progress)
+    );
   }
 
   ngAfterViewInit() {
-    const content = this.ref.nativeElement.querySelector(
-      '.mat-sidenav-content'
-    );
-    this.layoutService.sidebarOpen.subscribe(open => {
-      this.render.addClass(content, 'animate-content');
-      if (open) {
-        this.render.setStyle(content, 'margin-left', '255px');
-      } else {
-        this.render.setStyle(content, 'margin-left', '70px');
-      }
-    });
-    this.isHandset.subscribe(res => {
-        if(res) {
-            this.render.setStyle(content, 'margin-left', '0');
-        }
-    })
+    // const content = this.ref.nativeElement.querySelector(
+    //   '.mat-sidenav-content'
+    // );
+    // this.layoutService.sidebarOpen.subscribe(open => {
+    //   this.render.addClass(content, 'animate-content');
+    //   if (open) {
+    //     this.render.setStyle(content, 'margin-left', '255px');
+    //   } else {
+    //     this.render.setStyle(content, 'margin-left', '70px');
+    //   }
+    // });
+    // this.isHandset.subscribe(res => {
+    //     if(res) {
+    //         this.render.setStyle(content, 'margin-left', '0');
+    //     }
+    // })
   }
 
   parentOpen(i: any) {
@@ -144,7 +173,8 @@ export class SidenavComponent implements OnInit, AfterViewInit {
 
   @Output()
   toggle() {
-    this.opened = !this.opened;
+    this.sidenav.close();
+    this.layoutService.sidebarOpen.next(false);
   }
 
   checkHidden(navItem) {

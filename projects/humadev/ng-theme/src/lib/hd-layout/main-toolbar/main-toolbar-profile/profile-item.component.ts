@@ -1,4 +1,4 @@
-import { LayoutService } from './../../../services/layout.service';
+import { LayoutService } from '../../../services/layout.service';
 import { Component, OnInit, Input, Renderer2, ElementRef } from '@angular/core';
 
 @Component({
@@ -23,22 +23,26 @@ import { Component, OnInit, Input, Renderer2, ElementRef } from '@angular/core';
   styleUrls: ['profile-item.component.scss']
 })
 export class ProfileItemComponent implements OnInit {
+  @Input()
+  badge: number;
+  @Input()
+  icon: string;
 
-    @Input() badge: number;
-    @Input() icon: string;
+  constructor(
+    private render: Renderer2,
+    private el: ElementRef,
+    private ls: LayoutService
+  ) {}
 
-    constructor(
-        private render: Renderer2,
-        private el: ElementRef,
-        private ls: LayoutService
-    ) { }
-
-    ngOnInit() {
-        if (this.el.nativeElement.querySelector('.close-on-click')) {
-            this.render.listen(this.el.nativeElement.querySelector('.close-on-click'), 'click', () => {
-                this.ls.closeOverlay.next(true);
-            });
+  ngOnInit() {
+    if (this.el.nativeElement.querySelector('.close-on-click')) {
+      this.render.listen(
+        this.el.nativeElement.querySelector('.close-on-click'),
+        'click',
+        () => {
+          this.ls.closeOverlay.next(true);
         }
+      );
     }
-
+  }
 }

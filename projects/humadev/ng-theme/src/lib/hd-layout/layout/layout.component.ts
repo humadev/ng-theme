@@ -25,12 +25,18 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
     `
 })
 export class LayoutComponent {
-  @Input() titleText = 'Humadev Theme';
-  @Input() titleImg: string;
-  @Input() lazyLoadModule = false;
-  @Input() nav: any = false;
-  @Input() notification: any = false;
-  @Output() logout = new EventEmitter();
+  @Input()
+  titleText = 'Humadev Theme';
+  @Input()
+  titleImg: string;
+  @Input()
+  lazyLoadModule = false;
+  @Input()
+  nav: any = false;
+  @Input()
+  notification: any = false;
+  @Output()
+  logout = new EventEmitter();
   sidenavOpen = true;
 
   onLogout() {

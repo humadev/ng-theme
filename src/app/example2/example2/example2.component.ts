@@ -2,7 +2,7 @@ import { slideToUp, LayoutService } from '@humadev/ng-theme';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'hd-example',
+  selector: 'hd-example2',
   template: `
         <hd-sidenav #sidenav titleImg="assets/logo.png">
             <hd-main-toolbar titleImg="assets/logo.png" class='mat-elevation-z4'>
@@ -68,11 +68,11 @@ import { Component, OnInit } from '@angular/core';
         </hd-sidenav>
   `
 })
-export class ExampleComponent implements OnInit {
+export class Example2Component implements OnInit {
   menu = [
     {
       path: '',
-      component: ExampleComponent,
+      component: Example2Component,
       data: {
         name: 'Example',
         groupAccess: {

@@ -80,9 +80,12 @@ export class DashboardComponent implements OnInit {
     }
   ];
   rows: TableAdapter | null;
-  @ViewChild('search') search: ElementRef;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild('search')
+  search: ElementRef;
+  @ViewChild(MatPaginator)
+  paginator: MatPaginator;
+  @ViewChild(MatSort)
+  sort: MatSort;
 
   // speed dial
   private _fixed = false;

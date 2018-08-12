@@ -1,3 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-@import '@humadev/ng-theme/palette';
-@import '@humadev/ng-theme/theme';
+@import '../projects/humadev/ng-theme/src/palette';
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/icon?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700');
+@import '../projects/humadev/ng-theme/src/theme';
+.page {
+  padding: 0px;
+  margin-top: 0px;
+  max-height: 100vh;
+  overflow-y: scroll;
+  .page-content {
+    padding: 20px;
+  }
+}
