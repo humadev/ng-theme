@@ -8,7 +8,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Example2Component } from './example2/example2.component';
 import { TableComponent } from './table/table.component';
-import { MatTableModule, MatPaginatorModule, MatSortModule, MatTabsModule, MatAutocompleteModule } from '../../../node_modules/@angular/material';
+import {
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatTabsModule,
+  MatAutocompleteModule
+} from '../../../node_modules/@angular/material';
 import { CdkTableModule } from '../../../node_modules/@angular/cdk/table';
 
 const appRoutes: Routes = [
@@ -28,7 +34,10 @@ const appRoutes: Routes = [
           icon: 'dashboard',
           badge: '3'
         }
-      },
+      }
+    ]
+  }
+];
 
 @NgModule({
   imports: [
@@ -50,4 +59,4 @@ const appRoutes: Routes = [
   ],
   declarations: [Example2Component, TableComponent]
 })
-export class Example2Module { }
+export class Example2Module {}

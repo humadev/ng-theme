@@ -7,6 +7,11 @@ mat-sidenav-container {
   background-color: #2c2e3e;
 }
 
+.m-aside-menu {
+  height: calc(100vh - 70px);
+  overflow-y: scroll;
+}
+
 .m-aside-menu .m-menu__nav {
   list-style: none;
   padding: 30px 0 30px 0;
