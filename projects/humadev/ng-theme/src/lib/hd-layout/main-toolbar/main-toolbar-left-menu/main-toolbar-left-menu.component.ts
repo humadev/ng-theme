@@ -1,8 +1,10 @@
-import { MenuService } from './../../../services/menu.service';
+import { MatDialog } from '@angular/material';
+import { MenuService } from '../../../services/menu.service';
 import { TemplatePortalDirective, Portal } from '@angular/cdk/portal';
 import { OverlayConfig, Overlay, CdkOverlayOrigin } from '@angular/cdk/overlay';
 import { Component, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { fadeUp } from '../../../animations/router.animation';
+import { StartPageDialogComponent } from '../../start-page-dialog/start-page-dialog.component';
 
 @Component({
   selector: 'hd-main-toolbar-left-menu',
@@ -11,30 +13,39 @@ import { fadeUp } from '../../../animations/router.animation';
   animations: [fadeUp()]
 })
 export class MainToolbarLeftMenuComponent {
-  @ViewChild('mainMenu') menu: CdkOverlayOrigin;
+  @ViewChild('mainMenu')
+  menu: CdkOverlayOrigin;
   @ViewChildren(TemplatePortalDirective)
   templatePortals: QueryList<Portal<any>>;
   startMenus = this.menuService.startMenu;
 
-  constructor(public overlay: Overlay, private menuService: MenuService) {}
+  constructor(
+    public overlay: Overlay,
+    private menuService: MenuService,
+    private dialog: MatDialog
+  ) {}
 
   clickMenu(e) {
-    const config = new OverlayConfig({
-      hasBackdrop: true,
-      backdropClass: 'menu-overlay-backdrop',
-      scrollStrategy: this.overlay.scrollStrategies.block(),
-      positionStrategy: this.overlay
-        .position()
-        .connectedTo(
-          this.menu.elementRef,
-          { originX: 'start', originY: 'bottom' },
-          { overlayX: 'start', overlayY: 'top' }
-        )
+    this.dialog.open(StartPageDialogComponent, {
+      width: '90vw',
+      height: '90vh'
     });
-    const overlayRef = this.overlay.create(config);
-    overlayRef.attach(this.templatePortals.first);
-    overlayRef.backdropClick().subscribe(() => {
-      overlayRef.dispose();
-    });
+    //   const config = new OverlayConfig({
+    //     hasBackdrop: true,
+    //     backdropClass: 'menu-overlay-backdrop',
+    //     scrollStrategy: this.overlay.scrollStrategies.block(),
+    //     positionStrategy: this.overlay
+    //       .position()
+    //       .connectedTo(
+    //         this.menu.elementRef,
+    //         { originX: 'start', originY: 'bottom' },
+    //         { overlayX: 'start', overlayY: 'top' }
+    //       )
+    //   });
+    //   const overlayRef = this.overlay.create(config);
+    //   overlayRef.attach(this.templatePortals.first);
+    //   overlayRef.backdropClick().subscribe(() => {
+    //     overlayRef.dispose();
+    //   });
   }
 }

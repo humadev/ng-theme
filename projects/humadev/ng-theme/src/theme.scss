@@ -733,7 +733,7 @@ mat-toolbar.hd-side-toolbar{
 
 mat-toolbar.hd-page-toolbar{
       font-size: 12px;
-      padding: 0 20px;
+      padding: 0;
       color:$color-1;
       .hd-page-title{
             font-size: 16px;
@@ -791,11 +791,13 @@ mat-sidenav.hd-sidenav{
 //page
 div.hd-page{
       padding:20px;
+      height: calc(100vh - 70px);
+      overflow-y: scroll;
 }
 
 /* Style the list */
 ul.hd-breadcrumb {
-    padding: 10px 16px;
+    padding: 10px 0px;
     list-style: none;
 }
 
@@ -1347,6 +1349,235 @@ hd-start-page .container{
     }
 }
 
+@media (max-width: 992px){
+    .left-menu-dropdown{
+        padding-top: 10px;
+        display: block;
+        width: 275px;
+        -webkit-transform: translateZ(0);
+        -moz-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        -o-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-transform-style: preserve-3d;
+        .arrow{
+            left: 73px;
+            color: #ffffff;
+            line-height: 0;
+            display: inline-block;
+            overflow: hidden;
+            height: 11px;
+            width: 40px;
+            margin-left: -20px;
+            position: absolute;
+            margin-top: -10px;
+        }
+        .arrow:before{
+            position: relative;
+            top: 100%;
+            margin-top: 11px;
+            font-size: 40px;
+            display: inline-block;
+            font-family: "Metronic";
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            line-height: 0px;
+            text-decoration: inherit;
+            text-rendering: optimizeLegibility;
+            text-transform: none;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-smoothing: antialiased;
+            content: "";
+        }
+        .left-dropdown-list{
+            background-color: #ffffff;
+            -webkit-box-shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.2);
+            -moz-box-shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.2);
+            box-shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.2);
+            padding: 20px 0px;
+            list-style: none;
+            margin: 0;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            -ms-border-radius: 4px;
+            -o-border-radius: 4px;
+            border-radius: 4px;
+            li{
+                padding: 0px;
+                display: block;
+                margin: 0;
+                a{
+                    padding: 9px 30px;
+                    display: table;
+                    table-layout: fixed;
+                    text-decoration: none;
+                    position: relative;
+                    vertical-align: middle;
+                    height: 100%;
+                    width:100%;
+                    outline: 0!important;
+                    text-decoration: none;
+                    cursor: pointer;
+                    i.left-dropdown-link-icon{
+                        font-size: 1.4rem;
+                        width: 33px;
+                        text-align: left;
+                        padding: 0;
+                        line-height: 0;
+                        display: table-cell;
+                        vertical-align: middle;
+                        img{
+                            width: 25px;
+                        }
+                    }
+                    span.left-dropdown-link-text{
+                        color: #676c7b;
+                        font-weight: 400;
+                        font-size: 1rem;
+                        text-transform: initial;
+                        display: table-cell;
+                        vertical-align: middle;
+                        height: 100%;
+                        width: 100%;
+                        padding: 0;
+                    }
+                    span.left-dropdown-link-text:hover{
+                        color: #214E8D;
+                    }
+                }
+            }
+        }
+    }
+
+    .notification-dropdown, .profile-dropdown{
+        display: block;
+        padding-top: 10px;
+        width: 380px;
+        text-align: left;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        -ms-border-radius: 6px;
+        -o-border-radius: 6px;
+        border-radius: 6px;
+        -webkit-transform: translateZ(0);
+        -moz-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        -o-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-transform-style: preserve-3d;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-animation: m-dropdown-fade-in .3s ease 1, m-dropdown-move-up .3s ease-out 1;
+        -moz-animation: m-dropdown-fade-in .3s ease 1, m-dropdown-move-up .3s ease-out 1;
+        -ms-animation: m-dropdown-fade-in .3s ease 1, m-dropdown-move-up .3s ease-out 1;
+        -o-animation: m-dropdown-fade-in .3s ease 1, m-dropdown-move-up .3s ease-out 1;
+        animation: m-dropdown-fade-in .3s ease 1, m-dropdown-move-up .3s ease-out 1;
+        .profile-dropdown-content{
+            padding: 20px;
+        }
+        .mat-tab-label{
+            min-width: 100px !important;
+            font-family: "Poppins";
+            -ms-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .mat-ink_bar{
+            min-width: 100px !important;
+        }
+        .mat-tab-body-content{
+            padding: 20px;
+        }
+        .arrow{
+            color: #1e385f;
+            line-height: 0;
+            display: inline-block;
+            overflow: hidden;
+            height: 11px;
+            width: 40px;
+            margin-left: -20px;
+            top: 0;
+            position: absolute;
+        }
+        .arrow:before{
+            position: relative;
+            top: 100%;
+            margin-top: 11px;
+            font-size: 40px;
+            display: inline-block;
+            font-family: "Metronic";
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            line-height: 0px;
+            text-decoration: inherit;
+            text-rendering: optimizeLegibility;
+            text-transform: none;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-smoothing: antialiased;
+            content: "";
+            position: relative;
+            top: 100%;
+            margin-top: 11px;
+            font-size: 40px;
+            display: inline-block;
+            font-family: "Metronic";
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            line-height: 0px;
+            text-decoration: inherit;
+            text-rendering: optimizeLegibility;
+            text-transform: none;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-smoothing: antialiased;
+            content: "";
+        }
+        .inner{
+            background-color: #ffffff;
+            box-shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.2);
+            -webkit-border-radius: 6px;
+            -moz-border-radius: 6px;
+            -ms-border-radius: 6px;
+            -o-border-radius: 6px;
+            border-radius: 6px;
+            .header{
+                background-color: #214E8D;
+                padding: 20px 10px;
+                -webkit-border-radius: 6px 6px 0 0;
+                -moz-border-radius: 6px 6px 0 0;
+                -ms-border-radius: 6px 6px 0 0;
+                -o-border-radius: 6px 6px 0 0;
+                border-radius: 6px 6px 0 0;
+                text-align: center;
+                .header-title{
+                    color: #fff;
+                    display: block;
+                    padding: 0 0 5px 0;
+                    font-size: 1.5rem;
+                    font-weight: 400;
+                    text-align: center;
+                }
+                .header-subtitle{
+                    color: #fff;
+                    display: block;
+                    padding: 0px;
+                    font-size: 1rem;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    .profile-dropdown{
+        width: 325px;
+    }
+}
+
+
 .cdk-overlay-pane .menu-submenu.minimize{
     height: 100% !important;
     overflow: visible !important;
@@ -1506,8 +1737,8 @@ hd-start-page .container{
 
 @font-face {
   font-family: "socicon";
-  // src: url("~@humadev/ng-theme/assets/fonts/socicon/socicon.eot");
-  // src: url("~@humadev/ng-theme/assets/fonts/socicon/socicon.eot?#iefix") format("embedded-opentype"), url("~@humadev/ng-theme/assets/fonts/socicon/socicon.woff") format("woff"), url("~@humadev/ng-theme/assets/fonts/socicon/socicon.ttf") format("truetype"), url("~@humadev/ng-theme/assets/fonts/socicon/socicon.svg#socicon") format("svg");
+  src: url("~@humadev/ng-theme/assets/fonts/socicon/socicon.eot");
+  src: url("~@humadev/ng-theme/assets/fonts/socicon/socicon.eot?#iefix") format("embedded-opentype"), url("~@humadev/ng-theme/assets/fonts/socicon/socicon.woff") format("woff"), url("~@humadev/ng-theme/assets/fonts/socicon/socicon.ttf") format("truetype"), url("~@humadev/ng-theme/assets/fonts/socicon/socicon.svg#socicon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -2222,8 +2453,8 @@ hd-start-page .container{
 
 @font-face {
   font-family: 'FontAwesome';
-  // src: url("~@humadev/ng-theme/assets/fonts/font-awesome/fontawesome-webfont.eot?v=4.7.0");
-  // src: url("~@humadev/ng-theme/assets/fonts/font-awesome/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("~@humadev/ng-theme/assets/fonts/font-awesome/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("~@humadev/ng-theme/assets/fonts/font-awesome/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("~@humadev/ng-theme/assets/fonts/font-awesome/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("~@humadev/ng-theme/assets/fonts/font-awesome/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
+  src: url("~@humadev/ng-theme/assets/fonts/font-awesome/fontawesome-webfont.eot?v=4.7.0");
+  src: url("~@humadev/ng-theme/assets/fonts/font-awesome/fontawesome-webfont.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("~@humadev/ng-theme/assets/fonts/font-awesome/fontawesome-webfont.woff2?v=4.7.0") format("woff2"), url("~@humadev/ng-theme/assets/fonts/font-awesome/fontawesome-webfont.woff?v=4.7.0") format("woff"), url("~@humadev/ng-theme/assets/fonts/font-awesome/fontawesome-webfont.ttf?v=4.7.0") format("truetype"), url("~@humadev/ng-theme/assets/fonts/font-awesome/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -5289,8 +5520,8 @@ hd-start-page .container{
 
 @font-face {
   font-family: "LineAwesome";
-  // src: url("~@humadev/ng-theme/assets/fonts/line-awesome/line-awesome.eot?v=1.1.");
-  // src: url("~@humadev/ng-theme/assets/fonts/line-awesome/line-awesome.eot??v=1.1.#iefix") format("embedded-opentype"), url("~@humadev/ng-theme/assets/fonts/line-awesome/line-awesome.woff2?v=1.1.") format("woff2"), url("~@humadev/ng-theme/assets/fonts/line-awesome/line-awesome.woff?v=1.1.") format("woff"), url("~@humadev/ng-theme/assets/fonts/line-awesome/line-awesome.ttf?v=1.1.") format("truetype"), url("~@humadev/ng-theme/assets/fonts/line-awesome/line-awesome.svg?v=1.1.#fa") format("svg");
+  src: url("~@humadev/ng-theme/assets/fonts/line-awesome/line-awesome.eot?v=1.1.");
+  src: url("~@humadev/ng-theme/assets/fonts/line-awesome/line-awesome.eot??v=1.1.#iefix") format("embedded-opentype"), url("~@humadev/ng-theme/assets/fonts/line-awesome/line-awesome.woff2?v=1.1.") format("woff2"), url("~@humadev/ng-theme/assets/fonts/line-awesome/line-awesome.woff?v=1.1.") format("woff"), url("~@humadev/ng-theme/assets/fonts/line-awesome/line-awesome.ttf?v=1.1.") format("truetype"), url("~@humadev/ng-theme/assets/fonts/line-awesome/line-awesome.svg?v=1.1.#fa") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -5298,7 +5529,7 @@ hd-start-page .container{
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   @font-face {
     font-family: "LineAwesome";
-    // src: url("~@humadev/ng-theme/assets/fonts/line-awesome/line-awesome.svg?v=1.1.#fa") format("svg");
+    src: url("~@humadev/ng-theme/assets/fonts/line-awesome/line-awesome.svg?v=1.1.#fa") format("svg");
   }
 }
 
@@ -8137,8 +8368,8 @@ hd-start-page .container{
 
 @font-face {
   font-family: "Flaticon";
-  // src: url("~@humadev/ng-theme/assets/fonts/flaticon/Flaticon.eot");
-  // src: url("~@humadev/ng-theme/assets/fonts/flaticon/Flaticon.eot?#iefix") format("embedded-opentype"), url("~@humadev/ng-theme/assets/fonts/flaticon/Flaticon.woff") format("woff"), url("~@humadev/ng-theme/assets/fonts/flaticon/Flaticon.ttf") format("truetype"), url("~@humadev/ng-theme/assets/fonts/flaticon/Flaticon.svg#Flaticon") format("svg");
+  src: url("~@humadev/ng-theme/assets/fonts/flaticon/Flaticon.eot");
+  src: url("~@humadev/ng-theme/assets/fonts/flaticon/Flaticon.eot?#iefix") format("embedded-opentype"), url("~@humadev/ng-theme/assets/fonts/flaticon/Flaticon.woff") format("woff"), url("~@humadev/ng-theme/assets/fonts/flaticon/Flaticon.ttf") format("truetype"), url("~@humadev/ng-theme/assets/fonts/flaticon/Flaticon.svg#Flaticon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -8146,7 +8377,7 @@ hd-start-page .container{
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   @font-face {
     font-family: "Flaticon";
-    // src: url("~@humadev/ng-theme/assets/fonts/flaticon/Flaticon.svg#Flaticon") format("svg");
+    src: url("~@humadev/ng-theme/assets/fonts/flaticon/Flaticon.svg#Flaticon") format("svg");
   }
 }
 
@@ -8830,8 +9061,8 @@ hd-start-page .container{
 
 @font-face {
   font-family: "Metronic";
-  // src: url("~@humadev/ng-theme/assets/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.eot");
-  // src: url("~@humadev/ng-theme/assets/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.eot?#iefix") format("embedded-opentype"), url("~@humadev/ng-theme/assets/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.woff2") format("woff2"), url("~@humadev/ng-theme/assets/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.woff") format("woff"), url("~@humadev/ng-theme/assets/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.ttf") format("truetype"), url("~@humadev/ng-theme/assets/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.svg#Metronic") format("svg");
+  src: url("~@humadev/ng-theme/assets/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.eot");
+  src: url("~@humadev/ng-theme/assets/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.eot?#iefix") format("embedded-opentype"), url("~@humadev/ng-theme/assets/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.woff2") format("woff2"), url("~@humadev/ng-theme/assets/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.woff") format("woff"), url("~@humadev/ng-theme/assets/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.ttf") format("truetype"), url("~@humadev/ng-theme/assets/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.svg#Metronic") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -8839,7 +9070,7 @@ hd-start-page .container{
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   @font-face {
     font-family: "Metronic";
-    // src: url("~@humadev/ng-theme/assets/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.svg#Metronic") format("svg");
+    src: url("~@humadev/ng-theme/assets/fonts/metronic/Metronic_fda1334c35d0f5fe2afb3afebbb6774a.svg#Metronic") format("svg");
   }
 }
 

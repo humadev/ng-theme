@@ -1,4 +1,4 @@
-import { LayoutService } from './../../services/layout.service';
+import { LayoutService } from '../../services/layout.service';
 import {
   Component,
   OnInit,
@@ -51,10 +51,11 @@ export class SidenavComponent implements OnInit, AfterViewInit {
   pageTitle = new EventEmitter();
   moduleConfig: any;
   @Input()
-  opened = true;
+  opened = false;
   sidenavClass = {
     minimize: false
   };
+  progressBar = false;
   @ViewChild('sidenav')
   sidenav: MatSidenav;
   isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(
@@ -69,7 +70,11 @@ export class SidenavComponent implements OnInit, AfterViewInit {
     private menuService: MenuService,
     public layoutService: LayoutService,
     private breakpointObserver: BreakpointObserver
-  ) {}
+  ) {
+    this.router.events.subscribe(() =>
+      this.layoutService.topProgressBar.next(true)
+    );
+  }
 
   ngOnInit() {
     if (this.nav === false) {
@@ -84,6 +89,9 @@ export class SidenavComponent implements OnInit, AfterViewInit {
         this.sidenav.close();
       }
     });
+    this.layoutService.topProgressBar.subscribe(
+      progress => (this.progressBar = progress)
+    );
   }
 
   ngAfterViewInit() {

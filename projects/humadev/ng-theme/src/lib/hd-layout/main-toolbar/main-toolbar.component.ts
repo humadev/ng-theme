@@ -1,17 +1,13 @@
-import { LayoutService } from './../../services/layout.service';
-import { Overlay, CdkOverlayOrigin, OverlayConfig } from '@angular/cdk/overlay';
+import { LayoutService } from '../../services/layout.service';
+import { CdkOverlayOrigin } from '@angular/cdk/overlay';
 import {
   Component,
   Input,
   Output,
   EventEmitter,
   OnInit,
-  ViewEncapsulation,
   ViewChild,
-  ViewContainerRef,
-  ViewChildren,
   ElementRef,
-  ComponentRef,
   Renderer2
 } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
@@ -27,7 +23,6 @@ import { Observable } from 'rxjs';
   selector: 'hd-main-toolbar',
   templateUrl: 'main-toolbar.component.html',
   styleUrls: ['main-toolbar.component.scss'],
-  encapsulation: ViewEncapsulation.None,
   preserveWhitespaces: false
 })
 export class MainToolbarComponent implements OnInit {
@@ -68,7 +63,6 @@ export class MainToolbarComponent implements OnInit {
     'toggler-left': true
   };
   sidenav = true;
-  progressBar = false;
   @Output()
   minimize = new EventEmitter();
   isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(
@@ -82,9 +76,7 @@ export class MainToolbarComponent implements OnInit {
     private layout: LayoutService,
     private router: Router,
     private breakpointObserver: BreakpointObserver
-  ) {
-    this.router.events.subscribe(() => this.layout.topProgressBar.next(true));
-  }
+  ) {}
 
   ngOnInit() {
     this.layout.sidebarOpen.subscribe(open => {
@@ -98,10 +90,6 @@ export class MainToolbarComponent implements OnInit {
     } else {
       this.brandBackground = '#ffffff';
     }
-
-    this.layout.topProgressBar.subscribe(
-      progress => (this.progressBar = progress)
-    );
   }
 
   toggleSidenav() {

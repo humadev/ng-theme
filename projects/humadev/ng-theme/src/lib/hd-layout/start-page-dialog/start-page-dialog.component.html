@@ -1,0 +1,9 @@
+<div class="start-menu">
+  <ng-template ngFor let-menu [ngForOf]="menus" let-i="index">
+    <a class="item" [routerLink]="[menu.path]" *ngIf="menu.data.isMenu && checkGroupAccess(menu)" (click)="onClick($event)">
+      <img [src]="menu.data.icon">
+      <span class='text'>{{menu.data.title}}</span>
+      <span class='description'>{{menu.data.description}}</span>
+    </a>
+  </ng-template>
+</div>

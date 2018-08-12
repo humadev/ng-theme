@@ -1,3 +1,4 @@
+<mat-progress-bar class="loader" mode="indeterminate" *ngIf='progressBar'></mat-progress-bar>
 <mat-sidenav-container>
   <mat-sidenav #sidenav fixedInViewport='true' class="m-grid__item m-aside-left m-aside-left--skin-dark" [attr.role]="isHandset
 ? 'dialog' : 'navigation'" [mode]="(isHandset | async)!.matches ? 'over' : 'side'" [opened]="!(isHandset | async)!.matches || opened">
@@ -7,9 +8,9 @@
           <img [src]="titleImg">
         </a>
       </div>
-      <div class="toggler" *ngIf="(isHandset | async)!.matches ? false : true">
+      <div class="toggler" *ngIf="(isHandset | async)!.matches ? false : true" (click)='toggle()'>
         <!-- BEGIN: Left Aside Minimize Toggle -->
-        <a (click)='toggle();'>
+        <a>
           <span></span>
         </a>
         <!-- END -->

@@ -145,7 +145,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "hd",
-      "styleext": ["scss"]
+      "styleext": "scss"
     },
     "@schematics/angular:directive": {
       "prefix": "hd"
