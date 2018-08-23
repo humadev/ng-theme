@@ -9117,3 +9117,12 @@ hd-start-page .container{
 input:-webkit-autofill {
   background-color: white !important;
 }
+
+@media(max-width: 922px) {
+  .table-content {
+    overflow-x: auto !important;
+  }
+  .mat-table {
+    min-width: 922px;
+  }
+}

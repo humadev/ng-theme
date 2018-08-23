@@ -7,11 +7,11 @@ import { Component, OnInit } from '@angular/core';
         <hd-sidenav #sidenav titleImg="assets/logo.png">
             <hd-main-toolbar titleImg="assets/logo.png" class='mat-elevation-z4'>
               <!-- BEGIN: Topbar -->
-              <hd-main-toolbar-left-menu></hd-main-toolbar-left-menu>
               <hd-main-toolbar-right-menu>
                   <!--<li>
                       <button (click)="_ls.showNotification.next(true)">test</button>
                   </li> -->
+                    <li hd-main-toolbar-start-shortcut></li>
                     <li hd-main-toolbar-notification>
                           <mat-tab-group>
                                 <mat-tab label="Alert" class="notification-tab">

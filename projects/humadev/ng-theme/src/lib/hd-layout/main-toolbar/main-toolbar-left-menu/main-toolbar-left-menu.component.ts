@@ -13,39 +13,6 @@ import { StartPageDialogComponent } from '../../start-page-dialog/start-page-dia
   animations: [fadeUp()]
 })
 export class MainToolbarLeftMenuComponent {
-  @ViewChild('mainMenu')
-  menu: CdkOverlayOrigin;
-  @ViewChildren(TemplatePortalDirective)
-  templatePortals: QueryList<Portal<any>>;
-  startMenus = this.menuService.startMenu;
-
-  constructor(
-    public overlay: Overlay,
-    private menuService: MenuService,
-    private dialog: MatDialog
-  ) {}
-
-  clickMenu(e) {
-    this.dialog.open(StartPageDialogComponent, {
-      width: '90vw',
-      height: '90vh'
-    });
-    //   const config = new OverlayConfig({
-    //     hasBackdrop: true,
-    //     backdropClass: 'menu-overlay-backdrop',
-    //     scrollStrategy: this.overlay.scrollStrategies.block(),
-    //     positionStrategy: this.overlay
-    //       .position()
-    //       .connectedTo(
-    //         this.menu.elementRef,
-    //         { originX: 'start', originY: 'bottom' },
-    //         { overlayX: 'start', overlayY: 'top' }
-    //       )
-    //   });
-    //   const overlayRef = this.overlay.create(config);
-    //   overlayRef.attach(this.templatePortals.first);
-    //   overlayRef.backdropClick().subscribe(() => {
-    //     overlayRef.dispose();
-    //   });
-  }
+  
+  constructor() {}
 }
