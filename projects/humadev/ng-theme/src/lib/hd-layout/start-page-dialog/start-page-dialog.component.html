@@ -1,7 +1,7 @@
 <button mat-icon-button color='warn' mat-dialog-close>
     <mat-icon aria-label="tutup menu ini">cancel</mat-icon>
 </button>
-<div class="start-menu" fxLayout fxLayout.xs="column">
+<div class="start-menu" fxLayout fxLayout.xs="column" fxLayoutAlign.xs='center'>
     <ng-template ngFor let-menu [ngForOf]="menus" let-i="index">
         <a class="item" [routerLink]="[menu.path]" *ngIf="menu.data.isMenu && checkGroupAccess(menu)" (click)="onClick($event)">
         <img [src]="menu.data.icon">
