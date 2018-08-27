@@ -19,7 +19,7 @@
 }
 
 .menu-item{
-    padding: 2px 30px;
+    padding: 15px 30px;
     height: 44px;
     display: table;
     table-layout: fixed;
@@ -27,7 +27,7 @@
     text-decoration: none;
     position: relative;
     outline: none;
-    i.icon{
+    .material-icons{
         color: #FEFEFE;
         text-align: left;
         width: 35px;
@@ -37,7 +37,7 @@
         vertical-align: middle;
         line-height: 0;
         padding: 0;
-        padding-right: 15px;
+        padding-right: 10px;
     }
     span.text{
         color: #FEFEFE;
@@ -134,7 +134,7 @@
 } 
 
 .menu-item.active{
-    i.icon, i.arrow{
+    .material-icons, i.arrow{
         color: #868aa8;
     }
     i.arrow:before{
@@ -310,10 +310,13 @@
 }
 
 .menu-item-active{
+    border-left: 3px solid #5867dd;
     background-color: #292b3a;
+    color: #5867dd;
+    padding-left: 27px;
 }
 
-.menu-item-active span, .menu-item-active i{
+.menu-item-active span, .menu-item-active .material-icons{
     color: #2a61ac !important;
 }
 
