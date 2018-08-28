@@ -59,7 +59,7 @@ import { Component, OnInit } from '@angular/core';
               </hd-main-toolbar-right-menu>
               <!-- END: Topbar -->
           </hd-main-toolbar>
-          <div class='hd-page'>
+          <div class='hd-page' cdkScrollable>
             <hd-page-toolbar #pagebar></hd-page-toolbar>
              <div class="hd-page-content">
                 <router-outlet></router-outlet>

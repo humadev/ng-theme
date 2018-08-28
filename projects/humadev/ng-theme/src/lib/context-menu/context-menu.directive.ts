@@ -17,7 +17,9 @@ import {
   Overlay,
   OverlayConfig,
   OverlayRef,
-  CdkOverlayOrigin
+  CdkOverlayOrigin,
+  CdkScrollable,
+  ScrollDispatcher
 } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { Observable } from 'rxjs';
@@ -31,6 +33,7 @@ export class ContextMenuDirective {
   @Input() menuID: any; // id dari row yg diklik kanan
   @Input() menuItem: [ContextMenu]; // data menu yg akan ditampikan, data ini sesuai dengan interface framework contextmenu
   @ViewChild(CdkOverlayOrigin) _overlayOrigin: CdkOverlayOrigin;
+    @ViewChild('cdkScrollable') scroller: CdkScrollable;
   @Input() contextMenuOrigin: CdkOverlayOrigin;
   panel: any;
   clickWatcher$: any;
@@ -51,7 +54,8 @@ export class ContextMenuDirective {
     private ref: ElementRef,
     private render: Renderer2,
     public overlay: Overlay,
-    private _service: ContextMenuService
+    private _service: ContextMenuService,
+    private scroll: ScrollDispatcher
   ) {
     render.setStyle(ref.nativeElement, 'cursor', 'context-menu'); // add context-menu cursor to element used this directive
   }
@@ -78,6 +82,7 @@ export class ContextMenuDirective {
   }
 
   private createPanel(event): void {
+      console.log(window);
     const offsetX = event.offsetX;
     const offsetY = event.offsetY;
     this.fakeElement.getBoundingClientRect = (): ClientRect => ({
@@ -88,34 +93,37 @@ export class ContextMenuDirective {
       top: event.clientY,
       width: 0
     });
-    const positionStrategy = this.overlay
-      .position()
-      .connectedTo(
-        new ElementRef(this.fakeElement),
-        { originX: 'start', originY: 'bottom' },
-        { overlayX: 'start', overlayY: 'top' }
-      )
-      .withFallbackPosition(
-        { originX: 'start', originY: 'top' },
-        { overlayX: 'start', overlayY: 'bottom' }
-      )
-      .withFallbackPosition(
-        { originX: 'end', originY: 'top' },
-        { overlayX: 'start', overlayY: 'top' }
-      )
-      .withFallbackPosition(
-        { originX: 'start', originY: 'top' },
-        { overlayX: 'end', overlayY: 'top' }
-      )
-      .withFallbackPosition(
-        { originX: 'end', originY: 'center' },
-        { overlayX: 'start', overlayY: 'center' }
-      )
-      .withFallbackPosition(
-        { originX: 'start', originY: 'center' },
-        { overlayX: 'end', overlayY: 'center' }
-      );
-    const config = new OverlayConfig({
+    let x = event.clientX;
+    let y = event.clientY;
+    const windowWidth = window.screen.width;
+    const windowHeight = window.screen.height;
+    const availWidth = windowWidth - event.clientX;
+    const availHeight = windowHeight - event.clientY;
+      const positionStrategy = this.overlay
+          .position()
+          .flexibleConnectedTo(this.ref).withPositions([{
+              originX: 'start',
+              originY: 'bottom',
+              overlayX: 'start',
+              overlayY: 'top',
+              offsetX: 0,
+              offsetY: 0
+          },
+          {
+              originX: 'start',
+              originY: 'top',
+              overlayX: 'start',
+              overlayY: 'bottom',
+          },
+          {
+              originX: 'start',
+              originY: 'bottom',
+              overlayX: 'start',
+              overlayY: 'top',
+          }
+        ]).withGrowAfterOpen(true).withViewportMargin(10).withFlexibleDimensions(true);
+
+      const config: OverlayConfig = new OverlayConfig({
       positionStrategy: positionStrategy,
       scrollStrategy: this.overlay.scrollStrategies.close(),
       panelClass: 'contextmenu-overlay'
@@ -124,6 +132,7 @@ export class ContextMenuDirective {
     this._service.setContextMenuOverlay(this.overlayRef);
     const contextMenu = new ComponentPortal(ContextMenuPanelComponent);
     this.panel = this.overlayRef.attach(contextMenu);
+    this.scroll.scrolled().subscribe(res => this.overlayRef.dispose());
     this.active = true;
   }
 

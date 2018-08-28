@@ -2,9 +2,7 @@
     *ngIf="menu.children && menu.children.length > 0; else noChildItem"
     (click)="parentOpen(index)"
     [ngClass]="{'active':childrenAndActive(menu)}"
-    routerLinkActive="menu-item-active"
-    [routerLink]="menu?.path"
-    skipLocationChange='true'>
+    routerLinkActive="menu-item-active">
   <mat-icon class="icon">{{menu.data.icon}}</mat-icon>
   <span class="text">
     {{menu.data.name}}
