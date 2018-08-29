@@ -30,16 +30,6 @@ export class ContextMenuDirective {
     clickWatcher$: any;
     overlayRef: OverlayRef;
     active = false;
-    private fakeElement: any = {
-        getBoundingClientRect: (): ClientRect => ({
-            bottom: 0,
-            height: 0,
-            left: 0,
-            right: 0,
-            top: 0,
-            width: 0
-        })
-    };
 
     constructor(
         private ref: ElementRef,
@@ -73,14 +63,6 @@ export class ContextMenuDirective {
     }
 
     private createPanel(event): void {
-        this.fakeElement.getBoundingClientRect = (): ClientRect => ({
-            bottom: event.clientY,
-            height: 0,
-            left: event.clientX,
-            right: event.clientX,
-            top: event.clientY,
-            width: 0
-        });
         const positionStrategy = this.overlay
             .position()
             .flexibleConnectedTo(event.target).withPositions([{
@@ -94,6 +76,21 @@ export class ContextMenuDirective {
                 originX: 'start',
                 originY: 'top',
                 overlayX: 'end',
+                overlayY: 'top',
+                offsetX: event.offsetX,
+                offsetY: event.offsetY
+            }, {
+                originX: 'start',
+                originY: 'top',
+                overlayX: 'start',
+                overlayY: 'bottom',
+                offsetX: event.offsetX,
+                offsetY: event.offsetY
+            },
+            {
+                originX: 'start',
+                originY: 'top',
+                overlayX: 'start',
                 overlayY: 'bottom',
                 offsetX: event.offsetX,
                 offsetY: event.offsetY
