@@ -3,6 +3,6 @@ export class ContextMenu {
     title: String;
     callback: Function;
     groupPermission?: [number];
-    display?: Boolean;
+    display?: Boolean | Function;
     children?: [ContextMenu]
 }

@@ -19,7 +19,7 @@ export class StartPageComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        if(this.fromRouter) {
+        if (this.fromRouter) {
             this.menus = this.menuService.startMenu;
         }
     }

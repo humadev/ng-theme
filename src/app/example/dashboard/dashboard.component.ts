@@ -20,6 +20,7 @@ import { DataSource } from '@angular/cdk/table';
 import { Observable } from 'rxjs';
 import { DataService } from './../data.service';
 import { map } from 'rxjs/operators';
+import { LayoutDirective } from '@angular/flex-layout';
 
 @Component({
   selector: 'hd-dashboard-example',
@@ -32,7 +33,7 @@ export class DashboardComponent implements OnInit {
       icon: 'list',
       title: 'List Mata Kuliah',
       callback: i => this.openDialog(),
-      display: true
+      display: e => this.display(e)
     },
     {
       icon: 'edit',
@@ -47,7 +48,7 @@ export class DashboardComponent implements OnInit {
           icon: 'list',
           title: 'List Mata Kuliah',
           callback: i => this.openDialog(),
-          display: true
+          display: (e) => this.display(e)
         },
         {
           icon: 'edit',
@@ -144,6 +145,12 @@ export class DashboardComponent implements OnInit {
       this.displayedColumns,
       this.search
     );
+  }
+
+  display(e) {
+      setTimeout(() => {
+          return true;
+      }, 10000);
   }
 
   edit(i) {

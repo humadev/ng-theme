@@ -57,12 +57,13 @@ import { intersection } from 'lodash-es';
   ]
 })
 export class ContextMenuPanelComponent implements AfterViewInit {
-  @Output() menuItemClicked = new EventEmitter();
-  @Input() menuItem: [ContextMenu];
-  height = new BehaviorSubject<number>(null);
-  width = new BehaviorSubject<number>(null);
+    @Output() menuItemClicked = new EventEmitter();
+    @Input() menuItem: [ContextMenu];
+    height = new BehaviorSubject<number>(null);
+    width = new BehaviorSubject<number>(null);
 
-  constructor(private _el: ElementRef) {}
+  constructor(private _el: ElementRef) {
+  }
 
   onClick(item) {
     this.menuItemClicked.emit(item);

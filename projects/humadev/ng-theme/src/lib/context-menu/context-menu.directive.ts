@@ -78,11 +78,12 @@ export class ContextMenuDirective {
     this.createPanel(event);
     this.addPanelItem();
     this.watchItemClick();
+    this.displayCallback();
     this.outsideListener();
   }
 
   private createPanel(event): void {
-      console.log(window);
+      console.log(event);
     const offsetX = event.offsetX;
     const offsetY = event.offsetY;
     this.fakeElement.getBoundingClientRect = (): ClientRect => ({
@@ -101,38 +102,25 @@ export class ContextMenuDirective {
     const availHeight = windowHeight - event.clientY;
       const positionStrategy = this.overlay
           .position()
-          .flexibleConnectedTo(this.ref).withPositions([{
-              originX: 'start',
-              originY: 'bottom',
-              overlayX: 'start',
-              overlayY: 'top',
-              offsetX: 0,
-              offsetY: 0
-          },
-          {
+          .flexibleConnectedTo(event.target).withPositions([{
               originX: 'start',
               originY: 'top',
-              overlayX: 'start',
+              overlayX: 'end',
               overlayY: 'bottom',
-          },
-          {
-              originX: 'start',
-              originY: 'bottom',
-              overlayX: 'start',
-              overlayY: 'top',
+              offsetX: event.offsetX,
+              offsetY: event.offsetY,
           }
         ]).withGrowAfterOpen(true).withViewportMargin(10).withFlexibleDimensions(true);
 
       const config: OverlayConfig = new OverlayConfig({
       positionStrategy: positionStrategy,
-      scrollStrategy: this.overlay.scrollStrategies.close(),
-      panelClass: 'contextmenu-overlay'
+      scrollStrategy: this.overlay.scrollStrategies.reposition()
     });
     this.overlayRef = this.overlay.create(config);
     this._service.setContextMenuOverlay(this.overlayRef);
     const contextMenu = new ComponentPortal(ContextMenuPanelComponent);
     this.panel = this.overlayRef.attach(contextMenu);
-    this.scroll.scrolled().subscribe(res => this.overlayRef.dispose());
+
     this.active = true;
   }
 
@@ -146,6 +134,14 @@ export class ContextMenuDirective {
         emitted.callback(this.menuID);
       }
     );
+  }
+
+  private displayCallback(): void {
+    this.menuItem.forEach(item => {
+        if (typeof item.display === 'function') {
+            item.display = item.display(this.menuID);
+        }
+    });
   }
 
   private outsideListener(): void {
