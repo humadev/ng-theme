@@ -5,8 +5,7 @@ import {
     EventEmitter,
     HostListener,
     Renderer2,
-    ElementRef,
-    ViewChild
+    ElementRef
 } from '@angular/core';
 import { ContextMenuPanelComponent } from './context-menu-panel.component';
 import { ContextMenu } from './context-menu';
@@ -14,8 +13,7 @@ import {
     Overlay,
     OverlayConfig,
     OverlayRef,
-    CdkOverlayOrigin,
-    CdkScrollable
+    CdkOverlayOrigin
 } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { ContextMenuService } from './context-menu.service';
@@ -27,8 +25,6 @@ export class ContextMenuDirective {
     @Output() hdContextMenu = new EventEmitter();
     @Input() menuID: any; // id dari row yg diklik kanan
     @Input() menuItem: [ContextMenu]; // data menu yg akan ditampikan, data ini sesuai dengan interface framework contextmenu
-    @ViewChild(CdkOverlayOrigin) _overlayOrigin: CdkOverlayOrigin;
-    @ViewChild('cdkScrollable') scroller: CdkScrollable;
     @Input() contextMenuOrigin: CdkOverlayOrigin;
     panel: any;
     clickWatcher$: any;
