@@ -31,7 +31,6 @@ import { intersection } from 'lodash-es';
         :host{
             max-height: 500px;
             overflow-y: scroll;
-            position: fixed !important;
             min-width: 200px;
             display: block;
             z-index:10;
