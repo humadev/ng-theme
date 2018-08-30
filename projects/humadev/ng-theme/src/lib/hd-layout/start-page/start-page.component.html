@@ -3,15 +3,20 @@
     fxLayout='row wrap'
     fxLayout.xs="column"
     fxLayoutAlign="start start"
-    fxLayoutAlign.xs="center start"
+    fxLayoutAlign.xs="stretch start"
+    fxLayoutGap.xs="10px"
     fxFlexFill>
   <ng-template ngFor let-menu [ngForOf]="menus" let-i="index">
     <a  class="item"
         [routerLink]="[menu.path]"
         *ngIf="menu.data.isMenu && checkGroupAccess(menu)"
-        fxFlex="20"
+        fxFlex.xl="15"
+        fxFlex.lg="20"
         fxFlex.md="25"
         fxFlex.sm="33"
+        fxFlex.xs="100"
+        fxFlexAlign="start"
+        fxFlexAlign.xs="center"
         >
       <img [src]="menu.data.icon">
       <span class='text'>{{menu.data.title}}</span>
