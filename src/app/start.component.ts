@@ -5,7 +5,7 @@ import { LayoutService } from '@humadev/ng-theme';
 @Component({
   selector: 'hd-start',
   template: `
-    <hd-main-toolbar titleImg="assets/logo.png" [showSidenavToggle]='false' theme='light'>
+    <hd-main-toolbar titleImg="assets/logo.png" [showSidenavToggle]='false' theme='light' class='mat-elevation-z4'>
         <!-- BEGIN: Topbar -->
         <hd-main-toolbar-right-menu>
             <li hd-main-toolbar-notification></li>

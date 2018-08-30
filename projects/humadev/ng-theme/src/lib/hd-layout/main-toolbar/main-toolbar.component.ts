@@ -70,7 +70,17 @@ export class MainToolbarComponent implements OnInit {
 
   ngOnInit() {
     this.layout.sidebarOpen.subscribe(open => {
-      this.sidenavOpen = open;
+        if(open) {
+            this.brandToggle = {
+                'toggler-right': false,
+                'toggler-left': true
+            };
+        } else {
+            this.brandToggle = {
+                'toggler-right': true,
+                'toggler-left': false
+            };
+        }
     });
     this.menuService.moduleActive.subscribe(res => {
       this.active = res;
@@ -83,7 +93,7 @@ export class MainToolbarComponent implements OnInit {
   }
 
   toggleSidenav() {
-    this.layout.sidebarOpen.next(this.sidenav);
+        this.layout.sidebarOpen.next(!this.layout.sidebarOpen.value);
   }
 
   onSidenavToggle() {

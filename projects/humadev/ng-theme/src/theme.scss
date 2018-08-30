@@ -1723,6 +1723,12 @@ hd-start-page .container{
     overflow: hidden !important;
 }
 
+.mat-sidenav-content {
+    top: 70px;
+    height: calc(100vh - 70px) !important;
+    padding-bottom: 20px;
+}
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 10px;

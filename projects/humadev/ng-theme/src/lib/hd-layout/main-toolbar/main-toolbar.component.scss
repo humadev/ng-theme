@@ -20,12 +20,11 @@
 }
 
 :host {
-  -webkit-box-shadow: 0 1px 15px 1px rgba(113, 106, 202, 0.1);
-  -moz-box-shadow: 0 1px 15px 1px rgba(113, 106, 202, 0.1);
-  box-shadow: 0 1px 15px 1px rgba(113, 106, 202, 0.1);
   overflow: hidden;
   z-index: 101;
   display: flex;
+  position: fixed;
+  width: 100%;
 }
 
 .toolbar-brand {
@@ -87,7 +86,7 @@
       -o-transition: all 0.4s ease;
       transition: all 0.4s ease;
       span {
-        background: #5d5f77;
+        background: #2a61ac;
         display: block;
         position: absolute;
         top: 20px;
@@ -113,11 +112,10 @@
       }
       span::before,
       span::after {
-        background: #5d5f77;
+        background: #2a61ac;
         position: absolute;
         display: block;
         left: 0;
-        width: 100%;
         height: 1px;
         min-height: 1px;
         content: '';
@@ -325,16 +323,11 @@
     -moz-box-shadow: 0px 1px 15px 1px rgba(113, 106, 202, 0.1);
     box-shadow: 0px 1px 15px 1px rgba(113, 106, 202, 0.1);
   }
-  :host {
-    -webkit-box-shadow: 0px 1px 15px 1px rgba(113, 106, 202, 0.1);
-    -moz-box-shadow: 0px 1px 15px 1px rgba(113, 106, 202, 0.1);
-    box-shadow: 0px 1px 15px 1px rgba(113, 106, 202, 0.1);
-  }
 }
 
 @media (max-width: 992px) {
   :host {
-    height: 60px !important;
+    height: 70px !important;
   }
   :host .m-header__nav {
     top: -100%;
@@ -365,7 +358,7 @@
   }
   .m-header--fixed-mobile.m-header--fixed-mobile-hidable.m-header--show
     .m-header {
-    height: 60px;
+    height: 70px;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
@@ -376,17 +369,11 @@
     -ms-transform: translateY(0);
     -o-transform: translateY(0);
     transform: translateY(0);
-  }
-  .m-header--fixed-mobile .m-header .m-header-head {
-    -webkit-box-shadow: 0px 1px 15px 1px rgba(113, 106, 202, 0.1);
-    -moz-box-shadow: 0px 1px 15px 1px rgba(113, 106, 202, 0.1);
-    box-shadow: 0px 1px 15px 1px rgba(113, 106, 202, 0.1);
-  }
+    }
 
   .toolbar-brand{
-      height: 60px;
+      height: 70px;
       .toggler {
-        padding: 8px 10px;
         cursor: pointer;
       }
   }
