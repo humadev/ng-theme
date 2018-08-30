@@ -48,14 +48,10 @@
                   <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
                   <mat-row *cdkRowDef="let row; columns: displayedColumns; let i=index" hdContextMenu [menuID]='i' [menuItem]='cmItem' cdk-overlay-origin [contextMenuOrigin]="cdkOverlayOrigin"></mat-row>
             </mat-table>
+      </mat-card-content>
+      <mat-card-footer>
             <mat-paginator #paginator [pageSizeOptions]="[5, 10, 25, 100]" [length]="rows.tableData.value.length" [pageSize]="10">
             </mat-paginator>
-      </mat-card-content>
-      <mat-card-actions align="start">
-            <button mat-raised-button class="hd-button primary">Action2</button>
-      </mat-card-actions>
-      <mat-card-footer>
-            Footer
       </mat-card-footer>
 </mat-card>
 <mat-card ngClass="hd-card" id="print-section" [@slideToUp]="">

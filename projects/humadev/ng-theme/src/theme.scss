@@ -833,6 +833,7 @@ mat-card.hd-card{
       max-width: 100%;
       margin:0;
       padding:0;
+      margin-bottom: 10px;
       mat-card-header{
             padding:10px;
             margin:0;
@@ -873,6 +874,8 @@ mat-card.hd-card{
             min-height: 40vh;
             &.table-content{
                   padding:0 !important;
+                  width: 100%;
+                  overflow-x: scroll;
             }
       }
 
@@ -900,6 +903,9 @@ mat-card.hd-card{
             display: block;
             padding:20px;
             width: auto;
+            mat-paginator{
+                background: none;
+            }
       }
 }
 
@@ -1718,7 +1724,8 @@ hd-start-page .container{
 }
 
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 8px;
+    height: 10px;
 }
  
 ::-webkit-scrollbar-track {
