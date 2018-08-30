@@ -1,17 +1,12 @@
 import { LayoutService } from '../../services/layout.service';
-import { CdkOverlayOrigin } from '@angular/cdk/overlay';
 import {
   Component,
   Input,
   Output,
   EventEmitter,
-  OnInit,
-  ViewChild,
-  ElementRef,
-  Renderer2
+  OnInit
 } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
-import { Router } from '@angular/router';
 import {
   BreakpointObserver,
   BreakpointState,
@@ -46,8 +41,6 @@ export class MainToolbarComponent implements OnInit {
   titleImg: string;
   @Input()
   theme: 'default' | 'dark' | 'light' = 'dark';
-  @ViewChild('mainMenu')
-  menu: CdkOverlayOrigin;
   active;
   accountOpen = false;
   notificationOpen = false;
@@ -71,10 +64,7 @@ export class MainToolbarComponent implements OnInit {
 
   constructor(
     private menuService: MenuService,
-    private renderer: Renderer2,
-    private elRef: ElementRef,
     private layout: LayoutService,
-    private router: Router,
     private breakpointObserver: BreakpointObserver
   ) {}
 
@@ -93,16 +83,7 @@ export class MainToolbarComponent implements OnInit {
   }
 
   toggleSidenav() {
-    // if (this.sidenav) {
-    //   this.brandToggle['toggler-right'] = true;
-    //   this.brandToggle['toggler-left'] = false;
-    // } else {
-    //   this.brandToggle['toggler-right'] = false;
-    //   this.brandToggle['toggler-left'] = true;
-    // }
-    // this.sidenav = !this.sidenav;
     this.layout.sidebarOpen.next(this.sidenav);
-    // this.brandClass.minimize = false;
   }
 
   onSidenavToggle() {

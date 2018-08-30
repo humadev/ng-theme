@@ -12,8 +12,13 @@ export class LayoutService {
     sidebarOpen = new BehaviorSubject<boolean>(true);
     closeOverlay = new BehaviorSubject<boolean>(false);
     showNotification = new BehaviorSubject<boolean>(false);
+    state = localStorage.getItem('humadev-theme');
 
     constructor() {
+        // if(this.state) {
+        //     const s = JSON.parse(this.state);
+        //     this.sidebarOpen.next(s.sidebarOpen);
+        // }
         this.closeOverlay.subscribe((res) => {
             if (res) {
                 this.closeOverlay.next(false);

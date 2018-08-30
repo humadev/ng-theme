@@ -1,6 +1,18 @@
-<div class="start-menu">
+<div 
+    class="start-menu"
+    fxLayout='row wrap'
+    fxLayout.xs="column"
+    fxLayoutAlign="start start"
+    fxLayoutAlign.xs="center start"
+    fxFlexFill>
   <ng-template ngFor let-menu [ngForOf]="menus" let-i="index">
-    <a class="item" [routerLink]="[menu.path]" *ngIf="menu.data.isMenu && checkGroupAccess(menu)">
+    <a  class="item"
+        [routerLink]="[menu.path]"
+        *ngIf="menu.data.isMenu && checkGroupAccess(menu)"
+        fxFlex="20"
+        fxFlex.md="25"
+        fxFlex.sm="33"
+        >
       <img [src]="menu.data.icon">
       <span class='text'>{{menu.data.title}}</span>
       <span class='description'>{{menu.data.description}}</span>

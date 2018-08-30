@@ -1,3 +1,4 @@
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
@@ -60,7 +61,8 @@ import { MainToolbarStartShortcutComponent } from './main-toolbar/main-toolbar-s
     OverlayModule,
     PortalModule,
     MatTabsModule,
-    MatDialogModule
+    MatDialogModule,
+    FlexLayoutModule
   ],
   exports: [
     LayoutComponent,

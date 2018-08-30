@@ -1,9 +1,13 @@
 <button mat-icon-button color='warn' mat-dialog-close>
     <mat-icon aria-label="tutup menu ini">cancel</mat-icon>
 </button>
-<div class="start-menu" fxLayout fxLayout.xs="column" fxLayoutAlign.xs='center'>
+<div class="start-menu" fxLayout='row wrap' fxLayout.xs="column" fxLayoutAlign="space-between" fxFlexFill>
     <ng-template ngFor let-menu [ngForOf]="menus" let-i="index">
-        <a class="item" [routerLink]="[menu.path]" *ngIf="menu.data.isMenu && checkGroupAccess(menu)" (click)="onClick($event)">
+        <a  class="item"
+            [routerLink]="[menu.path]"
+            *ngIf="menu.data.isMenu && checkGroupAccess(menu)"
+            (click)="onClick($event)"
+            fxFlex="20">
         <img [src]="menu.data.icon">
         <span class='text'>{{menu.data.title}}</span>
         <span class='description'>{{menu.data.description}}</span>
