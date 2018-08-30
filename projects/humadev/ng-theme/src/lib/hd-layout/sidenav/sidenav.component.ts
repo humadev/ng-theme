@@ -79,8 +79,10 @@ export class SidenavComponent implements OnInit {
     this.layoutService.sidebarOpen.subscribe(open => {
       if (open) {
         this.sidenav.open();
+        this.opened = true;
       } else {
         this.sidenav.close();
+        this.opened = false;
       }
     });
     this.layoutService.topProgressBar.subscribe(

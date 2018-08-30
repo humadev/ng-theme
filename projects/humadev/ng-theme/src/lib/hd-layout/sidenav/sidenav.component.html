@@ -2,7 +2,7 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav fixedInViewport='true' class="m-grid__item m-aside-left m-aside-left--skin-dark" [attr.role]="isHandset
 ? 'dialog' : 'navigation'"
-    [mode]="(isHandset | async)!.matches ? 'over' : 'side'" [opened]="!(isHandset | async)!.matches || opened">
+    [mode]="(isHandset | async)!.matches ? 'over' : 'side'" [opened]="!(isHandset | async)!.matches && opened">
     <div class="toolbar-brand">
       <div class="logo">
         <a routerLink="">

@@ -15,10 +15,21 @@ export class LayoutService {
     state = localStorage.getItem('humadev-theme');
 
     constructor() {
-        // if(this.state) {
-        //     const s = JSON.parse(this.state);
-        //     this.sidebarOpen.next(s.sidebarOpen);
-        // }
+        if (this.state) {
+            const s = JSON.parse(this.state);
+            this.sidebarOpen.next(s.sidebarOpen);
+        } else {
+            const s = {
+                sidebarOpen: true
+            }
+            localStorage.setItem('humadev-theme', JSON.stringify(s));
+        }
+        this.sidebarOpen.subscribe(isOpen => {
+            const s = {
+                sidebarOpen: isOpen
+            }
+            localStorage.setItem('humadev-theme', JSON.stringify(s));
+        });
         this.closeOverlay.subscribe((res) => {
             if (res) {
                 this.closeOverlay.next(false);
