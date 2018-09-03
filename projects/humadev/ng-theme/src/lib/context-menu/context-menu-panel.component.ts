@@ -17,7 +17,7 @@ import { intersection } from 'lodash-es';
     <div class="hd-context-menu-panel"
       fxLayout="column">
         <ng-template ngFor let-item [ngForOf]="menuItem">
-            <a mat-button *ngIf="item.display !== false && checkGroupAccess(item.groupPermission)"
+            <a mat-button *ngIf="item.displayCallback !== false && checkGroupAccess(item.groupPermission)"
                 (click)='onClick(item)'>
                     <mat-icon style="width:15%; font-size: 16px; height: auto">{{item.icon}}</mat-icon>
                     <div style="display: inline-block; width:75%">{{item.title}}</div>

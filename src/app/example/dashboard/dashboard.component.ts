@@ -33,40 +33,31 @@ export class DashboardComponent implements OnInit {
       icon: 'list',
       title: 'List Mata Kuliah',
       callback: i => this.openDialog(),
-      display: e => this.display(e)
+      display: (e) => { return true }
     },
     {
       icon: 'edit',
       title: 'Edit',
       callback: i => this.edit(i),
-      groupPermission: {
-        permissions: [0],
-        groups: [2]
-      },
+        display: (e) => this.display(e),
       children: [
         {
           icon: 'list',
           title: 'List Mata Kuliah',
           callback: i => this.openDialog(),
-          display: (e) => this.display(e)
+          display: (e) => { return true }
         },
         {
           icon: 'edit',
           title: 'Edit',
           callback: i => this.edit(i),
-          groupPermission: {
-            permissions: [0],
-            groups: [0]
-          }
+            display: (e) => this.display(e)
         },
         {
           icon: 'delete',
           title: 'Delete',
           callback: i => this.delete(i),
-          groupPermission: {
-            permissions: [0],
-            groups: [0]
-          }
+        display: (e) => this.display(e)
         }
       ]
     },
@@ -148,9 +139,12 @@ export class DashboardComponent implements OnInit {
   }
 
   display(e) {
-      setTimeout(() => {
-          return true;
-      }, 10000);
+      console.log(e);
+      if (e % 2 === 0) {
+        return true;
+      } else {
+          return false;
+      }
   }
 
   edit(i) {

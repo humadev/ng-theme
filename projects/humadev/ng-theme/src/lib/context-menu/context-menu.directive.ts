@@ -52,13 +52,12 @@ export class ContextMenuDirective {
             });
         }
         this._service.destroyAllRef();
-
+        this.displayCallback();
         this._service.setRef(this.ref);
         this.render.addClass(this.ref.nativeElement, 'hd-contextmenu-active'); // coloring row with class
         this.createPanel(event);
         this.addPanelItem();
         this.watchItemClick();
-        this.displayCallback();
         this.outsideListener();
     }
 
@@ -122,9 +121,13 @@ export class ContextMenuDirective {
     }
 
     private displayCallback(): void {
-        this.menuItem.forEach(item => {
+        this.menuItem.forEach((item, i) => {
             if (typeof item.display === 'function') {
-                item.display = item.display(this.menuID);
+                this.menuItem[i].displayCallback = item.display(this.menuID);
+            } else if (typeof item.display === 'boolean') {
+                this.menuItem[i].displayCallback = item.display;
+            } else {
+                this.menuItem[i].displayCallback = true;
             }
         });
     }
