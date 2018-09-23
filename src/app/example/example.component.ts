@@ -4,14 +4,13 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'hd-example',
   template: `
-        <hd-sidenav #sidenav titleImg="assets/logo.png">
-            <hd-main-toolbar titleImg="assets/logo.png" class='mat-elevation-z4'>
+        <hd-main-toolbar titleImg="assets/logo.png" class='mat-elevation-z4'>
               <!-- BEGIN: Topbar -->
-              <hd-main-toolbar-left-menu></hd-main-toolbar-left-menu>
               <hd-main-toolbar-right-menu>
                   <!--<li>
                       <button (click)="_ls.showNotification.next(true)">test</button>
                   </li> -->
+                    <li hd-main-toolbar-start-shortcut></li>
                     <li hd-main-toolbar-notification>
                           <mat-tab-group>
                                 <mat-tab label="Alert" class="notification-tab">
@@ -59,7 +58,8 @@ import { Component, OnInit } from '@angular/core';
               </hd-main-toolbar-right-menu>
               <!-- END: Topbar -->
           </hd-main-toolbar>
-          <div class='hd-page'>
+        <hd-sidenav #sidenav titleImg="assets/logo.png">
+          <div class='hd-page' cdk-scrollable>
             <hd-page-toolbar #pagebar></hd-page-toolbar>
              <div class="hd-page-content">
                 <router-outlet></router-outlet>

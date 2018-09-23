@@ -1,8 +1,14 @@
+class GroupPermission {
+  permissions: [number];
+  groups:[number];
+}
+
 export class ContextMenu {
     icon: String;
     title: String;
     callback: Function;
-    groupPermission?: [number];
-    display?: Boolean;
-    children?: [ContextMenu]
+    groupPermission?: GroupPermission;
+    display?: Boolean | Function;
+    displayCallback?: Boolean = true;
+    children?: [ContextMenu];
 }

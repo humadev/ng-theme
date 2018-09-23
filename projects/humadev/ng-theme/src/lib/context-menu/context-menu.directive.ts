@@ -1,152 +1,145 @@
-import { LayoutService } from '../services/layout.service';
 import {
-  Directive,
-  Input,
-  Output,
-  EventEmitter,
-  HostListener,
-  Renderer2,
-  ElementRef,
-  ApplicationRef,
-  ViewChild,
-  ViewContainerRef
+    Directive,
+    Input,
+    Output,
+    EventEmitter,
+    HostListener,
+    Renderer2,
+    ElementRef
 } from '@angular/core';
 import { ContextMenuPanelComponent } from './context-menu-panel.component';
 import { ContextMenu } from './context-menu';
 import {
-  Overlay,
-  OverlayConfig,
-  OverlayRef,
-  CdkOverlayOrigin
+    Overlay,
+    OverlayConfig,
+    OverlayRef,
+    CdkOverlayOrigin
 } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
-import { Observable } from 'rxjs';
 import { ContextMenuService } from './context-menu.service';
 
 @Directive({
-  selector: '[hdContextMenu]'
+    selector: '[hdContextMenu]'
 })
 export class ContextMenuDirective {
-  @Output() hdContextMenu = new EventEmitter();
-  @Input() menuID: any; // id dari row yg diklik kanan
-  @Input() menuItem: [ContextMenu]; // data menu yg akan ditampikan, data ini sesuai dengan interface framework contextmenu
-  @ViewChild(CdkOverlayOrigin) _overlayOrigin: CdkOverlayOrigin;
-  @Input() contextMenuOrigin: CdkOverlayOrigin;
-  panel: any;
-  clickWatcher$: any;
-  overlayRef: OverlayRef;
-  active = false;
-  private fakeElement: any = {
-    getBoundingClientRect: (): ClientRect => ({
-      bottom: 0,
-      height: 0,
-      left: 0,
-      right: 0,
-      top: 0,
-      width: 0
-    })
-  };
+    @Output() hdContextMenu = new EventEmitter();
+    @Input() menuID: any; // id dari row yg diklik kanan
+    @Input() menuItem: [ContextMenu]; // data menu yg akan ditampikan, data ini sesuai dengan interface framework contextmenu
+    @Input() contextMenuOrigin: CdkOverlayOrigin;
+    panel: any;
+    clickWatcher$: any;
+    overlayRef: OverlayRef;
+    active = false;
 
-  constructor(
-    private ref: ElementRef,
-    private render: Renderer2,
-    public overlay: Overlay,
-    private _service: ContextMenuService
-  ) {
-    render.setStyle(ref.nativeElement, 'cursor', 'context-menu'); // add context-menu cursor to element used this directive
-  }
-
-  @HostListener('contextmenu', ['$event'])
-  onContextMenu(event: MouseEvent): void {
-    event.preventDefault();
-    event.stopPropagation();
-    this._service.closeAllContextMenus();
-    const refs = this._service.getRef();
-    if (refs) {
-      refs.forEach((ref, index) => {
-        this.render.removeClass(ref.nativeElement, 'hd-contextmenu-active');
-      });
+    constructor(
+        private ref: ElementRef,
+        private render: Renderer2,
+        public overlay: Overlay,
+        private _service: ContextMenuService
+    ) {
+        render.setStyle(ref.nativeElement, 'cursor', 'context-menu'); // add context-menu cursor to element used this directive
     }
-    this._service.destroyAllRef();
 
-    this._service.setRef(this.ref);
-    this.render.addClass(this.ref.nativeElement, 'hd-contextmenu-active'); // coloring row with class
-    this.createPanel(event);
-    this.addPanelItem();
-    this.watchItemClick();
-    this.outsideListener();
-  }
+    @HostListener('contextmenu', ['$event'])
+    onContextMenu(event: MouseEvent): void {
+        event.preventDefault();
+        event.stopPropagation();
+        this._service.closeAllContextMenus();
+        const refs = this._service.getRef();
+        if (refs) {
+            refs.forEach((ref, index) => {
+                this.render.removeClass(ref.nativeElement, 'hd-contextmenu-active');
+            });
+        }
+        this._service.destroyAllRef();
+        this.displayCallback();
+        this._service.setRef(this.ref);
+        this.render.addClass(this.ref.nativeElement, 'hd-contextmenu-active'); // coloring row with class
+        this.createPanel(event);
+        this.addPanelItem();
+        this.watchItemClick();
+        this.outsideListener();
+    }
 
-  private createPanel(event): void {
-    const offsetX = event.offsetX;
-    const offsetY = event.offsetY;
-    this.fakeElement.getBoundingClientRect = (): ClientRect => ({
-      bottom: event.clientY,
-      height: 0,
-      left: event.clientX,
-      right: event.clientX,
-      top: event.clientY,
-      width: 0
-    });
-    const positionStrategy = this.overlay
-      .position()
-      .connectedTo(
-        new ElementRef(this.fakeElement),
-        { originX: 'start', originY: 'bottom' },
-        { overlayX: 'start', overlayY: 'top' }
-      )
-      .withFallbackPosition(
-        { originX: 'start', originY: 'top' },
-        { overlayX: 'start', overlayY: 'bottom' }
-      )
-      .withFallbackPosition(
-        { originX: 'end', originY: 'top' },
-        { overlayX: 'start', overlayY: 'top' }
-      )
-      .withFallbackPosition(
-        { originX: 'start', originY: 'top' },
-        { overlayX: 'end', overlayY: 'top' }
-      )
-      .withFallbackPosition(
-        { originX: 'end', originY: 'center' },
-        { overlayX: 'start', overlayY: 'center' }
-      )
-      .withFallbackPosition(
-        { originX: 'start', originY: 'center' },
-        { overlayX: 'end', overlayY: 'center' }
-      );
-    const config = new OverlayConfig({
-      positionStrategy: positionStrategy,
-      scrollStrategy: this.overlay.scrollStrategies.close(),
-      panelClass: 'contextmenu-overlay'
-    });
-    this.overlayRef = this.overlay.create(config);
-    this._service.setContextMenuOverlay(this.overlayRef);
-    const contextMenu = new ComponentPortal(ContextMenuPanelComponent);
-    this.panel = this.overlayRef.attach(contextMenu);
-    this.active = true;
-  }
+    private createPanel(event): void {
+        const positionStrategy = this.overlay
+            .position()
+            .flexibleConnectedTo(event.target).withPositions([{
+                originX: 'start',
+                originY: 'top',
+                overlayX: 'start',
+                overlayY: 'top',
+                offsetX: event.offsetX,
+                offsetY: event.offsetY
+            }, {
+                originX: 'start',
+                originY: 'top',
+                overlayX: 'end',
+                overlayY: 'top',
+                offsetX: event.offsetX,
+                offsetY: event.offsetY
+            }, {
+                originX: 'start',
+                originY: 'top',
+                overlayX: 'start',
+                overlayY: 'bottom',
+                offsetX: event.offsetX,
+                offsetY: event.offsetY
+            },
+            {
+                originX: 'start',
+                originY: 'top',
+                overlayX: 'start',
+                overlayY: 'bottom',
+                offsetX: event.offsetX,
+                offsetY: event.offsetY
+            }
+            ]).withGrowAfterOpen(true).withViewportMargin(10).withFlexibleDimensions(true);
 
-  private addPanelItem(): void {
-    this.panel.instance.menuItem = this.menuItem;
-  }
+        const config: OverlayConfig = new OverlayConfig({
+            positionStrategy: positionStrategy,
+            scrollStrategy: this.overlay.scrollStrategies.close()
+        });
+        this.overlayRef = this.overlay.create(config);
+        this._service.setContextMenuOverlay(this.overlayRef);
+        const contextMenu = new ComponentPortal(ContextMenuPanelComponent);
+        this.panel = this.overlayRef.attach(contextMenu);
 
-  private watchItemClick(): void {
-    this.clickWatcher$ = this.panel.instance.menuItemClicked.subscribe(
-      emitted => {
-        emitted.callback(this.menuID);
-      }
-    );
-  }
+        this.active = true;
+    }
 
-  private outsideListener(): void {
-    this.render.listen('document', 'click', event => {
-      if (event.type === 'click' && event.button === 2) {
-        return;
-      }
-      this._service.closeAllContextMenus();
-      this.render.removeClass(this.ref.nativeElement, 'hd-contextmenu-active');
-      this.active = false;
-    });
-  }
+    private addPanelItem(): void {
+        this.panel.instance.menuItem = this.menuItem;
+    }
+
+    private watchItemClick(): void {
+        this.clickWatcher$ = this.panel.instance.menuItemClicked.subscribe(
+            emitted => {
+                emitted.callback(this.menuID);
+            }
+        );
+    }
+
+    private displayCallback(): void {
+        this.menuItem.forEach((item, i) => {
+            if (typeof item.display === 'function') {
+                this.menuItem[i].displayCallback = item.display(this.menuID);
+            } else if (typeof item.display === 'boolean') {
+                this.menuItem[i].displayCallback = item.display;
+            } else {
+                this.menuItem[i].displayCallback = true;
+            }
+        });
+    }
+
+    private outsideListener(): void {
+        this.render.listen('document', 'click', event => {
+            if (event.type === 'click' && event.button === 2) {
+                return;
+            }
+            this._service.closeAllContextMenus();
+            this.render.removeClass(this.ref.nativeElement, 'hd-contextmenu-active');
+            this.active = false;
+        });
+    }
 }

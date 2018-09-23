@@ -1,5 +1,9 @@
-<a class='menu-item' *ngIf="menu.children && menu.children.length > 0; else noChildItem" (click)="parentOpen(index)" [ngClass]="{'active':childrenAndActive(menu)}">
-  <i [class]="'icon ' + menu.data.icon"></i>
+<a class='menu-item'
+    *ngIf="menu.children && menu.children.length > 0; else noChildItem"
+    (click)="parentOpen(index)"
+    [ngClass]="{'active':childrenAndActive(menu)}"
+    routerLinkActive="menu-item-active">
+  <mat-icon class="icon">{{menu.data.icon}}</mat-icon>
   <span class="text">
     {{menu.data.name}}
   </span>
@@ -7,7 +11,7 @@
 </a>
 <ng-template #noChildItem>
   <a class='menu-item no-child' [routerLink]="menu?.path" routerLinkActive="menu-item-active" routerLinkActiveOptions="{ exact: true }">
-    <i [class]="'icon ' + menu.data.icon"></i>
+    <mat-icon class="icon">{{menu.data.icon}}</mat-icon>
     <span class="text">
       {{menu.data.name}}
     </span>

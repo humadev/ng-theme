@@ -2,11 +2,6 @@
   background: white;
   .start-menu {
     padding: 20px;
-    flex: 1 1 auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: start;
     text-align: center;
     .item {
       display: inline-block;
@@ -18,7 +13,6 @@
       text-align: center;
       vertical-align: middle;
       height: 200px;
-      width: 25%;
       text-decoration: none;
       .text {
         display: block;
@@ -70,4 +64,11 @@
   padding: 10px;
   box-shadow: 0 1px 15px 1px rgba(113, 106, 202, 0.1);
   background: white;
+}
+
+button{
+    position: fixed;
+    .mat-icon{
+        font-size: 20px;
+    }
 }

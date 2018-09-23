@@ -791,8 +791,6 @@ mat-sidenav.hd-sidenav{
 //page
 div.hd-page{
       padding:20px;
-      height: calc(100vh - 70px);
-      overflow-y: scroll;
 }
 
 /* Style the list */
@@ -835,6 +833,7 @@ mat-card.hd-card{
       max-width: 100%;
       margin:0;
       padding:0;
+      margin-bottom: 10px;
       mat-card-header{
             padding:10px;
             margin:0;
@@ -875,6 +874,8 @@ mat-card.hd-card{
             min-height: 40vh;
             &.table-content{
                   padding:0 !important;
+                  width: 100%;
+                  overflow-x: scroll;
             }
       }
 
@@ -902,6 +903,9 @@ mat-card.hd-card{
             display: block;
             padding:20px;
             width: auto;
+            mat-paginator{
+                background: none;
+            }
       }
 }
 
@@ -938,7 +942,6 @@ hd-menu-panel{
 
 .mat-dialog-container{
       padding:0 !important;
-      min-width: 400px;
 }
 
 [mat-dialog-title]{
@@ -1720,8 +1723,15 @@ hd-start-page .container{
     overflow: hidden !important;
 }
 
+.mat-sidenav-content {
+    top: 70px;
+    height: calc(100vh - 70px) !important;
+    padding-bottom: 20px;
+}
+
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 8px;
+    height: 10px;
 }
  
 ::-webkit-scrollbar-track {
@@ -9116,4 +9126,13 @@ hd-start-page .container{
 
 input:-webkit-autofill {
   background-color: white !important;
+}
+
+@media(max-width: 922px) {
+  .table-content {
+    overflow-x: auto !important;
+  }
+  .mat-table {
+    min-width: 922px;
+  }
 }

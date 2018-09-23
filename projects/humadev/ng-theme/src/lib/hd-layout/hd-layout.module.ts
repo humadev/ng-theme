@@ -1,3 +1,4 @@
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
@@ -41,6 +42,7 @@ import { ProfileListComponent } from './main-toolbar/main-toolbar-profile/profil
 import { TimelineComponent } from './timeline/timeline.component';
 import { TimelineItemComponent } from './timeline/timeline-item/timeline-item.component';
 import { StartPageDialogComponent } from './start-page-dialog/start-page-dialog.component';
+import { MainToolbarStartShortcutComponent } from './main-toolbar/main-toolbar-start-shortcut/main-toolbar-start-shortcut.component';
 
 @NgModule({
   imports: [
@@ -59,7 +61,8 @@ import { StartPageDialogComponent } from './start-page-dialog/start-page-dialog.
     OverlayModule,
     PortalModule,
     MatTabsModule,
-    MatDialogModule
+    MatDialogModule,
+    FlexLayoutModule
   ],
   exports: [
     LayoutComponent,
@@ -81,7 +84,8 @@ import { StartPageDialogComponent } from './start-page-dialog/start-page-dialog.
     ProfileListComponent,
     TimelineComponent,
     TimelineItemComponent,
-    StartPageDialogComponent
+    StartPageDialogComponent,
+    MainToolbarStartShortcutComponent
   ],
   declarations: [
     StartPageDialogComponent,
@@ -104,7 +108,8 @@ import { StartPageDialogComponent } from './start-page-dialog/start-page-dialog.
     ProfileButtonComponent,
     ProfileListComponent,
     TimelineComponent,
-    TimelineItemComponent
+    TimelineItemComponent,
+    MainToolbarStartShortcutComponent
   ],
   entryComponents: [StartPageDialogComponent],
   providers: [MenuService, OverlayContainer, LayoutService]

@@ -5,12 +5,9 @@ import {
   Input,
   EventEmitter,
   Output,
-  ViewChild,
-  ElementRef,
-  AfterViewInit,
-  Renderer2
+  ViewChild
 } from '@angular/core';
-import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MenuService } from '../../services/menu.service';
 import {
@@ -36,7 +33,7 @@ import { MatSidenav } from '@angular/material';
   styleUrls: ['./sidenav.component.scss'],
   animations: [slideToRight()]
 })
-export class SidenavComponent implements OnInit, AfterViewInit {
+export class SidenavComponent implements OnInit {
   @Input()
   titleImg: string;
   @Input()
@@ -63,10 +60,7 @@ export class SidenavComponent implements OnInit, AfterViewInit {
   );
 
   constructor(
-    private render: Renderer2,
-    private ref: ElementRef,
     private router: Router,
-    private activeRoute: ActivatedRoute,
     private menuService: MenuService,
     public layoutService: LayoutService,
     private breakpointObserver: BreakpointObserver
@@ -85,32 +79,15 @@ export class SidenavComponent implements OnInit, AfterViewInit {
     this.layoutService.sidebarOpen.subscribe(open => {
       if (open) {
         this.sidenav.open();
+        this.opened = true;
       } else {
         this.sidenav.close();
+        this.opened = false;
       }
     });
     this.layoutService.topProgressBar.subscribe(
       progress => (this.progressBar = progress)
     );
-  }
-
-  ngAfterViewInit() {
-    // const content = this.ref.nativeElement.querySelector(
-    //   '.mat-sidenav-content'
-    // );
-    // this.layoutService.sidebarOpen.subscribe(open => {
-    //   this.render.addClass(content, 'animate-content');
-    //   if (open) {
-    //     this.render.setStyle(content, 'margin-left', '255px');
-    //   } else {
-    //     this.render.setStyle(content, 'margin-left', '70px');
-    //   }
-    // });
-    // this.isHandset.subscribe(res => {
-    //     if(res) {
-    //         this.render.setStyle(content, 'margin-left', '0');
-    //     }
-    // })
   }
 
   parentOpen(i: any) {
@@ -195,7 +172,7 @@ export class SidenavComponent implements OnInit, AfterViewInit {
     this.pageTitle.emit(item.name);
   }
 
-  checkGroupAccess(menu, asal = '') {
+  checkGroupAccess(menu) {
     if (
       menu &&
       menu.data &&

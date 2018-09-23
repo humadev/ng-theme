@@ -17,7 +17,7 @@ export class ContextMenuService {
   }
 
   public closeAllContextMenus(): void {
-    if (this.contextMenu) {
+    if (this.contextMenu.length > 0) {
       this.contextMenu.forEach((overlay, index) => {
         overlay.detach();
         overlay.dispose();

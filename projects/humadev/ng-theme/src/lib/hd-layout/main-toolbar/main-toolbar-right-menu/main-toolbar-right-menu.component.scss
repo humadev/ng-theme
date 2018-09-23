@@ -9,6 +9,7 @@
 
 .right-menu-wrapper{
     display: table-cell;
+    text-align: right;
     vertical-align: top;
     height: 100%;
     font-size: 14px;
@@ -32,4 +33,10 @@
     font-family: "Poppins";
     line-height: 1.5;
     color: #212529;
+}
+
+@media (max-width: 992px) {
+    :host {
+      width: 100%;
+    }
 }

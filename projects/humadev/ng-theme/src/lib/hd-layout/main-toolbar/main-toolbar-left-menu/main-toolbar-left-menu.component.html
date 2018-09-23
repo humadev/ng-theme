@@ -1,26 +1,3 @@
 <ul class="left-menu-list">
-  <li class="left-menu-item" (click)="clickMenu($event)" cdk-overlay-origin #mainMenu="cdkOverlayOrigin">
-    <a class="left-menu-link">
-      <i class="icon flaticon-grid-menu"></i>
-      <!-- <i class="arrow la la-angle-down"></i> -->
-      <!-- <i class="arrow la la-angle-right"></i> -->
-    </a>
-    <ng-template cdk-portal>
-      <div class="left-menu-dropdown" [@fadeUp]="">
-        <span class="arrow"></span>
-        <ul class="left-dropdown-list">
-          <li hd-left-menu-item *ngFor="let menu of startMenus">
-            <a routerLink="/{{menu.path}}" class="left-dropdown-link">
-              <i class="left-dropdown-link-icon">
-                <img [src]="menu.data.icon">
-              </i>
-              <span class="left-dropdown-link-text">
-                {{menu.data.title}}
-              </span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </ng-template>
-  </li>
+  <ng-content></ng-content>
 </ul>

@@ -33,7 +33,7 @@ const appRoutes: Routes = [
             permissions: [0],
             groups: [0]
           },
-          icon: 'flaticon-dashboard',
+          icon: 'dashboard',
           badge: '3'
         }
       },
@@ -46,7 +46,7 @@ const appRoutes: Routes = [
             permissions: [0],
             groups: [2]
           },
-          icon: 'flaticon-dashboard'
+          icon: 'dashboard'
         },
         children: [
           {
@@ -133,7 +133,7 @@ const appRoutes: Routes = [
             permissions: [0],
             groups: [0]
           },
-          icon: 'flaticon-dashboard'
+          icon: 'dashboard'
         },
         children: [
           {
