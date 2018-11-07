@@ -12,31 +12,11 @@ import { Component, OnInit } from '@angular/core';
                   </li> -->
                     <li hd-main-toolbar-start-shortcut></li>
                     <li hd-main-toolbar-notification>
-                          <mat-tab-group>
-                                <mat-tab label="Alert" class="notification-tab">
-                                      <hd-timeline>
-                                            <hd-timeline-item time="just now">12 new users registered</hd-timeline-item>
-                                            <hd-timeline-item time="just now">12 new users registered</hd-timeline-item>
-                                            <hd-timeline-item time="just now">12 new users registered</hd-timeline-item>
-                                      </hd-timeline>
-                                </mat-tab>
-                                <mat-tab label="Event">
-                                      <hd-timeline>
-                                            <hd-timeline-item time="just now">12 new users registered</hd-timeline-item>
-                                            <hd-timeline-item time="just now">12 new users registered</hd-timeline-item>
-                                            <hd-timeline-item time="just now">12 new users registered</hd-timeline-item>
-                                      </hd-timeline>
-                                </mat-tab>
-                                <mat-tab label="Logs">
-                                      <hd-timeline>
-                                            <div class="center middle">
-                                                  All caught up!
-                                                  <br>
-                                                  No new logs.
-                                            </div>
-                                      </hd-timeline>
-                                      </mat-tab>
-                                </mat-tab-group>
+                        <hd-timeline>
+                            <hd-timeline-item time="just now">12 new users registered</hd-timeline-item>
+                            <hd-timeline-item time="just now">12 new users registered</hd-timeline-item>
+                            <hd-timeline-item time="just now">12 new users registered</hd-timeline-item>
+                        </hd-timeline>
                     </li>
                   <li hd-main-toolbar-chat></li>
                   <li hd-main-toolbar-profile imgProfile="../../assets/user.jpg">
