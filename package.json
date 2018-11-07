@@ -41,8 +41,8 @@
   "peerDependencies": {},
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.10.0",
-    "@angular-devkit/build-ng-packagr": "~0.6.0",
-    "@angular/cli": "7.0.2",
+    "@angular-devkit/build-ng-packagr": "~0.10.0",
+    "@angular/cli": "7.0.4",
     "@angular/compiler-cli": "7.0.0",
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",

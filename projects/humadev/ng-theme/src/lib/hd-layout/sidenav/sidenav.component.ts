@@ -5,25 +5,14 @@ import {
   Input,
   EventEmitter,
   Output,
-  ViewChild
+  ViewChild,
+  ChangeDetectorRef
 } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { MenuService } from '../../services/menu.service';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/animations';
 import { slideToRight } from '../../animations/router.animation';
 import { intersection } from 'lodash-es';
-import {
-  BreakpointObserver,
-  BreakpointState,
-  Breakpoints
-} from '@angular/cdk/layout';
+import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material';
 
 @Component({
@@ -55,16 +44,18 @@ export class SidenavComponent implements OnInit {
   progressBar = false;
   @ViewChild('sidenav')
   sidenav: MatSidenav;
-  isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(
-    Breakpoints.Handset
-  );
-
+  mobileQuery: MediaQueryList;
+  private _mobileQueryListener: () => void;
   constructor(
     private router: Router,
     private menuService: MenuService,
     public layoutService: LayoutService,
-    private breakpointObserver: BreakpointObserver
+    media: MediaMatcher,
+    changeDetectorRef: ChangeDetectorRef
   ) {
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
     this.router.events.subscribe(() =>
       this.layoutService.topProgressBar.next(true)
     );

@@ -4,13 +4,15 @@ import {
   Input,
   Output,
   EventEmitter,
-  OnInit
+  OnInit,
+  ChangeDetectorRef
 } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import {
   BreakpointObserver,
   BreakpointState,
-  Breakpoints
+  Breakpoints,
+  MediaMatcher
 } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 
@@ -58,29 +60,33 @@ export class MainToolbarComponent implements OnInit {
   sidenav = true;
   @Output()
   minimize = new EventEmitter();
-  isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(
-    Breakpoints.Handset
-  );
+  mobileQuery: MediaQueryList;
+  private _mobileQueryListener: () => void;
 
   constructor(
     private menuService: MenuService,
     private layout: LayoutService,
-    private breakpointObserver: BreakpointObserver
-  ) {}
+    changeDetectorRef: ChangeDetectorRef,
+    media: MediaMatcher
+  ) {
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
+  }
 
   ngOnInit() {
     this.layout.sidebarOpen.subscribe(open => {
-        if(open) {
-            this.brandToggle = {
-                'toggler-right': false,
-                'toggler-left': true
-            };
-        } else {
-            this.brandToggle = {
-                'toggler-right': true,
-                'toggler-left': false
-            };
-        }
+      if (open) {
+        this.brandToggle = {
+          'toggler-right': false,
+          'toggler-left': true
+        };
+      } else {
+        this.brandToggle = {
+          'toggler-right': true,
+          'toggler-left': false
+        };
+      }
     });
     this.menuService.moduleActive.subscribe(res => {
       this.active = res;
@@ -93,7 +99,7 @@ export class MainToolbarComponent implements OnInit {
   }
 
   toggleSidenav() {
-        this.layout.sidebarOpen.next(!this.layout.sidebarOpen.value);
+    this.layout.sidebarOpen.next(!this.layout.sidebarOpen.value);
   }
 
   onSidenavToggle() {

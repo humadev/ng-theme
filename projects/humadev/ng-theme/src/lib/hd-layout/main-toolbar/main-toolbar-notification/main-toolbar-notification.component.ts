@@ -28,6 +28,8 @@ export class MainToolbarNotificationComponent implements OnInit {
   blink = false;
   @ViewChildren(TemplatePortalDirective)
   templatePortals: QueryList<Portal<any>>;
+  @Input()
+  count = 0;
 
   constructor(
     public overlay: Overlay,

@@ -1,6 +1,6 @@
 {
   "name": "@humadev/ng-theme",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "license": "MIT",
   "description": "simple theme to quick start angular 2+ project",
   "author": {
@@ -13,7 +13,7 @@
     "@angular/compiler": "^6.0.0 || ^7.0.*",
     "@angular/animations": "^6.0.0 || ^7.0.*",
     "@angular/cdk": "^6.*.* || ^7.0.*",
-    "@angular/flex-layout": "^7.0.*",
+    "@angular/flex-layout": "^7.0.0-beta.19",
     "@angular/forms": "^6.0.0 || ^7.0.*",
     "@angular/http": "^6.0.0 || ^7.0.*",
     "@angular/material": "^6.*.* || ^7.0.*",

@@ -16,16 +16,16 @@ import { Component, OnInit } from '@angular/core';
                           <mat-tab-group>
                                 <mat-tab label="Alert" class="notification-tab">
                                       <hd-timeline>
-                                            <hd-timeline-item badge='pending' time="just now">12 new users registered</hd-timeline-item>
-                                            <hd-timeline-item badge='pending' time="just now">12 new users registered</hd-timeline-item>
-                                            <hd-timeline-item badge='pending' time="just now">12 new users registered</hd-timeline-item>
+                                            <hd-timeline-item time="just now">12 new users registered</hd-timeline-item>
+                                            <hd-timeline-item time="just now">12 new users registered</hd-timeline-item>
+                                            <hd-timeline-item time="just now">12 new users registered</hd-timeline-item>
                                       </hd-timeline>
                                 </mat-tab>
                                 <mat-tab label="Event">
                                       <hd-timeline>
-                                            <hd-timeline-item badge='pending' time="just now">12 new users registered</hd-timeline-item>
-                                            <hd-timeline-item badge='pending' time="just now">12 new users registered</hd-timeline-item>
-                                            <hd-timeline-item badge='pending' time="just now">12 new users registered</hd-timeline-item>
+                                            <hd-timeline-item time="just now">12 new users registered</hd-timeline-item>
+                                            <hd-timeline-item time="just now">12 new users registered</hd-timeline-item>
+                                            <hd-timeline-item time="just now">12 new users registered</hd-timeline-item>
                                       </hd-timeline>
                                 </mat-tab>
                                 <mat-tab label="Logs">
