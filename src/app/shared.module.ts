@@ -11,7 +11,8 @@ import {
   MatCheckboxModule,
   MatSelectModule,
   MatProgressBarModule,
-  MatIconModule
+  MatIconModule,
+  MatListModule
 } from '@angular/material';
 
 @NgModule({
@@ -28,7 +29,8 @@ import {
     HdLayoutModule,
     MatProgressBarModule,
     HdContextMenuModule,
-    MatIconModule
+    MatIconModule,
+    MatListModule
   ],
   exports: [
     MatCardModule,
@@ -42,7 +44,8 @@ import {
     FlexLayoutModule,
     HdLayoutModule,
     MatProgressBarModule,
-    MatIconModule
+    MatIconModule,
+    MatListModule
   ]
 })
 export class SharedModule {}
