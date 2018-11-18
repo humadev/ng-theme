@@ -29,24 +29,21 @@ import { LayoutService } from '@humadev/ng-theme';
           name="Humadev"
           email="huma.elektro@gmail.com"
         >
-          <ul hd-profile-list>
-            <li
-              hd-profile-item
-              icon="icon flaticon-profile-1"
-              (click)="test($event)"
-            >
-              Profil Anda
-            </li>
-            <li hd-profile-item icon="icon flaticon-key" (click)="test($event)">
-              Ganti Password
-            </li>
-            <li hd-profile-separator></li>
-            <li hd-profile-button>
-              <a mat-raised-button color="primary" (click)="test($event)"
-                >Logout</a
-              >
-            </li>
-          </ul>
+          <mat-list>
+            <mat-list-item>
+              <mat-icon mat-list-icon>people</mat-icon>
+              <p mat-line>Profil anda</p>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon mat-list-icon>vpn_key</mat-icon>
+              <p mat-line>Ganti Password</p>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <mat-icon mat-list-icon>lock</mat-icon>
+              <p mat-line>Logout</p>
+            </mat-list-item>
+          </mat-list>
         </li>
       </hd-main-toolbar-right-menu>
       <!-- END: Topbar -->

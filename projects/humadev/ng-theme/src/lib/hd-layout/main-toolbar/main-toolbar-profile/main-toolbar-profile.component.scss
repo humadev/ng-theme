@@ -132,6 +132,7 @@
   -ms-border-radius: 6px 6px 0 0;
   -o-border-radius: 6px 6px 0 0;
   border-radius: 6px 6px 0 0;
+  border-bottom: thin solid rgba(0, 0, 0, 0.12);
   margin: 0;
   display: table;
   table-layout: fixed;
@@ -142,6 +143,7 @@
     vertical-align: middle;
     width: 70px;
     span.image-profile {
+      background-size: cover;
       display: block;
       width: 70px !important;
       height: 70px !important;
@@ -160,7 +162,6 @@
     vertical-align: middle;
     padding: 0 0 0 15px;
     .name {
-      color: white;
       display: block;
       padding: 0 0 0 0;
       font-size: 1.3rem;
@@ -168,7 +169,6 @@
       line-height: 1;
     }
     .email {
-      color: #d9d9d9;
       display: inline-block;
       padding: 6px 0 0 0;
       font-size: 1rem;
