@@ -1,5 +1,6 @@
 <!-- BEGIN: Header -->
 <!-- BEGIN: Brand -->
+<mat-progress-bar mode="indeterminate" *ngIf='loading'></mat-progress-bar>
 <div class="toolbar-brand">
   <div class="toggler" (click)='toggleSidenav()' *ngIf='showSidenavToggle'>
     <!-- BEGIN: Left Aside Minimize Toggle -->

@@ -379,6 +379,12 @@
   }
 }
 
+.mat-progress-bar {
+    z-index: 999;
+    position: fixed;
+    top: 0;
+}
+
 .mat-progress-bar .mat-progress-bar-element,
 .mat-progress-bar .mat-progress-bar-fill::after {
   height: 3px !important;

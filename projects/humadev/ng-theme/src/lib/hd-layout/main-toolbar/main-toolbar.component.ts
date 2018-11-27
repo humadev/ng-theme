@@ -58,6 +58,7 @@ export class MainToolbarComponent implements OnInit {
     'toggler-left': true
   };
   sidenav = true;
+  loading = false;
   @Output()
   minimize = new EventEmitter();
   mobileQuery: MediaQueryList;
@@ -75,6 +76,9 @@ export class MainToolbarComponent implements OnInit {
   }
 
   ngOnInit() {
+      this.layout.topProgressBar.subscribe(load => {
+          this.loading = load;
+      });
     this.layout.sidebarOpen.subscribe(open => {
       if (open) {
         this.brandToggle = {
