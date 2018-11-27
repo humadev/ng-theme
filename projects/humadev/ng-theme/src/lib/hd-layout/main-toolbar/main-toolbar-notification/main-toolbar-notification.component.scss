@@ -50,7 +50,6 @@
     color: #ad5beb;
     display: table-cell;
     height: 100%;
-    width: 35px;
     font-size: 1.4rem;
     animation-fill-mode: initial;
     text-decoration: none;
@@ -65,28 +64,6 @@
   }
   i {
     font-size: 1.5rem;
-  }
-  i:before {
-    font-weight: bold;
-    padding: 1px;
-    background: -webkit-linear-gradient(
-      180deg,
-      #ad5beb 25%,
-      #c678db 50%,
-      #da6ea9 75%,
-      #e76e92 100%
-    );
-    background: linear-gradient(
-      180deg,
-      #ad5beb 25%,
-      #c678db 50%,
-      #da6ea9 75%,
-      #e76e92 100%
-    );
-    background-clip: text;
-    text-fill-color: transparent;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 }
 

@@ -30,6 +30,8 @@ export class MainToolbarNotificationComponent implements OnInit {
   templatePortals: QueryList<Portal<any>>;
   @Input()
   count = 0;
+  hideBadge = true;
+  notificationIcon = 'notifications';
 
   constructor(
     public overlay: Overlay,
@@ -70,5 +72,16 @@ export class MainToolbarNotificationComponent implements OnInit {
     overlayRef.backdropClick().subscribe(() => {
       overlayRef.dispose();
     });
+  }
+
+  setBadge(count: number) {
+    if (count > 0) {
+      this.notificationIcon = 'notifications_active';
+      this.hideBadge = false;
+    } else {
+      this.notificationIcon = 'notifications';
+      this.hideBadge = true;
+    }
+    this.count = count;
   }
 }

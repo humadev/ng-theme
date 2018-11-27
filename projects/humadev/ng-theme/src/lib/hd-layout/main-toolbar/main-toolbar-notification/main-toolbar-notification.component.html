@@ -1,27 +1,16 @@
 <a class="right-menu-item-link" [matMenuTriggerFor]="menuNotifikasi">
   <span *ngIf="blink" class="notification-dot-blink m-animate-blink"></span>
   <span #shake class="right-menu-link-icon">
-    <i class="flaticon-music-2"></i>
+    <mat-icon
+      color="primary"
+      [matBadge]="count"
+      matBadgeColor="warn"
+      matBadgeSize="medium"
+      [matBadgeHidden]="hideBadge"
+      >{{ notificationIcon }}</mat-icon
+    >
   </span>
 </a>
 <mat-menu #menuNotifikasi="matMenu" class="mat-menu-notification">
   <ng-content></ng-content>
 </mat-menu>
-<!--
-  <ng-template cdk-portal>
-    <div class="notification-dropdown" [@fadeUp]="">
-      <span class="arrow" style="left: 58%"></span>
-      <div class="inner">
-        <div class="header" style="background: url(./assets/notification.jpg); background-size: cover;">
-          <span class="header-title">
-            {{count}} {{count > 0? 'New': ''}}
-          </span>
-          <span class="header-subtitle">
-            User Notifications
-          </span>
-        </div>
-        <ng-content></ng-content>
-      </div>
-    </div>
-  </ng-template>
--->

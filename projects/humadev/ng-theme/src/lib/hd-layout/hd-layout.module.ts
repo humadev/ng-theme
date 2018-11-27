@@ -12,7 +12,8 @@ import {
   MatSelectModule,
   MatProgressBarModule,
   MatTabsModule,
-  MatDialogModule
+  MatDialogModule,
+  MatBadgeModule
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
@@ -62,7 +63,8 @@ import { MainToolbarStartShortcutComponent } from './main-toolbar/main-toolbar-s
     PortalModule,
     MatTabsModule,
     MatDialogModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatBadgeModule
   ],
   exports: [
     LayoutComponent,

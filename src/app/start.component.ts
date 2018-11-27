@@ -13,7 +13,7 @@ import { LayoutService } from '@humadev/ng-theme';
     >
       <!-- BEGIN: Topbar -->
       <hd-main-toolbar-right-menu>
-        <li hd-main-toolbar-notification>
+        <li hd-main-toolbar-notification #notif>
           <div class="notification-header"><span>0 Notification</span></div>
           <mat-list>
             <mat-list-item>12 new users registered</mat-list-item>
@@ -25,7 +25,7 @@ import { LayoutService } from '@humadev/ng-theme';
         <li hd-main-toolbar-chat></li>
         <li
           hd-main-toolbar-profile
-          imgProfile="./assets/user.jpg"
+          imgProfile=""
           name="Humadev"
           email="huma.elektro@gmail.com"
         >
