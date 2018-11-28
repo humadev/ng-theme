@@ -45,7 +45,6 @@
     color: #ad5beb;
     display: table-cell;
     height: 100%;
-    width: 35px;
     font-size: 1.4rem;
     animation-fill-mode: initial;
     text-decoration: none;
@@ -65,6 +64,7 @@
     margin: 0 auto;
     span.image-profile {
       display: block;
+      border: thin solid lightgray;
       background-size: cover;
       vertical-align: middle;
       width: 45px !important;
@@ -76,7 +76,6 @@
       -ms-border-radius: 50%;
       -o-border-radius: 50%;
       border-radius: 50%;
-      border-style: none;
     }
   }
   i {
@@ -144,6 +143,7 @@
     width: 70px;
     span.image-profile {
       background-size: cover;
+      border: thin solid lightgray;
       display: block;
       width: 70px !important;
       height: 70px !important;
