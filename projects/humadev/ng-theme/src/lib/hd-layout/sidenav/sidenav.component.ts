@@ -152,7 +152,11 @@ export class SidenavComponent implements OnInit {
     } else {
       if (navItem.hasOwnProperty('data')) {
         if (navItem.data.hasOwnProperty('hidden')) {
-          hidden = navItem.data.hidden;
+            if (typeof navItem.data.hidden === 'boolean') {
+                hidden = navItem.data.hidden;
+            } else if (typeof navItem.data.hidden === 'function') {
+                hidden = navItem.data.hidden();
+            }
         }
       }
     }
