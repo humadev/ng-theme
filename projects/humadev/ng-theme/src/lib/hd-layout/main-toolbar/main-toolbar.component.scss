@@ -269,60 +269,6 @@
     backface-visibility: hidden;
     z-index: 999;
   }
-  .m-header .m-header-head {
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-  }
-  :host .m-header-head {
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    padding-left: 300px;
-  }
-  :host.minimize .m-header-head {
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    padding-left: 70px;
-  }
-  .m-header--fixed.m-header--fixed-hidable.m-header--hide .m-header {
-    height: 70px;
-    -webkit-transition: all 0.3s ease 0.5s;
-    -moz-transition: all 0.3s ease 0.5s;
-    -ms-transition: all 0.3s ease 0.5s;
-    -o-transition: all 0.3s ease 0.5s;
-    transition: all 0.3s ease 0.5s;
-    -webkit-transform: translateY(-100%);
-    -moz-transform: translateY(-100%);
-    -ms-transform: translateY(-100%);
-    -o-transform: translateY(-100%);
-    transform: translateY(-100%);
-  }
-  .m-header--fixed.m-header--fixed-hidable.m-header--show .m-header {
-    height: 70px;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    -webkit-transform: translateY(0);
-    -moz-transform: translateY(0);
-    -ms-transform: translateY(0);
-    -o-transform: translateY(0);
-    transform: translateY(0);
-  }
-  :host .m-header-head {
-    -webkit-box-shadow: 0px 1px 15px 1px rgba(113, 106, 202, 0.1);
-    -moz-box-shadow: 0px 1px 15px 1px rgba(113, 106, 202, 0.1);
-    box-shadow: 0px 1px 15px 1px rgba(113, 106, 202, 0.1);
-  }
 }
 
 @media (max-width: 992px) {
@@ -333,59 +279,21 @@
     top: -100%;
     position: relative;
   }
-  .m-header--fixed-mobile .m-header {
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    z-index: 101;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-  .m-header--fixed-mobile.m-header--fixed-mobile-hidable.m-header--hide
-    .m-header {
-    height: 60px;
-    -webkit-transition: all 0.3s ease 0.5s;
-    -moz-transition: all 0.3s ease 0.5s;
-    -ms-transition: all 0.3s ease 0.5s;
-    -o-transition: all 0.3s ease 0.5s;
-    transition: all 0.3s ease 0.5s;
-    -webkit-transform: translateY(-100%);
-    -moz-transform: translateY(-100%);
-    -ms-transform: translateY(-100%);
-    -o-transform: translateY(-100%);
-    transform: translateY(-100%);
-  }
-  .m-header--fixed-mobile.m-header--fixed-mobile-hidable.m-header--show
-    .m-header {
-    height: 70px;
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -ms-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-    -webkit-transform: translateY(0);
-    -moz-transform: translateY(0);
-    -ms-transform: translateY(0);
-    -o-transform: translateY(0);
-    transform: translateY(0);
-    }
 
-  .toolbar-brand{
-      height: 70px;
-      .toggler {
-        cursor: pointer;
-      }
+  .toolbar-brand {
+    height: 70px;
+    .toggler {
+      cursor: pointer;
+    }
   }
 }
 
 .mat-progress-bar {
-    z-index: 999;
-    position: fixed;
-    top: 0;
+  z-index: 999;
+  position: fixed;
+  top: 0;
 }
 
-.mat-progress-bar .mat-progress-bar-element,
-.mat-progress-bar .mat-progress-bar-fill::after {
-  height: 3px !important;
+.mat-progress-bar {
+  height: 2px !important;
 }
