@@ -30,6 +30,7 @@ export class MainToolbarNotificationComponent implements OnInit {
   templatePortals: QueryList<Portal<any>>;
   @Input()
   count = 0;
+    @Input()
   hideBadge = true;
   notificationIcon = 'notifications';
 
