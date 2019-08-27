@@ -25,7 +25,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example',
-    loadChildren: './example/example.module#ExampleModule',
+    loadChildren: () => import('./example/example.module').then(m => m.ExampleModule),
     data: {
       title: 'Example 1',
       description: 'menu untuk mengelola data example',
@@ -39,7 +39,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example2',
-    loadChildren: './example2/example2.module#Example2Module',
+    loadChildren: () => import('./example2/example2.module').then(m => m.Example2Module),
     data: {
       title: 'Example 2',
       description:
@@ -54,7 +54,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example2',
-    loadChildren: './example2/example2.module#Example2Module',
+    loadChildren: () => import('./example2/example2.module').then(m => m.Example2Module),
     data: {
       title: 'Example 2',
       description:
@@ -69,7 +69,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example2',
-    loadChildren: './example2/example2.module#Example2Module',
+    loadChildren: () => import('./example2/example2.module').then(m => m.Example2Module),
     data: {
       title: 'Example 2',
       description:
@@ -84,7 +84,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example2',
-    loadChildren: './example2/example2.module#Example2Module',
+    loadChildren: () => import('./example2/example2.module').then(m => m.Example2Module),
     data: {
       title: 'Example 2',
       description:
@@ -99,7 +99,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example2',
-    loadChildren: './example2/example2.module#Example2Module',
+    loadChildren: () => import('./example2/example2.module').then(m => m.Example2Module),
     data: {
       title: 'Example 2',
       description:
@@ -114,7 +114,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example2',
-    loadChildren: './example2/example2.module#Example2Module',
+    loadChildren: () => import('./example2/example2.module').then(m => m.Example2Module),
     data: {
       title: 'Example 2',
       description:
@@ -129,7 +129,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example2',
-    loadChildren: './example2/example2.module#Example2Module',
+    loadChildren: () => import('./example2/example2.module').then(m => m.Example2Module),
     data: {
       title: 'Example 2',
       description:
@@ -144,7 +144,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example2',
-    loadChildren: './example2/example2.module#Example2Module',
+    loadChildren: () => import('./example2/example2.module').then(m => m.Example2Module),
     data: {
       title: 'Example 2',
       description:
@@ -159,7 +159,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example2',
-    loadChildren: './example2/example2.module#Example2Module',
+    loadChildren: () => import('./example2/example2.module').then(m => m.Example2Module),
     data: {
       title: 'Example 2',
       description:
@@ -174,7 +174,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example2',
-    loadChildren: './example2/example2.module#Example2Module',
+    loadChildren: () => import('./example2/example2.module').then(m => m.Example2Module),
     data: {
       title: 'Example 2',
       description:
@@ -189,7 +189,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example2',
-    loadChildren: './example2/example2.module#Example2Module',
+    loadChildren: () => import('./example2/example2.module').then(m => m.Example2Module),
     data: {
       title: 'Example 2',
       description:
@@ -204,7 +204,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example2',
-    loadChildren: './example2/example2.module#Example2Module',
+    loadChildren: () => import('./example2/example2.module').then(m => m.Example2Module),
     data: {
       title: 'Example 2',
       description:
@@ -219,7 +219,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example2',
-    loadChildren: './example2/example2.module#Example2Module',
+    loadChildren: () => import('./example2/example2.module').then(m => m.Example2Module),
     data: {
       title: 'Example 2',
       description:
@@ -234,7 +234,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example2',
-    loadChildren: './example2/example2.module#Example2Module',
+    loadChildren: () => import('./example2/example2.module').then(m => m.Example2Module),
     data: {
       title: 'Example 2',
       description:
@@ -249,7 +249,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example2',
-    loadChildren: './example2/example2.module#Example2Module',
+    loadChildren: () => import('./example2/example2.module').then(m => m.Example2Module),
     data: {
       title: 'Example 2',
       description:
@@ -264,7 +264,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example2',
-    loadChildren: './example2/example2.module#Example2Module',
+    loadChildren: () => import('./example2/example2.module').then(m => m.Example2Module),
     data: {
       title: 'Example 2',
       description:
@@ -279,7 +279,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example2',
-    loadChildren: './example2/example2.module#Example2Module',
+    loadChildren: () => import('./example2/example2.module').then(m => m.Example2Module),
     data: {
       title: 'Example 2',
       description:
@@ -294,7 +294,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example2',
-    loadChildren: './example2/example2.module#Example2Module',
+    loadChildren: () => import('./example2/example2.module').then(m => m.Example2Module),
     data: {
       title: 'Example 2',
       description:
@@ -309,7 +309,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example2',
-    loadChildren: './example2/example2.module#Example2Module',
+    loadChildren: () => import('./example2/example2.module').then(m => m.Example2Module),
     data: {
       title: 'Example 2',
       description:
@@ -324,7 +324,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example2',
-    loadChildren: './example2/example2.module#Example2Module',
+    loadChildren: () => import('./example2/example2.module').then(m => m.Example2Module),
     data: {
       title: 'Example 2',
       description:
@@ -339,7 +339,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'example2',
-    loadChildren: './example2/example2.module#Example2Module',
+    loadChildren: () => import('./example2/example2.module').then(m => m.Example2Module),
     data: {
       title: 'Example 2',
       description:

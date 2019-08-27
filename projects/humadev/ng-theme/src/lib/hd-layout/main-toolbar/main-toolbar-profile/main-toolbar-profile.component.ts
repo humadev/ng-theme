@@ -24,7 +24,7 @@ export class MainToolbarProfileComponent implements OnInit {
   name: string;
   @Input()
   email: string;
-  @ViewChild('profile')
+  @ViewChild('profile', { static: false })
   menu: CdkOverlayOrigin;
   @ViewChildren(TemplatePortalDirective)
   templatePortals: QueryList<Portal<any>>;

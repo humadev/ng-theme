@@ -20,9 +20,9 @@ import { fadeUp, ringing } from '../../../animations/router.animation';
   animations: [fadeUp(), ringing()]
 })
 export class MainToolbarNotificationComponent implements OnInit {
-  @ViewChild('notification')
+  @ViewChild('notification', { static: false })
   menu: CdkOverlayOrigin;
-  @ViewChild('shake')
+  @ViewChild('shake', { static: true })
   shake: ElementRef;
   @Input()
   blink = false;

@@ -42,7 +42,7 @@ export class SidenavComponent implements OnInit {
     minimize: false
   };
   progressBar = false;
-  @ViewChild('sidenav')
+  @ViewChild('sidenav', { static: true })
   sidenav: MatSidenav;
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
