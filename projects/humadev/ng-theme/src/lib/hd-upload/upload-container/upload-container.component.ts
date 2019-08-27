@@ -21,7 +21,7 @@ export class UploadContainerComponent implements AfterViewInit {
 
     @Input() placeholder = 'Upload file';
     @Input() hint = '';
-    @ContentChild(UploadFileDirective, /* TODO: add static flag */ {}) uploadFile: UploadFileDirective;
+    @ContentChild(UploadFileDirective, /* TODO: add static flag */ {static: false}) uploadFile: UploadFileDirective;
     @ViewChild('filetoupload', { static: true }) uploadInput: ElementRef;
     filename: string;
 
