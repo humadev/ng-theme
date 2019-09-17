@@ -9,12 +9,8 @@ import {
 } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import {
-  BreakpointObserver,
-  BreakpointState,
-  Breakpoints,
   MediaMatcher
 } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'hd-main-toolbar',

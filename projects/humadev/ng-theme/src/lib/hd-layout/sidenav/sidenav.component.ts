@@ -13,7 +13,7 @@ import { MenuService } from '../../services/menu.service';
 import { slideToRight } from '../../animations/router.animation';
 import { intersection } from 'lodash-es';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { MatSidenav } from '@angular/material';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   // tslint:disable-next-line:component-selector

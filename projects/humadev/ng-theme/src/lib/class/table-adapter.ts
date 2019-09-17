@@ -1,14 +1,13 @@
 import {
   Observable,
-  Subject,
   BehaviorSubject,
   fromEvent,
   merge,
-  of,
-  pipe
+  of
 } from 'rxjs';
 import { DataSource } from '@angular/cdk/table';
-import { MatPaginator, MatSort } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { ElementRef } from '@angular/core';
 import {
   debounceTime,

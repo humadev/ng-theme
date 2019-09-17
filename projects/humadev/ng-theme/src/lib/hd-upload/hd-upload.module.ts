@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UploadFileDirective } from './upload-file.directive';
 import { UploadImageDirective } from './upload-image.directive';
 import { UploadContainerComponent } from './upload-container/upload-container.component';
-import { MatIconModule } from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
     imports: [

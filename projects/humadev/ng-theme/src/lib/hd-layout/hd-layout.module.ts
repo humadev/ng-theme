@@ -1,20 +1,6 @@
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  MatSidenavModule,
-  MatToolbarModule,
-  MatButtonModule,
-  MatListModule,
-  MatMenuModule,
-  MatIconModule,
-  MatGridListModule,
-  MatSelectModule,
-  MatProgressBarModule,
-  MatTabsModule,
-  MatDialogModule,
-  MatBadgeModule
-} from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
@@ -25,7 +11,6 @@ import { StartPageComponent } from './start-page/start-page.component';
 import { MenuService } from '../services/menu.service';
 import { FormsModule } from '@angular/forms';
 import { LayoutService } from '../services/layout.service';
-import { OverlayContainer } from '@angular/cdk/overlay';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { MainToolbarLeftMenuComponent } from './main-toolbar/main-toolbar-left-menu/main-toolbar-left-menu.component';
@@ -44,6 +29,18 @@ import { TimelineComponent } from './timeline/timeline.component';
 import { TimelineItemComponent } from './timeline/timeline-item/timeline-item.component';
 import { StartPageDialogComponent } from './start-page-dialog/start-page-dialog.component';
 import { MainToolbarStartShortcutComponent } from './main-toolbar/main-toolbar-start-shortcut/main-toolbar-start-shortcut.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   imports: [
@@ -114,6 +111,6 @@ import { MainToolbarStartShortcutComponent } from './main-toolbar/main-toolbar-s
     MainToolbarStartShortcutComponent
   ],
   entryComponents: [StartPageDialogComponent],
-  providers: [MenuService, OverlayContainer, LayoutService]
+  providers: [MenuService, LayoutService]
 })
 export class HdLayoutModule {}
